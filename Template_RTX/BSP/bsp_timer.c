@@ -57,6 +57,7 @@ void TIM4_IRQHandler(void)
 	HAL_TIM_IRQHandler(&tim4_handler);
 }
 
+extern void st_timer_interrupt(void);
 
 void bsp_timer3_int(void)
 {
@@ -67,7 +68,7 @@ void bsp_timer3_int(void)
 	}
 	else
 	{
-		
+		st_timer_interrupt();
 	}
 }
 

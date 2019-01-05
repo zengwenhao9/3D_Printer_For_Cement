@@ -13,20 +13,20 @@
 #define CRITICAL_SECTION_START 
 #define CRITICAL_SECTION_END
 
-#define enable_x()				bsp_x_enable_control(1)
-#define disable_x()				bsp_x_enable_control(0)
+#define enable_x()				bsp_x_enable_control(0)
+#define disable_x()				bsp_x_enable_control(1)
 
-#define enable_y()				bsp_y_enable_control(1)
-#define disable_y()				bsp_y_enable_control(0)
+#define enable_y()				bsp_y_enable_control(0)
+#define disable_y()				bsp_y_enable_control(1)
 
-#define enable_z()				bsp_z1_enable_control(1)
-#define disable_z()				bsp_z1_enable_control(0)
+#define enable_z()				bsp_z1_enable_control(0)
+#define disable_z()				bsp_z1_enable_control(1)
 
-#define enable_e0()				bsp_e1_enable_control(1)
-#define disable_e0()			bsp_e1_enable_control(0)
+#define enable_e0()				bsp_e1_enable_control(0)
+#define disable_e0()			bsp_e1_enable_control(1)
 
-#define enable_e1()				bsp_e2_enable_control(1)
-#define disable_e1()			bsp_e2_enable_control(0)
+#define enable_e1()				bsp_e2_enable_control(0)
+#define disable_e1()			bsp_e2_enable_control(1)
 
 
 #define x_idle()					bsp_x_pluse_control(0)
@@ -43,6 +43,18 @@
 
 #define e1_idle()					bsp_e2_pluse_control(0)
 #define e1_pluse()				bsp_e2_pluse_control(1)
+
+#define x_forward()				bsp_x_dir_control(1)
+#define x_reverse()				bsp_x_dir_control(0)
+
+#define y_forward()				bsp_y_dir_control(1)
+#define y_reverse()				bsp_y_dir_control(0)
+
+#define z_forward()				bsp_z1_dir_control(1)
+#define z_reverse()				bsp_z1_dir_control(0)
+
+#define e_forward()				bsp_e1_dir_control(1)
+#define e_reverse()				bsp_e1_dir_control(0)
 
 //planner
 
@@ -190,6 +202,8 @@
 
 #define AXIS_RELATIVE_MODES {false, false, false, false}
 
+#define MAX_STEP_FREQUENCY 40000 // Max step frequency for Ultimaker (5000 pps / half step)
+
 extern float homing_feedrate[];
 extern bool axis_relative_modes[];
 extern int feedmultiply;
@@ -214,6 +228,8 @@ extern float retract_recover_length, retract_recover_feedrate;
 
 // Handling multiple extruders pins
 extern uint8_t active_extruder;
+
+void jmp_motion_init(void);
 
 #endif
 

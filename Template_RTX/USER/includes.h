@@ -34,6 +34,7 @@
 #include "jmp_command_execution.h"
 #include "jmp_param_state.h"
 #include "jmp_gui.h"
+#include "jmp_motion.h"
 
 
 

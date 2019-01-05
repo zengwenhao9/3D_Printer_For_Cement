@@ -41,10 +41,11 @@ __task void AppTaskStart(void)
 	jmp_storage_read_init();
 	jmp_command_execution_init();
 	jmp_gui_init();
+	jmp_motion_init();
 
 	while(1)
 	{
-		os_dly_wait(10);
+		os_dly_wait(1000);
 	}
 }
 

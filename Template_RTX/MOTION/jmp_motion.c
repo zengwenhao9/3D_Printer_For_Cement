@@ -1,4 +1,7 @@
 #include "jmp_motion.h"
+#include "planner.h"
+#include "stepper.h"
+#include "RTL.h"
 
 
 
@@ -42,5 +45,79 @@ int EtoPPressure=0;
   float retract_length=3, retract_feedrate=17*60, retract_zlift=0.8;
   float retract_recover_length=0, retract_recover_feedrate=8*60;
 #endif
+
+
+OS_TID HandleTask_JmpMotion = NULL;
+static uint64_t TaskStk_JmpMotion[512/8];
+
+OS_TID HandleTask_JmpMotionTest = NULL;
+static uint64_t TaskStk_JmpMotionTest[1024/8];
+
+
+
+__task void jmp_motion_task(void)
+{
+	while(1)
+	{
+		checkHitEndstops();
+		os_dly_wait(10);
+	}
+}
+
+
+__task void jmp_motion_test_task(void)
+{
+	while(1)
+	{
+		plan_set_position(0,0,0,0);
+		plan_buffer_line(100,100,0,0,30000/60/100.0,active_extruder);
+		plan_buffer_line(0,0,0,0,30000/60/100.0,active_extruder);
+		while(1)
+		{
+			os_dly_wait(1000);
+		}
+	}
+}
+
+
+void jmp_motion_init(void)
+{
+	reset_acceleration_rates();
+	plan_init();
+	st_init();
+	
+	HandleTask_JmpMotion = os_tsk_create_user(jmp_motion_task,
+																					2,
+																					&TaskStk_JmpMotion,
+																					sizeof(TaskStk_JmpMotion));
+	HandleTask_JmpMotionTest = os_tsk_create_user(jmp_motion_test_task,
+																					2,
+																					&TaskStk_JmpMotionTest,
+																					sizeof(TaskStk_JmpMotionTest));
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
