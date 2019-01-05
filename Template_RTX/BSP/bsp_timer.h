@@ -3,7 +3,7 @@
 
 #include "tmsys.h"
 
-
+void bsp_timer3_init(u16 arr,u16 psc);
 void bsp_timer4_init(u16 arr,u16 psc);
 
 

@@ -23,12 +23,26 @@
 #define disable_z()				bsp_z1_enable_control(0)
 
 #define enable_e0()				bsp_e1_enable_control(1)
-#define disable_e0()				bsp_e1_enable_control(0)
+#define disable_e0()			bsp_e1_enable_control(0)
 
 #define enable_e1()				bsp_e2_enable_control(1)
-#define disable_e1()				bsp_e2_enable_control(0)
+#define disable_e1()			bsp_e2_enable_control(0)
 
 
+#define x_idle()					bsp_x_pluse_control(0)
+#define x_pluse()					bsp_x_pluse_control(1)
+
+#define y_idle()					bsp_y_pluse_control(0)
+#define y_pluse()					bsp_y_pluse_control(1)
+
+#define z_idle()					bsp_z1_pluse_control(0)
+#define z_pluse()					bsp_z1_pluse_control(1)
+
+#define e0_idle()					bsp_e1_pluse_control(0)
+#define e0_pluse()				bsp_e1_pluse_control(1)
+
+#define e1_idle()					bsp_e2_pluse_control(0)
+#define e1_pluse()				bsp_e2_pluse_control(1)
 
 //planner
 

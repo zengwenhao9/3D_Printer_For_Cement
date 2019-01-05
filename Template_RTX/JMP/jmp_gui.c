@@ -63,6 +63,7 @@ void jmp_gui_uart_timeout(void)
 {
 	jmp_gui_uart_rx_state=GUI_UART_IDLE;
 	jmp_gui_uart_rx_buff_sum=0;
+	HAL_TIM_Base_Stop_IT(&tim4_handler);
 }
 
 //超时定时器初始化
