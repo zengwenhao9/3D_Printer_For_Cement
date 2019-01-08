@@ -85,7 +85,7 @@
 //机械设置开始
 
 // Uncomment the following line to enable CoreXY kinematics
-// #define COREXY
+#define COREXY
 
 // corse Endstop Settings
 #define ENDSTOPPULLUPS // Comment this out (using // at the start of the line) to disable the endstop pullup resistors
@@ -147,11 +147,11 @@
 
 
 // Travel limits after homing
-#define X_MAX_POS 130                                                                                          
+#define X_MAX_POS 200                                                                                          
 #define X_MIN_POS 0
-#define Y_MAX_POS 130
+#define Y_MAX_POS 200
 #define Y_MIN_POS 0
-#define Z_MAX_POS 120
+#define Z_MAX_POS 200
 #define Z_MIN_POS 0
 
 #define X_MAX_LENGTH (X_MAX_POS - X_MIN_POS)
@@ -170,7 +170,7 @@
 
 // default settings
 
-#define DEFAULT_AXIS_STEPS_PER_UNIT   {80,80,800,94.4962144}  // default steps per unit for ultimaker 
+#define DEFAULT_AXIS_STEPS_PER_UNIT   {160,160,800,94.4962144}  // default steps per unit for ultimaker 
 
 #define DEFAULT_MAX_FEEDRATE          {200, 200, 4, 45}    // (mm/sec)                                            
                        
@@ -204,6 +204,12 @@
 
 #define MAX_STEP_FREQUENCY 40000 // Max step frequency for Ultimaker (5000 pps / half step)
 
+
+#define Manual_X_FEEDRATE				50
+#define Manual_Y_FEEDRATE				50
+#define Manual_Z_FEEDRATE				50
+#define Manual_E_FEEDRATE				50
+
 extern float homing_feedrate[];
 extern bool axis_relative_modes[];
 extern int feedmultiply;
@@ -230,6 +236,10 @@ extern float retract_recover_length, retract_recover_feedrate;
 extern uint8_t active_extruder;
 
 void jmp_motion_init(void);
+
+void jmp_motion_prepare_move(double x,double y,double z,double e);
+void jmp_motion_manual(double x,double y,double z,double e,double f);
+void jmp_motion_set_postion(double x,double y,double z,double e);
 
 #endif
 

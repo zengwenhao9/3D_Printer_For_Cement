@@ -5,6 +5,7 @@
 #include "jmp_param_state.h"
 #include "jmp_storage_read.h"
 #include "string.h"
+#include "planner.h"
 
 u8 jmp_gui_uart_rx_buff[GUI_UART_RX_BUFF_SUM];
 u32 jmp_gui_uart_rx_buff_sum;
@@ -380,7 +381,6 @@ void jmp_gui_start_print(void)
 //停止打印要做的处理
 void jmp_gui_stop_print(void)
 {
-	jmp_config_state_struct.printing_run=0;
 	jmp_config_state_struct.printing_hold=0;
 }
 
@@ -471,35 +471,67 @@ __task void jmp_gui_task(void)
 				{
 					if(jmp_guiuart_rx_str.start_address==GUI_MANUAL_X_P)
 					{
-						printf("G1 X%f\r\n",jmp_config_state_struct.manual_step_length);
+						//printf("G1 X%f\r\n",jmp_config_state_struct.manual_step_length);
+						jmp_motion_manual(jmp_config_state_struct.axis_position[0]+jmp_config_state_struct.manual_step_length,
+															jmp_config_state_struct.axis_position[1],
+															jmp_config_state_struct.axis_position[2],
+															jmp_config_state_struct.axis_position[3],Manual_X_FEEDRATE);
 					}
 					else if(jmp_guiuart_rx_str.start_address==GUI_MANUAL_X_M)
 					{
-						printf("G1 X-%f\r\n",jmp_config_state_struct.manual_step_length);
+						//printf("G1 X-%f\r\n",jmp_config_state_struct.manual_step_length);
+						jmp_motion_manual(jmp_config_state_struct.axis_position[0]-jmp_config_state_struct.manual_step_length,
+															jmp_config_state_struct.axis_position[1],
+															jmp_config_state_struct.axis_position[2],
+															jmp_config_state_struct.axis_position[3],Manual_X_FEEDRATE);
 					}
 					else if(jmp_guiuart_rx_str.start_address==GUI_MANUAL_Y_P)
 					{
-						printf("G1 Y%f\r\n",jmp_config_state_struct.manual_step_length);
+						//printf("G1 Y%f\r\n",jmp_config_state_struct.manual_step_length);
+						jmp_motion_manual(jmp_config_state_struct.axis_position[0],
+															jmp_config_state_struct.axis_position[1]+jmp_config_state_struct.manual_step_length,
+															jmp_config_state_struct.axis_position[2],
+															jmp_config_state_struct.axis_position[3],Manual_Y_FEEDRATE);
 					}
 					else if(jmp_guiuart_rx_str.start_address==GUI_MANUAL_Y_M)
 					{
-						printf("G1 Y-%f\r\n",jmp_config_state_struct.manual_step_length);
+						//printf("G1 Y-%f\r\n",jmp_config_state_struct.manual_step_length);
+						jmp_motion_manual(jmp_config_state_struct.axis_position[0],
+															jmp_config_state_struct.axis_position[1]-jmp_config_state_struct.manual_step_length,
+															jmp_config_state_struct.axis_position[2],
+															jmp_config_state_struct.axis_position[3],Manual_Y_FEEDRATE);
 					}
 					else if(jmp_guiuart_rx_str.start_address==GUI_MANUAL_Z_P)
 					{
-						printf("G1 Z%f\r\n",jmp_config_state_struct.manual_step_length);
+						//printf("G1 Z%f\r\n",jmp_config_state_struct.manual_step_length);
+						jmp_motion_manual(jmp_config_state_struct.axis_position[0],
+															jmp_config_state_struct.axis_position[1],
+															jmp_config_state_struct.axis_position[2]+jmp_config_state_struct.manual_step_length,
+															jmp_config_state_struct.axis_position[3],Manual_Z_FEEDRATE);
 					}
 					else if(jmp_guiuart_rx_str.start_address==GUI_MANUAL_Z_M)
 					{
-						printf("G1 Z-%f\r\n",jmp_config_state_struct.manual_step_length);
+						//printf("G1 Z-%f\r\n",jmp_config_state_struct.manual_step_length);
+						jmp_motion_manual(jmp_config_state_struct.axis_position[0],
+															jmp_config_state_struct.axis_position[1],
+															jmp_config_state_struct.axis_position[2]-jmp_config_state_struct.manual_step_length,
+															jmp_config_state_struct.axis_position[3],Manual_Z_FEEDRATE);
 					}
 					else if(jmp_guiuart_rx_str.start_address==GUI_MANUAL_E_P)
 					{
-						printf("G1 E%f\r\n",jmp_config_state_struct.manual_step_length);
+						//printf("G1 E%f\r\n",jmp_config_state_struct.manual_step_length);
+						jmp_motion_manual(jmp_config_state_struct.axis_position[0],
+															jmp_config_state_struct.axis_position[1],
+															jmp_config_state_struct.axis_position[2],
+															jmp_config_state_struct.axis_position[3]+jmp_config_state_struct.manual_step_length,Manual_E_FEEDRATE);
 					}
 					else if(jmp_guiuart_rx_str.start_address==GUI_MANUAL_E_M)
 					{
-						printf("G1 E-%f\r\n",jmp_config_state_struct.manual_step_length);
+						//printf("G1 E-%f\r\n",jmp_config_state_struct.manual_step_length);
+						jmp_motion_manual(jmp_config_state_struct.axis_position[0],
+															jmp_config_state_struct.axis_position[1],
+															jmp_config_state_struct.axis_position[2],
+															jmp_config_state_struct.axis_position[3]-jmp_config_state_struct.manual_step_length,Manual_E_FEEDRATE);
 					}
 					else if(jmp_guiuart_rx_str.start_address==GUI_MANUAL_HOME)
 					{
@@ -738,6 +770,10 @@ __task void jmp_gui_task(void)
 				if(jmp_config_state_struct.printing_run==0)
 				{
 					jmp_gui_stop_print();
+					while(blocks_queued())
+					{
+						os_dly_wait(10);
+					}
 					jmp_gui_state=GUI_PRINT_PREPARE;
 					jmp_gui_goto_frame(8);
 					break;
@@ -757,9 +793,7 @@ __task void jmp_gui_task(void)
 					}
 					else if(jmp_guiuart_rx_str.start_address==GUI_PRINT_MAIN_STOP)
 					{
-						jmp_gui_stop_print();
-						jmp_gui_state=GUI_PRINT_PREPARE;
-						jmp_gui_goto_frame(8);
+						jmp_config_state_struct.printing_abort=1;
 					}
 					else if(jmp_guiuart_rx_str.start_address==GUI_PRINT_MAIN_SET)
 					{
@@ -775,6 +809,10 @@ __task void jmp_gui_task(void)
 				if(jmp_config_state_struct.printing_run==0)
 				{
 					jmp_gui_stop_print();
+					while(blocks_queued())
+					{
+						os_dly_wait(10);
+					}
 					jmp_gui_state=GUI_PRINT_PREPARE;
 					jmp_gui_goto_frame(8);
 					break;

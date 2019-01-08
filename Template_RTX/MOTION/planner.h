@@ -22,6 +22,10 @@ extern float max_e_jerk;
 extern float mintravelfeedrate;
 extern unsigned long axis_steps_per_sqr_second[NUM_AXIS];
 
+extern long position[4];   //rescaled from extern when axis_steps_per_unit are changed by gcode
+extern float previous_speed[4]; // Speed of previous path line segment
+extern float previous_nominal_speed; // Nominal speed of previous path line segment
+
 
 #ifdef AUTOTEMP
     extern bool autotemp_enabled;

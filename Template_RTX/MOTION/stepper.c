@@ -9,8 +9,11 @@
 
 
 
-
+extern TIM_HandleTypeDef tim2_handler;
 extern TIM_HandleTypeDef tim3_handler;
+
+#define ENABLE_PIN_RESET_INTERRUPT()  HAL_TIM_Base_Start_IT(&tim2_handler);  //使能TIMx
+#define DISABLE_PIN_RESET_INTERRUPT() HAL_TIM_Base_Stop_IT(&tim2_handler); 
 
 #define ENABLE_STEPPER_DRIVER_INTERRUPT()  HAL_TIM_Base_Start_IT(&tim3_handler);  //使能TIMx
 #define DISABLE_STEPPER_DRIVER_INTERRUPT() HAL_TIM_Base_Stop_IT(&tim3_handler); 
@@ -156,10 +159,10 @@ unsigned short calc_timer(unsigned short step_rate)
   } 
   
   if(step_rate < 32) step_rate = 32;
-  timer = 2000000/step_rate - 1;
-  if(timer < 100) 
+  timer = 1000000/step_rate - 1;
+  if(timer < 50) 
 	{
-		timer = 100; 
+		timer = 50; 
 	}//(20kHz this should never happen)
   return timer;
 }
@@ -183,6 +186,8 @@ void trapezoid_generator_reset(void)
   acc_step_rate = current_block->initial_rate;
   acceleration_time = calc_timer(acc_step_rate);
 	__HAL_TIM_SET_AUTORELOAD(&tim3_handler,acceleration_time-1);
+	__HAL_TIM_SET_AUTORELOAD(&tim2_handler,acceleration_time/2-1);
+	ENABLE_PIN_RESET_INTERRUPT();
 }
 
 void st_timer_interrupt(void)
@@ -223,9 +228,7 @@ void st_timer_interrupt(void)
     // Set direction en check limit switches
     if ((out_bits & (1<<X_AXIS)) != 0) 
 		{   // stepping along -X axis
-      #if !defined COREXY  //NOT COREXY
-        x_forward();
-      #endif
+      x_forward();
       count_direction[X_AXIS]=-1;
       CHECK_ENDSTOPS
       {
@@ -243,9 +246,7 @@ void st_timer_interrupt(void)
     }
     else 
 		{ // +direction
-      #if !defined COREXY  //NOT COREXY
-       x_reverse();
-      #endif
+      x_reverse();
       
       count_direction[X_AXIS]=1;
       CHECK_ENDSTOPS 
@@ -264,9 +265,7 @@ void st_timer_interrupt(void)
 
     if ((out_bits & (1<<Y_AXIS)) != 0) 
 		{   // -direction
-      #if !defined COREXY  //NOT COREXY
       y_forward();
-      #endif
       count_direction[Y_AXIS]=-1;
       CHECK_ENDSTOPS
       {
@@ -283,9 +282,7 @@ void st_timer_interrupt(void)
     }
     else 
 		{ // +direction
-      #if !defined COREXY  //NOT COREXY
       y_reverse();
-      #endif
       count_direction[Y_AXIS]=1;
       CHECK_ENDSTOPS
       {
@@ -378,7 +375,6 @@ void st_timer_interrupt(void)
 	  
 				#endif //ADVANCE
 
-				#if !defined COREXY 
 				
         counter_x += current_block->steps_x;
         if (counter_x > 0) 
@@ -386,7 +382,6 @@ void st_timer_interrupt(void)
           x_pluse();
           counter_x -= current_block->step_event_count;
           count_position[X_AXIS]+=count_direction[X_AXIS];   
-          x_idle();
         }
   
         counter_y += current_block->steps_y;
@@ -395,9 +390,7 @@ void st_timer_interrupt(void)
           y_pluse();
           counter_y -= current_block->step_event_count; 
           count_position[Y_AXIS]+=count_direction[Y_AXIS];
-          y_idle();
         }
-				#endif
   
 				counter_z += current_block->steps_z;
 				if (counter_z > 0) 
@@ -405,7 +398,6 @@ void st_timer_interrupt(void)
 					z_pluse();      
 					counter_z -= current_block->step_event_count;
 					count_position[Z_AXIS]+=count_direction[Z_AXIS];
-					z_idle();
         
 				}
 
@@ -417,7 +409,6 @@ void st_timer_interrupt(void)
           e0_pluse();
           counter_e -= current_block->step_event_count;
           count_position[E_AXIS]+=count_direction[E_AXIS];
-          e0_idle();
         }
 		
 				#endif //!ADVANCE
@@ -445,6 +436,8 @@ void st_timer_interrupt(void)
 				// step_rate to timer interval
 				timer = calc_timer(acc_step_rate);
 				__HAL_TIM_SET_AUTORELOAD(&tim3_handler, timer-1);
+				__HAL_TIM_SET_AUTORELOAD(&tim2_handler,timer/2-1);
+				ENABLE_PIN_RESET_INTERRUPT();
 				acceleration_time += timer;
 				#ifdef ADVANCE	  
         for(i=0; i < step_loops; i++) 
@@ -478,6 +471,8 @@ void st_timer_interrupt(void)
 	      // step_rate to timer interval
 	      timer = calc_timer(step_rate);
 	      __HAL_TIM_SET_AUTORELOAD(&tim3_handler, timer-1);
+				__HAL_TIM_SET_AUTORELOAD(&tim2_handler,timer/2-1);
+				ENABLE_PIN_RESET_INTERRUPT();
 	      deceleration_time += timer;
 	      #ifdef ADVANCE  
 	      for(i=0; i < step_loops; i++) 
@@ -493,6 +488,8 @@ void st_timer_interrupt(void)
 	    else 
 			{
 				__HAL_TIM_SET_AUTORELOAD(&tim3_handler,TIME3_nominal-1);
+				__HAL_TIM_SET_AUTORELOAD(&tim2_handler,TIME3_nominal/2-1);
+				ENABLE_PIN_RESET_INTERRUPT();
 		    // ensure we're running at the correct step rate, even if we just came off an acceleration
 		    //  step_loops = step_loops_nominal;
 		  }
@@ -504,6 +501,16 @@ void st_timer_interrupt(void)
       plan_discard_current_block();
     }   
   } 
+}
+
+void st_pin_idle(void)
+{
+	x_idle();
+	y_idle();
+	z_idle();
+	e0_idle();
+	e1_idle();
+	DISABLE_PIN_RESET_INTERRUPT();
 }
 
 void st_init(void)
@@ -520,6 +527,7 @@ void st_init(void)
 	e0_idle();
 	e1_idle();
 	
+	bsp_timer2_init(0x4000,83);
 	bsp_timer3_init(0x4000,83);
 	ENABLE_STEPPER_DRIVER_INTERRUPT();
 	

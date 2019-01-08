@@ -35,7 +35,7 @@ typedef struct
 
 typedef struct
 {
-	double axis_position[3];
+	double axis_position[4];
 	double xy_axis_speed;
 	double e_axis_speed;
 	double z_axis_speed;
@@ -46,8 +46,12 @@ typedef struct
 	
 	int speed_range;
 	
+	double feedrate;
+	
 	u8 printing_run;
 	u8 printing_hold;
+	u8 printing_abort;
+	u8 reading_end;
 }JMPCofigStateStruct;
 
 

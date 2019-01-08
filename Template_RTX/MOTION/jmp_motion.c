@@ -2,6 +2,7 @@
 #include "planner.h"
 #include "stepper.h"
 #include "RTL.h"
+#include "jmp_param_state.h"
 
 
 
@@ -54,6 +55,55 @@ OS_TID HandleTask_JmpMotionTest = NULL;
 static uint64_t TaskStk_JmpMotionTest[1024/8];
 
 
+void jmp_motion_clamp_to_software_endstops(double x,double y,double z)
+{
+  if (min_software_endstops) 
+	{
+    if (x < min_pos[X_AXIS]) x = min_pos[X_AXIS];
+    if (y < min_pos[Y_AXIS]) y = min_pos[Y_AXIS];
+    if (z < min_pos[Z_AXIS]) z = min_pos[Z_AXIS];
+  }
+
+  if (max_software_endstops) 
+	{
+    if (x > max_pos[X_AXIS]) x = max_pos[X_AXIS];
+    if (y > max_pos[Y_AXIS]) y = max_pos[Y_AXIS];
+    if (z > max_pos[Z_AXIS]) z = max_pos[Z_AXIS];
+  }
+}
+
+void jmp_motion_prepare_move(double x,double y,double z,double e)
+{
+	double feedrate;
+	double multiply;
+	feedrate=jmp_config_state_struct.feedrate;
+	multiply=jmp_config_state_struct.speed_range;
+	jmp_motion_clamp_to_software_endstops(x,y,z);
+	plan_buffer_line(x, y, z, e, feedrate*multiply/60/100.0, active_extruder);
+	jmp_config_state_struct.axis_position[0]=x;
+	jmp_config_state_struct.axis_position[1]=y;
+	jmp_config_state_struct.axis_position[2]=z;
+	jmp_config_state_struct.axis_position[3]=e;
+}
+
+void jmp_motion_manual(double x,double y,double z,double e,double f)
+{
+	jmp_motion_clamp_to_software_endstops(x,y,z);
+	plan_buffer_line(x, y, z, e, f, active_extruder);
+	jmp_config_state_struct.axis_position[0]=x;
+	jmp_config_state_struct.axis_position[1]=y;
+	jmp_config_state_struct.axis_position[2]=z;
+	jmp_config_state_struct.axis_position[3]=e;
+}
+
+void jmp_motion_set_postion(double x,double y,double z,double e)
+{
+	plan_set_position(x,y,z,e);
+	jmp_config_state_struct.axis_position[0]=x;
+	jmp_config_state_struct.axis_position[1]=y;
+	jmp_config_state_struct.axis_position[2]=z;
+	jmp_config_state_struct.axis_position[3]=e;
+}
 
 __task void jmp_motion_task(void)
 {
@@ -70,8 +120,15 @@ __task void jmp_motion_test_task(void)
 	while(1)
 	{
 		plan_set_position(0,0,0,0);
-		plan_buffer_line(100,100,0,0,30000/60/100.0,active_extruder);
-		plan_buffer_line(0,0,0,0,30000/60/100.0,active_extruder);
+		plan_buffer_line(0,100,0,0,100,active_extruder);
+		plan_buffer_line(0,0,0,0,100,active_extruder);
+		plan_buffer_line(0,100,0,0,100,active_extruder);
+		plan_buffer_line(0,0,0,0,100,active_extruder);
+		plan_buffer_line(0,100,0,0,100,active_extruder);
+		plan_buffer_line(0,0,0,0,100,active_extruder);
+		plan_buffer_line(0,100,0,0,100,active_extruder);
+		plan_buffer_line(0,0,0,0,100,active_extruder);
+		plan_buffer_line(100,0,0,0,100,active_extruder);
 		while(1)
 		{
 			os_dly_wait(1000);
@@ -90,10 +147,10 @@ void jmp_motion_init(void)
 																					2,
 																					&TaskStk_JmpMotion,
 																					sizeof(TaskStk_JmpMotion));
-	HandleTask_JmpMotionTest = os_tsk_create_user(jmp_motion_test_task,
-																					2,
-																					&TaskStk_JmpMotionTest,
-																					sizeof(TaskStk_JmpMotionTest));
+//	HandleTask_JmpMotionTest = os_tsk_create_user(jmp_motion_test_task,
+//																					2,
+//																					&TaskStk_JmpMotionTest,
+//																					sizeof(TaskStk_JmpMotionTest));
 }
 
 

@@ -44,6 +44,11 @@ __task void jmp_storage_read_task(void)
 			{
 				break;
 			}
+			if(jmp_config_state_struct.printing_abort==1)
+			{
+				jmp_config_state_struct.reading_end=1;
+				break;
+			}
 			if(jmp_config_state_struct.printing_hold==0)
 			{
 				u32 buff_remain;
@@ -66,8 +71,7 @@ __task void jmp_storage_read_task(void)
 					if(res&(1<<30))
 					{
 						//文件读完，可以结束任务
-						jmp_config_state_struct.printing_run=0;
-						os_sem_send(&JmpGUISem);
+						jmp_config_state_struct.reading_end=1;
 						break;
 					}
 					sum=res&(~(1<<30));

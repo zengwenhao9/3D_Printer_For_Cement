@@ -1,5 +1,7 @@
 #include "jmp_gcode_analysis.h"
 #include "jmp_command_execution.h"
+#include "jmp_param_state.h"
+#include "jmp_gui.h"
 #include "RTL.h"
 #include "string.h"
 #include <stdlib.h>
@@ -116,28 +118,53 @@ void jmp_gcode_get_line(void)
 	while(1)
 	{
 		u32 remain;
-		remain=jmp_gcode_buff_get_sum();
-		if(remain>0)
+		if(jmp_config_state_struct.printing_abort==1)
 		{
-			data=jmp_gcode_buff_get();
-			if(data=='\n')
+			if(jmp_config_state_struct.reading_end==1)
 			{
+				jmp_config_state_struct.printing_abort=0;
+				jmp_config_state_struct.reading_end=0;
+				jmp_gcode_buff_clear();
+				jmp_config_state_struct.printing_run=0;
+				os_sem_send(&JmpGUISem);
 				break;
 			}
-			else
+		}
+		if(jmp_config_state_struct.printing_hold==0)
+		{
+			remain=jmp_gcode_buff_get_sum();
+			if(remain>0)
 			{
-				jmp_gcode_line_buff[jmp_gcode_line_buff_sum]=data;
-				jmp_gcode_line_buff_sum++;
-				if(jmp_gcode_line_buff_sum>=GCODE_LINE_BUFF_SUM)
+				data=jmp_gcode_buff_get();
+				if(data=='\n')
 				{
 					break;
 				}
+				else
+				{
+					jmp_gcode_line_buff[jmp_gcode_line_buff_sum]=data;
+					jmp_gcode_line_buff_sum++;
+					if(jmp_gcode_line_buff_sum>=GCODE_LINE_BUFF_SUM)
+					{
+						break;
+					}
+				}
+			}
+			else
+			{
+				if(jmp_config_state_struct.reading_end==1)
+				{
+					jmp_config_state_struct.reading_end=0;
+					jmp_config_state_struct.printing_run=0;
+					os_sem_send(&JmpGUISem);
+				}
+				//等待缓冲区有数据
+				os_dly_wait(1);
 			}
 		}
 		else
 		{
-			//等待缓冲区有数据
-			os_dly_wait(1);
+			os_dly_wait(500);
 		}
 	}
 }

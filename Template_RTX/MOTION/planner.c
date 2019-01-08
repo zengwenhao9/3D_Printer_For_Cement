@@ -1,5 +1,6 @@
 #include "planner.h"
 #include "stepper.h"
+#include "RTL.h"
 
 
 //===========================================================================
@@ -393,6 +394,18 @@ void check_axes_activity(void)
   }
 }
 
+#ifdef COREXY
+int32_t plan_convert_corexy_to_x_axis_steps(int32_t x,int32_t y)
+{
+	return((x+y)/2);
+}
+
+int32_t plan_convert_corexy_to_y_axis_steps(int32_t x,int32_t y)
+{
+	return((x-y)/2);
+}
+#endif
+
 
 float junction_deviation = 0.1;
 // Add a new linear movement to the buffer. steps_x, _y and _z is the absolute position in 
@@ -421,15 +434,20 @@ void plan_buffer_line(const float x, const float y, const float z, const float e
   // Rest here until there is room in the buffer.
   while(block_buffer_tail == next_buffer_head)
   {
-    //manage_inactivity(); 
+    os_dly_wait(10);
   }
 
   // The target position of the tool in absolute steps
   // Calculate target position in absolute steps
   //this should be done after the wait, because otherwise a M92 code within the gcode disrupts this calculation somehow
 	//计算绝对坐标下的目标位置的步数
+	#ifdef COREXY
+	target[X_AXIS]=round(plan_convert_corexy_to_x_axis_steps(x,y)*axis_steps_per_unit[X_AXIS]);
+	target[Y_AXIS]=round(plan_convert_corexy_to_y_axis_steps(x,y)*axis_steps_per_unit[Y_AXIS]);
+	#else
   target[X_AXIS] = round(x*axis_steps_per_unit[X_AXIS]);
   target[Y_AXIS] = round(y*axis_steps_per_unit[Y_AXIS]);
+	#endif
   target[Z_AXIS] = round(z*axis_steps_per_unit[Z_AXIS]);     
   target[E_AXIS] = round(e*axis_steps_per_unit[E_AXIS]);
 

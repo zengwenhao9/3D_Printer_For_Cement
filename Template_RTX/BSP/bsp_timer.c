@@ -1,8 +1,23 @@
 #include "bsp_timer.h"
 
+TIM_HandleTypeDef tim2_handler;
 TIM_HandleTypeDef tim3_handler;
 TIM_HandleTypeDef tim4_handler;
 
+
+void bsp_timer2_init(u16 arr,u16 psc)
+{
+	__HAL_RCC_TIM2_CLK_ENABLE();
+	
+	tim2_handler.Instance=TIM2;
+  tim2_handler.Init.Prescaler=psc;                     //分频
+  tim2_handler.Init.CounterMode=TIM_COUNTERMODE_UP;    //向上计数器
+  tim2_handler.Init.Period=arr;                        //自动装载值
+  tim2_handler.Init.ClockDivision=TIM_CLOCKDIVISION_DIV1;//时钟分频因子
+  HAL_TIM_Base_Init(&tim2_handler);
+	
+	HAL_TIM_Base_Stop_IT(&tim2_handler);  
+}
 
 void bsp_timer3_init(u16 arr,u16 psc)
 {
@@ -35,6 +50,11 @@ void bsp_timer4_init(u16 arr,u16 psc)
 
 void HAL_TIM_Base_MspInit(TIM_HandleTypeDef *htim)
 {
+	if(htim->Instance==TIM2)
+	{           
+		HAL_NVIC_SetPriority(TIM2_IRQn,4,0);    
+		HAL_NVIC_EnableIRQ(TIM2_IRQn);            
+	}
 	if(htim->Instance==TIM3)
 	{           
 		HAL_NVIC_SetPriority(TIM3_IRQn,4,0);    
@@ -47,6 +67,11 @@ void HAL_TIM_Base_MspInit(TIM_HandleTypeDef *htim)
 	}
 }
 
+void TIM2_IRQHandler(void)
+{
+	HAL_TIM_IRQHandler(&tim2_handler);
+}
+
 void TIM3_IRQHandler(void)
 {
 	HAL_TIM_IRQHandler(&tim3_handler);
@@ -55,6 +80,21 @@ void TIM3_IRQHandler(void)
 void TIM4_IRQHandler(void)
 {
 	HAL_TIM_IRQHandler(&tim4_handler);
+}
+
+extern void st_pin_idle(void);
+
+void bsp_timer2_int(void)
+{
+	static u8 timer_once;
+	if(timer_once==0)
+	{
+		timer_once=1;
+	}
+	else
+	{
+		st_pin_idle();
+	}
 }
 
 extern void st_timer_interrupt(void);
@@ -90,6 +130,10 @@ void bsp_timer4_int(void)
 //回调函数，定时器中断服务函数调用
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
+	if(htim==(&tim2_handler))
+	{
+		bsp_timer2_int();
+	}
 	if(htim==(&tim3_handler))
 	{
 		bsp_timer3_int();

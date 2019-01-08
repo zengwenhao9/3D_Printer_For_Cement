@@ -149,9 +149,9 @@
         <Bp>
           <Number>0</Number>
           <Type>0</Type>
-          <LineNumber>73</LineNumber>
+          <LineNumber>79</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>134273978</Address>
+          <Address>134275588</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
@@ -160,7 +160,7 @@
           <BreakIfRCount>1</BreakIfRCount>
           <Filename>F:\浣涘北娲ユ槑\jm3d\绋嬪簭\3dprinter\Template_RTX\MOTION\jmp_motion.c</Filename>
           <ExecCommand></ExecCommand>
-          <Expression>\\Template\../MOTION/jmp_motion.c\73</Expression>
+          <Expression>\\Template\../MOTION/jmp_motion.c\79</Expression>
         </Bp>
       </Breakpoint>
       <WatchWindow1>
@@ -173,6 +173,31 @@
           <count>1</count>
           <WinNumber>1</WinNumber>
           <ItemText>block_buffer</ItemText>
+        </Ww>
+        <Ww>
+          <count>2</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>block_buffer_head</ItemText>
+        </Ww>
+        <Ww>
+          <count>3</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>block_buffer_tail</ItemText>
+        </Ww>
+        <Ww>
+          <count>4</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>jmp_gcode_buff_sp</ItemText>
+        </Ww>
+        <Ww>
+          <count>5</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>jmp_gcode_buff_ep</ItemText>
+        </Ww>
+        <Ww>
+          <count>6</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>jmp_config_state_struct</ItemText>
         </Ww>
       </WatchWindow1>
       <MemoryWindow1>
@@ -1111,7 +1136,7 @@
 
   <Group>
     <GroupName>SYSTEM</GroupName>
-    <tvExp>0</tvExp>
+    <tvExp>1</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>
@@ -1403,7 +1428,7 @@
 
   <Group>
     <GroupName>RL-USB/Driver</GroupName>
-    <tvExp>1</tvExp>
+    <tvExp>0</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>
