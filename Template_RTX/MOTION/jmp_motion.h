@@ -56,6 +56,22 @@
 #define e_forward()				bsp_e1_dir_control(1)
 #define e_reverse()				bsp_e1_dir_control(0)
 
+#define x_limit_p()				bsp_x_limit_p_read()
+#define x_limit_m()				bsp_x_limit_m_read()
+
+#define y_limit_p()				bsp_y_limit_p_read()
+#define y_limit_m()				bsp_y_limit_m_read()
+
+#define z_limit_p()				bsp_z_limit_p_read()
+#define z_limit_m()				bsp_z_limit_m_read()
+
+#define X_MIN_ENDSTOP			1
+#define X_MAX_ENDSTOP			1
+#define Y_MIN_ENDSTOP			1
+#define Y_MAX_ENDSTOP			1
+#define Z_MIN_ENDSTOP			1
+#define Z_MAX_ENDSTOP			1
+
 //planner
 
 #define BLOCK_BUFFER_SIZE 32// maximize block buffer
@@ -166,7 +182,7 @@
      
 #define NUM_AXIS 4 // The axis order in all axis related arrays is X, Y, Z, E
 
-#define HOMING_FEEDRATE {40*60, 40*60, 10*60, 0} 
+#define HOMING_FEEDRATE {5, 5, 5, 0} 
 
 // default settings
 
@@ -195,8 +211,8 @@
 #define Y_HOME_POS MANUAL_Y_HOME_POS
 #define Z_HOME_POS MANUAL_Z_HOME_POS
 
-#define X_HOME_RETRACT_MM 5 
-#define Y_HOME_RETRACT_MM 5 
+#define X_HOME_RETRACT_MM 25 
+#define Y_HOME_RETRACT_MM 25 
 #define Z_HOME_RETRACT_MM 1 
 //#define QUICK_HOME  //if this is defined, if both x and y are to be homed, a diagonal move will be performed initially.
 
@@ -209,6 +225,14 @@
 #define Manual_Y_FEEDRATE				50
 #define Manual_Z_FEEDRATE				50
 #define Manual_E_FEEDRATE				50
+
+
+#define X_MIN_CHECK
+#define X_MAX_CHECK
+#define Y_MIN_CHECK
+#define Y_MAX_CHECK
+#define Z_MIN_CHECK
+#define Z_MAX_CHECK
 
 extern float homing_feedrate[];
 extern bool axis_relative_modes[];
@@ -240,6 +264,7 @@ void jmp_motion_init(void);
 void jmp_motion_prepare_move(double x,double y,double z,double e);
 void jmp_motion_manual(double x,double y,double z,double e,double f);
 void jmp_motion_set_postion(double x,double y,double z,double e);
+void jmp_motion_find_home(void);
 
 #endif
 

@@ -105,6 +105,151 @@ void jmp_motion_set_postion(double x,double y,double z,double e)
 	jmp_config_state_struct.axis_position[3]=e;
 }
 
+void jmp_motion_find_home(void)
+{
+	double move_d;
+/////////////////////////////////////////////////////////////////////////////////	
+	move_d=1.5f*max_length[0]*home_dir[0];
+	plan_buffer_line(jmp_config_state_struct.axis_position[0]+move_d,
+									jmp_config_state_struct.axis_position[1],
+									jmp_config_state_struct.axis_position[2],
+									jmp_config_state_struct.axis_position[3],
+									homing_feedrate[0],active_extruder);	
+	while(blocks_queued())
+	{
+		os_dly_wait(10);
+	}
+	jmp_motion_set_postion(0,
+												jmp_config_state_struct.axis_position[1],
+												jmp_config_state_struct.axis_position[2],
+												jmp_config_state_struct.axis_position[3]);
+	
+	move_d=-home_retract_mm[0]*home_dir[0];
+	plan_buffer_line(jmp_config_state_struct.axis_position[0]+move_d,
+									jmp_config_state_struct.axis_position[1],
+									jmp_config_state_struct.axis_position[2],
+									jmp_config_state_struct.axis_position[3],
+									homing_feedrate[0],active_extruder);
+	while(blocks_queued())
+	{
+		os_dly_wait(10);
+	}	
+	jmp_motion_set_postion(0,
+												jmp_config_state_struct.axis_position[1],
+												jmp_config_state_struct.axis_position[2],
+												jmp_config_state_struct.axis_position[3]);
+	
+	move_d=2*home_retract_mm[0]*home_dir[0];
+	plan_buffer_line(jmp_config_state_struct.axis_position[0]+move_d,
+									jmp_config_state_struct.axis_position[1],
+									jmp_config_state_struct.axis_position[2],
+									jmp_config_state_struct.axis_position[3],
+									homing_feedrate[0]/2,active_extruder);
+	while(blocks_queued())
+	{
+		os_dly_wait(10);
+	}
+	jmp_motion_set_postion(0,
+												jmp_config_state_struct.axis_position[1],
+												jmp_config_state_struct.axis_position[2],
+												jmp_config_state_struct.axis_position[3]);
+	//os_dly_wait(2000);
+/////////////////////////////////////////////////////////////////////////////////
+	move_d=1.5f*max_length[1]*home_dir[1];
+	plan_buffer_line(jmp_config_state_struct.axis_position[0],
+									jmp_config_state_struct.axis_position[1]+move_d,
+									jmp_config_state_struct.axis_position[2],
+									jmp_config_state_struct.axis_position[3],
+									homing_feedrate[0],active_extruder);	
+	while(blocks_queued())
+	{
+		os_dly_wait(10);
+	}
+	jmp_motion_set_postion(jmp_config_state_struct.axis_position[0],
+												0,
+												jmp_config_state_struct.axis_position[2],
+												jmp_config_state_struct.axis_position[3]);
+	
+	move_d=-home_retract_mm[1]*home_dir[1];
+	plan_buffer_line(jmp_config_state_struct.axis_position[0],
+									jmp_config_state_struct.axis_position[1]+move_d,
+									jmp_config_state_struct.axis_position[2],
+									jmp_config_state_struct.axis_position[3],
+									homing_feedrate[0],active_extruder);
+	while(blocks_queued())
+	{
+		os_dly_wait(10);
+	}	
+	jmp_motion_set_postion(jmp_config_state_struct.axis_position[0],
+												0,
+												jmp_config_state_struct.axis_position[2],
+												jmp_config_state_struct.axis_position[3]);
+	
+	move_d=2*home_retract_mm[1]*home_dir[1];
+	plan_buffer_line(jmp_config_state_struct.axis_position[0],
+									jmp_config_state_struct.axis_position[1]+move_d,
+									jmp_config_state_struct.axis_position[2],
+									jmp_config_state_struct.axis_position[3],
+									homing_feedrate[0]/2,active_extruder);
+	while(blocks_queued())
+	{
+		os_dly_wait(10);
+	}
+	jmp_motion_set_postion(jmp_config_state_struct.axis_position[0],
+												0,
+												jmp_config_state_struct.axis_position[2],
+												jmp_config_state_struct.axis_position[3]);
+/////////////////////////////////////////////////////////////////////////////////
+	move_d=1.5f*max_length[2]*home_dir[2];
+	plan_buffer_line(jmp_config_state_struct.axis_position[0],
+									jmp_config_state_struct.axis_position[1],
+									jmp_config_state_struct.axis_position[2]+move_d,
+									jmp_config_state_struct.axis_position[3],
+									homing_feedrate[0],active_extruder);	
+	while(blocks_queued())
+	{
+		os_dly_wait(10);
+	}
+	jmp_motion_set_postion(jmp_config_state_struct.axis_position[0],
+												jmp_config_state_struct.axis_position[1],
+												0,
+												jmp_config_state_struct.axis_position[3]);
+	
+	move_d=-home_retract_mm[2]*home_dir[2];
+	plan_buffer_line(jmp_config_state_struct.axis_position[0],
+									jmp_config_state_struct.axis_position[1],
+									jmp_config_state_struct.axis_position[2]+move_d,
+									jmp_config_state_struct.axis_position[3],
+									homing_feedrate[0],active_extruder);
+	while(blocks_queued())
+	{
+		os_dly_wait(10);
+	}	
+	jmp_motion_set_postion(jmp_config_state_struct.axis_position[0],
+												jmp_config_state_struct.axis_position[1],
+												0,
+												jmp_config_state_struct.axis_position[3]);
+	
+	move_d=2*home_retract_mm[2]*home_dir[2];
+	plan_buffer_line(jmp_config_state_struct.axis_position[0],
+									jmp_config_state_struct.axis_position[1],
+									jmp_config_state_struct.axis_position[2]+move_d,
+									jmp_config_state_struct.axis_position[3],
+									homing_feedrate[0]/2,active_extruder);
+	while(blocks_queued())
+	{
+		os_dly_wait(10);
+	}
+	jmp_motion_set_postion(jmp_config_state_struct.axis_position[0],
+												jmp_config_state_struct.axis_position[1],
+												0,
+												jmp_config_state_struct.axis_position[3]);
+	jmp_motion_set_postion(0,
+												0,
+												0,
+												jmp_config_state_struct.axis_position[3]);
+}
+
 __task void jmp_motion_task(void)
 {
 	while(1)
@@ -120,15 +265,22 @@ __task void jmp_motion_test_task(void)
 	while(1)
 	{
 		plan_set_position(0,0,0,0);
-		plan_buffer_line(0,100,0,0,100,active_extruder);
-		plan_buffer_line(0,0,0,0,100,active_extruder);
-		plan_buffer_line(0,100,0,0,100,active_extruder);
-		plan_buffer_line(0,0,0,0,100,active_extruder);
-		plan_buffer_line(0,100,0,0,100,active_extruder);
-		plan_buffer_line(0,0,0,0,100,active_extruder);
-		plan_buffer_line(0,100,0,0,100,active_extruder);
-		plan_buffer_line(0,0,0,0,100,active_extruder);
-		plan_buffer_line(100,0,0,0,100,active_extruder);
+		plan_buffer_line(0,100,0,0,25,active_extruder);
+		plan_buffer_line(0,0,0,0,25,active_extruder);
+		plan_buffer_line(0,100,0,0,25,active_extruder);
+		plan_buffer_line(0,0,0,0,25,active_extruder);
+		plan_buffer_line(0,100,0,0,25,active_extruder);
+		plan_buffer_line(0,0,0,0,25,active_extruder);
+		plan_buffer_line(0,100,0,0,25,active_extruder);
+		plan_buffer_line(0,0,0,0,25,active_extruder);
+		plan_buffer_line(100,0,0,0,25,active_extruder);
+		plan_buffer_line(0,0,0,0,25,active_extruder);
+		plan_buffer_line(100,0,0,0,25,active_extruder);
+		plan_buffer_line(0,0,0,0,25,active_extruder);
+		plan_buffer_line(100,0,0,0,25,active_extruder);
+		plan_buffer_line(0,0,0,0,25,active_extruder);
+		plan_buffer_line(100,0,0,0,25,active_extruder);
+		plan_buffer_line(0,0,0,0,25,active_extruder);
 		while(1)
 		{
 			os_dly_wait(1000);

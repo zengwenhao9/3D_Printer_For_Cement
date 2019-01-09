@@ -56,22 +56,22 @@ static volatile bool endstop_z_hit=false;
 #ifdef ABORT_ON_ENDSTOP_HIT_FEATURE_ENABLED
 bool abort_on_endstop_hit = false;
 #endif
-#if defined X_MIN_PIN
+#if defined X_MIN_CHECK
 static bool old_x_min_endstop=true;
 #endif
-#if defined X_MAX_PIN
+#if defined X_MAX_CHECK
 static bool old_x_max_endstop=true;
 #endif
-#if defined Y_MIN_PIN
+#if defined Y_MIN_CHECK
 static bool old_y_min_endstop=true;
 #endif
-#if defined Y_MAX_PIN
+#if defined Y_MAX_CHECK
 static bool old_y_max_endstop=true;
 #endif
-#if defined Z_MIN_PIN
+#if defined Z_MIN_CHECK
 static bool old_z_min_endstop=true;
 #endif
-#if defined Z_MAX_PIN
+#if defined Z_MAX_CHECK
 static bool old_z_max_endstop=true;
 #endif
 static bool check_endstops = true;
@@ -232,33 +232,49 @@ void st_timer_interrupt(void)
       count_direction[X_AXIS]=-1;
       CHECK_ENDSTOPS
       {
-				#if defined X_MIN_PIN
-          bool x_min_endstop= X_MIN_PIN != X_ENDSTOPS_INVERTING ;
-          if(x_min_endstop && old_x_min_endstop && (current_block->steps_x > 0)) 
-					{
-            endstops_trigsteps[X_AXIS] = count_position[X_AXIS];
-            endstop_x_hit=true;
-            step_events_completed = current_block->step_event_count;
-          }
-          old_x_min_endstop = x_min_endstop;
+				#if defined X_MIN_CHECK
+				bool x_min_endstop;
+				if(x_limit_m()==X_MIN_ENDSTOP)
+				{
+					x_min_endstop=true;
+				}
+				else
+				{
+					x_min_endstop=false;
+				}
+				if(x_min_endstop && old_x_min_endstop && (current_block->steps_x > 0)) 
+				{
+					endstops_trigsteps[X_AXIS] = count_position[X_AXIS];
+					endstop_x_hit=true;
+					step_events_completed = current_block->step_event_count;
+				}
+				old_x_min_endstop = x_min_endstop;
 				#endif
       }
     }
     else 
 		{ // +direction
       x_reverse();
-      
       count_direction[X_AXIS]=1;
       CHECK_ENDSTOPS 
       {  
-				#if defined X_MAX_PIN
-          bool x_max_endstop= X_MAX_PIN != X_ENDSTOPS_INVERTING;
-          if(x_max_endstop && old_x_max_endstop && (current_block->steps_x > 0)){
-            endstops_trigsteps[X_AXIS] = count_position[X_AXIS];
-            endstop_x_hit=true;
-            step_events_completed = current_block->step_event_count;
-          }
-          old_x_max_endstop = x_max_endstop;
+				#if defined X_MAX_CHECK
+        bool x_max_endstop;
+				if(x_limit_p()==X_MAX_ENDSTOP)
+				{
+					x_max_endstop=true;
+				}
+				else
+				{
+					x_max_endstop=false;
+				}
+				if(x_max_endstop && old_x_max_endstop && (current_block->steps_x > 0))
+				{
+					endstops_trigsteps[X_AXIS] = count_position[X_AXIS];
+					endstop_x_hit=true;
+					step_events_completed = current_block->step_event_count;
+				}
+        old_x_max_endstop = x_max_endstop;
 				#endif
       }
     }
@@ -269,14 +285,23 @@ void st_timer_interrupt(void)
       count_direction[Y_AXIS]=-1;
       CHECK_ENDSTOPS
       {
-        #if defined(Y_MIN_PIN) //&& Y_MIN_PIN > -1
-          bool y_min_endstop=Y_MIN_PIN != Y_ENDSTOPS_INVERTING;
-          if(y_min_endstop && old_y_min_endstop && (current_block->steps_y > 0)) {
-            endstops_trigsteps[Y_AXIS] = count_position[Y_AXIS];
-            endstop_y_hit=true;
-            step_events_completed = current_block->step_event_count;
-          }
-          old_y_min_endstop = y_min_endstop;
+        #if defined Y_MIN_CHECK
+        bool y_min_endstop;
+				if(y_limit_m()==Y_MIN_ENDSTOP)
+				{
+					y_min_endstop=true;
+				}
+				else
+				{
+					y_min_endstop=false;
+				}
+				if(y_min_endstop && old_y_min_endstop && (current_block->steps_y > 0)) 
+				{
+					endstops_trigsteps[Y_AXIS] = count_position[Y_AXIS];
+					endstop_y_hit=true;
+					step_events_completed = current_block->step_event_count;
+				}
+				old_y_min_endstop = y_min_endstop;
         #endif
       }
     }
@@ -286,53 +311,76 @@ void st_timer_interrupt(void)
       count_direction[Y_AXIS]=1;
       CHECK_ENDSTOPS
       {
-        #if defined(Y_MAX_PIN)// && Y_MAX_PIN > -1
-          bool y_max_endstop=Y_MAX_PIN != Y_ENDSTOPS_INVERTING;
-          if(y_max_endstop && old_y_max_endstop && (current_block->steps_y > 0)){
-            endstops_trigsteps[Y_AXIS] = count_position[Y_AXIS];
-            endstop_y_hit=true;
-            step_events_completed = current_block->step_event_count;
-          }
-          old_y_max_endstop = y_max_endstop;
+        #if defined Y_MAX_CHECK
+        bool y_max_endstop;
+				if(y_limit_p()==Y_MAX_ENDSTOP)
+				{
+					y_max_endstop=true;
+				}
+				else
+				{
+					y_max_endstop=false;
+				}
+				if(y_max_endstop && old_y_max_endstop && (current_block->steps_y > 0))
+				{
+					endstops_trigsteps[Y_AXIS] = count_position[Y_AXIS];
+					endstop_y_hit=true;
+					step_events_completed = current_block->step_event_count;
+				}
+				old_y_max_endstop = y_max_endstop;
         #endif
       }
     }
     
-    
-    
     if ((out_bits & (1<<Z_AXIS)) != 0) 
 		{   // -direction
       z_forward();
-      
       count_direction[Z_AXIS]=-1;
       CHECK_ENDSTOPS
       {
-        #if defined(Z_MIN_PIN)
-          bool z_min_endstop= Z_MIN_PIN != Z_ENDSTOPS_INVERTING;
-          if(z_min_endstop && old_z_min_endstop && (current_block->steps_z > 0)) {
-            endstops_trigsteps[Z_AXIS] = count_position[Z_AXIS];
-            endstop_z_hit=true;
-            step_events_completed = current_block->step_event_count;
-          }
-          old_z_min_endstop = z_min_endstop;
+        #if defined Z_MIN_CHECK
+        bool z_min_endstop;
+				if(z_limit_m()==Z_MIN_ENDSTOP)
+				{
+					z_min_endstop=true;
+				}
+				else
+				{
+					z_min_endstop=false;
+				}
+				if(z_min_endstop && old_z_min_endstop && (current_block->steps_z > 0)) 
+				{
+					endstops_trigsteps[Z_AXIS] = count_position[Z_AXIS];
+					endstop_z_hit=true;
+					step_events_completed = current_block->step_event_count;
+				}
+				old_z_min_endstop = z_min_endstop;
         #endif
       }
     }
     else 
 		{ // +direction
       z_reverse();
-
       count_direction[Z_AXIS]=1;
       CHECK_ENDSTOPS
       {
-        #if defined(Z_MAX_PIN)
-          bool z_max_endstop=Z_MAX_PIN != Z_ENDSTOPS_INVERTING;
-          if(z_max_endstop && old_z_max_endstop && (current_block->steps_z > 0)) {
-            endstops_trigsteps[Z_AXIS] = count_position[Z_AXIS];
-            endstop_z_hit=true;
-            step_events_completed = current_block->step_event_count;
-          }
-          old_z_max_endstop = z_max_endstop;
+        #if defined Z_MAX_CHECK
+        bool z_max_endstop;
+				if(z_limit_p()==Z_MAX_ENDSTOP)
+				{
+					z_max_endstop=true;
+				}
+				else
+				{
+					z_max_endstop=false;
+				}
+				if(z_max_endstop && old_z_max_endstop && (current_block->steps_z > 0)) 
+				{
+					endstops_trigsteps[Z_AXIS] = count_position[Z_AXIS];
+					endstop_z_hit=true;
+					step_events_completed = current_block->step_event_count;
+				}
+				old_z_max_endstop = z_max_endstop;
         #endif
       }
     }

@@ -395,12 +395,12 @@ void check_axes_activity(void)
 }
 
 #ifdef COREXY
-int32_t plan_convert_corexy_to_x_axis_steps(int32_t x,int32_t y)
+float plan_convert_corexy_to_x_axis_steps(float x,float y)
 {
 	return((x+y)/2);
 }
 
-int32_t plan_convert_corexy_to_y_axis_steps(int32_t x,int32_t y)
+float plan_convert_corexy_to_y_axis_steps(float x,float y)
 {
 	return((x-y)/2);
 }
@@ -815,8 +815,13 @@ void plan_buffer_line(const float x, const float y, const float z, const float e
 
 void plan_set_position(const float x, const float y, const float z, const float e)
 {
+	#ifdef COREXY
+	position[X_AXIS]=round(plan_convert_corexy_to_x_axis_steps(x,y)*axis_steps_per_unit[X_AXIS]);
+	position[Y_AXIS]=round(plan_convert_corexy_to_y_axis_steps(x,y)*axis_steps_per_unit[Y_AXIS]);
+	#else
   position[X_AXIS] = round(x*axis_steps_per_unit[X_AXIS]);
   position[Y_AXIS] = round(y*axis_steps_per_unit[Y_AXIS]);
+	#endif
   position[Z_AXIS] = round(z*axis_steps_per_unit[Z_AXIS]);     
   position[E_AXIS] = round(e*axis_steps_per_unit[E_AXIS]);  
   st_set_position(position[X_AXIS], position[Y_AXIS], position[Z_AXIS], position[E_AXIS]);

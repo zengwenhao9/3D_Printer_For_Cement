@@ -190,4 +190,17 @@ void app_usb_uninitusb(void)
 	}
 }
 
+void app_usb_read_speed_test(void)
+{
+	FILE *fin;
+	uint32_t runtime1,runtime2,timelen;
+	fin=fopen(TestFileName,"r");
+	if(fin==NULL)
+	{
+		fclose(fin);
+		return;
+	}
+	runtime1=os_time_get();
+	
+}
 

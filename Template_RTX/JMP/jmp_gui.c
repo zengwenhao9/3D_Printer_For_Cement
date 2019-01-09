@@ -535,7 +535,7 @@ __task void jmp_gui_task(void)
 					}
 					else if(jmp_guiuart_rx_str.start_address==GUI_MANUAL_HOME)
 					{
-						printf("G28\r\n");
+						jmp_motion_find_home();
 					}
 					else if(jmp_guiuart_rx_str.start_address==GUI_MANUAL_RANGE1)
 					{

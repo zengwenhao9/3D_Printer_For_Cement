@@ -110,36 +110,48 @@ void jmp_command_g90_exec(void)
 void jmp_command_g92_exec(void)
 {
 	u32 param_flag;
+	double x,y,z,e;
 	printf("G92");
 	
 	param_flag=jmp_command_struct.param_flag;
+	
+	x=jmp_config_state_struct.axis_position[0];
+	y=jmp_config_state_struct.axis_position[1];
+	z=jmp_config_state_struct.axis_position[2];
+	e=jmp_config_state_struct.axis_position[3];
 	
 	if(param_flag&(1<<0))
 	{
 		printf(" ");
 		printf("X");
 		printf("%f",jmp_command_struct.param[0]);
+		x=jmp_command_struct.param[0];
 	}
 	if(param_flag&(1<<1))
 	{
 		printf(" ");
 		printf("Y");
 		printf("%f",jmp_command_struct.param[1]);
+		y=jmp_command_struct.param[1];
 	}
 	if(param_flag&(1<<2))
 	{
 		printf(" ");
 		printf("Z");
 		printf("%f",jmp_command_struct.param[2]);
+		z=jmp_command_struct.param[2];
 	}
 	if(param_flag&(1<<3))
 	{
 		printf(" ");
 		printf("E");
 		printf("%f",jmp_command_struct.param[3]);
+		e=jmp_command_struct.param[3];
 	}
 	
 	printf("\r\n");
+	
+	jmp_motion_set_postion(x,y,z,e);
 }
 
 void jmp_command_m82_exec(void)
