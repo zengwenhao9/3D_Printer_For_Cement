@@ -149,110 +149,52 @@
         <Bp>
           <Number>0</Number>
           <Type>0</Type>
-          <LineNumber>79</LineNumber>
+          <LineNumber>195</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>134277504</Address>
+          <Address>134280750</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
           <SizeOfObject>0</SizeOfObject>
           <BreakByAccess>0</BreakByAccess>
           <BreakIfRCount>1</BreakIfRCount>
-          <Filename>F:\浣涘北娲ユ槑\jm3d\绋嬪簭\3dprinter\Template_RTX\MOTION\jmp_motion.c</Filename>
+          <Filename>F:\浣涘北娲ユ槑\jm3d\绋嬪簭\3dprinter\Template_RTX\RL-ARM\Config\RTX_Conf_CM.c</Filename>
           <ExecCommand></ExecCommand>
-          <Expression>\\Template\../MOTION/jmp_motion.c\79</Expression>
+          <Expression>\\Template\../RL-ARM/Config/RTX_Conf_CM.c\195</Expression>
         </Bp>
         <Bp>
           <Number>1</Number>
           <Type>0</Type>
-          <LineNumber>173</LineNumber>
+          <LineNumber>35</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>134276700</Address>
+          <Address>134279316</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
           <SizeOfObject>0</SizeOfObject>
           <BreakByAccess>0</BreakByAccess>
           <BreakIfRCount>1</BreakIfRCount>
-          <Filename>F:\浣涘北娲ユ槑\jm3d\绋嬪簭\3dprinter\Template_RTX\MOTION\jmp_motion.c</Filename>
+          <Filename>F:\浣涘北娲ユ槑\jm3d\绋嬪簭\3dprinter\Template_RTX\JMP\jmp_storage_read.c</Filename>
           <ExecCommand></ExecCommand>
-          <Expression>\\Template\../MOTION/jmp_motion.c\173</Expression>
+          <Expression>\\Template\../JMP/jmp_storage_read.c\35</Expression>
         </Bp>
         <Bp>
           <Number>2</Number>
           <Type>0</Type>
-          <LineNumber>158</LineNumber>
+          <LineNumber>77</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>134276400</Address>
+          <Address>134279476</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
           <SizeOfObject>0</SizeOfObject>
           <BreakByAccess>0</BreakByAccess>
           <BreakIfRCount>1</BreakIfRCount>
-          <Filename>F:\浣涘北娲ユ槑\jm3d\绋嬪簭\3dprinter\Template_RTX\MOTION\jmp_motion.c</Filename>
+          <Filename>F:\浣涘北娲ユ槑\jm3d\绋嬪簭\3dprinter\Template_RTX\JMP\jmp_storage_read.c</Filename>
           <ExecCommand></ExecCommand>
-          <Expression>\\Template\../MOTION/jmp_motion.c\158</Expression>
-        </Bp>
-        <Bp>
-          <Number>3</Number>
-          <Type>0</Type>
-          <LineNumber>188</LineNumber>
-          <EnabledFlag>1</EnabledFlag>
-          <Address>134276960</Address>
-          <ByteObject>0</ByteObject>
-          <HtxType>0</HtxType>
-          <ManyObjects>0</ManyObjects>
-          <SizeOfObject>0</SizeOfObject>
-          <BreakByAccess>0</BreakByAccess>
-          <BreakIfRCount>1</BreakIfRCount>
-          <Filename>F:\浣涘北娲ユ槑\jm3d\绋嬪簭\3dprinter\Template_RTX\MOTION\jmp_motion.c</Filename>
-          <ExecCommand></ExecCommand>
-          <Expression>\\Template\../MOTION/jmp_motion.c\188</Expression>
+          <Expression>\\\../JMP/jmp_storage_read.c\77</Expression>
         </Bp>
       </Breakpoint>
-      <WatchWindow1>
-        <Ww>
-          <count>0</count>
-          <WinNumber>1</WinNumber>
-          <ItemText>jmp_gui_state</ItemText>
-        </Ww>
-        <Ww>
-          <count>1</count>
-          <WinNumber>1</WinNumber>
-          <ItemText>block_buffer</ItemText>
-        </Ww>
-        <Ww>
-          <count>2</count>
-          <WinNumber>1</WinNumber>
-          <ItemText>block_buffer_head</ItemText>
-        </Ww>
-        <Ww>
-          <count>3</count>
-          <WinNumber>1</WinNumber>
-          <ItemText>block_buffer_tail</ItemText>
-        </Ww>
-        <Ww>
-          <count>4</count>
-          <WinNumber>1</WinNumber>
-          <ItemText>jmp_gcode_buff_sp</ItemText>
-        </Ww>
-        <Ww>
-          <count>5</count>
-          <WinNumber>1</WinNumber>
-          <ItemText>jmp_gcode_buff_ep</ItemText>
-        </Ww>
-        <Ww>
-          <count>6</count>
-          <WinNumber>1</WinNumber>
-          <ItemText>jmp_config_state_struct</ItemText>
-        </Ww>
-        <Ww>
-          <count>7</count>
-          <WinNumber>1</WinNumber>
-          <ItemText>count_position</ItemText>
-        </Ww>
-      </WatchWindow1>
       <MemoryWindow1>
         <Mm>
           <WinNumber>1</WinNumber>
@@ -301,7 +243,7 @@
 
   <Group>
     <GroupName>USER</GroupName>
-    <tvExp>1</tvExp>
+    <tvExp>0</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>
@@ -1189,7 +1131,7 @@
 
   <Group>
     <GroupName>SYSTEM</GroupName>
-    <tvExp>1</tvExp>
+    <tvExp>0</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>
@@ -1221,7 +1163,7 @@
 
   <Group>
     <GroupName>BSP</GroupName>
-    <tvExp>1</tvExp>
+    <tvExp>0</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>

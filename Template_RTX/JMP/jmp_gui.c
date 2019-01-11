@@ -6,6 +6,7 @@
 #include "jmp_storage_read.h"
 #include "string.h"
 #include "planner.h"
+#include "app_usb.h"
 
 u8 jmp_gui_uart_rx_buff[GUI_UART_RX_BUFF_SUM];
 u32 jmp_gui_uart_rx_buff_sum;

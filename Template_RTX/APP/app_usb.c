@@ -123,7 +123,8 @@ void app_usb_task(void)
 	con = app_usb_initusb();
 	con_ex = con | 0x80;  /* 首次上电强制执行一次if(con^con_ex)里面的内容 */
 	
-//	ViewRootDir();
+	//ViewRootDir();
+//	app_usb_read_speed_test();
 	while(1)
 	{	
 		/* 断开连接后，此函数也会卸载资源 */
@@ -190,17 +191,91 @@ void app_usb_uninitusb(void)
 	}
 }
 
-void app_usb_read_speed_test(void)
-{
-	FILE *fin;
-	uint32_t runtime1,runtime2,timelen;
-	fin=fopen(TestFileName,"r");
-	if(fin==NULL)
-	{
-		fclose(fin);
-		return;
-	}
-	runtime1=os_time_get();
+//char ch[5000];
+//void app_usb_read_speed_test(void)
+//{
+//	FILE *fin;
+//	uint32_t runtime1,runtime2,timelen;
+//	FINFO info;
+//	info.fileID = 0;
+//	ffind("1.gcode", &info);
 	
-}
+//	fin=fopen("1.gcode","r");
+//	if(fin==NULL)
+//	{
+//		fclose(fin);
+//		return;
+//	}
+//	runtime1=os_time_get();
+//	while (1)  
+//	{
+//		int ch;
+//		ch=fgetc(fin);
+//		if(ch==EOF)
+//		{
+//			break;
+//		}
+//  }
+//	runtime2=os_time_get();
+//	timelen=runtime2-runtime1;
+//	printf("\r\n  耗时 : %dms  %dB/S (%dKB/S)\r\n",
+//				timelen,
+//				(info.size * 1000) / timelen,
+//				((info.size / 1024) * 1000) / timelen);
+//	fclose(fin);
+	
+	
+	
+//	fin=fopen("1.gcode","r");
+//	if(fin==NULL)
+//	{
+//		fclose(fin);
+//		return;
+//	}
+//	runtime1=os_time_get();
+//	while (1)  
+//	{
+//		char line[100];
+//		if(fgets(line,sizeof (line),fin)==NULL)
+//		{
+//			break;
+//		}
+//  }
+//	runtime2=os_time_get();
+//	timelen=runtime2-runtime1;
+//	printf("\r\n  耗时 : %dms  %dB/S (%dKB/S)\r\n",
+//				timelen,
+//				(info.size * 1000) / timelen,
+//				((info.size / 1024) * 1000) / timelen);
+//	fclose(fin);
+	
+	
+//	fin=fopen("1.gcode","r");
+//	if(fin==NULL)
+//	{
+//		fclose(fin);
+//		return;
+//	}
+//	runtime1=os_time_get();
+//	{
+//		
+//		u32 sum=0;
+//		while (1)  
+//		{
+//			fseek(fin,sum,SEEK_SET);
+//			if(fread(&ch[0],sizeof(char),5000,fin)!=5000)
+//			{
+//				break;
+//			}
+//			sum+=5000;
+//		}
+//	}
+//	runtime2=os_time_get();
+//	timelen=runtime2-runtime1;
+//	printf("\r\n  耗时 : %dms  %dB/S (%dKB/S)\r\n",
+//				timelen,
+//				(info.size * 1000) / timelen,
+//				((info.size / 1024) * 1000) / timelen);
+//	fclose(fin);
+//}
 

@@ -20,6 +20,7 @@
 char jmp_gcode_buff[GCODE_BUFF_SUM];
 u32 jmp_gcode_buff_sp;
 u32 jmp_gcode_buff_ep;
+u32 jmp_gcode_buff_full;
 
 char jmp_gcode_line_buff[GCODE_LINE_BUFF_SUM];
 u32 jmp_gcode_line_buff_sum;
@@ -36,6 +37,7 @@ void jmp_gcode_buff_clear(void)
 	}
 	jmp_gcode_buff_sp=0;
 	jmp_gcode_buff_ep=0;
+	jmp_gcode_buff_full=0;
 }
 
 void jmp_gcode_line_buff_clear(void)
@@ -64,13 +66,24 @@ void jmp_gcode_param_buff_clear(void)
 u32 jmp_gcode_buff_get_sum(void)
 {
 	u32 sum;
-	if(jmp_gcode_buff_ep>=jmp_gcode_buff_sp)
+	if(jmp_gcode_buff_ep>jmp_gcode_buff_sp)
 	{
 		sum=jmp_gcode_buff_ep-jmp_gcode_buff_sp;
 	}
-	else
+	else if(jmp_gcode_buff_ep<jmp_gcode_buff_sp)
 	{
 		sum=GCODE_BUFF_SUM+jmp_gcode_buff_ep-jmp_gcode_buff_sp;
+	}
+	else
+	{
+		if(jmp_gcode_buff_full==1)
+		{
+			sum=GCODE_BUFF_SUM;
+		}
+		else
+		{
+			sum=0;
+		}
 	}
 	return sum;
 }
@@ -78,13 +91,24 @@ u32 jmp_gcode_buff_get_sum(void)
 u32 jmp_gcode_buff_get_remain(void)
 {
 	u32 remain;
-	if(jmp_gcode_buff_ep>=jmp_gcode_buff_sp)
+	if(jmp_gcode_buff_ep>jmp_gcode_buff_sp)
 	{
 		remain=GCODE_BUFF_SUM-(jmp_gcode_buff_ep-jmp_gcode_buff_sp);
 	}
-	else
+	else if(jmp_gcode_buff_ep<jmp_gcode_buff_sp)
 	{
 		remain=GCODE_BUFF_SUM-(GCODE_BUFF_SUM+jmp_gcode_buff_ep-jmp_gcode_buff_sp);
+	}
+	else
+	{
+		if(jmp_gcode_buff_full==1)
+		{
+			remain=0;
+		}
+		else
+		{
+			remain=GCODE_BUFF_SUM;
+		}
 	}
 	return remain;
 }
@@ -97,6 +121,10 @@ void jmp_gcode_buff_put(char data)
 	{
 		jmp_gcode_buff_ep=0;
 	}
+	if(jmp_gcode_buff_ep==jmp_gcode_buff_sp)
+	{
+		jmp_gcode_buff_full=1;
+	}
 }
 
 char jmp_gcode_buff_get(void)
@@ -107,6 +135,10 @@ char jmp_gcode_buff_get(void)
 	if(jmp_gcode_buff_sp==GCODE_BUFF_SUM)
 	{
 		jmp_gcode_buff_sp=0;
+	}
+	if(jmp_gcode_buff_full==1)
+	{
+		jmp_gcode_buff_full=0;
 	}
 	return data;
 }
