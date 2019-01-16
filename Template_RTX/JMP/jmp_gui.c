@@ -760,6 +760,7 @@ __task void jmp_gui_task(void)
 					{
 						jmp_gui_goto_frame(9);
 						//发送信号量，开始打印，启动一个任务更新界面
+						jmp_motion_find_home();
 						jmp_gui_start_print();
 						jmp_gui_state=GUI_PRINT_MAIN;
 					}
@@ -775,6 +776,7 @@ __task void jmp_gui_task(void)
 					{
 						os_dly_wait(10);
 					}
+					//jmp_motion_prepare_move(0,0,jmp_config_state_struct.axis_position[2],jmp_config_state_struct.axis_position[3]);
 					jmp_gui_state=GUI_PRINT_PREPARE;
 					jmp_gui_goto_frame(8);
 					break;
@@ -827,7 +829,7 @@ __task void jmp_gui_task(void)
 					}
 					else if(jmp_guiuart_rx_str.start_address==GUI_PRINT_SET_RANGE_UP)
 					{
-						if(jmp_config_state_struct.speed_range<100)
+						if(jmp_config_state_struct.speed_range<200)
 						{
 							jmp_config_state_struct.speed_range++;
 							jmp_gui_print_set_update();

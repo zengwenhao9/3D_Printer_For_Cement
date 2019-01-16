@@ -138,20 +138,22 @@ void step_wait(void)
 	}
 }
 
-unsigned short calc_timer(unsigned short step_rate) 
+unsigned short calc_timer(unsigned long step_rate) 
 {
   unsigned short timer;
   if(step_rate > MAX_STEP_FREQUENCY) step_rate = MAX_STEP_FREQUENCY;
   
   if(step_rate > 20000) 
 	{ 
-    step_rate = (step_rate >> 2)&0x3fff;
-    step_loops = 4;
+//    step_rate = (step_rate >> 2)&0x3fff;
+//    step_loops = 4;
+		step_loops=1;
   }
   else if(step_rate > 10000) 
 	{
-    step_rate = (step_rate >> 1)&0x7fff;
-    step_loops = 2;
+//    step_rate = (step_rate >> 1)&0x7fff;
+//    step_loops = 2;
+		step_loops=1;
   }
   else 
 	{
@@ -160,9 +162,9 @@ unsigned short calc_timer(unsigned short step_rate)
   
   if(step_rate < 32) step_rate = 32;
   timer = 1000000/step_rate - 1;
-  if(timer < 50) 
+  if(timer < MIN_TIMER) 
 	{
-		timer = 50; 
+		timer = MIN_TIMER; 
 	}//(20kHz this should never happen)
   return timer;
 }

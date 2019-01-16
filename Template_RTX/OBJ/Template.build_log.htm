@@ -1,0 +1,59 @@
+<html>
+<body>
+<pre>
+<h1>礦ision Build Log</h1>
+<h2>Tool Versions:</h2>
+IDE-Version: μVision V5.21.1.0
+Copyright (C) 2016 ARM Ltd and ARM Germany GmbH. All rights reserved.
+License Information: 1 AE86, HP Inc., LIC=JDASB-20X79-78XFD-8JYLH-DZAPG-59W7P
+ 
+Tool Versions:
+Toolchain:       MDK-ARM Professional  Version: 5.21a
+Toolchain Path:  D:\Keil_v5\ARM\ARMCC\Bin
+C Compiler:      Armcc.exe V5.06 update 3 (build 300)
+Assembler:       Armasm.exe V5.06 update 3 (build 300)
+Linker/Locator:  ArmLink.exe V5.06 update 3 (build 300)
+Library Manager: ArmAr.exe V5.06 update 3 (build 300)
+Hex Converter:   FromElf.exe V5.06 update 3 (build 300)
+CPU DLL:         SARMCM3.DLL V5.21a
+Dialog DLL:      DCM.DLL V1.13.8.0
+Target DLL:      STLink\ST-LINKIII-KEIL_SWO.dll V2.0.18.0
+Dialog DLL:      TCM.DLL V1.14.14.0
+ 
+<h2>Project:</h2>
+F:\佛山津明\jm3d\程序\3dprinter\Template_RTX\USER\Template.uvprojx
+Project File Date:  01/04/2019
+
+<h2>Output:</h2>
+*** Using Compiler 'V5.06 update 3 (build 300)', folder: 'D:\Keil_v5\ARM\ARMCC\Bin'
+Build target 'Template'
+compiling main.c...
+compiling app_usb.c...
+compiling jmp_command_execution.c...
+compiling jmp_gui.c...
+compiling jmp_motion.c...
+..\MOTION\jmp_motion.c(21): warning:  #177-D: variable "base_min_pos" was declared but never referenced
+  static const float  base_min_pos[3]   = { X_MIN_POS, Y_MIN_POS, Z_MIN_POS };  
+..\MOTION\jmp_motion.c(22): warning:  #177-D: variable "base_max_pos" was declared but never referenced
+  static float  base_max_pos[3]   = { X_MAX_POS, Y_MAX_POS, Z_MAX_POS };
+..\MOTION\jmp_motion.c(23): warning:  #177-D: variable "base_home_pos" was declared but never referenced
+  static const float  base_home_pos[3]  = { X_HOME_POS, Y_HOME_POS, Z_HOME_POS };
+..\MOTION\jmp_motion.c(55): warning:  #177-D: variable "TaskStk_JmpMotionTest" was declared but never referenced
+  static uint64_t TaskStk_JmpMotionTest[1024/8];
+..\MOTION\jmp_motion.c: 4 warnings, 0 errors
+compiling planner.c...
+compiling stepper.c...
+linking...
+Program Size: Code=81550 RO-data=2774 RW-data=812 ZI-data=123548  
+FromELF: creating hex file...
+"..\OBJ\Template.axf" - 0 Error(s), 4 Warning(s).
+
+<h2>Collection of Component include folders:</h2>
+  F:\佛山津明\jm3d\程序\3dprinter\Template_RTX\USER\RTE
+  D:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.13.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include
+
+<h2>Collection of Component Files used:</h2>
+Build Time Elapsed:  00:00:22
+</pre>
+</body>
+</html>

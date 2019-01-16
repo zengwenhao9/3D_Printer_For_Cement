@@ -247,7 +247,7 @@ void jmp_motion_find_home(void)
 	jmp_motion_set_postion(0,
 												0,
 												0,
-												jmp_config_state_struct.axis_position[3]);
+												0);
 }
 
 __task void jmp_motion_task(void)
@@ -265,22 +265,24 @@ __task void jmp_motion_test_task(void)
 	while(1)
 	{
 		plan_set_position(0,0,0,0);
-		plan_buffer_line(0,100,0,0,25,active_extruder);
-		plan_buffer_line(0,0,0,0,25,active_extruder);
-		plan_buffer_line(0,100,0,0,25,active_extruder);
-		plan_buffer_line(0,0,0,0,25,active_extruder);
-		plan_buffer_line(0,100,0,0,25,active_extruder);
-		plan_buffer_line(0,0,0,0,25,active_extruder);
-		plan_buffer_line(0,100,0,0,25,active_extruder);
-		plan_buffer_line(0,0,0,0,25,active_extruder);
-		plan_buffer_line(100,0,0,0,25,active_extruder);
-		plan_buffer_line(0,0,0,0,25,active_extruder);
-		plan_buffer_line(100,0,0,0,25,active_extruder);
-		plan_buffer_line(0,0,0,0,25,active_extruder);
-		plan_buffer_line(100,0,0,0,25,active_extruder);
-		plan_buffer_line(0,0,0,0,25,active_extruder);
-		plan_buffer_line(100,0,0,0,25,active_extruder);
-		plan_buffer_line(0,0,0,0,25,active_extruder);
+//		plan_buffer_line(0,100,0,0,25,active_extruder);
+//		plan_buffer_line(0,0,0,0,25,active_extruder);
+//		plan_buffer_line(0,100,0,0,25,active_extruder);
+//		plan_buffer_line(0,0,0,0,25,active_extruder);
+//		plan_buffer_line(0,100,0,0,25,active_extruder);
+//		plan_buffer_line(0,0,0,0,25,active_extruder);
+//		plan_buffer_line(0,100,0,0,25,active_extruder);
+//		plan_buffer_line(0,0,0,0,25,active_extruder);
+//		plan_buffer_line(100,0,0,0,25,active_extruder);
+//		plan_buffer_line(0,0,0,0,25,active_extruder);
+//		plan_buffer_line(100,0,0,0,25,active_extruder);
+//		plan_buffer_line(0,0,0,0,25,active_extruder);
+//		plan_buffer_line(100,0,0,0,25,active_extruder);
+//		plan_buffer_line(0,0,0,0,25,active_extruder);
+//		plan_buffer_line(100,0,0,0,25,active_extruder);
+//		plan_buffer_line(0,0,1,0,1,active_extruder);
+//		plan_buffer_line(0,0,50,0,1,active_extruder);
+		jmp_motion_find_home();
 		while(1)
 		{
 			os_dly_wait(1000);

@@ -44,8 +44,8 @@
 #define e1_idle()					bsp_e2_pluse_control(0)
 #define e1_pluse()				bsp_e2_pluse_control(1)
 
-#define x_forward()				bsp_x_dir_control(1)
-#define x_reverse()				bsp_x_dir_control(0)
+#define x_forward()				bsp_x_dir_control(0)
+#define x_reverse()				bsp_x_dir_control(1)
 
 #define y_forward()				bsp_y_dir_control(1)
 #define y_reverse()				bsp_y_dir_control(0)
@@ -53,8 +53,8 @@
 #define z_forward()				bsp_z1_dir_control(1)
 #define z_reverse()				bsp_z1_dir_control(0)
 
-#define e_forward()				bsp_e1_dir_control(1)
-#define e_reverse()				bsp_e1_dir_control(0)
+#define e_forward()				bsp_e1_dir_control(0)
+#define e_reverse()				bsp_e1_dir_control(1)
 
 #define x_limit_p()				bsp_x_limit_p_read()
 #define x_limit_m()				bsp_x_limit_m_read()
@@ -65,11 +65,11 @@
 #define z_limit_p()				bsp_z_limit_p_read()
 #define z_limit_m()				bsp_z_limit_m_read()
 
-#define X_MIN_ENDSTOP			1
+#define X_MIN_ENDSTOP			0
 #define X_MAX_ENDSTOP			1
-#define Y_MIN_ENDSTOP			1
+#define Y_MIN_ENDSTOP			0
 #define Y_MAX_ENDSTOP			1
-#define Z_MIN_ENDSTOP			1
+#define Z_MIN_ENDSTOP			0
 #define Z_MAX_ENDSTOP			1
 
 //planner
@@ -101,7 +101,7 @@
 //机械设置开始
 
 // Uncomment the following line to enable CoreXY kinematics
-#define COREXY
+//#define COREXY
 
 // corse Endstop Settings
 #define ENDSTOPPULLUPS // Comment this out (using // at the start of the line) to disable the endstop pullup resistors
@@ -163,11 +163,11 @@
 
 
 // Travel limits after homing
-#define X_MAX_POS 200                                                                                          
+#define X_MAX_POS 800 //200                                                                                          
 #define X_MIN_POS 0
-#define Y_MAX_POS 200
+#define Y_MAX_POS 800 //200
 #define Y_MIN_POS 0
-#define Z_MAX_POS 200
+#define Z_MAX_POS 1350 //200
 #define Z_MIN_POS 0
 
 #define X_MAX_LENGTH (X_MAX_POS - X_MIN_POS)
@@ -182,15 +182,15 @@
      
 #define NUM_AXIS 4 // The axis order in all axis related arrays is X, Y, Z, E
 
-#define HOMING_FEEDRATE {5, 5, 5, 0} 
+#define HOMING_FEEDRATE {5, 5, 0.2, 0} 
 
 // default settings
 
-#define DEFAULT_AXIS_STEPS_PER_UNIT   {160,160,800,94.4962144}  // default steps per unit for ultimaker 
+#define DEFAULT_AXIS_STEPS_PER_UNIT   {53.3333,53.3333,3840,7.69231}//{160,160,800,94.4962144}  // default steps per unit for ultimaker 
 
-#define DEFAULT_MAX_FEEDRATE          {200, 200, 4, 45}    // (mm/sec)                                            
+#define DEFAULT_MAX_FEEDRATE          {200,200,5,250}//{200, 200, 4, 45}    // (mm/sec)                                            
                        
-#define DEFAULT_MAX_ACCELERATION      {3000,3000,100,3000}     // X, Y, Z, E maximum start speed for accelerated moves. E default values are good for skeinforge 40+, for older versions raise them a lot.
+#define DEFAULT_MAX_ACCELERATION      {2000,2000,10,2000}     // X, Y, Z, E maximum start speed for accelerated moves. E default values are good for skeinforge 40+, for older versions raise them a lot.
 
 
                                                                                                       
@@ -199,8 +199,8 @@
 #define DEFAULT_RETRACT_ACCELERATION  1000   // X, Y, Z and E max acceleration in mm/s^2 for r retracts                        
 
 #define DEFAULT_XYJERK                 20.0       // (mm/sec)
-#define DEFAULT_ZJERK                 0.4     // (mm/sec)
-#define DEFAULT_EJERK                 5.0    // (mm/sec)
+#define DEFAULT_ZJERK                 0.5     // (mm/sec)
+#define DEFAULT_EJERK                 25.0    // (mm/sec)
 
 
 
@@ -211,28 +211,28 @@
 #define Y_HOME_POS MANUAL_Y_HOME_POS
 #define Z_HOME_POS MANUAL_Z_HOME_POS
 
-#define X_HOME_RETRACT_MM 25 
-#define Y_HOME_RETRACT_MM 25 
-#define Z_HOME_RETRACT_MM 1 
+#define X_HOME_RETRACT_MM 10 
+#define Y_HOME_RETRACT_MM 10 
+#define Z_HOME_RETRACT_MM 10 
 //#define QUICK_HOME  //if this is defined, if both x and y are to be homed, a diagonal move will be performed initially.
 
 #define AXIS_RELATIVE_MODES {false, false, false, false}
 
-#define MAX_STEP_FREQUENCY 40000 // Max step frequency for Ultimaker (5000 pps / half step)
-
+#define MAX_STEP_FREQUENCY  100000 // Max step frequency for Ultimaker (5000 pps / half step)
+#define MIN_TIMER					10
 
 #define Manual_X_FEEDRATE				50
 #define Manual_Y_FEEDRATE				50
-#define Manual_Z_FEEDRATE				50
+#define Manual_Z_FEEDRATE				5
 #define Manual_E_FEEDRATE				50
 
 
 #define X_MIN_CHECK
-#define X_MAX_CHECK
+//#define X_MAX_CHECK
 #define Y_MIN_CHECK
-#define Y_MAX_CHECK
+//#define Y_MAX_CHECK
 #define Z_MIN_CHECK
-#define Z_MAX_CHECK
+//#define Z_MAX_CHECK
 
 extern float homing_feedrate[];
 extern bool axis_relative_modes[];
