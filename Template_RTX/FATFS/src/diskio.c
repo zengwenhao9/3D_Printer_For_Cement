@@ -8,6 +8,8 @@
 /*-----------------------------------------------------------------------*/
 #include "diskio.h"			/* FatFs lower layer API */
 #include "w25qxx.h"
+#include <RTL.h>
+#include <rl_usb.h>
 
 #define SPI_FLASH 	0
 #define USB_DISK	1
@@ -38,6 +40,11 @@ DSTATUS disk_initialize (
 		{
 			w25qxx_init();  //W25QXX≥ı ºªØ
  			break;
+		}
+		case USB_DISK:
+		{
+			//usbh_init(0);
+			break;
 		}
 		default:
 			res=1; 
@@ -79,6 +86,11 @@ DRESULT disk_read (
 				buff+=FLASH_SECTOR_SIZE;
 			}
 			res=0;
+			break;
+		}
+		case USB_DISK:
+		{
+			usbh_msc_read(0,0,sector,buff,count);
 			break;
 		}
 		default:
@@ -123,6 +135,11 @@ DRESULT disk_write (
 			res=0;
 			break;
 		}
+		case USB_DISK:
+		{
+			usbh_msc_write(0,0,sector,(U8*)buff,count);
+			break;
+		}
 		default:
 			res=1; 
 	}
@@ -164,6 +181,33 @@ DRESULT disk_ioctl (
 		        break;	 
 		    case GET_SECTOR_COUNT:
 		        *(DWORD*)buff = FLASH_SECTOR_COUNT;
+		        res = RES_OK;
+		        break;
+		    default:
+		        res = RES_PARERR;
+		        break;
+	    }
+	}
+	else if(pdrv==USB_DISK)
+	{
+		u32 blk_num;
+		u32 blk_sz;
+		usbh_msc_read_config(0,0,&blk_num,&blk_sz);
+		switch(cmd)
+	    {
+		    case CTRL_SYNC:
+				res = RES_OK; 
+		        break;	 
+		    case GET_SECTOR_SIZE:
+		        *(WORD*)buff = blk_sz;
+		        res = RES_OK;
+		        break;	 
+		    case GET_BLOCK_SIZE:
+		        *(WORD*)buff = blk_sz;
+		        res = RES_OK;
+		        break;	 
+		    case GET_SECTOR_COUNT:
+		        *(DWORD*)buff = blk_num;
 		        res = RES_OK;
 		        break;
 		    default:

@@ -1,17 +1,23 @@
 #include "app_usb.h"
 #include "usbh_stm32f40x.h"
+#include "ff.h"
 
 
 
 
-static const char * ReVal_Table[]= 
-{
-	"0：成功",				                        
-	"1：IO错误，I/O驱动初始化失败，或者没有存储设备，或者设备初始化失败",
-	"2：卷错误，挂载失败，对于FAT文件系统意味着无效的MBR，启动记录或者非FAT格式",
-	"3：FAT日志初始化失败，FAT初始化成功了，但是日志初始化失败",
-};
+//static const char * ReVal_Table[]= 
+//{
+//	"0：成功",				                        
+//	"1：IO错误，I/O驱动初始化失败，或者没有存储设备，或者设备初始化失败",
+//	"2：卷错误，挂载失败，对于FAT文件系统意味着无效的MBR，启动记录或者非FAT格式",
+//	"3：FAT日志初始化失败，FAT初始化成功了，但是日志初始化失败",
+//};
 
+FRESULT usb_result;
+FATFS usb_fs;
+FIL usb_file;
+DIR usb_DirInf;
+FILINFO usb_FileInf;
 
 //static void DotFormat(uint64_t _ullVal, char *_sp) 
 //{
@@ -100,96 +106,141 @@ static const char * ReVal_Table[]=
 //	printf("------------------------------------------------------------------\r\n");
 //}
 
+
 void app_usb_task(void)
 {
-	uint8_t con, con_ex;
-	uint8_t ucRunFlag = 0;
-	u32 *state=(u32*)0x50000440;
-	
-	USBH_STM32_Pins_Config(0,1);
-	USBH_STM32_Init(0,1);
-	
+	u8 state,old_state;
+	usbh_init(0);
+	state=usbh_msc_status(0,0);
+	old_state=state;
 	while(1)
 	{
-		u32 a;
-		a=*state;
-		if((a&(1<<10)))
+		usbh_engine(0);
+		state=usbh_msc_status(0,0);
+		if(state!=old_state)
 		{
-			break;
-		}
-		os_dly_wait(1);
-	}
-	
-	con = app_usb_initusb();
-	con_ex = con | 0x80;  /* 首次上电强制执行一次if(con^con_ex)里面的内容 */
-	
-	//ViewRootDir();
-//	app_usb_read_speed_test();
-	while(1)
-	{	
-		/* 断开连接后，此函数也会卸载资源 */
-		usbh_engine(0); 
-		con = usbh_msc_status(0, 0);
-		if(con^con_ex)
-		{
-			if (!con)  
+			if(state==1)
 			{
-				printf ("U盘已经断开\r\n");
-				printf("------------------------------------------------------------------\r\n");	
-			}
-			else 
-			{
-				/* 系统上电首次运行和调用指令L后，不需要重复初始化 */
-				if(ucRunFlag == 0)
+				printf("U盘已经插入\r\n");
+				usb_result = f_mount(&usb_fs, "1:", 0);	/* Mount a logical drive */
+				if (usb_result != FR_OK)
 				{
-					ucRunFlag = 1;
+					printf("文件系统挂载失败\r\n");
 				}
 				else
 				{
-					con = app_usb_initusb();				
+					printf("文件系统挂载成功\r\n");
 				}
 			}
-			con_ex = con;
+			else
+			{
+				printf("U盘已经拔出\r\n");
+				usb_result = f_mount(NULL, "1:", 0);
+				if (usb_result != FR_OK)
+				{
+					printf("文件系统卸载失败\r\n");
+				}
+				else
+				{
+					printf("文件系统卸载成功\r\n");
+				}
+			}
 		}
+		old_state=state;
 		os_dly_wait(1);
 	}
 }
 
+//void app_usb_task(void)
+//{
+//	uint8_t con, con_ex;
+//	uint8_t ucRunFlag = 0;
+//	u32 *state=(u32*)0x50000440;
+//	
+//	USBH_STM32_Pins_Config(0,1);
+//	USBH_STM32_Init(0,1);
+//	
+//	while(1)
+//	{
+//		u32 a;
+//		a=*state;
+//		if((a&(1<<10)))
+//		{
+//			break;
+//		}
+//		os_dly_wait(1);
+//	}
+//	
+//	con = app_usb_initusb();
+//	con_ex = con | 0x80;  /* 首次上电强制执行一次if(con^con_ex)里面的内容 */
+//	
+//	//ViewRootDir();
+////	app_usb_read_speed_test();
+//	while(1)
+//	{	
+//		/* 断开连接后，此函数也会卸载资源 */
+//		usbh_engine(0); 
+//		con = usbh_msc_status(0, 0);
+//		if(con^con_ex)
+//		{
+//			if (!con)  
+//			{
+//				printf ("U盘已经断开\r\n");
+//				printf("------------------------------------------------------------------\r\n");	
+//			}
+//			else 
+//			{
+//				/* 系统上电首次运行和调用指令L后，不需要重复初始化 */
+//				if(ucRunFlag == 0)
+//				{
+//					ucRunFlag = 1;
+//				}
+//				else
+//				{
+//					con = app_usb_initusb();				
+//				}
+//			}
+//			con_ex = con;
+//		}
+//		os_dly_wait(1);
+//	}
+//}
 
-u8 app_usb_initusb(void)
-{
-	uint8_t result;
-	
-	/* 加载SD卡 */
-	result = finit("U0:");
-	if(result != NULL)
-	{
-		/* 如果挂载失败，务必不要再调用FlashFS的其它API函数，防止进入硬件异常 */
-		printf("挂载文件系统失败 (%s)\r\n", ReVal_Table[result]);
-		
-		return 0;
-	}
-	
-	printf ("U盘已经连接上\r\n");
-	printf("------------------------------------------------------------------\r\n");	
-	return 1;
-}
 
-void app_usb_uninitusb(void)
-{
-	uint8_t result;
+//u8 app_usb_initusb(void)
+//{
+//	uint8_t result;
+//	
+//	/* 加载SD卡 */
+//	result = finit("U0:");
+//	if(result != NULL)
+//	{
+//		/* 如果挂载失败，务必不要再调用FlashFS的其它API函数，防止进入硬件异常 */
+//		printf("挂载文件系统失败 (%s)\r\n", ReVal_Table[result]);
+//		
+//		return 0;
+//	}
+//	
+//	printf ("U盘已经连接上\r\n");
+//	printf("------------------------------------------------------------------\r\n");	
+//	return 1;
+//}
 
-	/* 卸载SD卡 */
-	result = funinit("U0:");
-	if(result != NULL)
-	{
-		printf("卸载文件系统失败\r\n");
-	}
-	else
-	{
-		printf("卸载文件系统成功\r\n");
-	}
-}
+//void app_usb_uninitusb(void)
+//{
+//	uint8_t result;
+
+//	/* 卸载SD卡 */
+//	result = funinit("U0:");
+//	if(result != NULL)
+//	{
+//		printf("卸载文件系统失败\r\n");
+//	}
+//	else
+//	{
+//		printf("卸载文件系统成功\r\n");
+//	}
+//}
 
 //char ch[5000];
 //void app_usb_read_speed_test(void)

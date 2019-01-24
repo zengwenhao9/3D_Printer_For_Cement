@@ -2,6 +2,8 @@
 #include "jmp_param_state.h"
 #include "RTL.h"
 #include "jmp_gui.h"
+#include "app_usb.h"
+#include "ff.h"
 
 
 OS_TID HandleTask_JmpStorageRead = NULL;
@@ -27,7 +29,7 @@ __task void jmp_storage_read_task(void)
 	u8 file_end=0;
 	u32 next_line_sum=0;
 	u32 file_read_sum=0;
-	FINFO info;
+//	FINFO info;
 	char head;
 	while(1)
 	{
@@ -38,9 +40,34 @@ __task void jmp_storage_read_task(void)
 		jmp_gcode_buff_clear();
 		jmp_storage_buff_clear();
 		
-		if(ffind (jmp_storage_read_filepath, &info)!=0)
+//		if(ffind (jmp_storage_read_filepath, &info)!=0)
+//		{
+//			continue;
+//		}
 		{
-			continue;
+			u8 res=0;
+			f_opendir(&usb_DirInf,"1:");
+		
+			while(1)
+			{
+				usb_result=f_readdir(&usb_DirInf,&usb_FileInf);
+				if(usb_result!=FR_OK||usb_FileInf.fname[0]==0)
+				{
+					res=1;
+					break;
+				}
+				if(strcmp(jmp_storage_read_filepath,usb_FileInf.fname)==0)
+				{
+					break;
+				}
+			}
+		
+			f_closedir(&usb_DirInf);
+			
+			if(res==1)
+			{
+				continue;
+			}
 		}
 		
 		jmp_config_state_struct.print_progress=0;
@@ -59,7 +86,7 @@ __task void jmp_storage_read_task(void)
 			}
 			if(jmp_config_state_struct.printing_hold==0)
 			{
-				jmp_config_state_struct.print_progress=((double)file_read_sum)/((double)info.size)*100;
+				jmp_config_state_struct.print_progress=((double)file_read_sum)/((double)usb_FileInf.fsize)*100;
 				if(file_end==0)//文件没有读完
 				{
 					u32 buff_remain;
@@ -233,15 +260,20 @@ u32 jmp_storage_readline(void)
 
 u32 jmp_storage_buff_fill(u32 file_offset)
 {
-	FILE* fin;
+	//FILE* fin;
 	u32 read_sum;
 	u32 need_read;
-	fin= fopen(jmp_storage_read_filepath,"r");
-	fseek(fin,file_offset,SEEK_SET);
+	char path[STORAGE_READ_FILE_PATH_SUM];
+	sprintf(path,"1:/%s",jmp_storage_read_filepath);
+	//fin= fopen(jmp_storage_read_filepath,"r");
+	usb_result=f_open(&usb_file,path,FA_OPEN_EXISTING | FA_READ);
+	//fseek(fin,file_offset,SEEK_SET);
+	f_lseek(&usb_file,file_offset);
 	if(jmp_storage_buff_ep<jmp_storage_buff_sp)
 	{
 		need_read=jmp_storage_buff_sp-jmp_storage_buff_ep;
-		read_sum=fread(&jmp_storage_buff[jmp_storage_buff_ep],sizeof(char),need_read,fin);
+		//read_sum=fread(&jmp_storage_buff[jmp_storage_buff_ep],sizeof(char),need_read,fin);
+		f_read(&usb_file,&jmp_storage_buff[jmp_storage_buff_ep],need_read,&read_sum);
 		jmp_storage_buff_ep+=read_sum;
 		if(jmp_storage_buff_ep==jmp_storage_buff_sp)
 		{
@@ -251,14 +283,16 @@ u32 jmp_storage_buff_fill(u32 file_offset)
 		{
 			read_sum|=(1<<30);
 		}
-		fclose(fin);
+		//fclose(fin);
+		f_close(&usb_file);
 		return read_sum;
 	}
 	else if(jmp_storage_buff_ep>jmp_storage_buff_sp)
 	{
 		u32 read_sum2;
 		need_read=STORAGE_BUFF_SUM-jmp_storage_buff_ep;
-		read_sum=fread(&jmp_storage_buff[jmp_storage_buff_ep],sizeof(char),need_read,fin);
+		//read_sum=fread(&jmp_storage_buff[jmp_storage_buff_ep],sizeof(char),need_read,fin);
+		f_read(&usb_file,&jmp_storage_buff[jmp_storage_buff_ep],need_read,&read_sum);
 		jmp_storage_buff_ep+=read_sum;
 		if(jmp_storage_buff_ep==jmp_storage_buff_sp)
 		{
@@ -271,12 +305,14 @@ u32 jmp_storage_buff_fill(u32 file_offset)
 		if(read_sum<need_read)
 		{
 			read_sum|=(1<<30);
-			fclose(fin);
+			//fclose(fin);
+			f_close(&usb_file);
 			return read_sum;
 		}
 		
 		need_read=jmp_storage_buff_sp;
-		read_sum2=fread(&jmp_storage_buff[jmp_storage_buff_ep],sizeof(char),need_read,fin);
+		//read_sum2=fread(&jmp_storage_buff[jmp_storage_buff_ep],sizeof(char),need_read,fin);
+		f_read(&usb_file,&jmp_storage_buff[jmp_storage_buff_ep],need_read,&read_sum2);
 		jmp_storage_buff_ep+=read_sum2;
 		if(jmp_storage_buff_ep==jmp_storage_buff_sp)
 		{
@@ -288,7 +324,8 @@ u32 jmp_storage_buff_fill(u32 file_offset)
 			read_sum|=(1<<30);
 		}
 		read_sum+=read_sum2;
-		fclose(fin);
+		//fclose(fin);
+		f_close(&usb_file);
 		return read_sum;
 	}
 	else
@@ -297,7 +334,8 @@ u32 jmp_storage_buff_fill(u32 file_offset)
 		{
 			u32 read_sum2;
 			need_read=STORAGE_BUFF_SUM-jmp_storage_buff_ep;
-			read_sum=fread(&jmp_storage_buff[jmp_storage_buff_ep],sizeof(char),need_read,fin);
+			//read_sum=fread(&jmp_storage_buff[jmp_storage_buff_ep],sizeof(char),need_read,fin);
+			f_read(&usb_file,&jmp_storage_buff[jmp_storage_buff_ep],need_read,&read_sum);
 			jmp_storage_buff_ep+=read_sum;
 			if(jmp_storage_buff_ep==jmp_storage_buff_sp)
 			{
@@ -310,12 +348,14 @@ u32 jmp_storage_buff_fill(u32 file_offset)
 			if(read_sum<need_read)
 			{
 				read_sum|=(1<<30);
-				fclose(fin);
+				//fclose(fin);
+				f_close(&usb_file);
 				return read_sum;
 			}
 			
 			need_read=jmp_storage_buff_sp;
-			read_sum2=fread(&jmp_storage_buff[jmp_storage_buff_ep],sizeof(char),need_read,fin);
+			//read_sum2=fread(&jmp_storage_buff[jmp_storage_buff_ep],sizeof(char),need_read,fin);
+			f_read(&usb_file,&jmp_storage_buff[jmp_storage_buff_ep],need_read,&read_sum2);
 			jmp_storage_buff_ep+=read_sum2;
 			if(jmp_storage_buff_ep==jmp_storage_buff_sp)
 			{
@@ -327,12 +367,14 @@ u32 jmp_storage_buff_fill(u32 file_offset)
 				read_sum|=(1<<30);
 			}
 			read_sum+=read_sum2;
-			fclose(fin);
+			//fclose(fin);
+			f_close(&usb_file);
 			return read_sum;
 		}
 		else
 		{
-			fclose(fin);
+			//fclose(fin);
+			f_close(&usb_file);
 			return 0;
 		}
 	}
@@ -430,7 +472,6 @@ void jmp_storage_read_init(void)
 																									&TaskStk_JmpStorageRead,
 																									sizeof(TaskStk_JmpStorageRead));
 }
-
 
 
 

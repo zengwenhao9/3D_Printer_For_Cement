@@ -49,8 +49,9 @@ Command Line: --debug --xref --diag_suppress=9931 --cpu=Cortex-M4.fp --apcs=int
 erwork --depend=..\obj\svc_table.d -o..\obj\svc_table.o -IF:\·ðÉ½½òÃ÷\jm3d\³ÌÐò
 \3dprinter\Template_RTX\USER\RTE -ID:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.13.
 0\Drivers\CMSIS\Device\ST\STM32F4xx\Include -ID:\Keil_v5\ARM\CMSIS\Include --pr
-edefine="__UVISION_VERSION SETA 521" --predefine="STM32F446xx SETA 1" --list=.\
-listings\svc_table.lst ..\RL-ARM\RL-RTX\portable\SVC_Table.s
+edefine="__MICROLIB SETA 1" --predefine="__UVISION_VERSION SETA 521" --predefin
+e="STM32F446xx SETA 1" --list=.\listings\svc_table.lst ..\RL-ARM\RL-RTX\portabl
+e\SVC_Table.s
 
 
 
@@ -106,4 +107,4 @@ Symbol: SVC_Cnt
       At line 18 in file ..\RL-ARM\RL-RTX\portable\SVC_Table.s
 Comment: SVC_Cnt used once
 1 symbol
-337 symbols in table
+338 symbols in table

@@ -121,6 +121,8 @@
 ..\obj\jmp_gui.o: ..\RL-ARM\RL-USB\INC\usbd_cls.h
 ..\obj\jmp_gui.o: ..\RL-ARM\RL-USB\INC\usbd_hw.h
 ..\obj\jmp_gui.o: ..\RL-ARM\RL-USB\INC\usbh.h
-..\obj\jmp_gui.o: ..\RL-ARM\Config\File_Config.h
+..\obj\jmp_gui.o: ..\FATFS\src\ff.h
+..\obj\jmp_gui.o: ..\FATFS\src\integer.h
+..\obj\jmp_gui.o: ..\FATFS\src\ffconf.h
 ..\obj\jmp_gui.o: ..\APP\app_usb.h
 ..\obj\jmp_gui.o: ..\JMP\jmp_command_execution.h

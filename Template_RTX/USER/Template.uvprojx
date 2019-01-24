@@ -186,7 +186,7 @@
             <hadIRAM2>0</hadIRAM2>
             <hadIROM2>0</hadIROM2>
             <StupSel>8</StupSel>
-            <useUlib>0</useUlib>
+            <useUlib>1</useUlib>
             <EndSel>0</EndSel>
             <uLtcg>0</uLtcg>
             <nSecure>0</nSecure>
@@ -400,19 +400,9 @@
               <FilePath>.\system_stm32f4xx.c</FilePath>
             </File>
             <File>
-              <FileName>Retarget.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>.\Retarget.c</FilePath>
-            </File>
-            <File>
               <FileName>RTX_Conf_CM.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\RL-ARM\Config\RTX_Conf_CM.c</FilePath>
-            </File>
-            <File>
-              <FileName>File_Config.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\RL-ARM\Config\File_Config.c</FilePath>
             </File>
             <File>
               <FileName>usb_config.c</FileName>
@@ -892,22 +882,22 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>RL-FlashFS/Lib</GroupName>
+          <GroupName>FATFS</GroupName>
           <Files>
             <File>
-              <FileName>FS_CM3.lib</FileName>
-              <FileType>4</FileType>
-              <FilePath>..\RL-ARM\RL-FlashFS\FS_CM3.lib</FilePath>
-            </File>
-          </Files>
-        </Group>
-        <Group>
-          <GroupName>RL-FlashFS/Driver</GroupName>
-          <Files>
-            <File>
-              <FileName>fs_usbh_msc.c</FileName>
+              <FileName>diskio.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\RL-ARM\Driver\fs_usbh_msc.c</FilePath>
+              <FilePath>..\FATFS\src\diskio.c</FilePath>
+            </File>
+            <File>
+              <FileName>ff.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\FATFS\src\ff.c</FilePath>
+            </File>
+            <File>
+              <FileName>cc936.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\FATFS\src\option\cc936.c</FilePath>
             </File>
           </Files>
         </Group>

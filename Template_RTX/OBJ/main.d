@@ -111,7 +111,9 @@
 ..\obj\main.o: ..\RL-ARM\RL-USB\INC\usbd_cls.h
 ..\obj\main.o: ..\RL-ARM\RL-USB\INC\usbd_hw.h
 ..\obj\main.o: ..\RL-ARM\RL-USB\INC\usbh.h
-..\obj\main.o: ..\RL-ARM\Config\File_Config.h
+..\obj\main.o: ..\FATFS\src\ff.h
+..\obj\main.o: ..\FATFS\src\integer.h
+..\obj\main.o: ..\FATFS\src\ffconf.h
 ..\obj\main.o: ..\APP\app_usb.h
 ..\obj\main.o: ..\USER\includes.h
 ..\obj\main.o: ..\JMP\jmp_config.h

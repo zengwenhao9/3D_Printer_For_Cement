@@ -24,6 +24,7 @@ __task void AppTaskLED(void)
 __task void AppTaskUSB(void)
 {
 	app_usb_task();
+	//test_usb_task();
 	while(1);
 }
 

@@ -112,7 +112,9 @@
 ..\obj\app_usb.o: ..\RL-ARM\RL-USB\INC\usbd_cls.h
 ..\obj\app_usb.o: ..\RL-ARM\RL-USB\INC\usbd_hw.h
 ..\obj\app_usb.o: ..\RL-ARM\RL-USB\INC\usbh.h
-..\obj\app_usb.o: ..\RL-ARM\Config\File_Config.h
+..\obj\app_usb.o: ..\FATFS\src\ff.h
+..\obj\app_usb.o: ..\FATFS\src\integer.h
+..\obj\app_usb.o: ..\FATFS\src\ffconf.h
 ..\obj\app_usb.o: ..\APP\app_usb.h
 ..\obj\app_usb.o: ..\JMP\jmp_config.h
 ..\obj\app_usb.o: ..\JMP\jmp_storage_read.h

@@ -7,6 +7,7 @@
 #include "string.h"
 #include "planner.h"
 #include "app_usb.h"
+#include "ff.h"
 
 u8 jmp_gui_uart_rx_buff[GUI_UART_RX_BUFF_SUM];
 u32 jmp_gui_uart_rx_buff_sum;
@@ -16,7 +17,7 @@ u8 jmp_gui_uart_tx_buff[GUI_UART_TX_BUFF_SUM];
 u32 jmp_gui_uart_tx_buff_sum;
 
 OS_TID HandleTask_JmpGUI = NULL;
-static uint64_t TaskStk_JmpGUI[1024/8];
+static uint64_t TaskStk_JmpGUI[2048/8];
 OS_TID HandleTask_JmpGUI_PrintingMain = NULL;
 static uint64_t TaskStk_JmpGUI_PrintingMain[1024/8];
 
@@ -290,16 +291,34 @@ void jmp_gui_gcode_file_name_clear(void)
 //在U盘中查找所有得.gcode文件
 void jmp_gui_find_gcode_file(void)
 {
-	FINFO info;
-	
-	info.fileID=0;
+//	FINFO info;
+//	
+//	info.fileID=0;
 	
 	jmp_gui_gcode_file_name_clear();
-	while(ffind ("U0:*.gcode", &info) == 0)
+//	while(ffind ("U0:*.gcode", &info) == 0)
+//	{
+//		strcpy((char*)&jmp_gui_gcode_file_name[jmp_gui_gcode_file_name_sum][0],(const char*)info.name);
+//		jmp_gui_gcode_file_name_sum++;
+//	}
+	
+	f_opendir(&usb_DirInf,"1:");
+	
+	while(1)
 	{
-		strcpy((char*)&jmp_gui_gcode_file_name[jmp_gui_gcode_file_name_sum][0],(const char*)info.name);
-		jmp_gui_gcode_file_name_sum++;
+		usb_result=f_readdir(&usb_DirInf,&usb_FileInf);
+		if(usb_result!=FR_OK||usb_FileInf.fname[0]==0)
+		{
+			break;
+		}
+		if(strstr(usb_FileInf.fname,".gcode")!=NULL)
+		{
+			strcpy((char*)&jmp_gui_gcode_file_name[jmp_gui_gcode_file_name_sum][0],(const char*)usb_FileInf.fname);
+			jmp_gui_gcode_file_name_sum++;
+		}
 	}
+	
+	f_closedir(&usb_DirInf);
 }
 
 //界面更新gcode文件列表
@@ -760,7 +779,7 @@ __task void jmp_gui_task(void)
 					{
 						jmp_gui_goto_frame(9);
 						//发送信号量，开始打印，启动一个任务更新界面
-						jmp_motion_find_home();
+						//jmp_motion_find_home();
 						jmp_gui_start_print();
 						jmp_gui_state=GUI_PRINT_MAIN;
 					}

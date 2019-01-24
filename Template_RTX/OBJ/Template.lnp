@@ -3,9 +3,7 @@
 "..\obj\stm32f4xx_hal_msp.o"
 "..\obj\stm32f4xx_it.o"
 "..\obj\system_stm32f4xx.o"
-"..\obj\retarget.o"
 "..\obj\rtx_conf_cm.o"
-"..\obj\file_config.o"
 "..\obj\usb_config.o"
 "..\obj\startup_stm32f446xx.o"
 "..\obj\stm32f4xx_hal.o"
@@ -93,8 +91,9 @@
 "..\obj\svc_table.o"
 "..\RL-ARM\RL-USB\USB_CM3.lib"
 "..\obj\usbh_stm32f40x.o"
-"..\RL-ARM\RL-FlashFS\FS_CM3.lib"
-"..\obj\fs_usbh_msc.o"
+"..\obj\diskio.o"
+"..\obj\ff.o"
+"..\obj\cc936.o"
 "..\obj\app_usb.o"
 "..\obj\jmp_command_execution.o"
 "..\obj\jmp_gcode_analysis.o"
@@ -104,7 +103,7 @@
 "..\obj\jmp_motion.o"
 "..\obj\planner.o"
 "..\obj\stepper.o"
---strict --scatter "..\OBJ\Template.sct"
+--library_type=microlib --strict --scatter "..\OBJ\Template.sct"
 --summary_stderr --info summarysizes --map --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers
 --list ".\Listings\Template.map" -o ..\OBJ\Template.axf

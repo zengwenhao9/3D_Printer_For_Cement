@@ -84,7 +84,7 @@ void jmp_command_g1_exec(void)
 	
 	printf("\r\n");
 	
-	jmp_motion_prepare_move(x,y,z,e);
+	//jmp_motion_prepare_move(x,y,z,e);
 }
 
 void jmp_command_g4_exec(void)
@@ -98,7 +98,7 @@ void jmp_command_g28_exec(void)
 	printf("G28");
 	printf("\r\n");
 	
-	plan_buffer_line(0,0,0,0,50,active_extruder);
+	//plan_buffer_line(0,0,0,0,50,active_extruder);
 }
 
 void jmp_command_g90_exec(void)
@@ -151,7 +151,7 @@ void jmp_command_g92_exec(void)
 	
 	printf("\r\n");
 	
-	jmp_motion_set_postion(x,y,z,e);
+	//jmp_motion_set_postion(x,y,z,e);
 }
 
 void jmp_command_m82_exec(void)
