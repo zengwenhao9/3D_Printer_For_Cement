@@ -18,6 +18,7 @@ Section Cross References
     main.o(i.main) refers to usb_app.o(i.usb_app_init) for usb_app_init
     main.o(i.main) refers to app_qspi_flash_fatfs.o(i.app_qspi_flash_fatfs_init) for app_qspi_flash_fatfs_init
     main.o(i.main) refers to jmp_param_state.o(i.jmp_configstate_init) for jmp_configstate_init
+    main.o(i.main) refers to jmp_ex_config.o(i.jmp_ex_config_init) for jmp_ex_config_init
     main.o(i.main) refers to jmp_storage_read.o(i.jmp_storage_read_init) for jmp_storage_read_init
     main.o(i.main) refers to jmp_command_execution.o(i.jmp_command_execution_init) for jmp_command_execution_init
     main.o(i.main) refers to jmp_gui.o(i.jmp_gui_init) for jmp_gui_init
@@ -3428,8 +3429,12 @@ Section Cross References
     jmp_gui.o(i.jmp_gui_printing_main_task) refers to tasks.o(i.vTaskDelay) for vTaskDelay
     jmp_gui.o(i.jmp_gui_printing_main_task) refers to jmp_gui.o(.data) for JmpGUI_PrintingMain_Sem
     jmp_gui.o(i.jmp_gui_printing_main_task) refers to jmp_param_state.o(.bss) for jmp_config_state_struct
+    jmp_gui.o(i.jmp_gui_printing_progress_updata) refers to jmp_gui.o(i.jmp_guiuart_tx_str_clear) for jmp_guiuart_tx_str_clear
+    jmp_gui.o(i.jmp_gui_printing_progress_updata) refers to jmp_gui.o(i.jmp_gui_uart_send_str) for jmp_gui_uart_send_str
+    jmp_gui.o(i.jmp_gui_printing_progress_updata) refers to jmp_gui.o(.bss) for jmp_guiuart_tx_str
     jmp_gui.o(i.jmp_gui_printing_update) refers to jmp_gui.o(i.jmp_guiuart_tx_str_clear) for jmp_guiuart_tx_str_clear
     jmp_gui.o(i.jmp_gui_printing_update) refers to jmp_gui.o(i.jmp_gui_uart_send_str) for jmp_gui_uart_send_str
+    jmp_gui.o(i.jmp_gui_printing_update) refers to jmp_gui.o(i.jmp_gui_printing_progress_updata) for jmp_gui_printing_progress_updata
     jmp_gui.o(i.jmp_gui_printing_update) refers to strlen.o(.text) for strlen
     jmp_gui.o(i.jmp_gui_printing_update) refers to strcpy.o(.text) for strcpy
     jmp_gui.o(i.jmp_gui_printing_update) refers to jmp_param_state.o(.bss) for jmp_config_state_struct
@@ -3451,11 +3456,12 @@ Section Cross References
     jmp_gui.o(i.jmp_gui_task) refers to jmp_gui.o(i.jmp_gui_update_manual_step) for jmp_gui_update_manual_step
     jmp_gui.o(i.jmp_gui_task) refers to jmp_motion.o(i.jmp_motion_manual) for jmp_motion_manual
     jmp_gui.o(i.jmp_gui_task) refers to jmp_motion.o(i.jmp_motion_find_home) for jmp_motion_find_home
-    jmp_gui.o(i.jmp_gui_task) refers to jmp_ex_config.o(i.jmp_ex_config_test) for jmp_ex_config_test
     jmp_gui.o(i.jmp_gui_task) refers to jmp_gui.o(.data) for JmpGUISem
     jmp_gui.o(i.jmp_gui_task) refers to jmp_gui.o(.bss) for jmp_guiuart_rx_str
     jmp_gui.o(i.jmp_gui_task) refers to jmp_param_state.o(.bss) for jmp_config_state_struct
     jmp_gui.o(i.jmp_gui_task) refers to jmp_ex_config.o(.bss) for jmp_ex_config_struct
+    jmp_gui.o(i.jmp_gui_task) refers to jmp_ex_config.o(i.jmp_ex_config_ex_file_read) for jmp_ex_config_ex_file_read
+    jmp_gui.o(i.jmp_gui_task) refers to jmp_ex_config.o(i.jmp_ex_config_factory_setting) for jmp_ex_config_factory_setting
     jmp_gui.o(i.jmp_gui_task) refers to jmp_gui.o(i.jmp_gui_print_prepare_file_name_update) for jmp_gui_print_prepare_file_name_update
     jmp_gui.o(i.jmp_gui_task) refers to jmp_gui.o(i.jmp_gui_start_print) for jmp_gui_start_print
     jmp_gui.o(i.jmp_gui_task) refers to jmp_gui.o(i.jmp_gui_stop_print) for jmp_gui_stop_print
@@ -3572,6 +3578,9 @@ Section Cross References
     jmp_ex_config.o(i.jmp_ex_config_check_file) refers to jmp_ex_config.o(.bss) for ex_DirInf
     jmp_ex_config.o(i.jmp_ex_config_check_file) refers to jmp_ex_config.o(.data) for ex_result
     jmp_ex_config.o(i.jmp_ex_config_default_set) refers to jmp_ex_config.o(.bss) for jmp_ex_config_struct
+    jmp_ex_config.o(i.jmp_ex_config_ex_file_read) refers to jmp_ex_config.o(i.jmp_ex_config_check_ex_file) for jmp_ex_config_check_ex_file
+    jmp_ex_config.o(i.jmp_ex_config_ex_file_read) refers to jmp_ex_config.o(i.jmp_ex_config_read_ex_save) for jmp_ex_config_read_ex_save
+    jmp_ex_config.o(i.jmp_ex_config_factory_setting) refers to ff.o(i.f_unlink) for f_unlink
     jmp_ex_config.o(i.jmp_ex_config_file_buf_clear) refers to jmp_ex_config.o(.bss) for jmp_ex_config_file_buf
     jmp_ex_config.o(i.jmp_ex_config_file_cut_buf_clear) refers to jmp_ex_config.o(.bss) for jmp_ex_config_file_cut_buf
     jmp_ex_config.o(i.jmp_ex_config_init) refers to jmp_ex_config.o(i.jmp_ex_config_check_file) for jmp_ex_config_check_file
@@ -3598,9 +3607,6 @@ Section Cross References
     jmp_ex_config.o(i.jmp_ex_config_read_param) refers to strncpy.o(.text) for strncpy
     jmp_ex_config.o(i.jmp_ex_config_read_param) refers to atof.o(i.__hardfp_atof) for __hardfp_atof
     jmp_ex_config.o(i.jmp_ex_config_read_param) refers to jmp_ex_config.o(.bss) for jmp_ex_config_file_buf
-    jmp_ex_config.o(i.jmp_ex_config_test) refers to jmp_ex_config.o(i.jmp_ex_config_check_ex_file) for jmp_ex_config_check_ex_file
-    jmp_ex_config.o(i.jmp_ex_config_test) refers to jmp_ex_config.o(i.jmp_ex_config_read_ex_save) for jmp_ex_config_read_ex_save
-    jmp_ex_config.o(i.jmp_ex_config_test) refers to jmp_ex_config.o(i.jmp_ex_config_read_and_set) for jmp_ex_config_read_and_set
     jmp_motion.o(i.jmp_motion_clamp_to_software_endstops) refers to jmp_motion.o(.bss) for min_pos
     jmp_motion.o(i.jmp_motion_find_home) refers to planner.o(i.plan_buffer_line) for plan_buffer_line
     jmp_motion.o(i.jmp_motion_find_home) refers to tasks.o(i.vTaskDelay) for vTaskDelay
@@ -3624,7 +3630,7 @@ Section Cross References
     jmp_motion.o(i.jmp_motion_prepare_move) refers to jmp_motion.o(i.jmp_motion_clamp_to_software_endstops) for jmp_motion_clamp_to_software_endstops
     jmp_motion.o(i.jmp_motion_prepare_move) refers to planner.o(i.plan_buffer_line) for plan_buffer_line
     jmp_motion.o(i.jmp_motion_prepare_move) refers to jmp_param_state.o(.bss) for jmp_config_state_struct
-    jmp_motion.o(i.jmp_motion_prepare_move) refers to jmp_motion.o(.data) for active_extruder
+    jmp_motion.o(i.jmp_motion_prepare_move) refers to jmp_motion.o(.data) for extrudemultiply
     jmp_motion.o(i.jmp_motion_set_postion) refers to planner.o(i.plan_set_position) for plan_set_position
     jmp_motion.o(i.jmp_motion_set_postion) refers to jmp_param_state.o(.bss) for jmp_config_state_struct
     jmp_motion.o(i.jmp_motion_state_get) refers to sqrt.o(i.__hardfp_sqrt) for __hardfp_sqrt
@@ -6623,7 +6629,6 @@ Removing Unused input sections from the image.
     Removing diskio.o(.revsh_text), (4 bytes).
     Removing diskio.o(.rrx_text), (6 bytes).
     Removing diskio.o(.constdata), (48 bytes).
-    Removing ff.o(i.dir_remove), (96 bytes).
     Removing ff.o(i.f_getfree), (252 bytes).
     Removing ff.o(i.f_getlabel), (180 bytes).
     Removing ff.o(i.f_gets), (82 bytes).
@@ -6635,7 +6640,6 @@ Removing Unused input sections from the image.
     Removing ff.o(i.f_setlabel), (420 bytes).
     Removing ff.o(i.f_stat), (74 bytes).
     Removing ff.o(i.f_truncate), (178 bytes).
-    Removing ff.o(i.f_unlink), (182 bytes).
     Removing ff.o(i.putc_bfd), (68 bytes).
     Removing app_qspi_flash_fatfs.o(.rev16_text), (4 bytes).
     Removing app_qspi_flash_fatfs.o(.revsh_text), (4 bytes).
@@ -6847,9 +6851,6 @@ Removing Unused input sections from the image.
     Removing jmp_ex_config.o(.rev16_text), (4 bytes).
     Removing jmp_ex_config.o(.revsh_text), (4 bytes).
     Removing jmp_ex_config.o(.rrx_text), (6 bytes).
-    Removing jmp_ex_config.o(i.jmp_ex_config_check_file), (120 bytes).
-    Removing jmp_ex_config.o(i.jmp_ex_config_default_set), (600 bytes).
-    Removing jmp_ex_config.o(i.jmp_ex_config_init), (30 bytes).
     Removing jmp_ex_config.o(i.jmp_ex_config_read_ex), (36 bytes).
     Removing jmp_ex_config.o(.constdata), (48 bytes).
     Removing jmp_motion.o(.rev16_text), (4 bytes).
@@ -6877,7 +6878,7 @@ Removing Unused input sections from the image.
     Removing stepper.o(i.step_wait), (14 bytes).
     Removing stepper.o(.constdata), (48 bytes).
 
-2681 unused section(s) (total 249019 bytes) removed from the image.
+2676 unused section(s) (total 247991 bytes) removed from the image.
 
 ==============================================================================
 
@@ -6888,56 +6889,56 @@ Image Symbol Table
     Symbol Name                              Value     Ov Type        Size  Object(Section)
 
     ../clib/../cmprslib/zerorunl2.c          0x00000000   Number         0  __dczerorl2.o ABSOLUTE
-    ../clib/microlib/ctype/ctype.c           0x00000000   Number         0  ctype_o.o ABSOLUTE
-    ../clib/microlib/ctype/ctype.c           0x00000000   Number         0  isxdigit_o.o ABSOLUTE
-    ../clib/microlib/ctype/ctype.c           0x00000000   Number         0  isupper_o.o ABSOLUTE
+    ../clib/microlib/ctype/ctype.c           0x00000000   Number         0  isgraph_o.o ABSOLUTE
     ../clib/microlib/ctype/ctype.c           0x00000000   Number         0  isalnum_o.o ABSOLUTE
     ../clib/microlib/ctype/ctype.c           0x00000000   Number         0  isspace_o.o ABSOLUTE
+    ../clib/microlib/ctype/ctype.c           0x00000000   Number         0  isupper_o.o ABSOLUTE
     ../clib/microlib/ctype/ctype.c           0x00000000   Number         0  ispunct_o.o ABSOLUTE
+    ../clib/microlib/ctype/ctype.c           0x00000000   Number         0  isprint_o.o ABSOLUTE
+    ../clib/microlib/ctype/ctype.c           0x00000000   Number         0  isxdigit_o.o ABSOLUTE
+    ../clib/microlib/ctype/ctype.c           0x00000000   Number         0  islower_o.o ABSOLUTE
     ../clib/microlib/ctype/ctype.c           0x00000000   Number         0  isdigit_o.o ABSOLUTE
     ../clib/microlib/ctype/ctype.c           0x00000000   Number         0  iscntrl_o.o ABSOLUTE
-    ../clib/microlib/ctype/ctype.c           0x00000000   Number         0  isprint_o.o ABSOLUTE
+    ../clib/microlib/ctype/ctype.c           0x00000000   Number         0  isspace_c.o ABSOLUTE
+    ../clib/microlib/ctype/ctype.c           0x00000000   Number         0  ctype_o.o ABSOLUTE
     ../clib/microlib/ctype/ctype.c           0x00000000   Number         0  isblank_o.o ABSOLUTE
     ../clib/microlib/ctype/ctype.c           0x00000000   Number         0  isalpha_o.o ABSOLUTE
-    ../clib/microlib/ctype/ctype.c           0x00000000   Number         0  islower_o.o ABSOLUTE
-    ../clib/microlib/ctype/ctype.c           0x00000000   Number         0  isspace_c.o ABSOLUTE
-    ../clib/microlib/ctype/ctype.c           0x00000000   Number         0  isgraph_o.o ABSOLUTE
     ../clib/microlib/ctype/ctype.c           0x00000000   Number         0  ctype_c.o ABSOLUTE
     ../clib/microlib/division.c              0x00000000   Number         0  uidiv.o ABSOLUTE
     ../clib/microlib/division.c              0x00000000   Number         0  uldiv.o ABSOLUTE
     ../clib/microlib/errno.c                 0x00000000   Number         0  errno.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry10b.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry11a.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry9b.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry8a.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry5.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry8b.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry10a.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry2.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry7b.o ABSOLUTE
     ../clib/microlib/init/entry.s            0x00000000   Number         0  entry.o ABSOLUTE
     ../clib/microlib/init/entry.s            0x00000000   Number         0  entry11b.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry11a.o ABSOLUTE
     ../clib/microlib/init/entry.s            0x00000000   Number         0  entry7a.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry7b.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry2.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry10b.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry8a.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry8b.o ABSOLUTE
     ../clib/microlib/init/entry.s            0x00000000   Number         0  entry9a.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry5.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry9b.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry10a.o ABSOLUTE
+    ../clib/microlib/longlong.c              0x00000000   Number         0  llsshr.o ABSOLUTE
     ../clib/microlib/longlong.c              0x00000000   Number         0  llshl.o ABSOLUTE
     ../clib/microlib/longlong.c              0x00000000   Number         0  llushr.o ABSOLUTE
-    ../clib/microlib/longlong.c              0x00000000   Number         0  llsshr.o ABSOLUTE
-    ../clib/microlib/malloc/malloc.c         0x00000000   Number         0  mallocra.o ABSOLUTE
-    ../clib/microlib/malloc/malloc.c         0x00000000   Number         0  mallocr.o ABSOLUTE
-    ../clib/microlib/malloc/malloc.c         0x00000000   Number         0  malloca.o ABSOLUTE
     ../clib/microlib/malloc/malloc.c         0x00000000   Number         0  malloc.o ABSOLUTE
+    ../clib/microlib/malloc/malloc.c         0x00000000   Number         0  mallocr.o ABSOLUTE
+    ../clib/microlib/malloc/malloc.c         0x00000000   Number         0  mallocra.o ABSOLUTE
+    ../clib/microlib/malloc/malloc.c         0x00000000   Number         0  malloca.o ABSOLUTE
     ../clib/microlib/malloc/mvars.c          0x00000000   Number         0  mvars.o ABSOLUTE
-    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf2.o ABSOLUTE
+    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printfa.o ABSOLUTE
+    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf8.o ABSOLUTE
     ../clib/microlib/printf/printf.c         0x00000000   Number         0  printfb.o ABSOLUTE
     ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf7.o ABSOLUTE
-    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf8.o ABSOLUTE
-    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf1.o ABSOLUTE
-    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printfa.o ABSOLUTE
-    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf3.o ABSOLUTE
     ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf4.o ABSOLUTE
-    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf5.o ABSOLUTE
-    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf6.o ABSOLUTE
+    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf3.o ABSOLUTE
     ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf0.o ABSOLUTE
+    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf5.o ABSOLUTE
+    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf2.o ABSOLUTE
+    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf1.o ABSOLUTE
+    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf6.o ABSOLUTE
     ../clib/microlib/printf/stubs.s          0x00000000   Number         0  stubs.o ABSOLUTE
     ../clib/microlib/stdio/streams.c         0x00000000   Number         0  stdout.o ABSOLUTE
     ../clib/microlib/string/memcpy.c         0x00000000   Number         0  memcpyb.o ABSOLUTE
@@ -6952,18 +6953,18 @@ Image Symbol Table
     ../clib/microlib/string/strtok.c         0x00000000   Number         0  strtok.o ABSOLUTE
     ../clib/microlib/string/strtok.c         0x00000000   Number         0  strtok_r.o ABSOLUTE
     ../clib/microlib/stubs.s                 0x00000000   Number         0  iusefp.o ABSOLUTE
+    ../clib/scanf.c                          0x00000000   Number         0  _chval.o ABSOLUTE
     ../clib/scanf.c                          0x00000000   Number         0  _sgetc.o ABSOLUTE
+    ../clib/scanf.c                          0x00000000   Number         0  strtod.o ABSOLUTE
+    ../clib/scanf.c                          0x00000000   Number         0  _strtoul.o ABSOLUTE
+    ../clib/scanf.c                          0x00000000   Number         0  strtol.o ABSOLUTE
     ../clib/scanf.c                          0x00000000   Number         0  scanf_fp.o ABSOLUTE
     ../clib/scanf.c                          0x00000000   Number         0  atoi.o ABSOLUTE
-    ../clib/scanf.c                          0x00000000   Number         0  strtol.o ABSOLUTE
-    ../clib/scanf.c                          0x00000000   Number         0  _chval.o ABSOLUTE
-    ../clib/scanf.c                          0x00000000   Number         0  _strtoul.o ABSOLUTE
-    ../clib/scanf.c                          0x00000000   Number         0  strtod.o ABSOLUTE
     ../fplib/microlib/d2f.c                  0x00000000   Number         0  d2f.o ABSOLUTE
     ../fplib/microlib/fpadd.c                0x00000000   Number         0  dadd.o ABSOLUTE
     ../fplib/microlib/fpdiv.c                0x00000000   Number         0  ddiv.o ABSOLUTE
-    ../fplib/microlib/fpepilogue.c           0x00000000   Number         0  depilogue.o ABSOLUTE
     ../fplib/microlib/fpepilogue.c           0x00000000   Number         0  fepilogue.o ABSOLUTE
+    ../fplib/microlib/fpepilogue.c           0x00000000   Number         0  depilogue.o ABSOLUTE
     ../fplib/microlib/fpfix.c                0x00000000   Number         0  dfixul.o ABSOLUTE
     ../fplib/microlib/fpflt.c                0x00000000   Number         0  dfltul.o ABSOLUTE
     ../fplib/microlib/fpmul.c                0x00000000   Number         0  dmul.o ABSOLUTE
@@ -7264,8 +7265,8 @@ Image Symbol Table
     .text                                    0x08000580   Section        0  strtod.o(.text)
     _local_sscanf                            0x08000581   Thumb Code    54  strtod.o(.text)
     .text                                    0x0800061c   Section        0  strtol.o(.text)
-    .text                                    0x0800068c   Section        0  dadd.o(.text)
     .text                                    0x0800068c   Section        0  iusefp.o(.text)
+    .text                                    0x0800068c   Section        0  dadd.o(.text)
     .text                                    0x080007da   Section        0  dmul.o(.text)
     .text                                    0x080008be   Section        0  ddiv.o(.text)
     .text                                    0x0800099c   Section        0  dscalb.o(.text)
@@ -7663,301 +7664,309 @@ Image Symbol Table
     dir_read                                 0x0800d5af   Thumb Code   208  ff.o(i.dir_read)
     i.dir_register                           0x0800d67e   Section        0  ff.o(i.dir_register)
     dir_register                             0x0800d67f   Thumb Code   326  ff.o(i.dir_register)
-    i.dir_sdi                                0x0800d7c4   Section        0  ff.o(i.dir_sdi)
-    dir_sdi                                  0x0800d7c5   Thumb Code   154  ff.o(i.dir_sdi)
-    i.disk_initialize                        0x0800d85e   Section        0  diskio.o(i.disk_initialize)
-    i.disk_ioctl                             0x0800d88a   Section        0  diskio.o(i.disk_ioctl)
-    i.disk_read                              0x0800d8e4   Section        0  diskio.o(i.disk_read)
-    i.disk_status                            0x0800d946   Section        0  diskio.o(i.disk_status)
-    i.disk_write                             0x0800d94c   Section        0  diskio.o(i.disk_write)
-    i.estimate_acceleration_distance         0x0800d9b0   Section        0  planner.o(i.estimate_acceleration_distance)
-    i.f_close                                0x0800d9e4   Section        0  ff.o(i.f_close)
-    i.f_closedir                             0x0800da0a   Section        0  ff.o(i.f_closedir)
-    i.f_lseek                                0x0800da22   Section        0  ff.o(i.f_lseek)
-    i.f_mkfs                                 0x0800dcd0   Section        0  ff.o(i.f_mkfs)
-    i.f_mount                                0x0800e240   Section        0  ff.o(i.f_mount)
-    i.f_open                                 0x0800e29c   Section        0  ff.o(i.f_open)
-    i.f_opendir                              0x0800e40c   Section        0  ff.o(i.f_opendir)
-    i.f_read                                 0x0800e488   Section        0  ff.o(i.f_read)
-    i.f_readdir                              0x0800e634   Section        0  ff.o(i.f_readdir)
-    i.f_sync                                 0x0800e692   Section        0  ff.o(i.f_sync)
-    i.f_write                                0x0800e732   Section        0  ff.o(i.f_write)
-    i.fabs                                   0x0800e920   Section        0  fabs.o(i.fabs)
-    i.ff_convert                             0x0800e938   Section        0  cc936.o(i.ff_convert)
-    i.ff_wtoupper                            0x0800e9b4   Section        0  cc936.o(i.ff_wtoupper)
-    i.find_volume                            0x0800ea58   Section        0  ff.o(i.find_volume)
-    find_volume                              0x0800ea59   Thumb Code   738  ff.o(i.find_volume)
-    i.follow_path                            0x0800ed4c   Section        0  ff.o(i.follow_path)
-    follow_path                              0x0800ed4d   Thumb Code   162  ff.o(i.follow_path)
-    i.fputc                                  0x0800edf0   Section        0  bsp_uart.o(i.fputc)
-    i.free                                   0x0800ee0c   Section        0  malloc.o(i.free)
-    i.gen_numname                            0x0800ee5c   Section        0  ff.o(i.gen_numname)
-    gen_numname                              0x0800ee5d   Thumb Code   198  ff.o(i.gen_numname)
-    i.get_fat                                0x0800ef28   Section        0  ff.o(i.get_fat)
-    get_fat                                  0x0800ef29   Thumb Code   224  ff.o(i.get_fat)
-    i.get_fattime                            0x0800f008   Section        0  diskio.o(i.get_fattime)
-    i.get_fileinfo                           0x0800f00c   Section        0  ff.o(i.get_fileinfo)
-    get_fileinfo                             0x0800f00d   Thumb Code   330  ff.o(i.get_fileinfo)
-    i.get_ldnumber                           0x0800f156   Section        0  ff.o(i.get_ldnumber)
-    get_ldnumber                             0x0800f157   Thumb Code    74  ff.o(i.get_ldnumber)
-    i.intersection_distance                  0x0800f1a0   Section        0  planner.o(i.intersection_distance)
-    i.jmp_command_execution                  0x0800f1e0   Section        0  jmp_command_execution.o(i.jmp_command_execution)
-    i.jmp_command_execution_init             0x0800f26c   Section        0  jmp_command_execution.o(i.jmp_command_execution_init)
-    i.jmp_command_execution_task             0x0800f2ac   Section        0  jmp_command_execution.o(i.jmp_command_execution_task)
-    jmp_command_execution_task               0x0800f2ad   Thumb Code    38  jmp_command_execution.o(i.jmp_command_execution_task)
-    i.jmp_command_g0_exec                    0x0800f2dc   Section        0  jmp_command_execution.o(i.jmp_command_g0_exec)
-    i.jmp_command_g1_exec                    0x0800f2e0   Section        0  jmp_command_execution.o(i.jmp_command_g1_exec)
-    i.jmp_command_g28_exec                   0x0800f454   Section        0  jmp_command_execution.o(i.jmp_command_g28_exec)
-    i.jmp_command_g4_exec                    0x0800f494   Section        0  jmp_command_execution.o(i.jmp_command_g4_exec)
-    i.jmp_command_g90_exec                   0x0800f4ac   Section        0  jmp_command_execution.o(i.jmp_command_g90_exec)
-    i.jmp_command_g92_exec                   0x0800f4c4   Section        0  jmp_command_execution.o(i.jmp_command_g92_exec)
-    i.jmp_command_m82_exec                   0x0800f600   Section        0  jmp_command_execution.o(i.jmp_command_m82_exec)
-    i.jmp_command_struct_clear               0x0800f618   Section        0  jmp_command_execution.o(i.jmp_command_struct_clear)
-    i.jmp_config_param_init                  0x0800f654   Section        0  jmp_param_state.o(i.jmp_config_param_init)
-    i.jmp_config_state_init                  0x0800f658   Section        0  jmp_param_state.o(i.jmp_config_state_init)
-    i.jmp_configstate_init                   0x0800f6d8   Section        0  jmp_param_state.o(i.jmp_configstate_init)
-    i.jmp_ex_config_check_digit_buff_clear   0x0800f6e4   Section        0  jmp_ex_config.o(i.jmp_ex_config_check_digit_buff_clear)
-    i.jmp_ex_config_check_ex_file            0x0800f6fc   Section        0  jmp_ex_config.o(i.jmp_ex_config_check_ex_file)
-    i.jmp_ex_config_check_ex_file_segment    0x0800ff6c   Section        0  jmp_ex_config.o(i.jmp_ex_config_check_ex_file_segment)
-    i.jmp_ex_config_check_ex_file_segment_fb 0x0800ffb8   Section        0  jmp_ex_config.o(i.jmp_ex_config_check_ex_file_segment_fb)
-    i.jmp_ex_config_file_buf_clear           0x0800ffdc   Section        0  jmp_ex_config.o(i.jmp_ex_config_file_buf_clear)
-    i.jmp_ex_config_file_cut_buf_clear       0x0800fff4   Section        0  jmp_ex_config.o(i.jmp_ex_config_file_cut_buf_clear)
-    i.jmp_ex_config_read_and_set             0x0801000c   Section        0  jmp_ex_config.o(i.jmp_ex_config_read_and_set)
-    i.jmp_ex_config_read_ex_save             0x08010930   Section        0  jmp_ex_config.o(i.jmp_ex_config_read_ex_save)
-    i.jmp_ex_config_read_param               0x08010978   Section        0  jmp_ex_config.o(i.jmp_ex_config_read_param)
-    i.jmp_ex_config_test                     0x080109e4   Section        0  jmp_ex_config.o(i.jmp_ex_config_test)
-    i.jmp_gcode_analysis                     0x080109fc   Section        0  jmp_gcode_analysis.o(i.jmp_gcode_analysis)
-    i.jmp_gcode_buff_clear                   0x08010ae0   Section        0  jmp_gcode_analysis.o(i.jmp_gcode_buff_clear)
-    i.jmp_gcode_buff_get                     0x08010b14   Section        0  jmp_gcode_analysis.o(i.jmp_gcode_buff_get)
-    i.jmp_gcode_buff_get_remain              0x08010b50   Section        0  jmp_gcode_analysis.o(i.jmp_gcode_buff_get_remain)
-    i.jmp_gcode_buff_get_sum                 0x08010bac   Section        0  jmp_gcode_analysis.o(i.jmp_gcode_buff_get_sum)
-    i.jmp_gcode_buff_put                     0x08010bfc   Section        0  jmp_gcode_analysis.o(i.jmp_gcode_buff_put)
-    i.jmp_gcode_g0_param                     0x08010c40   Section        0  jmp_gcode_analysis.o(i.jmp_gcode_g0_param)
-    i.jmp_gcode_g1_param                     0x08010c48   Section        0  jmp_gcode_analysis.o(i.jmp_gcode_g1_param)
-    i.jmp_gcode_g28_param                    0x08010d40   Section        0  jmp_gcode_analysis.o(i.jmp_gcode_g28_param)
-    i.jmp_gcode_g4_param                     0x08010d42   Section        0  jmp_gcode_analysis.o(i.jmp_gcode_g4_param)
-    i.jmp_gcode_g90_param                    0x08010d44   Section        0  jmp_gcode_analysis.o(i.jmp_gcode_g90_param)
-    i.jmp_gcode_g92_param                    0x08010d46   Section        0  jmp_gcode_analysis.o(i.jmp_gcode_g92_param)
-    i.jmp_gcode_g_param                      0x08010d50   Section        0  jmp_gcode_analysis.o(i.jmp_gcode_g_param)
-    i.jmp_gcode_get_line                     0x08010da0   Section        0  jmp_gcode_analysis.o(i.jmp_gcode_get_line)
-    i.jmp_gcode_line_buff_clear              0x08010e68   Section        0  jmp_gcode_analysis.o(i.jmp_gcode_line_buff_clear)
-    i.jmp_gcode_m82_param                    0x08010e88   Section        0  jmp_gcode_analysis.o(i.jmp_gcode_m82_param)
-    i.jmp_gcode_m_param                      0x08010e8c   Section        0  jmp_gcode_analysis.o(i.jmp_gcode_m_param)
-    i.jmp_gcode_param_buff_clear             0x08010ea8   Section        0  jmp_gcode_analysis.o(i.jmp_gcode_param_buff_clear)
-    i.jmp_gcode_s_param                      0x08010edc   Section        0  jmp_gcode_analysis.o(i.jmp_gcode_s_param)
-    i.jmp_gcode_t_param                      0x08010ee4   Section        0  jmp_gcode_analysis.o(i.jmp_gcode_t_param)
-    i.jmp_gui_find_gcode_file                0x08010eec   Section        0  jmp_gui.o(i.jmp_gui_find_gcode_file)
-    i.jmp_gui_gcode_file_name_clear          0x08010f74   Section        0  jmp_gui.o(i.jmp_gui_gcode_file_name_clear)
-    i.jmp_gui_goto_frame                     0x08010fbc   Section        0  jmp_gui.o(i.jmp_gui_goto_frame)
-    i.jmp_gui_init                           0x08010fe4   Section        0  jmp_gui.o(i.jmp_gui_init)
-    i.jmp_gui_print_prepare_file_name_update 0x080110d0   Section        0  jmp_gui.o(i.jmp_gui_print_prepare_file_name_update)
-    i.jmp_gui_print_set_update               0x08011150   Section        0  jmp_gui.o(i.jmp_gui_print_set_update)
-    i.jmp_gui_printing_main_task             0x08011184   Section        0  jmp_gui.o(i.jmp_gui_printing_main_task)
-    i.jmp_gui_printing_update                0x080111c0   Section        0  jmp_gui.o(i.jmp_gui_printing_update)
-    i.jmp_gui_start_print                    0x0801131c   Section        0  jmp_gui.o(i.jmp_gui_start_print)
-    i.jmp_gui_stop_print                     0x08011380   Section        0  jmp_gui.o(i.jmp_gui_stop_print)
-    i.jmp_gui_task                           0x08011390   Section        0  jmp_gui.o(i.jmp_gui_task)
-    i.jmp_gui_uart_command_analysis          0x08011ab4   Section        0  jmp_gui.o(i.jmp_gui_uart_command_analysis)
-    i.jmp_gui_uart_command_get               0x08011b38   Section        0  jmp_gui.o(i.jmp_gui_uart_command_get)
-    i.jmp_gui_uart_send                      0x08011c08   Section        0  jmp_gui.o(i.jmp_gui_uart_send)
-    i.jmp_gui_uart_send_buffx                0x08011c14   Section        0  jmp_gui.o(i.jmp_gui_uart_send_buffx)
-    i.jmp_gui_uart_send_str                  0x08011c2c   Section        0  jmp_gui.o(i.jmp_gui_uart_send_str)
-    i.jmp_gui_uart_timeout                   0x08011d90   Section        0  jmp_gui.o(i.jmp_gui_uart_timeout)
-    i.jmp_gui_uart_timeout_disable           0x08011db0   Section        0  jmp_gui.o(i.jmp_gui_uart_timeout_disable)
-    i.jmp_gui_uart_timeout_enable            0x08011dcc   Section        0  jmp_gui.o(i.jmp_gui_uart_timeout_enable)
-    i.jmp_gui_uart_timeout_init              0x08011de8   Section        0  jmp_gui.o(i.jmp_gui_uart_timeout_init)
-    i.jmp_gui_uart_timeout_reset             0x08011e08   Section        0  jmp_gui.o(i.jmp_gui_uart_timeout_reset)
-    i.jmp_gui_update_gcode_file_name         0x08011e18   Section        0  jmp_gui.o(i.jmp_gui_update_gcode_file_name)
-    i.jmp_gui_update_manual_step             0x08011ef4   Section        0  jmp_gui.o(i.jmp_gui_update_manual_step)
-    i.jmp_guiuart_rx_str_clear               0x08011f38   Section        0  jmp_gui.o(i.jmp_guiuart_rx_str_clear)
-    i.jmp_guiuart_tx_str_clear               0x08011f5c   Section        0  jmp_gui.o(i.jmp_guiuart_tx_str_clear)
-    i.jmp_motion_clamp_to_software_endstops  0x08011f80   Section        0  jmp_motion.o(i.jmp_motion_clamp_to_software_endstops)
-    i.jmp_motion_find_home                   0x0801204c   Section        0  jmp_motion.o(i.jmp_motion_find_home)
-    i.jmp_motion_init                        0x0801266c   Section        0  jmp_motion.o(i.jmp_motion_init)
-    i.jmp_motion_manual                      0x080126e0   Section        0  jmp_motion.o(i.jmp_motion_manual)
-    i.jmp_motion_prepare_move                0x08012748   Section        0  jmp_motion.o(i.jmp_motion_prepare_move)
-    i.jmp_motion_set_postion                 0x080127ec   Section        0  jmp_motion.o(i.jmp_motion_set_postion)
-    i.jmp_motion_state_get                   0x08012834   Section        0  jmp_motion.o(i.jmp_motion_state_get)
-    i.jmp_motion_task                        0x080129a8   Section        0  jmp_motion.o(i.jmp_motion_task)
-    i.jmp_motion_test_task                   0x080129ba   Section        0  jmp_motion.o(i.jmp_motion_test_task)
-    i.jmp_motion_variable_init               0x080129cc   Section        0  jmp_motion.o(i.jmp_motion_variable_init)
-    i.jmp_storage_buff_clear                 0x08012b50   Section        0  jmp_storage_read.o(i.jmp_storage_buff_clear)
-    i.jmp_storage_buff_fill                  0x08012b84   Section        0  jmp_storage_read.o(i.jmp_storage_buff_fill)
-    i.jmp_storage_buff_get                   0x08012dc4   Section        0  jmp_storage_read.o(i.jmp_storage_buff_get)
-    i.jmp_storage_buff_get_sum               0x08012e00   Section        0  jmp_storage_read.o(i.jmp_storage_buff_get_sum)
-    i.jmp_storage_get_nextline_sum           0x08012e50   Section        0  jmp_storage_read.o(i.jmp_storage_get_nextline_sum)
-    i.jmp_storage_read_buff_clear            0x08012ea0   Section        0  jmp_storage_read.o(i.jmp_storage_read_buff_clear)
-    i.jmp_storage_read_init                  0x08012ec0   Section        0  jmp_storage_read.o(i.jmp_storage_read_init)
-    i.jmp_storage_read_task                  0x08012f0c   Section        0  jmp_storage_read.o(i.jmp_storage_read_task)
-    i.jmp_storage_readline                   0x08013110   Section        0  jmp_storage_read.o(i.jmp_storage_readline)
-    i.ld_clust                               0x08013198   Section        0  ff.o(i.ld_clust)
-    ld_clust                                 0x08013199   Thumb Code    38  ff.o(i.ld_clust)
-    i.ld_dword                               0x080131be   Section        0  ff.o(i.ld_dword)
-    ld_dword                                 0x080131bf   Thumb Code    24  ff.o(i.ld_dword)
-    i.ld_word                                0x080131d6   Section        0  ff.o(i.ld_word)
-    ld_word                                  0x080131d7   Thumb Code    12  ff.o(i.ld_word)
-    i.main                                   0x080131e4   Section        0  main.o(i.main)
-    i.malloc                                 0x0801327c   Section        0  malloc.o(i.malloc)
-    i.max_allowable_speed                    0x080132e8   Section        0  planner.o(i.max_allowable_speed)
-    i.mem_cmp                                0x0801331c   Section        0  ff.o(i.mem_cmp)
-    mem_cmp                                  0x0801331d   Thumb Code    36  ff.o(i.mem_cmp)
-    i.mem_cpy                                0x08013340   Section        0  ff.o(i.mem_cpy)
-    mem_cpy                                  0x08013341   Thumb Code    26  ff.o(i.mem_cpy)
-    i.mem_set                                0x0801335a   Section        0  ff.o(i.mem_set)
-    mem_set                                  0x0801335b   Thumb Code    18  ff.o(i.mem_set)
-    i.move_window                            0x0801336c   Section        0  ff.o(i.move_window)
-    move_window                              0x0801336d   Thumb Code    52  ff.o(i.move_window)
-    i.next_block_index                       0x080133a0   Section        0  planner.o(i.next_block_index)
-    next_block_index                         0x080133a1   Thumb Code    12  planner.o(i.next_block_index)
-    i.pick_lfn                               0x080133ac   Section        0  ff.o(i.pick_lfn)
-    pick_lfn                                 0x080133ad   Thumb Code   130  ff.o(i.pick_lfn)
-    i.plan_buffer_line                       0x08013434   Section        0  planner.o(i.plan_buffer_line)
-    i.plan_discard_current_block             0x08013e44   Section        0  planner.o(i.plan_discard_current_block)
-    i.plan_get_current_block                 0x08013e68   Section        0  planner.o(i.plan_get_current_block)
-    i.plan_init                              0x08013ea0   Section        0  planner.o(i.plan_init)
-    i.plan_set_position                      0x08013f04   Section        0  planner.o(i.plan_set_position)
-    i.planner_forward_pass                   0x08013fe8   Section        0  planner.o(i.planner_forward_pass)
-    i.planner_forward_pass_kernel            0x08014040   Section        0  planner.o(i.planner_forward_pass_kernel)
-    i.planner_recalculate                    0x080140ee   Section        0  planner.o(i.planner_recalculate)
-    i.planner_recalculate_trapezoids         0x08014100   Section        0  planner.o(i.planner_recalculate_trapezoids)
-    i.planner_reverse_pass                   0x080141c0   Section        0  planner.o(i.planner_reverse_pass)
-    i.planner_reverse_pass_kernel            0x08014228   Section        0  planner.o(i.planner_reverse_pass_kernel)
-    i.planner_variable_init                  0x080142d4   Section        0  planner.o(i.planner_variable_init)
-    i.prev_block_index                       0x0801440c   Section        0  planner.o(i.prev_block_index)
-    prev_block_index                         0x0801440d   Thumb Code    10  planner.o(i.prev_block_index)
-    i.prvAddCurrentTaskToDelayedList         0x08014418   Section        0  tasks.o(i.prvAddCurrentTaskToDelayedList)
-    prvAddCurrentTaskToDelayedList           0x08014419   Thumb Code   124  tasks.o(i.prvAddCurrentTaskToDelayedList)
-    i.prvAddNewTaskToReadyList               0x080144b0   Section        0  tasks.o(i.prvAddNewTaskToReadyList)
-    prvAddNewTaskToReadyList                 0x080144b1   Thumb Code   150  tasks.o(i.prvAddNewTaskToReadyList)
-    i.prvCheckTasksWaitingTermination        0x08014564   Section        0  tasks.o(i.prvCheckTasksWaitingTermination)
-    prvCheckTasksWaitingTermination          0x08014565   Thumb Code    60  tasks.o(i.prvCheckTasksWaitingTermination)
-    i.prvCopyDataToQueue                     0x080145ac   Section        0  queue.o(i.prvCopyDataToQueue)
-    prvCopyDataToQueue                       0x080145ad   Thumb Code   124  queue.o(i.prvCopyDataToQueue)
-    i.prvDeleteTCB                           0x08014628   Section        0  tasks.o(i.prvDeleteTCB)
-    prvDeleteTCB                             0x08014629   Thumb Code    18  tasks.o(i.prvDeleteTCB)
-    i.prvGetDisinheritPriorityAfterTimeout   0x0801463a   Section        0  queue.o(i.prvGetDisinheritPriorityAfterTimeout)
-    prvGetDisinheritPriorityAfterTimeout     0x0801463b   Thumb Code    20  queue.o(i.prvGetDisinheritPriorityAfterTimeout)
-    i.prvHeapInit                            0x08014650   Section        0  heap_4.o(i.prvHeapInit)
-    prvHeapInit                              0x08014651   Thumb Code    98  heap_4.o(i.prvHeapInit)
-    i.prvIdleTask                            0x080146cc   Section        0  tasks.o(i.prvIdleTask)
-    prvIdleTask                              0x080146cd   Thumb Code    32  tasks.o(i.prvIdleTask)
-    i.prvInitialiseNewQueue                  0x080146f4   Section        0  queue.o(i.prvInitialiseNewQueue)
-    prvInitialiseNewQueue                    0x080146f5   Thumb Code    42  queue.o(i.prvInitialiseNewQueue)
-    i.prvInitialiseNewTask                   0x0801471e   Section        0  tasks.o(i.prvInitialiseNewTask)
-    prvInitialiseNewTask                     0x0801471f   Thumb Code   174  tasks.o(i.prvInitialiseNewTask)
-    i.prvInitialiseTaskLists                 0x080147cc   Section        0  tasks.o(i.prvInitialiseTaskLists)
-    prvInitialiseTaskLists                   0x080147cd   Thumb Code    70  tasks.o(i.prvInitialiseTaskLists)
-    i.prvInsertBlockIntoFreeList             0x08014834   Section        0  heap_4.o(i.prvInsertBlockIntoFreeList)
-    prvInsertBlockIntoFreeList               0x08014835   Thumb Code    96  heap_4.o(i.prvInsertBlockIntoFreeList)
-    i.prvIsQueueEmpty                        0x0801489c   Section        0  queue.o(i.prvIsQueueEmpty)
-    prvIsQueueEmpty                          0x0801489d   Thumb Code    26  queue.o(i.prvIsQueueEmpty)
-    i.prvIsQueueFull                         0x080148b6   Section        0  queue.o(i.prvIsQueueFull)
-    prvIsQueueFull                           0x080148b7   Thumb Code    30  queue.o(i.prvIsQueueFull)
-    i.prvNotifyQueueSetContainer             0x080148d4   Section        0  queue.o(i.prvNotifyQueueSetContainer)
-    prvNotifyQueueSetContainer               0x080148d5   Thumb Code   152  queue.o(i.prvNotifyQueueSetContainer)
-    i.prvResetNextTaskUnblockTime            0x0801496c   Section        0  tasks.o(i.prvResetNextTaskUnblockTime)
-    prvResetNextTaskUnblockTime              0x0801496d   Thumb Code    42  tasks.o(i.prvResetNextTaskUnblockTime)
-    i.prvTaskExitError                       0x080149a0   Section        0  port.o(i.prvTaskExitError)
-    prvTaskExitError                         0x080149a1   Thumb Code    68  port.o(i.prvTaskExitError)
-    i.prvUnlockQueue                         0x080149e8   Section        0  queue.o(i.prvUnlockQueue)
-    prvUnlockQueue                           0x080149e9   Thumb Code   146  queue.o(i.prvUnlockQueue)
-    i.put_fat                                0x08014a7a   Section        0  ff.o(i.put_fat)
-    put_fat                                  0x08014a7b   Thumb Code   312  ff.o(i.put_fat)
-    i.put_lfn                                0x08014bb4   Section        0  ff.o(i.put_lfn)
-    put_lfn                                  0x08014bb5   Thumb Code   124  ff.o(i.put_lfn)
-    i.pvPortMalloc                           0x08014c34   Section        0  heap_4.o(i.pvPortMalloc)
-    i.pvTaskIncrementMutexHeldCount          0x08014d7c   Section        0  tasks.o(i.pvTaskIncrementMutexHeldCount)
-    i.pxPortInitialiseStack                  0x08014d9c   Section        0  port.o(i.pxPortInitialiseStack)
-    i.remove_chain                           0x08014dc8   Section        0  ff.o(i.remove_chain)
-    remove_chain                             0x08014dc9   Thumb Code   150  ff.o(i.remove_chain)
-    i.reset_acceleration_rates               0x08014e60   Section        0  planner.o(i.reset_acceleration_rates)
-    i.sqrt                                   0x08014ea4   Section        0  sqrt.o(i.sqrt)
-    i.st_clust                               0x08014f0e   Section        0  ff.o(i.st_clust)
-    st_clust                                 0x08014f0f   Thumb Code    36  ff.o(i.st_clust)
-    i.st_dword                               0x08014f32   Section        0  ff.o(i.st_dword)
-    st_dword                                 0x08014f33   Thumb Code    24  ff.o(i.st_dword)
-    i.st_init                                0x08014f4c   Section        0  stepper.o(i.st_init)
-    i.st_pin_idle                            0x08015090   Section        0  stepper.o(i.st_pin_idle)
-    i.st_set_position                        0x08015130   Section        0  stepper.o(i.st_set_position)
-    i.st_timer_interrupt                     0x08015144   Section        0  stepper.o(i.st_timer_interrupt)
-    i.st_word                                0x080159ac   Section        0  ff.o(i.st_word)
-    st_word                                  0x080159ad   Thumb Code    12  ff.o(i.st_word)
-    i.sum_sfn                                0x080159b8   Section        0  ff.o(i.sum_sfn)
-    sum_sfn                                  0x080159b9   Thumb Code    32  ff.o(i.sum_sfn)
-    i.sync_fs                                0x080159d8   Section        0  ff.o(i.sync_fs)
-    sync_fs                                  0x080159d9   Thumb Code   134  ff.o(i.sync_fs)
-    i.sync_window                            0x08015a68   Section        0  ff.o(i.sync_window)
-    sync_window                              0x08015a69   Thumb Code    82  ff.o(i.sync_window)
-    i.tmdelay_init                           0x08015abc   Section        0  tmdelay.o(i.tmdelay_init)
-    i.tmdelay_ms                             0x08015b0c   Section        0  tmdelay.o(i.tmdelay_ms)
-    i.tmdelay_us                             0x08015b24   Section        0  tmdelay.o(i.tmdelay_us)
-    i.trapezoid_generator_reset              0x08015b64   Section        0  stepper.o(i.trapezoid_generator_reset)
-    i.usb_app_init                           0x08015c04   Section        0  usb_app.o(i.usb_app_init)
-    i.usb_init                               0x08015c30   Section        0  usb_test.o(i.usb_init)
-    i.usb_task                               0x08015c5c   Section        0  usb_app.o(i.usb_task)
-    usb_task                                 0x08015c5d   Thumb Code    20  usb_app.o(i.usb_task)
-    i.uxListRemove                           0x08015c74   Section        0  list.o(i.uxListRemove)
-    i.vListInitialise                        0x08015c9c   Section        0  list.o(i.vListInitialise)
-    i.vListInitialiseItem                    0x08015cb6   Section        0  list.o(i.vListInitialiseItem)
-    i.vListInsert                            0x08015cbc   Section        0  list.o(i.vListInsert)
-    i.vListInsertEnd                         0x08015cf0   Section        0  list.o(i.vListInsertEnd)
-    i.vPortEnterCritical                     0x08015d08   Section        0  port.o(i.vPortEnterCritical)
-    i.vPortExitCritical                      0x08015d64   Section        0  port.o(i.vPortExitCritical)
-    i.vPortFree                              0x08015da4   Section        0  heap_4.o(i.vPortFree)
-    i.vPortSetupTimerInterrupt               0x08015e40   Section        0  port.o(i.vPortSetupTimerInterrupt)
-    i.vPortValidateInterruptPriority         0x08015e68   Section        0  port.o(i.vPortValidateInterruptPriority)
-    i.vTaskDelay                             0x08015ee8   Section        0  tasks.o(i.vTaskDelay)
-    i.vTaskInternalSetTimeOutState           0x08015f48   Section        0  tasks.o(i.vTaskInternalSetTimeOutState)
-    i.vTaskLED                               0x08015f60   Section        0  main.o(i.vTaskLED)
-    vTaskLED                                 0x08015f61   Thumb Code    32  main.o(i.vTaskLED)
-    i.vTaskMissedYield                       0x08015f80   Section        0  tasks.o(i.vTaskMissedYield)
-    i.vTaskPlaceOnEventList                  0x08015f8c   Section        0  tasks.o(i.vTaskPlaceOnEventList)
-    i.vTaskPriorityDisinheritAfterTimeout    0x08015fc8   Section        0  tasks.o(i.vTaskPriorityDisinheritAfterTimeout)
-    i.vTaskStartScheduler                    0x080160c4   Section        0  tasks.o(i.vTaskStartScheduler)
-    i.vTaskSuspendAll                        0x08016154   Section        0  tasks.o(i.vTaskSuspendAll)
-    i.vTaskSwitchContext                     0x08016164   Section        0  tasks.o(i.vTaskSwitchContext)
-    i.validate                               0x080161f4   Section        0  ff.o(i.validate)
-    validate                                 0x080161f5   Thumb Code    66  ff.o(i.validate)
-    i.xPortStartScheduler                    0x08016238   Section        0  port.o(i.xPortStartScheduler)
-    i.xQueueGenericCreate                    0x0801637c   Section        0  queue.o(i.xQueueGenericCreate)
-    i.xQueueGenericReset                     0x080163d8   Section        0  queue.o(i.xQueueGenericReset)
-    i.xQueueGenericSend                      0x08016474   Section        0  queue.o(i.xQueueGenericSend)
-    i.xQueueGiveFromISR                      0x08016620   Section        0  queue.o(i.xQueueGiveFromISR)
-    i.xQueueSemaphoreTake                    0x08016728   Section        0  queue.o(i.xQueueSemaphoreTake)
-    i.xTaskCheckForTimeOut                   0x080168c4   Section        0  tasks.o(i.xTaskCheckForTimeOut)
-    i.xTaskCreate                            0x08016958   Section        0  tasks.o(i.xTaskCreate)
-    i.xTaskIncrementTick                     0x080169b8   Section        0  tasks.o(i.xTaskIncrementTick)
-    i.xTaskPriorityDisinherit                0x08016b04   Section        0  tasks.o(i.xTaskPriorityDisinherit)
-    i.xTaskPriorityInherit                   0x08016bd4   Section        0  tasks.o(i.xTaskPriorityInherit)
-    i.xTaskRemoveFromEventList               0x08016c9c   Section        0  tasks.o(i.xTaskRemoveFromEventList)
-    i.xTaskResumeAll                         0x08016d38   Section        0  tasks.o(i.xTaskResumeAll)
-    .constdata                               0x08016e40   Section       64  system_stm32h7xx.o(.constdata)
-    UARTPrescTable                           0x08016e40   Data          24  system_stm32h7xx.o(.constdata)
-    USARTPrescTable                          0x08016e58   Data          24  system_stm32h7xx.o(.constdata)
-    .constdata                               0x08016e80   Section       48  stm32h7xx_hal_uart.o(.constdata)
-    UARTPrescTable                           0x08016e80   Data          24  stm32h7xx_hal_uart.o(.constdata)
-    USARTPrescTable                          0x08016e98   Data          24  stm32h7xx_hal_uart.o(.constdata)
-    .constdata                               0x08016eb0   Section       74  ff.o(.constdata)
-    LfnOfs                                   0x08016eb0   Data          13  ff.o(.constdata)
-    badchr                                   0x08016ebd   Data          16  ff.o(.constdata)
-    vst                                      0x08016ece   Data          22  ff.o(.constdata)
-    cst                                      0x08016ee4   Data          22  ff.o(.constdata)
-    .constdata                               0x08016efa   Section    175030  cc936.o(.constdata)
-    uni2oem                                  0x08016efa   Data       87172  cc936.o(.constdata)
-    oem2uni                                  0x0802c37e   Data       87172  cc936.o(.constdata)
-    cvt1                                     0x08041802   Data         498  cc936.o(.constdata)
-    cvt2                                     0x080419f4   Data         188  cc936.o(.constdata)
-    .constdata                               0x08041ab0   Section      136  pow.o(.constdata)
-    bp                                       0x08041ab0   Data          16  pow.o(.constdata)
-    dp_h                                     0x08041ac0   Data          16  pow.o(.constdata)
-    dp_l                                     0x08041ad0   Data          16  pow.o(.constdata)
-    L                                        0x08041ae0   Data          48  pow.o(.constdata)
-    P                                        0x08041b10   Data          40  pow.o(.constdata)
-    .constdata                               0x08041b38   Section        8  qnan.o(.constdata)
-    .constdata                               0x08041b40   Section      129  ctype_o.o(.constdata)
-    .constdata                               0x08041bc4   Section        4  ctype_o.o(.constdata)
-    table                                    0x08041bc4   Data           4  ctype_o.o(.constdata)
-    .conststring                             0x08041bc8   Section        4  usbh_msc.o(.conststring)
+    i.dir_remove                             0x0800d7c4   Section        0  ff.o(i.dir_remove)
+    dir_remove                               0x0800d7c5   Thumb Code    96  ff.o(i.dir_remove)
+    i.dir_sdi                                0x0800d824   Section        0  ff.o(i.dir_sdi)
+    dir_sdi                                  0x0800d825   Thumb Code   154  ff.o(i.dir_sdi)
+    i.disk_initialize                        0x0800d8be   Section        0  diskio.o(i.disk_initialize)
+    i.disk_ioctl                             0x0800d8ea   Section        0  diskio.o(i.disk_ioctl)
+    i.disk_read                              0x0800d944   Section        0  diskio.o(i.disk_read)
+    i.disk_status                            0x0800d9a6   Section        0  diskio.o(i.disk_status)
+    i.disk_write                             0x0800d9ac   Section        0  diskio.o(i.disk_write)
+    i.estimate_acceleration_distance         0x0800da10   Section        0  planner.o(i.estimate_acceleration_distance)
+    i.f_close                                0x0800da44   Section        0  ff.o(i.f_close)
+    i.f_closedir                             0x0800da6a   Section        0  ff.o(i.f_closedir)
+    i.f_lseek                                0x0800da82   Section        0  ff.o(i.f_lseek)
+    i.f_mkfs                                 0x0800dd30   Section        0  ff.o(i.f_mkfs)
+    i.f_mount                                0x0800e2a0   Section        0  ff.o(i.f_mount)
+    i.f_open                                 0x0800e2fc   Section        0  ff.o(i.f_open)
+    i.f_opendir                              0x0800e46c   Section        0  ff.o(i.f_opendir)
+    i.f_read                                 0x0800e4e8   Section        0  ff.o(i.f_read)
+    i.f_readdir                              0x0800e694   Section        0  ff.o(i.f_readdir)
+    i.f_sync                                 0x0800e6f2   Section        0  ff.o(i.f_sync)
+    i.f_unlink                               0x0800e792   Section        0  ff.o(i.f_unlink)
+    i.f_write                                0x0800e848   Section        0  ff.o(i.f_write)
+    i.fabs                                   0x0800ea36   Section        0  fabs.o(i.fabs)
+    i.ff_convert                             0x0800ea50   Section        0  cc936.o(i.ff_convert)
+    i.ff_wtoupper                            0x0800eacc   Section        0  cc936.o(i.ff_wtoupper)
+    i.find_volume                            0x0800eb70   Section        0  ff.o(i.find_volume)
+    find_volume                              0x0800eb71   Thumb Code   738  ff.o(i.find_volume)
+    i.follow_path                            0x0800ee64   Section        0  ff.o(i.follow_path)
+    follow_path                              0x0800ee65   Thumb Code   162  ff.o(i.follow_path)
+    i.fputc                                  0x0800ef08   Section        0  bsp_uart.o(i.fputc)
+    i.free                                   0x0800ef24   Section        0  malloc.o(i.free)
+    i.gen_numname                            0x0800ef74   Section        0  ff.o(i.gen_numname)
+    gen_numname                              0x0800ef75   Thumb Code   198  ff.o(i.gen_numname)
+    i.get_fat                                0x0800f040   Section        0  ff.o(i.get_fat)
+    get_fat                                  0x0800f041   Thumb Code   224  ff.o(i.get_fat)
+    i.get_fattime                            0x0800f120   Section        0  diskio.o(i.get_fattime)
+    i.get_fileinfo                           0x0800f124   Section        0  ff.o(i.get_fileinfo)
+    get_fileinfo                             0x0800f125   Thumb Code   330  ff.o(i.get_fileinfo)
+    i.get_ldnumber                           0x0800f26e   Section        0  ff.o(i.get_ldnumber)
+    get_ldnumber                             0x0800f26f   Thumb Code    74  ff.o(i.get_ldnumber)
+    i.intersection_distance                  0x0800f2b8   Section        0  planner.o(i.intersection_distance)
+    i.jmp_command_execution                  0x0800f2f8   Section        0  jmp_command_execution.o(i.jmp_command_execution)
+    i.jmp_command_execution_init             0x0800f384   Section        0  jmp_command_execution.o(i.jmp_command_execution_init)
+    i.jmp_command_execution_task             0x0800f3c4   Section        0  jmp_command_execution.o(i.jmp_command_execution_task)
+    jmp_command_execution_task               0x0800f3c5   Thumb Code    38  jmp_command_execution.o(i.jmp_command_execution_task)
+    i.jmp_command_g0_exec                    0x0800f3f4   Section        0  jmp_command_execution.o(i.jmp_command_g0_exec)
+    i.jmp_command_g1_exec                    0x0800f3f8   Section        0  jmp_command_execution.o(i.jmp_command_g1_exec)
+    i.jmp_command_g28_exec                   0x0800f56c   Section        0  jmp_command_execution.o(i.jmp_command_g28_exec)
+    i.jmp_command_g4_exec                    0x0800f5ac   Section        0  jmp_command_execution.o(i.jmp_command_g4_exec)
+    i.jmp_command_g90_exec                   0x0800f5c4   Section        0  jmp_command_execution.o(i.jmp_command_g90_exec)
+    i.jmp_command_g92_exec                   0x0800f5dc   Section        0  jmp_command_execution.o(i.jmp_command_g92_exec)
+    i.jmp_command_m82_exec                   0x0800f718   Section        0  jmp_command_execution.o(i.jmp_command_m82_exec)
+    i.jmp_command_struct_clear               0x0800f730   Section        0  jmp_command_execution.o(i.jmp_command_struct_clear)
+    i.jmp_config_param_init                  0x0800f76c   Section        0  jmp_param_state.o(i.jmp_config_param_init)
+    i.jmp_config_state_init                  0x0800f770   Section        0  jmp_param_state.o(i.jmp_config_state_init)
+    i.jmp_configstate_init                   0x0800f7f0   Section        0  jmp_param_state.o(i.jmp_configstate_init)
+    i.jmp_ex_config_check_digit_buff_clear   0x0800f7fc   Section        0  jmp_ex_config.o(i.jmp_ex_config_check_digit_buff_clear)
+    i.jmp_ex_config_check_ex_file            0x0800f814   Section        0  jmp_ex_config.o(i.jmp_ex_config_check_ex_file)
+    i.jmp_ex_config_check_ex_file_segment    0x08010084   Section        0  jmp_ex_config.o(i.jmp_ex_config_check_ex_file_segment)
+    i.jmp_ex_config_check_ex_file_segment_fb 0x080100d0   Section        0  jmp_ex_config.o(i.jmp_ex_config_check_ex_file_segment_fb)
+    i.jmp_ex_config_check_file               0x080100f4   Section        0  jmp_ex_config.o(i.jmp_ex_config_check_file)
+    i.jmp_ex_config_default_set              0x0801016c   Section        0  jmp_ex_config.o(i.jmp_ex_config_default_set)
+    i.jmp_ex_config_ex_file_read             0x080103c4   Section        0  jmp_ex_config.o(i.jmp_ex_config_ex_file_read)
+    i.jmp_ex_config_factory_setting          0x080103e0   Section        0  jmp_ex_config.o(i.jmp_ex_config_factory_setting)
+    i.jmp_ex_config_file_buf_clear           0x08010404   Section        0  jmp_ex_config.o(i.jmp_ex_config_file_buf_clear)
+    i.jmp_ex_config_file_cut_buf_clear       0x0801041c   Section        0  jmp_ex_config.o(i.jmp_ex_config_file_cut_buf_clear)
+    i.jmp_ex_config_init                     0x08010434   Section        0  jmp_ex_config.o(i.jmp_ex_config_init)
+    i.jmp_ex_config_read_and_set             0x08010454   Section        0  jmp_ex_config.o(i.jmp_ex_config_read_and_set)
+    i.jmp_ex_config_read_ex_save             0x08010d78   Section        0  jmp_ex_config.o(i.jmp_ex_config_read_ex_save)
+    i.jmp_ex_config_read_param               0x08010dc0   Section        0  jmp_ex_config.o(i.jmp_ex_config_read_param)
+    i.jmp_gcode_analysis                     0x08010e2c   Section        0  jmp_gcode_analysis.o(i.jmp_gcode_analysis)
+    i.jmp_gcode_buff_clear                   0x08010f10   Section        0  jmp_gcode_analysis.o(i.jmp_gcode_buff_clear)
+    i.jmp_gcode_buff_get                     0x08010f44   Section        0  jmp_gcode_analysis.o(i.jmp_gcode_buff_get)
+    i.jmp_gcode_buff_get_remain              0x08010f80   Section        0  jmp_gcode_analysis.o(i.jmp_gcode_buff_get_remain)
+    i.jmp_gcode_buff_get_sum                 0x08010fdc   Section        0  jmp_gcode_analysis.o(i.jmp_gcode_buff_get_sum)
+    i.jmp_gcode_buff_put                     0x0801102c   Section        0  jmp_gcode_analysis.o(i.jmp_gcode_buff_put)
+    i.jmp_gcode_g0_param                     0x08011070   Section        0  jmp_gcode_analysis.o(i.jmp_gcode_g0_param)
+    i.jmp_gcode_g1_param                     0x08011078   Section        0  jmp_gcode_analysis.o(i.jmp_gcode_g1_param)
+    i.jmp_gcode_g28_param                    0x08011170   Section        0  jmp_gcode_analysis.o(i.jmp_gcode_g28_param)
+    i.jmp_gcode_g4_param                     0x08011172   Section        0  jmp_gcode_analysis.o(i.jmp_gcode_g4_param)
+    i.jmp_gcode_g90_param                    0x08011174   Section        0  jmp_gcode_analysis.o(i.jmp_gcode_g90_param)
+    i.jmp_gcode_g92_param                    0x08011176   Section        0  jmp_gcode_analysis.o(i.jmp_gcode_g92_param)
+    i.jmp_gcode_g_param                      0x08011180   Section        0  jmp_gcode_analysis.o(i.jmp_gcode_g_param)
+    i.jmp_gcode_get_line                     0x080111d0   Section        0  jmp_gcode_analysis.o(i.jmp_gcode_get_line)
+    i.jmp_gcode_line_buff_clear              0x08011298   Section        0  jmp_gcode_analysis.o(i.jmp_gcode_line_buff_clear)
+    i.jmp_gcode_m82_param                    0x080112b8   Section        0  jmp_gcode_analysis.o(i.jmp_gcode_m82_param)
+    i.jmp_gcode_m_param                      0x080112bc   Section        0  jmp_gcode_analysis.o(i.jmp_gcode_m_param)
+    i.jmp_gcode_param_buff_clear             0x080112d8   Section        0  jmp_gcode_analysis.o(i.jmp_gcode_param_buff_clear)
+    i.jmp_gcode_s_param                      0x0801130c   Section        0  jmp_gcode_analysis.o(i.jmp_gcode_s_param)
+    i.jmp_gcode_t_param                      0x08011314   Section        0  jmp_gcode_analysis.o(i.jmp_gcode_t_param)
+    i.jmp_gui_find_gcode_file                0x0801131c   Section        0  jmp_gui.o(i.jmp_gui_find_gcode_file)
+    i.jmp_gui_gcode_file_name_clear          0x080113a4   Section        0  jmp_gui.o(i.jmp_gui_gcode_file_name_clear)
+    i.jmp_gui_goto_frame                     0x080113ec   Section        0  jmp_gui.o(i.jmp_gui_goto_frame)
+    i.jmp_gui_init                           0x08011414   Section        0  jmp_gui.o(i.jmp_gui_init)
+    i.jmp_gui_print_prepare_file_name_update 0x08011500   Section        0  jmp_gui.o(i.jmp_gui_print_prepare_file_name_update)
+    i.jmp_gui_print_set_update               0x08011580   Section        0  jmp_gui.o(i.jmp_gui_print_set_update)
+    i.jmp_gui_printing_main_task             0x080115dc   Section        0  jmp_gui.o(i.jmp_gui_printing_main_task)
+    i.jmp_gui_printing_progress_updata       0x08011618   Section        0  jmp_gui.o(i.jmp_gui_printing_progress_updata)
+    i.jmp_gui_printing_update                0x0801164c   Section        0  jmp_gui.o(i.jmp_gui_printing_update)
+    i.jmp_gui_start_print                    0x080117b0   Section        0  jmp_gui.o(i.jmp_gui_start_print)
+    i.jmp_gui_stop_print                     0x08011814   Section        0  jmp_gui.o(i.jmp_gui_stop_print)
+    i.jmp_gui_task                           0x08011824   Section        0  jmp_gui.o(i.jmp_gui_task)
+    i.jmp_gui_uart_command_analysis          0x080120dc   Section        0  jmp_gui.o(i.jmp_gui_uart_command_analysis)
+    i.jmp_gui_uart_command_get               0x08012160   Section        0  jmp_gui.o(i.jmp_gui_uart_command_get)
+    i.jmp_gui_uart_send                      0x08012230   Section        0  jmp_gui.o(i.jmp_gui_uart_send)
+    i.jmp_gui_uart_send_buffx                0x0801223c   Section        0  jmp_gui.o(i.jmp_gui_uart_send_buffx)
+    i.jmp_gui_uart_send_str                  0x08012254   Section        0  jmp_gui.o(i.jmp_gui_uart_send_str)
+    i.jmp_gui_uart_timeout                   0x080123b8   Section        0  jmp_gui.o(i.jmp_gui_uart_timeout)
+    i.jmp_gui_uart_timeout_disable           0x080123d8   Section        0  jmp_gui.o(i.jmp_gui_uart_timeout_disable)
+    i.jmp_gui_uart_timeout_enable            0x080123f4   Section        0  jmp_gui.o(i.jmp_gui_uart_timeout_enable)
+    i.jmp_gui_uart_timeout_init              0x08012410   Section        0  jmp_gui.o(i.jmp_gui_uart_timeout_init)
+    i.jmp_gui_uart_timeout_reset             0x08012430   Section        0  jmp_gui.o(i.jmp_gui_uart_timeout_reset)
+    i.jmp_gui_update_gcode_file_name         0x08012440   Section        0  jmp_gui.o(i.jmp_gui_update_gcode_file_name)
+    i.jmp_gui_update_manual_step             0x0801251c   Section        0  jmp_gui.o(i.jmp_gui_update_manual_step)
+    i.jmp_guiuart_rx_str_clear               0x08012560   Section        0  jmp_gui.o(i.jmp_guiuart_rx_str_clear)
+    i.jmp_guiuart_tx_str_clear               0x08012584   Section        0  jmp_gui.o(i.jmp_guiuart_tx_str_clear)
+    i.jmp_motion_clamp_to_software_endstops  0x080125a8   Section        0  jmp_motion.o(i.jmp_motion_clamp_to_software_endstops)
+    i.jmp_motion_find_home                   0x08012674   Section        0  jmp_motion.o(i.jmp_motion_find_home)
+    i.jmp_motion_init                        0x08012c94   Section        0  jmp_motion.o(i.jmp_motion_init)
+    i.jmp_motion_manual                      0x08012d08   Section        0  jmp_motion.o(i.jmp_motion_manual)
+    i.jmp_motion_prepare_move                0x08012d70   Section        0  jmp_motion.o(i.jmp_motion_prepare_move)
+    i.jmp_motion_set_postion                 0x08012e48   Section        0  jmp_motion.o(i.jmp_motion_set_postion)
+    i.jmp_motion_state_get                   0x08012e90   Section        0  jmp_motion.o(i.jmp_motion_state_get)
+    i.jmp_motion_task                        0x08013004   Section        0  jmp_motion.o(i.jmp_motion_task)
+    i.jmp_motion_test_task                   0x08013016   Section        0  jmp_motion.o(i.jmp_motion_test_task)
+    i.jmp_motion_variable_init               0x08013028   Section        0  jmp_motion.o(i.jmp_motion_variable_init)
+    i.jmp_storage_buff_clear                 0x080131ac   Section        0  jmp_storage_read.o(i.jmp_storage_buff_clear)
+    i.jmp_storage_buff_fill                  0x080131e0   Section        0  jmp_storage_read.o(i.jmp_storage_buff_fill)
+    i.jmp_storage_buff_get                   0x08013420   Section        0  jmp_storage_read.o(i.jmp_storage_buff_get)
+    i.jmp_storage_buff_get_sum               0x0801345c   Section        0  jmp_storage_read.o(i.jmp_storage_buff_get_sum)
+    i.jmp_storage_get_nextline_sum           0x080134ac   Section        0  jmp_storage_read.o(i.jmp_storage_get_nextline_sum)
+    i.jmp_storage_read_buff_clear            0x080134fc   Section        0  jmp_storage_read.o(i.jmp_storage_read_buff_clear)
+    i.jmp_storage_read_init                  0x0801351c   Section        0  jmp_storage_read.o(i.jmp_storage_read_init)
+    i.jmp_storage_read_task                  0x08013568   Section        0  jmp_storage_read.o(i.jmp_storage_read_task)
+    i.jmp_storage_readline                   0x0801376c   Section        0  jmp_storage_read.o(i.jmp_storage_readline)
+    i.ld_clust                               0x080137f4   Section        0  ff.o(i.ld_clust)
+    ld_clust                                 0x080137f5   Thumb Code    38  ff.o(i.ld_clust)
+    i.ld_dword                               0x0801381a   Section        0  ff.o(i.ld_dword)
+    ld_dword                                 0x0801381b   Thumb Code    24  ff.o(i.ld_dword)
+    i.ld_word                                0x08013832   Section        0  ff.o(i.ld_word)
+    ld_word                                  0x08013833   Thumb Code    12  ff.o(i.ld_word)
+    i.main                                   0x08013840   Section        0  main.o(i.main)
+    i.malloc                                 0x080138dc   Section        0  malloc.o(i.malloc)
+    i.max_allowable_speed                    0x08013948   Section        0  planner.o(i.max_allowable_speed)
+    i.mem_cmp                                0x0801397c   Section        0  ff.o(i.mem_cmp)
+    mem_cmp                                  0x0801397d   Thumb Code    36  ff.o(i.mem_cmp)
+    i.mem_cpy                                0x080139a0   Section        0  ff.o(i.mem_cpy)
+    mem_cpy                                  0x080139a1   Thumb Code    26  ff.o(i.mem_cpy)
+    i.mem_set                                0x080139ba   Section        0  ff.o(i.mem_set)
+    mem_set                                  0x080139bb   Thumb Code    18  ff.o(i.mem_set)
+    i.move_window                            0x080139cc   Section        0  ff.o(i.move_window)
+    move_window                              0x080139cd   Thumb Code    52  ff.o(i.move_window)
+    i.next_block_index                       0x08013a00   Section        0  planner.o(i.next_block_index)
+    next_block_index                         0x08013a01   Thumb Code    12  planner.o(i.next_block_index)
+    i.pick_lfn                               0x08013a0c   Section        0  ff.o(i.pick_lfn)
+    pick_lfn                                 0x08013a0d   Thumb Code   130  ff.o(i.pick_lfn)
+    i.plan_buffer_line                       0x08013a94   Section        0  planner.o(i.plan_buffer_line)
+    i.plan_discard_current_block             0x080144a4   Section        0  planner.o(i.plan_discard_current_block)
+    i.plan_get_current_block                 0x080144c8   Section        0  planner.o(i.plan_get_current_block)
+    i.plan_init                              0x08014500   Section        0  planner.o(i.plan_init)
+    i.plan_set_position                      0x08014564   Section        0  planner.o(i.plan_set_position)
+    i.planner_forward_pass                   0x08014648   Section        0  planner.o(i.planner_forward_pass)
+    i.planner_forward_pass_kernel            0x080146a0   Section        0  planner.o(i.planner_forward_pass_kernel)
+    i.planner_recalculate                    0x0801474e   Section        0  planner.o(i.planner_recalculate)
+    i.planner_recalculate_trapezoids         0x08014760   Section        0  planner.o(i.planner_recalculate_trapezoids)
+    i.planner_reverse_pass                   0x08014820   Section        0  planner.o(i.planner_reverse_pass)
+    i.planner_reverse_pass_kernel            0x08014888   Section        0  planner.o(i.planner_reverse_pass_kernel)
+    i.planner_variable_init                  0x08014934   Section        0  planner.o(i.planner_variable_init)
+    i.prev_block_index                       0x08014a6c   Section        0  planner.o(i.prev_block_index)
+    prev_block_index                         0x08014a6d   Thumb Code    10  planner.o(i.prev_block_index)
+    i.prvAddCurrentTaskToDelayedList         0x08014a78   Section        0  tasks.o(i.prvAddCurrentTaskToDelayedList)
+    prvAddCurrentTaskToDelayedList           0x08014a79   Thumb Code   124  tasks.o(i.prvAddCurrentTaskToDelayedList)
+    i.prvAddNewTaskToReadyList               0x08014b10   Section        0  tasks.o(i.prvAddNewTaskToReadyList)
+    prvAddNewTaskToReadyList                 0x08014b11   Thumb Code   150  tasks.o(i.prvAddNewTaskToReadyList)
+    i.prvCheckTasksWaitingTermination        0x08014bc4   Section        0  tasks.o(i.prvCheckTasksWaitingTermination)
+    prvCheckTasksWaitingTermination          0x08014bc5   Thumb Code    60  tasks.o(i.prvCheckTasksWaitingTermination)
+    i.prvCopyDataToQueue                     0x08014c0c   Section        0  queue.o(i.prvCopyDataToQueue)
+    prvCopyDataToQueue                       0x08014c0d   Thumb Code   124  queue.o(i.prvCopyDataToQueue)
+    i.prvDeleteTCB                           0x08014c88   Section        0  tasks.o(i.prvDeleteTCB)
+    prvDeleteTCB                             0x08014c89   Thumb Code    18  tasks.o(i.prvDeleteTCB)
+    i.prvGetDisinheritPriorityAfterTimeout   0x08014c9a   Section        0  queue.o(i.prvGetDisinheritPriorityAfterTimeout)
+    prvGetDisinheritPriorityAfterTimeout     0x08014c9b   Thumb Code    20  queue.o(i.prvGetDisinheritPriorityAfterTimeout)
+    i.prvHeapInit                            0x08014cb0   Section        0  heap_4.o(i.prvHeapInit)
+    prvHeapInit                              0x08014cb1   Thumb Code    98  heap_4.o(i.prvHeapInit)
+    i.prvIdleTask                            0x08014d2c   Section        0  tasks.o(i.prvIdleTask)
+    prvIdleTask                              0x08014d2d   Thumb Code    32  tasks.o(i.prvIdleTask)
+    i.prvInitialiseNewQueue                  0x08014d54   Section        0  queue.o(i.prvInitialiseNewQueue)
+    prvInitialiseNewQueue                    0x08014d55   Thumb Code    42  queue.o(i.prvInitialiseNewQueue)
+    i.prvInitialiseNewTask                   0x08014d7e   Section        0  tasks.o(i.prvInitialiseNewTask)
+    prvInitialiseNewTask                     0x08014d7f   Thumb Code   174  tasks.o(i.prvInitialiseNewTask)
+    i.prvInitialiseTaskLists                 0x08014e2c   Section        0  tasks.o(i.prvInitialiseTaskLists)
+    prvInitialiseTaskLists                   0x08014e2d   Thumb Code    70  tasks.o(i.prvInitialiseTaskLists)
+    i.prvInsertBlockIntoFreeList             0x08014e94   Section        0  heap_4.o(i.prvInsertBlockIntoFreeList)
+    prvInsertBlockIntoFreeList               0x08014e95   Thumb Code    96  heap_4.o(i.prvInsertBlockIntoFreeList)
+    i.prvIsQueueEmpty                        0x08014efc   Section        0  queue.o(i.prvIsQueueEmpty)
+    prvIsQueueEmpty                          0x08014efd   Thumb Code    26  queue.o(i.prvIsQueueEmpty)
+    i.prvIsQueueFull                         0x08014f16   Section        0  queue.o(i.prvIsQueueFull)
+    prvIsQueueFull                           0x08014f17   Thumb Code    30  queue.o(i.prvIsQueueFull)
+    i.prvNotifyQueueSetContainer             0x08014f34   Section        0  queue.o(i.prvNotifyQueueSetContainer)
+    prvNotifyQueueSetContainer               0x08014f35   Thumb Code   152  queue.o(i.prvNotifyQueueSetContainer)
+    i.prvResetNextTaskUnblockTime            0x08014fcc   Section        0  tasks.o(i.prvResetNextTaskUnblockTime)
+    prvResetNextTaskUnblockTime              0x08014fcd   Thumb Code    42  tasks.o(i.prvResetNextTaskUnblockTime)
+    i.prvTaskExitError                       0x08015000   Section        0  port.o(i.prvTaskExitError)
+    prvTaskExitError                         0x08015001   Thumb Code    68  port.o(i.prvTaskExitError)
+    i.prvUnlockQueue                         0x08015048   Section        0  queue.o(i.prvUnlockQueue)
+    prvUnlockQueue                           0x08015049   Thumb Code   146  queue.o(i.prvUnlockQueue)
+    i.put_fat                                0x080150da   Section        0  ff.o(i.put_fat)
+    put_fat                                  0x080150db   Thumb Code   312  ff.o(i.put_fat)
+    i.put_lfn                                0x08015214   Section        0  ff.o(i.put_lfn)
+    put_lfn                                  0x08015215   Thumb Code   124  ff.o(i.put_lfn)
+    i.pvPortMalloc                           0x08015294   Section        0  heap_4.o(i.pvPortMalloc)
+    i.pvTaskIncrementMutexHeldCount          0x080153dc   Section        0  tasks.o(i.pvTaskIncrementMutexHeldCount)
+    i.pxPortInitialiseStack                  0x080153fc   Section        0  port.o(i.pxPortInitialiseStack)
+    i.remove_chain                           0x08015428   Section        0  ff.o(i.remove_chain)
+    remove_chain                             0x08015429   Thumb Code   150  ff.o(i.remove_chain)
+    i.reset_acceleration_rates               0x080154c0   Section        0  planner.o(i.reset_acceleration_rates)
+    i.sqrt                                   0x08015504   Section        0  sqrt.o(i.sqrt)
+    i.st_clust                               0x0801556e   Section        0  ff.o(i.st_clust)
+    st_clust                                 0x0801556f   Thumb Code    36  ff.o(i.st_clust)
+    i.st_dword                               0x08015592   Section        0  ff.o(i.st_dword)
+    st_dword                                 0x08015593   Thumb Code    24  ff.o(i.st_dword)
+    i.st_init                                0x080155ac   Section        0  stepper.o(i.st_init)
+    i.st_pin_idle                            0x080156f0   Section        0  stepper.o(i.st_pin_idle)
+    i.st_set_position                        0x08015790   Section        0  stepper.o(i.st_set_position)
+    i.st_timer_interrupt                     0x080157a4   Section        0  stepper.o(i.st_timer_interrupt)
+    i.st_word                                0x0801600c   Section        0  ff.o(i.st_word)
+    st_word                                  0x0801600d   Thumb Code    12  ff.o(i.st_word)
+    i.sum_sfn                                0x08016018   Section        0  ff.o(i.sum_sfn)
+    sum_sfn                                  0x08016019   Thumb Code    32  ff.o(i.sum_sfn)
+    i.sync_fs                                0x08016038   Section        0  ff.o(i.sync_fs)
+    sync_fs                                  0x08016039   Thumb Code   134  ff.o(i.sync_fs)
+    i.sync_window                            0x080160c8   Section        0  ff.o(i.sync_window)
+    sync_window                              0x080160c9   Thumb Code    82  ff.o(i.sync_window)
+    i.tmdelay_init                           0x0801611c   Section        0  tmdelay.o(i.tmdelay_init)
+    i.tmdelay_ms                             0x0801616c   Section        0  tmdelay.o(i.tmdelay_ms)
+    i.tmdelay_us                             0x08016184   Section        0  tmdelay.o(i.tmdelay_us)
+    i.trapezoid_generator_reset              0x080161c4   Section        0  stepper.o(i.trapezoid_generator_reset)
+    i.usb_app_init                           0x08016264   Section        0  usb_app.o(i.usb_app_init)
+    i.usb_init                               0x08016290   Section        0  usb_test.o(i.usb_init)
+    i.usb_task                               0x080162bc   Section        0  usb_app.o(i.usb_task)
+    usb_task                                 0x080162bd   Thumb Code    20  usb_app.o(i.usb_task)
+    i.uxListRemove                           0x080162d4   Section        0  list.o(i.uxListRemove)
+    i.vListInitialise                        0x080162fc   Section        0  list.o(i.vListInitialise)
+    i.vListInitialiseItem                    0x08016316   Section        0  list.o(i.vListInitialiseItem)
+    i.vListInsert                            0x0801631c   Section        0  list.o(i.vListInsert)
+    i.vListInsertEnd                         0x08016350   Section        0  list.o(i.vListInsertEnd)
+    i.vPortEnterCritical                     0x08016368   Section        0  port.o(i.vPortEnterCritical)
+    i.vPortExitCritical                      0x080163c4   Section        0  port.o(i.vPortExitCritical)
+    i.vPortFree                              0x08016404   Section        0  heap_4.o(i.vPortFree)
+    i.vPortSetupTimerInterrupt               0x080164a0   Section        0  port.o(i.vPortSetupTimerInterrupt)
+    i.vPortValidateInterruptPriority         0x080164c8   Section        0  port.o(i.vPortValidateInterruptPriority)
+    i.vTaskDelay                             0x08016548   Section        0  tasks.o(i.vTaskDelay)
+    i.vTaskInternalSetTimeOutState           0x080165a8   Section        0  tasks.o(i.vTaskInternalSetTimeOutState)
+    i.vTaskLED                               0x080165c0   Section        0  main.o(i.vTaskLED)
+    vTaskLED                                 0x080165c1   Thumb Code    32  main.o(i.vTaskLED)
+    i.vTaskMissedYield                       0x080165e0   Section        0  tasks.o(i.vTaskMissedYield)
+    i.vTaskPlaceOnEventList                  0x080165ec   Section        0  tasks.o(i.vTaskPlaceOnEventList)
+    i.vTaskPriorityDisinheritAfterTimeout    0x08016628   Section        0  tasks.o(i.vTaskPriorityDisinheritAfterTimeout)
+    i.vTaskStartScheduler                    0x08016724   Section        0  tasks.o(i.vTaskStartScheduler)
+    i.vTaskSuspendAll                        0x080167b4   Section        0  tasks.o(i.vTaskSuspendAll)
+    i.vTaskSwitchContext                     0x080167c4   Section        0  tasks.o(i.vTaskSwitchContext)
+    i.validate                               0x08016854   Section        0  ff.o(i.validate)
+    validate                                 0x08016855   Thumb Code    66  ff.o(i.validate)
+    i.xPortStartScheduler                    0x08016898   Section        0  port.o(i.xPortStartScheduler)
+    i.xQueueGenericCreate                    0x080169dc   Section        0  queue.o(i.xQueueGenericCreate)
+    i.xQueueGenericReset                     0x08016a38   Section        0  queue.o(i.xQueueGenericReset)
+    i.xQueueGenericSend                      0x08016ad4   Section        0  queue.o(i.xQueueGenericSend)
+    i.xQueueGiveFromISR                      0x08016c80   Section        0  queue.o(i.xQueueGiveFromISR)
+    i.xQueueSemaphoreTake                    0x08016d88   Section        0  queue.o(i.xQueueSemaphoreTake)
+    i.xTaskCheckForTimeOut                   0x08016f24   Section        0  tasks.o(i.xTaskCheckForTimeOut)
+    i.xTaskCreate                            0x08016fb8   Section        0  tasks.o(i.xTaskCreate)
+    i.xTaskIncrementTick                     0x08017018   Section        0  tasks.o(i.xTaskIncrementTick)
+    i.xTaskPriorityDisinherit                0x08017164   Section        0  tasks.o(i.xTaskPriorityDisinherit)
+    i.xTaskPriorityInherit                   0x08017234   Section        0  tasks.o(i.xTaskPriorityInherit)
+    i.xTaskRemoveFromEventList               0x080172fc   Section        0  tasks.o(i.xTaskRemoveFromEventList)
+    i.xTaskResumeAll                         0x08017398   Section        0  tasks.o(i.xTaskResumeAll)
+    .constdata                               0x080174a0   Section       64  system_stm32h7xx.o(.constdata)
+    UARTPrescTable                           0x080174a0   Data          24  system_stm32h7xx.o(.constdata)
+    USARTPrescTable                          0x080174b8   Data          24  system_stm32h7xx.o(.constdata)
+    .constdata                               0x080174e0   Section       48  stm32h7xx_hal_uart.o(.constdata)
+    UARTPrescTable                           0x080174e0   Data          24  stm32h7xx_hal_uart.o(.constdata)
+    USARTPrescTable                          0x080174f8   Data          24  stm32h7xx_hal_uart.o(.constdata)
+    .constdata                               0x08017510   Section       74  ff.o(.constdata)
+    LfnOfs                                   0x08017510   Data          13  ff.o(.constdata)
+    badchr                                   0x0801751d   Data          16  ff.o(.constdata)
+    vst                                      0x0801752e   Data          22  ff.o(.constdata)
+    cst                                      0x08017544   Data          22  ff.o(.constdata)
+    .constdata                               0x0801755a   Section    175030  cc936.o(.constdata)
+    uni2oem                                  0x0801755a   Data       87172  cc936.o(.constdata)
+    oem2uni                                  0x0802c9de   Data       87172  cc936.o(.constdata)
+    cvt1                                     0x08041e62   Data         498  cc936.o(.constdata)
+    cvt2                                     0x08042054   Data         188  cc936.o(.constdata)
+    .constdata                               0x08042110   Section      136  pow.o(.constdata)
+    bp                                       0x08042110   Data          16  pow.o(.constdata)
+    dp_h                                     0x08042120   Data          16  pow.o(.constdata)
+    dp_l                                     0x08042130   Data          16  pow.o(.constdata)
+    L                                        0x08042140   Data          48  pow.o(.constdata)
+    P                                        0x08042170   Data          40  pow.o(.constdata)
+    .constdata                               0x08042198   Section        8  qnan.o(.constdata)
+    .constdata                               0x080421a0   Section      129  ctype_o.o(.constdata)
+    .constdata                               0x08042224   Section        4  ctype_o.o(.constdata)
+    table                                    0x08042224   Data           4  ctype_o.o(.constdata)
+    .conststring                             0x08042228   Section        4  usbh_msc.o(.conststring)
     .data                                    0x24000000   Section        4  main.o(.data)
     xHandleTaskLED                           0x24000000   Data           4  main.o(.data)
     .data                                    0x24000004   Section        8  system_stm32h7xx.o(.data)
@@ -8620,183 +8629,189 @@ Image Symbol Table
     calc_timer                               0x0800cc09   Thumb Code    72  stepper.o(i.calc_timer)
     calculate_trapezoid_for_block            0x0800cc5d   Thumb Code   342  planner.o(i.calculate_trapezoid_for_block)
     checkHitEndstops                         0x0800cdb5   Thumb Code   190  stepper.o(i.checkHitEndstops)
-    disk_initialize                          0x0800d85f   Thumb Code    44  diskio.o(i.disk_initialize)
-    disk_ioctl                               0x0800d88b   Thumb Code    90  diskio.o(i.disk_ioctl)
-    disk_read                                0x0800d8e5   Thumb Code    98  diskio.o(i.disk_read)
-    disk_status                              0x0800d947   Thumb Code     6  diskio.o(i.disk_status)
-    disk_write                               0x0800d94d   Thumb Code    98  diskio.o(i.disk_write)
-    estimate_acceleration_distance           0x0800d9b1   Thumb Code    46  planner.o(i.estimate_acceleration_distance)
-    f_close                                  0x0800d9e5   Thumb Code    38  ff.o(i.f_close)
-    f_closedir                               0x0800da0b   Thumb Code    24  ff.o(i.f_closedir)
-    f_lseek                                  0x0800da23   Thumb Code   684  ff.o(i.f_lseek)
-    f_mkfs                                   0x0800dcd1   Thumb Code  1384  ff.o(i.f_mkfs)
-    f_mount                                  0x0800e241   Thumb Code    86  ff.o(i.f_mount)
-    f_open                                   0x0800e29d   Thumb Code   368  ff.o(i.f_open)
-    f_opendir                                0x0800e40d   Thumb Code   124  ff.o(i.f_opendir)
-    f_read                                   0x0800e489   Thumb Code   428  ff.o(i.f_read)
-    f_readdir                                0x0800e635   Thumb Code    94  ff.o(i.f_readdir)
-    f_sync                                   0x0800e693   Thumb Code   160  ff.o(i.f_sync)
-    f_write                                  0x0800e733   Thumb Code   494  ff.o(i.f_write)
-    fabs                                     0x0800e921   Thumb Code    24  fabs.o(i.fabs)
-    ff_convert                               0x0800e939   Thumb Code   116  cc936.o(i.ff_convert)
-    ff_wtoupper                              0x0800e9b5   Thumb Code   156  cc936.o(i.ff_wtoupper)
-    fputc                                    0x0800edf1   Thumb Code    22  bsp_uart.o(i.fputc)
-    free                                     0x0800ee0d   Thumb Code    76  malloc.o(i.free)
-    get_fattime                              0x0800f009   Thumb Code     4  diskio.o(i.get_fattime)
-    intersection_distance                    0x0800f1a1   Thumb Code    58  planner.o(i.intersection_distance)
-    jmp_command_execution                    0x0800f1e1   Thumb Code   134  jmp_command_execution.o(i.jmp_command_execution)
-    jmp_command_execution_init               0x0800f26d   Thumb Code    26  jmp_command_execution.o(i.jmp_command_execution_init)
-    jmp_command_g0_exec                      0x0800f2dd   Thumb Code     2  jmp_command_execution.o(i.jmp_command_g0_exec)
-    jmp_command_g1_exec                      0x0800f2e1   Thumb Code   326  jmp_command_execution.o(i.jmp_command_g1_exec)
-    jmp_command_g28_exec                     0x0800f455   Thumb Code    44  jmp_command_execution.o(i.jmp_command_g28_exec)
-    jmp_command_g4_exec                      0x0800f495   Thumb Code    16  jmp_command_execution.o(i.jmp_command_g4_exec)
-    jmp_command_g90_exec                     0x0800f4ad   Thumb Code    16  jmp_command_execution.o(i.jmp_command_g90_exec)
-    jmp_command_g92_exec                     0x0800f4c5   Thumb Code   276  jmp_command_execution.o(i.jmp_command_g92_exec)
-    jmp_command_m82_exec                     0x0800f601   Thumb Code    16  jmp_command_execution.o(i.jmp_command_m82_exec)
-    jmp_command_struct_clear                 0x0800f619   Thumb Code    46  jmp_command_execution.o(i.jmp_command_struct_clear)
-    jmp_config_param_init                    0x0800f655   Thumb Code     2  jmp_param_state.o(i.jmp_config_param_init)
-    jmp_config_state_init                    0x0800f659   Thumb Code   106  jmp_param_state.o(i.jmp_config_state_init)
-    jmp_configstate_init                     0x0800f6d9   Thumb Code    12  jmp_param_state.o(i.jmp_configstate_init)
-    jmp_ex_config_check_digit_buff_clear     0x0800f6e5   Thumb Code    18  jmp_ex_config.o(i.jmp_ex_config_check_digit_buff_clear)
-    jmp_ex_config_check_ex_file              0x0800f6fd   Thumb Code  2068  jmp_ex_config.o(i.jmp_ex_config_check_ex_file)
-    jmp_ex_config_check_ex_file_segment      0x0800ff6d   Thumb Code    70  jmp_ex_config.o(i.jmp_ex_config_check_ex_file_segment)
-    jmp_ex_config_check_ex_file_segment_fb   0x0800ffb9   Thumb Code    32  jmp_ex_config.o(i.jmp_ex_config_check_ex_file_segment_fb)
-    jmp_ex_config_file_buf_clear             0x0800ffdd   Thumb Code    20  jmp_ex_config.o(i.jmp_ex_config_file_buf_clear)
-    jmp_ex_config_file_cut_buf_clear         0x0800fff5   Thumb Code    20  jmp_ex_config.o(i.jmp_ex_config_file_cut_buf_clear)
-    jmp_ex_config_read_and_set               0x0801000d   Thumb Code  2012  jmp_ex_config.o(i.jmp_ex_config_read_and_set)
-    jmp_ex_config_read_ex_save               0x08010931   Thumb Code    42  jmp_ex_config.o(i.jmp_ex_config_read_ex_save)
-    jmp_ex_config_read_param                 0x08010979   Thumb Code   100  jmp_ex_config.o(i.jmp_ex_config_read_param)
-    jmp_ex_config_test                       0x080109e5   Thumb Code    22  jmp_ex_config.o(i.jmp_ex_config_test)
-    jmp_gcode_analysis                       0x080109fd   Thumb Code   206  jmp_gcode_analysis.o(i.jmp_gcode_analysis)
-    jmp_gcode_buff_clear                     0x08010ae1   Thumb Code    34  jmp_gcode_analysis.o(i.jmp_gcode_buff_clear)
-    jmp_gcode_buff_get                       0x08010b15   Thumb Code    48  jmp_gcode_analysis.o(i.jmp_gcode_buff_get)
-    jmp_gcode_buff_get_remain                0x08010b51   Thumb Code    78  jmp_gcode_analysis.o(i.jmp_gcode_buff_get_remain)
-    jmp_gcode_buff_get_sum                   0x08010bad   Thumb Code    68  jmp_gcode_analysis.o(i.jmp_gcode_buff_get_sum)
-    jmp_gcode_buff_put                       0x08010bfd   Thumb Code    52  jmp_gcode_analysis.o(i.jmp_gcode_buff_put)
-    jmp_gcode_g0_param                       0x08010c41   Thumb Code     8  jmp_gcode_analysis.o(i.jmp_gcode_g0_param)
-    jmp_gcode_g1_param                       0x08010c49   Thumb Code   236  jmp_gcode_analysis.o(i.jmp_gcode_g1_param)
-    jmp_gcode_g28_param                      0x08010d41   Thumb Code     2  jmp_gcode_analysis.o(i.jmp_gcode_g28_param)
-    jmp_gcode_g4_param                       0x08010d43   Thumb Code     2  jmp_gcode_analysis.o(i.jmp_gcode_g4_param)
-    jmp_gcode_g90_param                      0x08010d45   Thumb Code     2  jmp_gcode_analysis.o(i.jmp_gcode_g90_param)
-    jmp_gcode_g92_param                      0x08010d47   Thumb Code     8  jmp_gcode_analysis.o(i.jmp_gcode_g92_param)
-    jmp_gcode_g_param                        0x08010d51   Thumb Code    76  jmp_gcode_analysis.o(i.jmp_gcode_g_param)
-    jmp_gcode_get_line                       0x08010da1   Thumb Code   184  jmp_gcode_analysis.o(i.jmp_gcode_get_line)
-    jmp_gcode_line_buff_clear                0x08010e69   Thumb Code    24  jmp_gcode_analysis.o(i.jmp_gcode_line_buff_clear)
-    jmp_gcode_m82_param                      0x08010e89   Thumb Code     2  jmp_gcode_analysis.o(i.jmp_gcode_m82_param)
-    jmp_gcode_m_param                        0x08010e8d   Thumb Code    22  jmp_gcode_analysis.o(i.jmp_gcode_m_param)
-    jmp_gcode_param_buff_clear               0x08010ea9   Thumb Code    44  jmp_gcode_analysis.o(i.jmp_gcode_param_buff_clear)
-    jmp_gcode_s_param                        0x08010edd   Thumb Code     8  jmp_gcode_analysis.o(i.jmp_gcode_s_param)
-    jmp_gcode_t_param                        0x08010ee5   Thumb Code     8  jmp_gcode_analysis.o(i.jmp_gcode_t_param)
-    jmp_gui_find_gcode_file                  0x08010eed   Thumb Code   102  jmp_gui.o(i.jmp_gui_find_gcode_file)
-    jmp_gui_gcode_file_name_clear            0x08010f75   Thumb Code    56  jmp_gui.o(i.jmp_gui_gcode_file_name_clear)
-    jmp_gui_goto_frame                       0x08010fbd   Thumb Code    36  jmp_gui.o(i.jmp_gui_goto_frame)
-    jmp_gui_init                             0x08010fe5   Thumb Code   144  jmp_gui.o(i.jmp_gui_init)
-    jmp_gui_print_prepare_file_name_update   0x080110d1   Thumb Code   112  jmp_gui.o(i.jmp_gui_print_prepare_file_name_update)
-    jmp_gui_print_set_update                 0x08011151   Thumb Code    44  jmp_gui.o(i.jmp_gui_print_set_update)
-    jmp_gui_printing_main_task               0x08011185   Thumb Code    52  jmp_gui.o(i.jmp_gui_printing_main_task)
-    jmp_gui_printing_update                  0x080111c1   Thumb Code   328  jmp_gui.o(i.jmp_gui_printing_update)
-    jmp_gui_start_print                      0x0801131d   Thumb Code    70  jmp_gui.o(i.jmp_gui_start_print)
-    jmp_gui_stop_print                       0x08011381   Thumb Code    10  jmp_gui.o(i.jmp_gui_stop_print)
-    jmp_gui_task                             0x08011391   Thumb Code  1804  jmp_gui.o(i.jmp_gui_task)
-    jmp_gui_uart_command_analysis            0x08011ab5   Thumb Code   122  jmp_gui.o(i.jmp_gui_uart_command_analysis)
-    jmp_gui_uart_command_get                 0x08011b39   Thumb Code   180  jmp_gui.o(i.jmp_gui_uart_command_get)
-    jmp_gui_uart_send                        0x08011c09   Thumb Code    12  jmp_gui.o(i.jmp_gui_uart_send)
-    jmp_gui_uart_send_buffx                  0x08011c15   Thumb Code    24  jmp_gui.o(i.jmp_gui_uart_send_buffx)
-    jmp_gui_uart_send_str                    0x08011c2d   Thumb Code   344  jmp_gui.o(i.jmp_gui_uart_send_str)
-    jmp_gui_uart_timeout                     0x08011d91   Thumb Code    20  jmp_gui.o(i.jmp_gui_uart_timeout)
-    jmp_gui_uart_timeout_disable             0x08011db1   Thumb Code    20  jmp_gui.o(i.jmp_gui_uart_timeout_disable)
-    jmp_gui_uart_timeout_enable              0x08011dcd   Thumb Code    20  jmp_gui.o(i.jmp_gui_uart_timeout_enable)
-    jmp_gui_uart_timeout_init                0x08011de9   Thumb Code    26  jmp_gui.o(i.jmp_gui_uart_timeout_init)
-    jmp_gui_uart_timeout_reset               0x08011e09   Thumb Code    12  jmp_gui.o(i.jmp_gui_uart_timeout_reset)
-    jmp_gui_update_gcode_file_name           0x08011e19   Thumb Code   204  jmp_gui.o(i.jmp_gui_update_gcode_file_name)
-    jmp_gui_update_manual_step               0x08011ef5   Thumb Code    58  jmp_gui.o(i.jmp_gui_update_manual_step)
-    jmp_guiuart_rx_str_clear                 0x08011f39   Thumb Code    32  jmp_gui.o(i.jmp_guiuart_rx_str_clear)
-    jmp_guiuart_tx_str_clear                 0x08011f5d   Thumb Code    32  jmp_gui.o(i.jmp_guiuart_tx_str_clear)
-    jmp_motion_clamp_to_software_endstops    0x08011f81   Thumb Code   194  jmp_motion.o(i.jmp_motion_clamp_to_software_endstops)
-    jmp_motion_find_home                     0x0801204d   Thumb Code  1548  jmp_motion.o(i.jmp_motion_find_home)
-    jmp_motion_init                          0x0801266d   Thumb Code    60  jmp_motion.o(i.jmp_motion_init)
-    jmp_motion_manual                        0x080126e1   Thumb Code    94  jmp_motion.o(i.jmp_motion_manual)
-    jmp_motion_prepare_move                  0x08012749   Thumb Code   140  jmp_motion.o(i.jmp_motion_prepare_move)
-    jmp_motion_set_postion                   0x080127ed   Thumb Code    66  jmp_motion.o(i.jmp_motion_set_postion)
-    jmp_motion_state_get                     0x08012835   Thumb Code   350  jmp_motion.o(i.jmp_motion_state_get)
-    jmp_motion_task                          0x080129a9   Thumb Code    18  jmp_motion.o(i.jmp_motion_task)
-    jmp_motion_test_task                     0x080129bb   Thumb Code    16  jmp_motion.o(i.jmp_motion_test_task)
-    jmp_motion_variable_init                 0x080129cd   Thumb Code   354  jmp_motion.o(i.jmp_motion_variable_init)
-    jmp_storage_buff_clear                   0x08012b51   Thumb Code    34  jmp_storage_read.o(i.jmp_storage_buff_clear)
-    jmp_storage_buff_fill                    0x08012b85   Thumb Code   540  jmp_storage_read.o(i.jmp_storage_buff_fill)
-    jmp_storage_buff_get                     0x08012dc5   Thumb Code    48  jmp_storage_read.o(i.jmp_storage_buff_get)
-    jmp_storage_buff_get_sum                 0x08012e01   Thumb Code    68  jmp_storage_read.o(i.jmp_storage_buff_get_sum)
-    jmp_storage_get_nextline_sum             0x08012e51   Thumb Code    64  jmp_storage_read.o(i.jmp_storage_get_nextline_sum)
-    jmp_storage_read_buff_clear              0x08012ea1   Thumb Code    24  jmp_storage_read.o(i.jmp_storage_read_buff_clear)
-    jmp_storage_read_init                    0x08012ec1   Thumb Code    40  jmp_storage_read.o(i.jmp_storage_read_init)
-    jmp_storage_read_task                    0x08012f0d   Thumb Code   462  jmp_storage_read.o(i.jmp_storage_read_task)
-    jmp_storage_readline                     0x08013111   Thumb Code   120  jmp_storage_read.o(i.jmp_storage_readline)
-    main                                     0x080131e5   Thumb Code   130  main.o(i.main)
-    malloc                                   0x0801327d   Thumb Code    92  malloc.o(i.malloc)
-    max_allowable_speed                      0x080132e9   Thumb Code    52  planner.o(i.max_allowable_speed)
-    plan_buffer_line                         0x08013435   Thumb Code  2548  planner.o(i.plan_buffer_line)
-    plan_discard_current_block               0x08013e45   Thumb Code    28  planner.o(i.plan_discard_current_block)
-    plan_get_current_block                   0x08013e69   Thumb Code    44  planner.o(i.plan_get_current_block)
-    plan_init                                0x08013ea1   Thumb Code    74  planner.o(i.plan_init)
-    plan_set_position                        0x08013f05   Thumb Code   206  planner.o(i.plan_set_position)
-    planner_forward_pass                     0x08013fe9   Thumb Code    76  planner.o(i.planner_forward_pass)
-    planner_forward_pass_kernel              0x08014041   Thumb Code   174  planner.o(i.planner_forward_pass_kernel)
-    planner_recalculate                      0x080140ef   Thumb Code    16  planner.o(i.planner_recalculate)
-    planner_recalculate_trapezoids           0x08014101   Thumb Code   174  planner.o(i.planner_recalculate_trapezoids)
-    planner_reverse_pass                     0x080141c1   Thumb Code    92  planner.o(i.planner_reverse_pass)
-    planner_reverse_pass_kernel              0x08014229   Thumb Code   170  planner.o(i.planner_reverse_pass_kernel)
-    planner_variable_init                    0x080142d5   Thumb Code   274  planner.o(i.planner_variable_init)
-    pvPortMalloc                             0x08014c35   Thumb Code   308  heap_4.o(i.pvPortMalloc)
-    pvTaskIncrementMutexHeldCount            0x08014d7d   Thumb Code    26  tasks.o(i.pvTaskIncrementMutexHeldCount)
-    pxPortInitialiseStack                    0x08014d9d   Thumb Code    38  port.o(i.pxPortInitialiseStack)
-    reset_acceleration_rates                 0x08014e61   Thumb Code    56  planner.o(i.reset_acceleration_rates)
-    sqrt                                     0x08014ea5   Thumb Code   106  sqrt.o(i.sqrt)
-    st_init                                  0x08014f4d   Thumb Code   314  stepper.o(i.st_init)
-    st_pin_idle                              0x08015091   Thumb Code   152  stepper.o(i.st_pin_idle)
-    st_set_position                          0x08015131   Thumb Code    14  stepper.o(i.st_set_position)
-    st_timer_interrupt                       0x08015145   Thumb Code  2152  stepper.o(i.st_timer_interrupt)
-    tmdelay_init                             0x08015abd   Thumb Code    68  tmdelay.o(i.tmdelay_init)
-    tmdelay_ms                               0x08015b0d   Thumb Code    24  tmdelay.o(i.tmdelay_ms)
-    tmdelay_us                               0x08015b25   Thumb Code    58  tmdelay.o(i.tmdelay_us)
-    trapezoid_generator_reset                0x08015b65   Thumb Code   132  stepper.o(i.trapezoid_generator_reset)
-    usb_app_init                             0x08015c05   Thumb Code    24  usb_app.o(i.usb_app_init)
-    usb_init                                 0x08015c31   Thumb Code    32  usb_test.o(i.usb_init)
-    uxListRemove                             0x08015c75   Thumb Code    40  list.o(i.uxListRemove)
-    vListInitialise                          0x08015c9d   Thumb Code    26  list.o(i.vListInitialise)
-    vListInitialiseItem                      0x08015cb7   Thumb Code     6  list.o(i.vListInitialiseItem)
-    vListInsert                              0x08015cbd   Thumb Code    52  list.o(i.vListInsert)
-    vListInsertEnd                           0x08015cf1   Thumb Code    24  list.o(i.vListInsertEnd)
-    vPortEnterCritical                       0x08015d09   Thumb Code    84  port.o(i.vPortEnterCritical)
-    vPortExitCritical                        0x08015d65   Thumb Code    60  port.o(i.vPortExitCritical)
-    vPortFree                                0x08015da5   Thumb Code   148  heap_4.o(i.vPortFree)
-    vPortSetupTimerInterrupt                 0x08015e41   Thumb Code    36  port.o(i.vPortSetupTimerInterrupt)
-    vPortValidateInterruptPriority           0x08015e69   Thumb Code   114  port.o(i.vPortValidateInterruptPriority)
-    vTaskDelay                               0x08015ee9   Thumb Code    86  tasks.o(i.vTaskDelay)
-    vTaskInternalSetTimeOutState             0x08015f49   Thumb Code    14  tasks.o(i.vTaskInternalSetTimeOutState)
-    vTaskMissedYield                         0x08015f81   Thumb Code     8  tasks.o(i.vTaskMissedYield)
-    vTaskPlaceOnEventList                    0x08015f8d   Thumb Code    56  tasks.o(i.vTaskPlaceOnEventList)
-    vTaskPriorityDisinheritAfterTimeout      0x08015fc9   Thumb Code   238  tasks.o(i.vTaskPriorityDisinheritAfterTimeout)
-    vTaskStartScheduler                      0x080160c5   Thumb Code   116  tasks.o(i.vTaskStartScheduler)
-    vTaskSuspendAll                          0x08016155   Thumb Code    12  tasks.o(i.vTaskSuspendAll)
-    vTaskSwitchContext                       0x08016165   Thumb Code   122  tasks.o(i.vTaskSwitchContext)
-    xPortStartScheduler                      0x08016239   Thumb Code   298  port.o(i.xPortStartScheduler)
-    xQueueGenericCreate                      0x0801637d   Thumb Code    92  queue.o(i.xQueueGenericCreate)
-    xQueueGenericReset                       0x080163d9   Thumb Code   150  queue.o(i.xQueueGenericReset)
-    xQueueGenericSend                        0x08016475   Thumb Code   424  queue.o(i.xQueueGenericSend)
-    xQueueGiveFromISR                        0x08016621   Thumb Code   262  queue.o(i.xQueueGiveFromISR)
-    xQueueSemaphoreTake                      0x08016729   Thumb Code   406  queue.o(i.xQueueSemaphoreTake)
-    xTaskCheckForTimeOut                     0x080168c5   Thumb Code   140  tasks.o(i.xTaskCheckForTimeOut)
-    xTaskCreate                              0x08016959   Thumb Code    96  tasks.o(i.xTaskCreate)
-    xTaskIncrementTick                       0x080169b9   Thumb Code   286  tasks.o(i.xTaskIncrementTick)
-    xTaskPriorityDisinherit                  0x08016b05   Thumb Code   196  tasks.o(i.xTaskPriorityDisinherit)
-    xTaskPriorityInherit                     0x08016bd5   Thumb Code   186  tasks.o(i.xTaskPriorityInherit)
-    xTaskRemoveFromEventList                 0x08016c9d   Thumb Code   132  tasks.o(i.xTaskRemoveFromEventList)
-    xTaskResumeAll                           0x08016d39   Thumb Code   228  tasks.o(i.xTaskResumeAll)
-    D1CorePrescTable                         0x08016e70   Data          16  system_stm32h7xx.o(.constdata)
-    __mathlib_zero                           0x08041b38   Data           8  qnan.o(.constdata)
-    __ctype_table                            0x08041b40   Data         129  ctype_o.o(.constdata)
-    Region$$Table$$Base                      0x08041bcc   Number         0  anon$$obj.o(Region$$Table)
-    Region$$Table$$Limit                     0x08041bec   Number         0  anon$$obj.o(Region$$Table)
+    disk_initialize                          0x0800d8bf   Thumb Code    44  diskio.o(i.disk_initialize)
+    disk_ioctl                               0x0800d8eb   Thumb Code    90  diskio.o(i.disk_ioctl)
+    disk_read                                0x0800d945   Thumb Code    98  diskio.o(i.disk_read)
+    disk_status                              0x0800d9a7   Thumb Code     6  diskio.o(i.disk_status)
+    disk_write                               0x0800d9ad   Thumb Code    98  diskio.o(i.disk_write)
+    estimate_acceleration_distance           0x0800da11   Thumb Code    46  planner.o(i.estimate_acceleration_distance)
+    f_close                                  0x0800da45   Thumb Code    38  ff.o(i.f_close)
+    f_closedir                               0x0800da6b   Thumb Code    24  ff.o(i.f_closedir)
+    f_lseek                                  0x0800da83   Thumb Code   684  ff.o(i.f_lseek)
+    f_mkfs                                   0x0800dd31   Thumb Code  1384  ff.o(i.f_mkfs)
+    f_mount                                  0x0800e2a1   Thumb Code    86  ff.o(i.f_mount)
+    f_open                                   0x0800e2fd   Thumb Code   368  ff.o(i.f_open)
+    f_opendir                                0x0800e46d   Thumb Code   124  ff.o(i.f_opendir)
+    f_read                                   0x0800e4e9   Thumb Code   428  ff.o(i.f_read)
+    f_readdir                                0x0800e695   Thumb Code    94  ff.o(i.f_readdir)
+    f_sync                                   0x0800e6f3   Thumb Code   160  ff.o(i.f_sync)
+    f_unlink                                 0x0800e793   Thumb Code   182  ff.o(i.f_unlink)
+    f_write                                  0x0800e849   Thumb Code   494  ff.o(i.f_write)
+    fabs                                     0x0800ea37   Thumb Code    24  fabs.o(i.fabs)
+    ff_convert                               0x0800ea51   Thumb Code   116  cc936.o(i.ff_convert)
+    ff_wtoupper                              0x0800eacd   Thumb Code   156  cc936.o(i.ff_wtoupper)
+    fputc                                    0x0800ef09   Thumb Code    22  bsp_uart.o(i.fputc)
+    free                                     0x0800ef25   Thumb Code    76  malloc.o(i.free)
+    get_fattime                              0x0800f121   Thumb Code     4  diskio.o(i.get_fattime)
+    intersection_distance                    0x0800f2b9   Thumb Code    58  planner.o(i.intersection_distance)
+    jmp_command_execution                    0x0800f2f9   Thumb Code   134  jmp_command_execution.o(i.jmp_command_execution)
+    jmp_command_execution_init               0x0800f385   Thumb Code    26  jmp_command_execution.o(i.jmp_command_execution_init)
+    jmp_command_g0_exec                      0x0800f3f5   Thumb Code     2  jmp_command_execution.o(i.jmp_command_g0_exec)
+    jmp_command_g1_exec                      0x0800f3f9   Thumb Code   326  jmp_command_execution.o(i.jmp_command_g1_exec)
+    jmp_command_g28_exec                     0x0800f56d   Thumb Code    44  jmp_command_execution.o(i.jmp_command_g28_exec)
+    jmp_command_g4_exec                      0x0800f5ad   Thumb Code    16  jmp_command_execution.o(i.jmp_command_g4_exec)
+    jmp_command_g90_exec                     0x0800f5c5   Thumb Code    16  jmp_command_execution.o(i.jmp_command_g90_exec)
+    jmp_command_g92_exec                     0x0800f5dd   Thumb Code   276  jmp_command_execution.o(i.jmp_command_g92_exec)
+    jmp_command_m82_exec                     0x0800f719   Thumb Code    16  jmp_command_execution.o(i.jmp_command_m82_exec)
+    jmp_command_struct_clear                 0x0800f731   Thumb Code    46  jmp_command_execution.o(i.jmp_command_struct_clear)
+    jmp_config_param_init                    0x0800f76d   Thumb Code     2  jmp_param_state.o(i.jmp_config_param_init)
+    jmp_config_state_init                    0x0800f771   Thumb Code   108  jmp_param_state.o(i.jmp_config_state_init)
+    jmp_configstate_init                     0x0800f7f1   Thumb Code    12  jmp_param_state.o(i.jmp_configstate_init)
+    jmp_ex_config_check_digit_buff_clear     0x0800f7fd   Thumb Code    18  jmp_ex_config.o(i.jmp_ex_config_check_digit_buff_clear)
+    jmp_ex_config_check_ex_file              0x0800f815   Thumb Code  2068  jmp_ex_config.o(i.jmp_ex_config_check_ex_file)
+    jmp_ex_config_check_ex_file_segment      0x08010085   Thumb Code    70  jmp_ex_config.o(i.jmp_ex_config_check_ex_file_segment)
+    jmp_ex_config_check_ex_file_segment_fb   0x080100d1   Thumb Code    32  jmp_ex_config.o(i.jmp_ex_config_check_ex_file_segment_fb)
+    jmp_ex_config_check_file                 0x080100f5   Thumb Code    88  jmp_ex_config.o(i.jmp_ex_config_check_file)
+    jmp_ex_config_default_set                0x0801016d   Thumb Code   508  jmp_ex_config.o(i.jmp_ex_config_default_set)
+    jmp_ex_config_ex_file_read               0x080103c5   Thumb Code    26  jmp_ex_config.o(i.jmp_ex_config_ex_file_read)
+    jmp_ex_config_factory_setting            0x080103e1   Thumb Code    20  jmp_ex_config.o(i.jmp_ex_config_factory_setting)
+    jmp_ex_config_file_buf_clear             0x08010405   Thumb Code    20  jmp_ex_config.o(i.jmp_ex_config_file_buf_clear)
+    jmp_ex_config_file_cut_buf_clear         0x0801041d   Thumb Code    20  jmp_ex_config.o(i.jmp_ex_config_file_cut_buf_clear)
+    jmp_ex_config_init                       0x08010435   Thumb Code    30  jmp_ex_config.o(i.jmp_ex_config_init)
+    jmp_ex_config_read_and_set               0x08010455   Thumb Code  2012  jmp_ex_config.o(i.jmp_ex_config_read_and_set)
+    jmp_ex_config_read_ex_save               0x08010d79   Thumb Code    42  jmp_ex_config.o(i.jmp_ex_config_read_ex_save)
+    jmp_ex_config_read_param                 0x08010dc1   Thumb Code   100  jmp_ex_config.o(i.jmp_ex_config_read_param)
+    jmp_gcode_analysis                       0x08010e2d   Thumb Code   206  jmp_gcode_analysis.o(i.jmp_gcode_analysis)
+    jmp_gcode_buff_clear                     0x08010f11   Thumb Code    34  jmp_gcode_analysis.o(i.jmp_gcode_buff_clear)
+    jmp_gcode_buff_get                       0x08010f45   Thumb Code    48  jmp_gcode_analysis.o(i.jmp_gcode_buff_get)
+    jmp_gcode_buff_get_remain                0x08010f81   Thumb Code    78  jmp_gcode_analysis.o(i.jmp_gcode_buff_get_remain)
+    jmp_gcode_buff_get_sum                   0x08010fdd   Thumb Code    68  jmp_gcode_analysis.o(i.jmp_gcode_buff_get_sum)
+    jmp_gcode_buff_put                       0x0801102d   Thumb Code    52  jmp_gcode_analysis.o(i.jmp_gcode_buff_put)
+    jmp_gcode_g0_param                       0x08011071   Thumb Code     8  jmp_gcode_analysis.o(i.jmp_gcode_g0_param)
+    jmp_gcode_g1_param                       0x08011079   Thumb Code   236  jmp_gcode_analysis.o(i.jmp_gcode_g1_param)
+    jmp_gcode_g28_param                      0x08011171   Thumb Code     2  jmp_gcode_analysis.o(i.jmp_gcode_g28_param)
+    jmp_gcode_g4_param                       0x08011173   Thumb Code     2  jmp_gcode_analysis.o(i.jmp_gcode_g4_param)
+    jmp_gcode_g90_param                      0x08011175   Thumb Code     2  jmp_gcode_analysis.o(i.jmp_gcode_g90_param)
+    jmp_gcode_g92_param                      0x08011177   Thumb Code     8  jmp_gcode_analysis.o(i.jmp_gcode_g92_param)
+    jmp_gcode_g_param                        0x08011181   Thumb Code    76  jmp_gcode_analysis.o(i.jmp_gcode_g_param)
+    jmp_gcode_get_line                       0x080111d1   Thumb Code   184  jmp_gcode_analysis.o(i.jmp_gcode_get_line)
+    jmp_gcode_line_buff_clear                0x08011299   Thumb Code    24  jmp_gcode_analysis.o(i.jmp_gcode_line_buff_clear)
+    jmp_gcode_m82_param                      0x080112b9   Thumb Code     2  jmp_gcode_analysis.o(i.jmp_gcode_m82_param)
+    jmp_gcode_m_param                        0x080112bd   Thumb Code    22  jmp_gcode_analysis.o(i.jmp_gcode_m_param)
+    jmp_gcode_param_buff_clear               0x080112d9   Thumb Code    44  jmp_gcode_analysis.o(i.jmp_gcode_param_buff_clear)
+    jmp_gcode_s_param                        0x0801130d   Thumb Code     8  jmp_gcode_analysis.o(i.jmp_gcode_s_param)
+    jmp_gcode_t_param                        0x08011315   Thumb Code     8  jmp_gcode_analysis.o(i.jmp_gcode_t_param)
+    jmp_gui_find_gcode_file                  0x0801131d   Thumb Code   102  jmp_gui.o(i.jmp_gui_find_gcode_file)
+    jmp_gui_gcode_file_name_clear            0x080113a5   Thumb Code    56  jmp_gui.o(i.jmp_gui_gcode_file_name_clear)
+    jmp_gui_goto_frame                       0x080113ed   Thumb Code    36  jmp_gui.o(i.jmp_gui_goto_frame)
+    jmp_gui_init                             0x08011415   Thumb Code   144  jmp_gui.o(i.jmp_gui_init)
+    jmp_gui_print_prepare_file_name_update   0x08011501   Thumb Code   112  jmp_gui.o(i.jmp_gui_print_prepare_file_name_update)
+    jmp_gui_print_set_update                 0x08011581   Thumb Code    84  jmp_gui.o(i.jmp_gui_print_set_update)
+    jmp_gui_printing_main_task               0x080115dd   Thumb Code    52  jmp_gui.o(i.jmp_gui_printing_main_task)
+    jmp_gui_printing_progress_updata         0x08011619   Thumb Code    46  jmp_gui.o(i.jmp_gui_printing_progress_updata)
+    jmp_gui_printing_update                  0x0801164d   Thumb Code   334  jmp_gui.o(i.jmp_gui_printing_update)
+    jmp_gui_start_print                      0x080117b1   Thumb Code    70  jmp_gui.o(i.jmp_gui_start_print)
+    jmp_gui_stop_print                       0x08011815   Thumb Code    10  jmp_gui.o(i.jmp_gui_stop_print)
+    jmp_gui_task                             0x08011825   Thumb Code  2212  jmp_gui.o(i.jmp_gui_task)
+    jmp_gui_uart_command_analysis            0x080120dd   Thumb Code   122  jmp_gui.o(i.jmp_gui_uart_command_analysis)
+    jmp_gui_uart_command_get                 0x08012161   Thumb Code   180  jmp_gui.o(i.jmp_gui_uart_command_get)
+    jmp_gui_uart_send                        0x08012231   Thumb Code    12  jmp_gui.o(i.jmp_gui_uart_send)
+    jmp_gui_uart_send_buffx                  0x0801223d   Thumb Code    24  jmp_gui.o(i.jmp_gui_uart_send_buffx)
+    jmp_gui_uart_send_str                    0x08012255   Thumb Code   344  jmp_gui.o(i.jmp_gui_uart_send_str)
+    jmp_gui_uart_timeout                     0x080123b9   Thumb Code    20  jmp_gui.o(i.jmp_gui_uart_timeout)
+    jmp_gui_uart_timeout_disable             0x080123d9   Thumb Code    20  jmp_gui.o(i.jmp_gui_uart_timeout_disable)
+    jmp_gui_uart_timeout_enable              0x080123f5   Thumb Code    20  jmp_gui.o(i.jmp_gui_uart_timeout_enable)
+    jmp_gui_uart_timeout_init                0x08012411   Thumb Code    26  jmp_gui.o(i.jmp_gui_uart_timeout_init)
+    jmp_gui_uart_timeout_reset               0x08012431   Thumb Code    12  jmp_gui.o(i.jmp_gui_uart_timeout_reset)
+    jmp_gui_update_gcode_file_name           0x08012441   Thumb Code   204  jmp_gui.o(i.jmp_gui_update_gcode_file_name)
+    jmp_gui_update_manual_step               0x0801251d   Thumb Code    58  jmp_gui.o(i.jmp_gui_update_manual_step)
+    jmp_guiuart_rx_str_clear                 0x08012561   Thumb Code    32  jmp_gui.o(i.jmp_guiuart_rx_str_clear)
+    jmp_guiuart_tx_str_clear                 0x08012585   Thumb Code    32  jmp_gui.o(i.jmp_guiuart_tx_str_clear)
+    jmp_motion_clamp_to_software_endstops    0x080125a9   Thumb Code   194  jmp_motion.o(i.jmp_motion_clamp_to_software_endstops)
+    jmp_motion_find_home                     0x08012675   Thumb Code  1548  jmp_motion.o(i.jmp_motion_find_home)
+    jmp_motion_init                          0x08012c95   Thumb Code    60  jmp_motion.o(i.jmp_motion_init)
+    jmp_motion_manual                        0x08012d09   Thumb Code    94  jmp_motion.o(i.jmp_motion_manual)
+    jmp_motion_prepare_move                  0x08012d71   Thumb Code   188  jmp_motion.o(i.jmp_motion_prepare_move)
+    jmp_motion_set_postion                   0x08012e49   Thumb Code    66  jmp_motion.o(i.jmp_motion_set_postion)
+    jmp_motion_state_get                     0x08012e91   Thumb Code   350  jmp_motion.o(i.jmp_motion_state_get)
+    jmp_motion_task                          0x08013005   Thumb Code    18  jmp_motion.o(i.jmp_motion_task)
+    jmp_motion_test_task                     0x08013017   Thumb Code    16  jmp_motion.o(i.jmp_motion_test_task)
+    jmp_motion_variable_init                 0x08013029   Thumb Code   354  jmp_motion.o(i.jmp_motion_variable_init)
+    jmp_storage_buff_clear                   0x080131ad   Thumb Code    34  jmp_storage_read.o(i.jmp_storage_buff_clear)
+    jmp_storage_buff_fill                    0x080131e1   Thumb Code   540  jmp_storage_read.o(i.jmp_storage_buff_fill)
+    jmp_storage_buff_get                     0x08013421   Thumb Code    48  jmp_storage_read.o(i.jmp_storage_buff_get)
+    jmp_storage_buff_get_sum                 0x0801345d   Thumb Code    68  jmp_storage_read.o(i.jmp_storage_buff_get_sum)
+    jmp_storage_get_nextline_sum             0x080134ad   Thumb Code    64  jmp_storage_read.o(i.jmp_storage_get_nextline_sum)
+    jmp_storage_read_buff_clear              0x080134fd   Thumb Code    24  jmp_storage_read.o(i.jmp_storage_read_buff_clear)
+    jmp_storage_read_init                    0x0801351d   Thumb Code    40  jmp_storage_read.o(i.jmp_storage_read_init)
+    jmp_storage_read_task                    0x08013569   Thumb Code   462  jmp_storage_read.o(i.jmp_storage_read_task)
+    jmp_storage_readline                     0x0801376d   Thumb Code   120  jmp_storage_read.o(i.jmp_storage_readline)
+    main                                     0x08013841   Thumb Code   134  main.o(i.main)
+    malloc                                   0x080138dd   Thumb Code    92  malloc.o(i.malloc)
+    max_allowable_speed                      0x08013949   Thumb Code    52  planner.o(i.max_allowable_speed)
+    plan_buffer_line                         0x08013a95   Thumb Code  2548  planner.o(i.plan_buffer_line)
+    plan_discard_current_block               0x080144a5   Thumb Code    28  planner.o(i.plan_discard_current_block)
+    plan_get_current_block                   0x080144c9   Thumb Code    44  planner.o(i.plan_get_current_block)
+    plan_init                                0x08014501   Thumb Code    74  planner.o(i.plan_init)
+    plan_set_position                        0x08014565   Thumb Code   206  planner.o(i.plan_set_position)
+    planner_forward_pass                     0x08014649   Thumb Code    76  planner.o(i.planner_forward_pass)
+    planner_forward_pass_kernel              0x080146a1   Thumb Code   174  planner.o(i.planner_forward_pass_kernel)
+    planner_recalculate                      0x0801474f   Thumb Code    16  planner.o(i.planner_recalculate)
+    planner_recalculate_trapezoids           0x08014761   Thumb Code   174  planner.o(i.planner_recalculate_trapezoids)
+    planner_reverse_pass                     0x08014821   Thumb Code    92  planner.o(i.planner_reverse_pass)
+    planner_reverse_pass_kernel              0x08014889   Thumb Code   170  planner.o(i.planner_reverse_pass_kernel)
+    planner_variable_init                    0x08014935   Thumb Code   274  planner.o(i.planner_variable_init)
+    pvPortMalloc                             0x08015295   Thumb Code   308  heap_4.o(i.pvPortMalloc)
+    pvTaskIncrementMutexHeldCount            0x080153dd   Thumb Code    26  tasks.o(i.pvTaskIncrementMutexHeldCount)
+    pxPortInitialiseStack                    0x080153fd   Thumb Code    38  port.o(i.pxPortInitialiseStack)
+    reset_acceleration_rates                 0x080154c1   Thumb Code    56  planner.o(i.reset_acceleration_rates)
+    sqrt                                     0x08015505   Thumb Code   106  sqrt.o(i.sqrt)
+    st_init                                  0x080155ad   Thumb Code   314  stepper.o(i.st_init)
+    st_pin_idle                              0x080156f1   Thumb Code   152  stepper.o(i.st_pin_idle)
+    st_set_position                          0x08015791   Thumb Code    14  stepper.o(i.st_set_position)
+    st_timer_interrupt                       0x080157a5   Thumb Code  2152  stepper.o(i.st_timer_interrupt)
+    tmdelay_init                             0x0801611d   Thumb Code    68  tmdelay.o(i.tmdelay_init)
+    tmdelay_ms                               0x0801616d   Thumb Code    24  tmdelay.o(i.tmdelay_ms)
+    tmdelay_us                               0x08016185   Thumb Code    58  tmdelay.o(i.tmdelay_us)
+    trapezoid_generator_reset                0x080161c5   Thumb Code   132  stepper.o(i.trapezoid_generator_reset)
+    usb_app_init                             0x08016265   Thumb Code    24  usb_app.o(i.usb_app_init)
+    usb_init                                 0x08016291   Thumb Code    32  usb_test.o(i.usb_init)
+    uxListRemove                             0x080162d5   Thumb Code    40  list.o(i.uxListRemove)
+    vListInitialise                          0x080162fd   Thumb Code    26  list.o(i.vListInitialise)
+    vListInitialiseItem                      0x08016317   Thumb Code     6  list.o(i.vListInitialiseItem)
+    vListInsert                              0x0801631d   Thumb Code    52  list.o(i.vListInsert)
+    vListInsertEnd                           0x08016351   Thumb Code    24  list.o(i.vListInsertEnd)
+    vPortEnterCritical                       0x08016369   Thumb Code    84  port.o(i.vPortEnterCritical)
+    vPortExitCritical                        0x080163c5   Thumb Code    60  port.o(i.vPortExitCritical)
+    vPortFree                                0x08016405   Thumb Code   148  heap_4.o(i.vPortFree)
+    vPortSetupTimerInterrupt                 0x080164a1   Thumb Code    36  port.o(i.vPortSetupTimerInterrupt)
+    vPortValidateInterruptPriority           0x080164c9   Thumb Code   114  port.o(i.vPortValidateInterruptPriority)
+    vTaskDelay                               0x08016549   Thumb Code    86  tasks.o(i.vTaskDelay)
+    vTaskInternalSetTimeOutState             0x080165a9   Thumb Code    14  tasks.o(i.vTaskInternalSetTimeOutState)
+    vTaskMissedYield                         0x080165e1   Thumb Code     8  tasks.o(i.vTaskMissedYield)
+    vTaskPlaceOnEventList                    0x080165ed   Thumb Code    56  tasks.o(i.vTaskPlaceOnEventList)
+    vTaskPriorityDisinheritAfterTimeout      0x08016629   Thumb Code   238  tasks.o(i.vTaskPriorityDisinheritAfterTimeout)
+    vTaskStartScheduler                      0x08016725   Thumb Code   116  tasks.o(i.vTaskStartScheduler)
+    vTaskSuspendAll                          0x080167b5   Thumb Code    12  tasks.o(i.vTaskSuspendAll)
+    vTaskSwitchContext                       0x080167c5   Thumb Code   122  tasks.o(i.vTaskSwitchContext)
+    xPortStartScheduler                      0x08016899   Thumb Code   298  port.o(i.xPortStartScheduler)
+    xQueueGenericCreate                      0x080169dd   Thumb Code    92  queue.o(i.xQueueGenericCreate)
+    xQueueGenericReset                       0x08016a39   Thumb Code   150  queue.o(i.xQueueGenericReset)
+    xQueueGenericSend                        0x08016ad5   Thumb Code   424  queue.o(i.xQueueGenericSend)
+    xQueueGiveFromISR                        0x08016c81   Thumb Code   262  queue.o(i.xQueueGiveFromISR)
+    xQueueSemaphoreTake                      0x08016d89   Thumb Code   406  queue.o(i.xQueueSemaphoreTake)
+    xTaskCheckForTimeOut                     0x08016f25   Thumb Code   140  tasks.o(i.xTaskCheckForTimeOut)
+    xTaskCreate                              0x08016fb9   Thumb Code    96  tasks.o(i.xTaskCreate)
+    xTaskIncrementTick                       0x08017019   Thumb Code   286  tasks.o(i.xTaskIncrementTick)
+    xTaskPriorityDisinherit                  0x08017165   Thumb Code   196  tasks.o(i.xTaskPriorityDisinherit)
+    xTaskPriorityInherit                     0x08017235   Thumb Code   186  tasks.o(i.xTaskPriorityInherit)
+    xTaskRemoveFromEventList                 0x080172fd   Thumb Code   132  tasks.o(i.xTaskRemoveFromEventList)
+    xTaskResumeAll                           0x08017399   Thumb Code   228  tasks.o(i.xTaskResumeAll)
+    D1CorePrescTable                         0x080174d0   Data          16  system_stm32h7xx.o(.constdata)
+    __mathlib_zero                           0x08042198   Data           8  qnan.o(.constdata)
+    __ctype_table                            0x080421a0   Data         129  ctype_o.o(.constdata)
+    Region$$Table$$Base                      0x0804222c   Number         0  anon$$obj.o(Region$$Table)
+    Region$$Table$$Limit                     0x0804224c   Number         0  anon$$obj.o(Region$$Table)
     SystemCoreClock                          0x24000004   Data           4  system_stm32h7xx.o(.data)
     SystemD2Clock                            0x24000008   Data           4  system_stm32h7xx.o(.data)
     uart1_rxbuf                              0x24000019   Data           1  bsp_uart.o(.data)
@@ -8925,64 +8940,64 @@ Memory Map of the image
 
   Image Entry point : 0x08000299
 
-  Load Region LR_IROM1 (Base: 0x08000000, Size: 0x00041db4, Max: 0x00200000, ABSOLUTE, COMPRESSED[0x00041c30])
+  Load Region LR_IROM1 (Base: 0x08000000, Size: 0x00042414, Max: 0x00200000, ABSOLUTE, COMPRESSED[0x00042290])
 
-    Execution Region ER_IROM1 (Base: 0x08000000, Size: 0x00041bec, Max: 0x00200000, ABSOLUTE)
+    Execution Region ER_IROM1 (Base: 0x08000000, Size: 0x0004224c, Max: 0x00200000, ABSOLUTE)
 
     Base Addr    Size         Type   Attr      Idx    E Section Name        Object
 
     0x08000000   0x00000298   Data   RO          713    RESET               startup_stm32h743xx.o
-    0x08000298   0x00000000   Code   RO        19016  * .ARM.Collect$$$$00000000  mc_w.l(entry.o)
-    0x08000298   0x00000004   Code   RO        19361    .ARM.Collect$$$$00000001  mc_w.l(entry2.o)
-    0x0800029c   0x00000004   Code   RO        19364    .ARM.Collect$$$$00000004  mc_w.l(entry5.o)
-    0x080002a0   0x00000000   Code   RO        19366    .ARM.Collect$$$$00000008  mc_w.l(entry7b.o)
-    0x080002a0   0x00000000   Code   RO        19368    .ARM.Collect$$$$0000000A  mc_w.l(entry8b.o)
-    0x080002a0   0x00000008   Code   RO        19369    .ARM.Collect$$$$0000000B  mc_w.l(entry9a.o)
-    0x080002a8   0x00000000   Code   RO        19371    .ARM.Collect$$$$0000000D  mc_w.l(entry10a.o)
-    0x080002a8   0x00000000   Code   RO        19373    .ARM.Collect$$$$0000000F  mc_w.l(entry11a.o)
-    0x080002a8   0x00000004   Code   RO        19362    .ARM.Collect$$$$00002712  mc_w.l(entry2.o)
+    0x08000298   0x00000000   Code   RO        19028  * .ARM.Collect$$$$00000000  mc_w.l(entry.o)
+    0x08000298   0x00000004   Code   RO        19373    .ARM.Collect$$$$00000001  mc_w.l(entry2.o)
+    0x0800029c   0x00000004   Code   RO        19376    .ARM.Collect$$$$00000004  mc_w.l(entry5.o)
+    0x080002a0   0x00000000   Code   RO        19378    .ARM.Collect$$$$00000008  mc_w.l(entry7b.o)
+    0x080002a0   0x00000000   Code   RO        19380    .ARM.Collect$$$$0000000A  mc_w.l(entry8b.o)
+    0x080002a0   0x00000008   Code   RO        19381    .ARM.Collect$$$$0000000B  mc_w.l(entry9a.o)
+    0x080002a8   0x00000000   Code   RO        19383    .ARM.Collect$$$$0000000D  mc_w.l(entry10a.o)
+    0x080002a8   0x00000000   Code   RO        19385    .ARM.Collect$$$$0000000F  mc_w.l(entry11a.o)
+    0x080002a8   0x00000004   Code   RO        19374    .ARM.Collect$$$$00002712  mc_w.l(entry2.o)
     0x080002ac   0x000000c2   Code   RO        17754    .emb_text           port.o
     0x0800036e   0x00000002   PAD
     0x08000370   0x00000024   Code   RO          714    .text               startup_stm32h743xx.o
-    0x08000394   0x00000062   Code   RO        19019    .text               mc_w.l(uldiv.o)
-    0x080003f6   0x00000024   Code   RO        19021    .text               mc_w.l(memcpya.o)
-    0x0800041a   0x00000024   Code   RO        19025    .text               mc_w.l(memseta.o)
-    0x0800043e   0x00000024   Code   RO        19027    .text               mc_w.l(strstr.o)
-    0x08000462   0x00000018   Code   RO        19029    .text               mc_w.l(strncpy.o)
-    0x0800047a   0x0000000e   Code   RO        19031    .text               mc_w.l(strlen.o)
-    0x08000488   0x0000001c   Code   RO        19033    .text               mc_w.l(strcmp.o)
-    0x080004a4   0x00000012   Code   RO        19035    .text               mc_w.l(strcpy.o)
+    0x08000394   0x00000062   Code   RO        19031    .text               mc_w.l(uldiv.o)
+    0x080003f6   0x00000024   Code   RO        19033    .text               mc_w.l(memcpya.o)
+    0x0800041a   0x00000024   Code   RO        19037    .text               mc_w.l(memseta.o)
+    0x0800043e   0x00000024   Code   RO        19039    .text               mc_w.l(strstr.o)
+    0x08000462   0x00000018   Code   RO        19041    .text               mc_w.l(strncpy.o)
+    0x0800047a   0x0000000e   Code   RO        19043    .text               mc_w.l(strlen.o)
+    0x08000488   0x0000001c   Code   RO        19045    .text               mc_w.l(strcmp.o)
+    0x080004a4   0x00000012   Code   RO        19047    .text               mc_w.l(strcpy.o)
     0x080004b6   0x00000002   PAD
-    0x080004b8   0x00000044   Code   RO        19037    .text               mc_w.l(strtok.o)
-    0x080004fc   0x0000001a   Code   RO        19334    .text               mc_w.l(atoi.o)
-    0x08000516   0x0000002c   Code   RO        19376    .text               mc_w.l(uidiv.o)
-    0x08000542   0x0000001e   Code   RO        19378    .text               mc_w.l(llshl.o)
-    0x08000560   0x00000020   Code   RO        19380    .text               mc_w.l(llushr.o)
-    0x08000580   0x0000009c   Code   RO        19391    .text               mc_w.l(strtod.o)
-    0x0800061c   0x00000070   Code   RO        19393    .text               mc_w.l(strtol.o)
-    0x0800068c   0x00000000   Code   RO        19395    .text               mc_w.l(iusefp.o)
-    0x0800068c   0x0000014e   Code   RO        19396    .text               mf_w.l(dadd.o)
-    0x080007da   0x000000e4   Code   RO        19398    .text               mf_w.l(dmul.o)
-    0x080008be   0x000000de   Code   RO        19400    .text               mf_w.l(ddiv.o)
-    0x0800099c   0x0000002e   Code   RO        19402    .text               mf_w.l(dscalb.o)
+    0x080004b8   0x00000044   Code   RO        19049    .text               mc_w.l(strtok.o)
+    0x080004fc   0x0000001a   Code   RO        19346    .text               mc_w.l(atoi.o)
+    0x08000516   0x0000002c   Code   RO        19388    .text               mc_w.l(uidiv.o)
+    0x08000542   0x0000001e   Code   RO        19390    .text               mc_w.l(llshl.o)
+    0x08000560   0x00000020   Code   RO        19392    .text               mc_w.l(llushr.o)
+    0x08000580   0x0000009c   Code   RO        19403    .text               mc_w.l(strtod.o)
+    0x0800061c   0x00000070   Code   RO        19405    .text               mc_w.l(strtol.o)
+    0x0800068c   0x00000000   Code   RO        19407    .text               mc_w.l(iusefp.o)
+    0x0800068c   0x0000014e   Code   RO        19408    .text               mf_w.l(dadd.o)
+    0x080007da   0x000000e4   Code   RO        19410    .text               mf_w.l(dmul.o)
+    0x080008be   0x000000de   Code   RO        19412    .text               mf_w.l(ddiv.o)
+    0x0800099c   0x0000002e   Code   RO        19414    .text               mf_w.l(dscalb.o)
     0x080009ca   0x00000002   PAD
-    0x080009cc   0x00000088   Code   RO        19404    .text               mf_w.l(drnd.o)
-    0x08000a54   0x00000030   Code   RO        19406    .text               mf_w.l(dfixul.o)
-    0x08000a84   0x00000030   Code   RO        19408    .text               mf_w.l(cdrcmple.o)
-    0x08000ab4   0x00000024   Code   RO        19410    .text               mc_w.l(init.o)
-    0x08000ad8   0x00000024   Code   RO        19412    .text               mc_w.l(llsshr.o)
-    0x08000afc   0x00000008   Code   RO        19416    .text               mc_w.l(ctype_o.o)
-    0x08000b04   0x00000012   Code   RO        19438    .text               mc_w.l(isspace_o.o)
+    0x080009cc   0x00000088   Code   RO        19416    .text               mf_w.l(drnd.o)
+    0x08000a54   0x00000030   Code   RO        19418    .text               mf_w.l(dfixul.o)
+    0x08000a84   0x00000030   Code   RO        19420    .text               mf_w.l(cdrcmple.o)
+    0x08000ab4   0x00000024   Code   RO        19422    .text               mc_w.l(init.o)
+    0x08000ad8   0x00000024   Code   RO        19424    .text               mc_w.l(llsshr.o)
+    0x08000afc   0x00000008   Code   RO        19428    .text               mc_w.l(ctype_o.o)
+    0x08000b04   0x00000012   Code   RO        19450    .text               mc_w.l(isspace_o.o)
     0x08000b16   0x00000002   PAD
-    0x08000b18   0x00000338   Code   RO        19444    .text               mc_w.l(scanf_fp.o)
-    0x08000e50   0x00000040   Code   RO        19448    .text               mc_w.l(_sgetc.o)
-    0x08000e90   0x0000009e   Code   RO        19450    .text               mc_w.l(_strtoul.o)
-    0x08000f2e   0x000000ba   Code   RO        19452    .text               mf_w.l(depilogue.o)
-    0x08000fe8   0x0000001c   Code   RO        19457    .text               mc_w.l(_chval.o)
-    0x08001004   0x00000018   Code   RO        19459    .text               mf_w.l(dfltul.o)
-    0x0800101c   0x00000038   Code   RO        19461    .text               mf_w.l(d2f.o)
-    0x08001054   0x0000006e   Code   RO        19463    .text               mf_w.l(fepilogue.o)
-    0x080010c2   0x00000056   Code   RO        19473    .text               mc_w.l(__dczerorl2.o)
+    0x08000b18   0x00000338   Code   RO        19456    .text               mc_w.l(scanf_fp.o)
+    0x08000e50   0x00000040   Code   RO        19460    .text               mc_w.l(_sgetc.o)
+    0x08000e90   0x0000009e   Code   RO        19462    .text               mc_w.l(_strtoul.o)
+    0x08000f2e   0x000000ba   Code   RO        19464    .text               mf_w.l(depilogue.o)
+    0x08000fe8   0x0000001c   Code   RO        19469    .text               mc_w.l(_chval.o)
+    0x08001004   0x00000018   Code   RO        19471    .text               mf_w.l(dfltul.o)
+    0x0800101c   0x00000038   Code   RO        19473    .text               mf_w.l(d2f.o)
+    0x08001054   0x0000006e   Code   RO        19475    .text               mf_w.l(fepilogue.o)
+    0x080010c2   0x00000056   Code   RO        19485    .text               mc_w.l(__dczerorl2.o)
     0x08001118   0x00000004   Code   RO          520    i.BusFault_Handler  stm32h7xx_it.o
     0x0800111c   0x0000001c   Code   RO          656    i.Cache_Enable      tmsys.o
     0x08001138   0x00000052   Code   RO        16213    i.DeInitStateMachine  usbh_core.o
@@ -9239,42 +9254,42 @@ Memory Map of the image
     0x0800a4a2   0x00000034   Code   RO        15423    i.W25QXX_Write_Page  w25qxx.o
     0x0800a4d6   0x00000002   PAD
     0x0800a4d8   0x0000006c   Code   RO        15424    i.W25QXX_Write_SR   w25qxx.o
-    0x0800a544   0x00000020   Code   RO        19278    i.__0printf         mc_w.l(printfa.o)
-    0x0800a564   0x00000028   Code   RO        19280    i.__0sprintf        mc_w.l(printfa.o)
-    0x0800a58c   0x00000030   Code   RO        19356    i.__ARM_fpclassify  m_wv.l(fpclassify.o)
+    0x0800a544   0x00000020   Code   RO        19290    i.__0printf         mc_w.l(printfa.o)
+    0x0800a564   0x00000028   Code   RO        19292    i.__0sprintf        mc_w.l(printfa.o)
+    0x0800a58c   0x00000030   Code   RO        19368    i.__ARM_fpclassify  m_wv.l(fpclassify.o)
     0x0800a5bc   0x00000010   Code   RO         1639    i.__NVIC_GetPriorityGrouping  stm32h7xx_hal_cortex.o
     0x0800a5cc   0x00000028   Code   RO         1640    i.__NVIC_SetPriority  stm32h7xx_hal_cortex.o
-    0x0800a5f4   0x00000008   Code   RO        19384    i.__aeabi_errno_addr  mc_w.l(errno.o)
+    0x0800a5f4   0x00000008   Code   RO        19396    i.__aeabi_errno_addr  mc_w.l(errno.o)
     0x0800a5fc   0x00000004   PAD
-    0x0800a600   0x00000038   Code   RO        18968    i.__hardfp_atof     m_wv.l(atof.o)
-    0x0800a638   0x000000f0   Code   RO        18974    i.__hardfp_ceil     m_wv.l(ceil.o)
-    0x0800a728   0x000000f0   Code   RO        18980    i.__hardfp_floor    m_wv.l(floor.o)
-    0x0800a818   0x000008f8   Code   RO        18986    i.__hardfp_pow      m_wv.l(pow.o)
-    0x0800b110   0x000000a0   Code   RO        19000    i.__hardfp_round    m_wv.l(round.o)
-    0x0800b1b0   0x00000066   Code   RO        19004    i.__hardfp_sqrt     m_wv.l(sqrt.o)
-    0x0800b216   0x00000070   Code   RO        19358    i.__kernel_poly     m_wv.l(poly.o)
+    0x0800a600   0x00000038   Code   RO        18980    i.__hardfp_atof     m_wv.l(atof.o)
+    0x0800a638   0x000000f0   Code   RO        18986    i.__hardfp_ceil     m_wv.l(ceil.o)
+    0x0800a728   0x000000f0   Code   RO        18992    i.__hardfp_floor    m_wv.l(floor.o)
+    0x0800a818   0x000008f8   Code   RO        18998    i.__hardfp_pow      m_wv.l(pow.o)
+    0x0800b110   0x000000a0   Code   RO        19012    i.__hardfp_round    m_wv.l(round.o)
+    0x0800b1b0   0x00000066   Code   RO        19016    i.__hardfp_sqrt     m_wv.l(sqrt.o)
+    0x0800b216   0x00000070   Code   RO        19370    i.__kernel_poly     m_wv.l(poly.o)
     0x0800b286   0x00000002   PAD
-    0x0800b288   0x00000020   Code   RO        19336    i.__mathlib_dbl_divzero  m_wv.l(dunder.o)
-    0x0800b2a8   0x00000006   Code   RO        19338    i.__mathlib_dbl_infnan2  m_wv.l(dunder.o)
+    0x0800b288   0x00000020   Code   RO        19348    i.__mathlib_dbl_divzero  m_wv.l(dunder.o)
+    0x0800b2a8   0x00000006   Code   RO        19350    i.__mathlib_dbl_infnan2  m_wv.l(dunder.o)
     0x0800b2ae   0x00000002   PAD
-    0x0800b2b0   0x00000018   Code   RO        19339    i.__mathlib_dbl_invalid  m_wv.l(dunder.o)
-    0x0800b2c8   0x00000018   Code   RO        19340    i.__mathlib_dbl_overflow  m_wv.l(dunder.o)
-    0x0800b2e0   0x00000018   Code   RO        19342    i.__mathlib_dbl_underflow  m_wv.l(dunder.o)
-    0x0800b2f8   0x0000000c   Code   RO        19385    i.__read_errno      mc_w.l(errno.o)
-    0x0800b304   0x0000000e   Code   RO        19467    i.__scatterload_copy  mc_w.l(handlers.o)
-    0x0800b312   0x00000002   Code   RO        19468    i.__scatterload_null  mc_w.l(handlers.o)
-    0x0800b314   0x0000000e   Code   RO        19469    i.__scatterload_zeroinit  mc_w.l(handlers.o)
+    0x0800b2b0   0x00000018   Code   RO        19351    i.__mathlib_dbl_invalid  m_wv.l(dunder.o)
+    0x0800b2c8   0x00000018   Code   RO        19352    i.__mathlib_dbl_overflow  m_wv.l(dunder.o)
+    0x0800b2e0   0x00000018   Code   RO        19354    i.__mathlib_dbl_underflow  m_wv.l(dunder.o)
+    0x0800b2f8   0x0000000c   Code   RO        19397    i.__read_errno      mc_w.l(errno.o)
+    0x0800b304   0x0000000e   Code   RO        19479    i.__scatterload_copy  mc_w.l(handlers.o)
+    0x0800b312   0x00000002   Code   RO        19480    i.__scatterload_null  mc_w.l(handlers.o)
+    0x0800b314   0x0000000e   Code   RO        19481    i.__scatterload_zeroinit  mc_w.l(handlers.o)
     0x0800b322   0x00000002   PAD
-    0x0800b324   0x0000000c   Code   RO        19386    i.__set_errno       mc_w.l(errno.o)
-    0x0800b330   0x00000184   Code   RO        19285    i._fp_digits        mc_w.l(printfa.o)
-    0x0800b4b4   0x0000000e   Code   RO        19446    i._is_digit         mc_w.l(scanf_fp.o)
+    0x0800b324   0x0000000c   Code   RO        19398    i.__set_errno       mc_w.l(errno.o)
+    0x0800b330   0x00000184   Code   RO        19297    i._fp_digits        mc_w.l(printfa.o)
+    0x0800b4b4   0x0000000e   Code   RO        19458    i._is_digit         mc_w.l(scanf_fp.o)
     0x0800b4c2   0x00000002   PAD
-    0x0800b4c4   0x000006dc   Code   RO        19286    i._printf_core      mc_w.l(printfa.o)
-    0x0800bba0   0x00000024   Code   RO        19287    i._printf_post_padding  mc_w.l(printfa.o)
-    0x0800bbc4   0x0000002e   Code   RO        19288    i._printf_pre_padding  mc_w.l(printfa.o)
-    0x0800bbf2   0x0000000a   Code   RO        19290    i._sputc            mc_w.l(printfa.o)
+    0x0800b4c4   0x000006dc   Code   RO        19298    i._printf_core      mc_w.l(printfa.o)
+    0x0800bba0   0x00000024   Code   RO        19299    i._printf_post_padding  mc_w.l(printfa.o)
+    0x0800bbc4   0x0000002e   Code   RO        19300    i._printf_pre_padding  mc_w.l(printfa.o)
+    0x0800bbf2   0x0000000a   Code   RO        19302    i._sputc            mc_w.l(printfa.o)
     0x0800bbfc   0x00000054   Code   RO        15969    i.app_qspi_flash_fatfs_init  app_qspi_flash_fatfs.o
-    0x0800bc50   0x0000001c   Code   RO        18682    i.blocks_queued     planner.o
+    0x0800bc50   0x0000001c   Code   RO        18694    i.blocks_queued     planner.o
     0x0800bc6c   0x00000024   Code   RO        14630    i.bsp_a_enable_control  bsp_gpio.o
     0x0800bc90   0x00000028   Code   RO        14633    i.bsp_a_pluse_control  bsp_gpio.o
     0x0800bcb8   0x00000028   Code   RO        14639    i.bsp_beep_control  bsp_gpio.o
@@ -9320,10 +9335,10 @@ Memory Map of the image
     0x0800cbc4   0x00000010   Code   RO        14683    i.bsp_z_limit_m_read  bsp_gpio.o
     0x0800cbd4   0x00000010   Code   RO        14684    i.bsp_z_limit_p_read  bsp_gpio.o
     0x0800cbe4   0x00000024   Code   RO        14685    i.bsp_z_pluse_control  bsp_gpio.o
-    0x0800cc08   0x00000054   Code   RO        18848    i.calc_timer        stepper.o
-    0x0800cc5c   0x00000156   Code   RO        18683    i.calculate_trapezoid_for_block  planner.o
+    0x0800cc08   0x00000054   Code   RO        18860    i.calc_timer        stepper.o
+    0x0800cc5c   0x00000156   Code   RO        18695    i.calculate_trapezoid_for_block  planner.o
     0x0800cdb2   0x00000002   PAD
-    0x0800cdb4   0x000000f0   Code   RO        18849    i.checkHitEndstops  stepper.o
+    0x0800cdb4   0x000000f0   Code   RO        18861    i.checkHitEndstops  stepper.o
     0x0800cea4   0x00000064   Code   RO        15587    i.check_fs          ff.o
     0x0800cf08   0x00000014   Code   RO        15588    i.chk_chr           ff.o
     0x0800cf1c   0x00000032   Code   RO        15589    i.clmt_clust        ff.o
@@ -9336,257 +9351,266 @@ Memory Map of the image
     0x0800d4a2   0x0000010c   Code   RO        15596    i.dir_next          ff.o
     0x0800d5ae   0x000000d0   Code   RO        15597    i.dir_read          ff.o
     0x0800d67e   0x00000146   Code   RO        15598    i.dir_register      ff.o
-    0x0800d7c4   0x0000009a   Code   RO        15600    i.dir_sdi           ff.o
-    0x0800d85e   0x0000002c   Code   RO        15530    i.disk_initialize   diskio.o
-    0x0800d88a   0x0000005a   Code   RO        15531    i.disk_ioctl        diskio.o
-    0x0800d8e4   0x00000062   Code   RO        15532    i.disk_read         diskio.o
-    0x0800d946   0x00000006   Code   RO        15533    i.disk_status       diskio.o
-    0x0800d94c   0x00000062   Code   RO        15534    i.disk_write        diskio.o
-    0x0800d9ae   0x00000002   PAD
-    0x0800d9b0   0x00000034   Code   RO        18685    i.estimate_acceleration_distance  planner.o
-    0x0800d9e4   0x00000026   Code   RO        15601    i.f_close           ff.o
-    0x0800da0a   0x00000018   Code   RO        15602    i.f_closedir        ff.o
-    0x0800da22   0x000002ac   Code   RO        15606    i.f_lseek           ff.o
-    0x0800dcce   0x00000002   PAD
-    0x0800dcd0   0x00000570   Code   RO        15608    i.f_mkfs            ff.o
-    0x0800e240   0x0000005c   Code   RO        15609    i.f_mount           ff.o
-    0x0800e29c   0x00000170   Code   RO        15610    i.f_open            ff.o
-    0x0800e40c   0x0000007c   Code   RO        15611    i.f_opendir         ff.o
-    0x0800e488   0x000001ac   Code   RO        15615    i.f_read            ff.o
-    0x0800e634   0x0000005e   Code   RO        15616    i.f_readdir         ff.o
-    0x0800e692   0x000000a0   Code   RO        15620    i.f_sync            ff.o
-    0x0800e732   0x000001ee   Code   RO        15623    i.f_write           ff.o
-    0x0800e920   0x00000018   Code   RO        19352    i.fabs              m_wv.l(fabs.o)
-    0x0800e938   0x0000007c   Code   RO        15935    i.ff_convert        cc936.o
-    0x0800e9b4   0x000000a4   Code   RO        15936    i.ff_wtoupper       cc936.o
-    0x0800ea58   0x000002f4   Code   RO        15624    i.find_volume       ff.o
-    0x0800ed4c   0x000000a2   Code   RO        15625    i.follow_path       ff.o
-    0x0800edee   0x00000002   PAD
-    0x0800edf0   0x0000001c   Code   RO        15119    i.fputc             bsp_uart.o
-    0x0800ee0c   0x00000050   Code   RO        19306    i.free              mc_w.l(malloc.o)
-    0x0800ee5c   0x000000cc   Code   RO        15626    i.gen_numname       ff.o
-    0x0800ef28   0x000000e0   Code   RO        15627    i.get_fat           ff.o
-    0x0800f008   0x00000004   Code   RO        15535    i.get_fattime       diskio.o
-    0x0800f00c   0x0000014a   Code   RO        15628    i.get_fileinfo      ff.o
-    0x0800f156   0x0000004a   Code   RO        15629    i.get_ldnumber      ff.o
-    0x0800f1a0   0x00000040   Code   RO        18686    i.intersection_distance  planner.o
-    0x0800f1e0   0x0000008c   Code   RO        17918    i.jmp_command_execution  jmp_command_execution.o
-    0x0800f26c   0x00000040   Code   RO        17919    i.jmp_command_execution_init  jmp_command_execution.o
-    0x0800f2ac   0x00000030   Code   RO        17920    i.jmp_command_execution_task  jmp_command_execution.o
-    0x0800f2dc   0x00000002   Code   RO        17921    i.jmp_command_g0_exec  jmp_command_execution.o
-    0x0800f2de   0x00000002   PAD
-    0x0800f2e0   0x00000174   Code   RO        17922    i.jmp_command_g1_exec  jmp_command_execution.o
-    0x0800f454   0x00000040   Code   RO        17923    i.jmp_command_g28_exec  jmp_command_execution.o
-    0x0800f494   0x00000018   Code   RO        17924    i.jmp_command_g4_exec  jmp_command_execution.o
-    0x0800f4ac   0x00000018   Code   RO        17925    i.jmp_command_g90_exec  jmp_command_execution.o
-    0x0800f4c4   0x0000013c   Code   RO        17926    i.jmp_command_g92_exec  jmp_command_execution.o
-    0x0800f600   0x00000018   Code   RO        17927    i.jmp_command_m82_exec  jmp_command_execution.o
-    0x0800f618   0x0000003c   Code   RO        17928    i.jmp_command_struct_clear  jmp_command_execution.o
-    0x0800f654   0x00000002   Code   RO        18347    i.jmp_config_param_init  jmp_param_state.o
-    0x0800f656   0x00000002   PAD
-    0x0800f658   0x00000080   Code   RO        18348    i.jmp_config_state_init  jmp_param_state.o
-    0x0800f6d8   0x0000000c   Code   RO        18349    i.jmp_configstate_init  jmp_param_state.o
-    0x0800f6e4   0x00000018   Code   RO        18482    i.jmp_ex_config_check_digit_buff_clear  jmp_ex_config.o
-    0x0800f6fc   0x00000870   Code   RO        18483    i.jmp_ex_config_check_ex_file  jmp_ex_config.o
-    0x0800ff6c   0x0000004c   Code   RO        18484    i.jmp_ex_config_check_ex_file_segment  jmp_ex_config.o
-    0x0800ffb8   0x00000024   Code   RO        18485    i.jmp_ex_config_check_ex_file_segment_fb  jmp_ex_config.o
-    0x0800ffdc   0x00000018   Code   RO        18488    i.jmp_ex_config_file_buf_clear  jmp_ex_config.o
-    0x0800fff4   0x00000018   Code   RO        18489    i.jmp_ex_config_file_cut_buf_clear  jmp_ex_config.o
-    0x0801000c   0x00000924   Code   RO        18491    i.jmp_ex_config_read_and_set  jmp_ex_config.o
-    0x08010930   0x00000048   Code   RO        18493    i.jmp_ex_config_read_ex_save  jmp_ex_config.o
-    0x08010978   0x0000006c   Code   RO        18494    i.jmp_ex_config_read_param  jmp_ex_config.o
-    0x080109e4   0x00000016   Code   RO        18495    i.jmp_ex_config_test  jmp_ex_config.o
-    0x080109fa   0x00000002   PAD
-    0x080109fc   0x000000e4   Code   RO        18019    i.jmp_gcode_analysis  jmp_gcode_analysis.o
-    0x08010ae0   0x00000034   Code   RO        18021    i.jmp_gcode_buff_clear  jmp_gcode_analysis.o
-    0x08010b14   0x0000003c   Code   RO        18022    i.jmp_gcode_buff_get  jmp_gcode_analysis.o
-    0x08010b50   0x0000005c   Code   RO        18023    i.jmp_gcode_buff_get_remain  jmp_gcode_analysis.o
-    0x08010bac   0x00000050   Code   RO        18024    i.jmp_gcode_buff_get_sum  jmp_gcode_analysis.o
-    0x08010bfc   0x00000044   Code   RO        18025    i.jmp_gcode_buff_put  jmp_gcode_analysis.o
-    0x08010c40   0x00000008   Code   RO        18026    i.jmp_gcode_g0_param  jmp_gcode_analysis.o
-    0x08010c48   0x000000f8   Code   RO        18027    i.jmp_gcode_g1_param  jmp_gcode_analysis.o
-    0x08010d40   0x00000002   Code   RO        18028    i.jmp_gcode_g28_param  jmp_gcode_analysis.o
-    0x08010d42   0x00000002   Code   RO        18029    i.jmp_gcode_g4_param  jmp_gcode_analysis.o
-    0x08010d44   0x00000002   Code   RO        18030    i.jmp_gcode_g90_param  jmp_gcode_analysis.o
-    0x08010d46   0x00000008   Code   RO        18031    i.jmp_gcode_g92_param  jmp_gcode_analysis.o
-    0x08010d4e   0x00000002   PAD
-    0x08010d50   0x00000050   Code   RO        18032    i.jmp_gcode_g_param  jmp_gcode_analysis.o
-    0x08010da0   0x000000c8   Code   RO        18033    i.jmp_gcode_get_line  jmp_gcode_analysis.o
-    0x08010e68   0x00000020   Code   RO        18034    i.jmp_gcode_line_buff_clear  jmp_gcode_analysis.o
-    0x08010e88   0x00000002   Code   RO        18035    i.jmp_gcode_m82_param  jmp_gcode_analysis.o
-    0x08010e8a   0x00000002   PAD
-    0x08010e8c   0x0000001c   Code   RO        18036    i.jmp_gcode_m_param  jmp_gcode_analysis.o
-    0x08010ea8   0x00000034   Code   RO        18037    i.jmp_gcode_param_buff_clear  jmp_gcode_analysis.o
-    0x08010edc   0x00000008   Code   RO        18038    i.jmp_gcode_s_param  jmp_gcode_analysis.o
-    0x08010ee4   0x00000008   Code   RO        18039    i.jmp_gcode_t_param  jmp_gcode_analysis.o
-    0x08010eec   0x00000088   Code   RO        18171    i.jmp_gui_find_gcode_file  jmp_gui.o
-    0x08010f74   0x00000048   Code   RO        18172    i.jmp_gui_gcode_file_name_clear  jmp_gui.o
-    0x08010fbc   0x00000028   Code   RO        18173    i.jmp_gui_goto_frame  jmp_gui.o
-    0x08010fe4   0x000000ec   Code   RO        18174    i.jmp_gui_init      jmp_gui.o
-    0x080110d0   0x00000080   Code   RO        18175    i.jmp_gui_print_prepare_file_name_update  jmp_gui.o
-    0x08011150   0x00000034   Code   RO        18176    i.jmp_gui_print_set_update  jmp_gui.o
-    0x08011184   0x0000003c   Code   RO        18177    i.jmp_gui_printing_main_task  jmp_gui.o
-    0x080111c0   0x0000015c   Code   RO        18178    i.jmp_gui_printing_update  jmp_gui.o
-    0x0801131c   0x00000064   Code   RO        18179    i.jmp_gui_start_print  jmp_gui.o
-    0x08011380   0x00000010   Code   RO        18180    i.jmp_gui_stop_print  jmp_gui.o
-    0x08011390   0x00000724   Code   RO        18181    i.jmp_gui_task      jmp_gui.o
-    0x08011ab4   0x00000084   Code   RO        18182    i.jmp_gui_uart_command_analysis  jmp_gui.o
-    0x08011b38   0x000000d0   Code   RO        18183    i.jmp_gui_uart_command_get  jmp_gui.o
-    0x08011c08   0x0000000c   Code   RO        18184    i.jmp_gui_uart_send  jmp_gui.o
-    0x08011c14   0x00000018   Code   RO        18185    i.jmp_gui_uart_send_buffx  jmp_gui.o
-    0x08011c2c   0x00000164   Code   RO        18186    i.jmp_gui_uart_send_str  jmp_gui.o
-    0x08011d90   0x00000020   Code   RO        18187    i.jmp_gui_uart_timeout  jmp_gui.o
-    0x08011db0   0x0000001c   Code   RO        18188    i.jmp_gui_uart_timeout_disable  jmp_gui.o
-    0x08011dcc   0x0000001c   Code   RO        18189    i.jmp_gui_uart_timeout_enable  jmp_gui.o
-    0x08011de8   0x00000020   Code   RO        18190    i.jmp_gui_uart_timeout_init  jmp_gui.o
-    0x08011e08   0x00000010   Code   RO        18191    i.jmp_gui_uart_timeout_reset  jmp_gui.o
-    0x08011e18   0x000000dc   Code   RO        18192    i.jmp_gui_update_gcode_file_name  jmp_gui.o
-    0x08011ef4   0x00000044   Code   RO        18193    i.jmp_gui_update_manual_step  jmp_gui.o
-    0x08011f38   0x00000024   Code   RO        18194    i.jmp_guiuart_rx_str_clear  jmp_gui.o
-    0x08011f5c   0x00000024   Code   RO        18195    i.jmp_guiuart_tx_str_clear  jmp_gui.o
-    0x08011f80   0x000000cc   Code   RO        18592    i.jmp_motion_clamp_to_software_endstops  jmp_motion.o
-    0x0801204c   0x00000620   Code   RO        18593    i.jmp_motion_find_home  jmp_motion.o
-    0x0801266c   0x00000074   Code   RO        18594    i.jmp_motion_init   jmp_motion.o
-    0x080126e0   0x00000068   Code   RO        18595    i.jmp_motion_manual  jmp_motion.o
-    0x08012748   0x000000a4   Code   RO        18596    i.jmp_motion_prepare_move  jmp_motion.o
-    0x080127ec   0x00000048   Code   RO        18597    i.jmp_motion_set_postion  jmp_motion.o
-    0x08012834   0x00000174   Code   RO        18598    i.jmp_motion_state_get  jmp_motion.o
-    0x080129a8   0x00000012   Code   RO        18599    i.jmp_motion_task   jmp_motion.o
-    0x080129ba   0x00000010   Code   RO        18600    i.jmp_motion_test_task  jmp_motion.o
-    0x080129ca   0x00000002   PAD
-    0x080129cc   0x00000184   Code   RO        18601    i.jmp_motion_variable_init  jmp_motion.o
-    0x08012b50   0x00000034   Code   RO        18390    i.jmp_storage_buff_clear  jmp_storage_read.o
-    0x08012b84   0x00000240   Code   RO        18391    i.jmp_storage_buff_fill  jmp_storage_read.o
-    0x08012dc4   0x0000003c   Code   RO        18392    i.jmp_storage_buff_get  jmp_storage_read.o
-    0x08012e00   0x00000050   Code   RO        18394    i.jmp_storage_buff_get_sum  jmp_storage_read.o
-    0x08012e50   0x00000050   Code   RO        18395    i.jmp_storage_get_nextline_sum  jmp_storage_read.o
-    0x08012ea0   0x00000020   Code   RO        18396    i.jmp_storage_read_buff_clear  jmp_storage_read.o
-    0x08012ec0   0x0000004c   Code   RO        18398    i.jmp_storage_read_init  jmp_storage_read.o
-    0x08012f0c   0x00000204   Code   RO        18399    i.jmp_storage_read_task  jmp_storage_read.o
-    0x08013110   0x00000088   Code   RO        18400    i.jmp_storage_readline  jmp_storage_read.o
-    0x08013198   0x00000026   Code   RO        15630    i.ld_clust          ff.o
-    0x080131be   0x00000018   Code   RO        15631    i.ld_dword          ff.o
-    0x080131d6   0x0000000c   Code   RO        15632    i.ld_word           ff.o
-    0x080131e2   0x00000002   PAD
-    0x080131e4   0x00000098   Code   RO            6    i.main              main.o
-    0x0801327c   0x0000006c   Code   RO        19307    i.malloc            mc_w.l(malloc.o)
-    0x080132e8   0x00000034   Code   RO        18687    i.max_allowable_speed  planner.o
-    0x0801331c   0x00000024   Code   RO        15633    i.mem_cmp           ff.o
-    0x08013340   0x0000001a   Code   RO        15634    i.mem_cpy           ff.o
-    0x0801335a   0x00000012   Code   RO        15635    i.mem_set           ff.o
-    0x0801336c   0x00000034   Code   RO        15636    i.move_window       ff.o
-    0x080133a0   0x0000000c   Code   RO        18689    i.next_block_index  planner.o
-    0x080133ac   0x00000088   Code   RO        15637    i.pick_lfn          ff.o
-    0x08013434   0x00000a10   Code   RO        18690    i.plan_buffer_line  planner.o
-    0x08013e44   0x00000024   Code   RO        18691    i.plan_discard_current_block  planner.o
-    0x08013e68   0x00000038   Code   RO        18692    i.plan_get_current_block  planner.o
-    0x08013ea0   0x00000064   Code   RO        18693    i.plan_init         planner.o
-    0x08013f04   0x000000e4   Code   RO        18695    i.plan_set_position  planner.o
-    0x08013fe8   0x00000058   Code   RO        18696    i.planner_forward_pass  planner.o
-    0x08014040   0x000000ae   Code   RO        18697    i.planner_forward_pass_kernel  planner.o
-    0x080140ee   0x00000010   Code   RO        18698    i.planner_recalculate  planner.o
-    0x080140fe   0x00000002   PAD
-    0x08014100   0x000000c0   Code   RO        18699    i.planner_recalculate_trapezoids  planner.o
-    0x080141c0   0x00000068   Code   RO        18700    i.planner_reverse_pass  planner.o
-    0x08014228   0x000000aa   Code   RO        18701    i.planner_reverse_pass_kernel  planner.o
-    0x080142d2   0x00000002   PAD
-    0x080142d4   0x00000138   Code   RO        18702    i.planner_variable_init  planner.o
-    0x0801440c   0x0000000a   Code   RO        18703    i.prev_block_index  planner.o
-    0x08014416   0x00000002   PAD
-    0x08014418   0x00000098   Code   RO        17271    i.prvAddCurrentTaskToDelayedList  tasks.o
-    0x080144b0   0x000000b4   Code   RO        17272    i.prvAddNewTaskToReadyList  tasks.o
-    0x08014564   0x00000048   Code   RO        17273    i.prvCheckTasksWaitingTermination  tasks.o
-    0x080145ac   0x0000007c   Code   RO        17046    i.prvCopyDataToQueue  queue.o
-    0x08014628   0x00000012   Code   RO        17274    i.prvDeleteTCB      tasks.o
-    0x0801463a   0x00000014   Code   RO        17047    i.prvGetDisinheritPriorityAfterTimeout  queue.o
-    0x0801464e   0x00000002   PAD
-    0x08014650   0x0000007c   Code   RO        17844    i.prvHeapInit       heap_4.o
-    0x080146cc   0x00000028   Code   RO        17275    i.prvIdleTask       tasks.o
-    0x080146f4   0x0000002a   Code   RO        17049    i.prvInitialiseNewQueue  queue.o
-    0x0801471e   0x000000ae   Code   RO        17276    i.prvInitialiseNewTask  tasks.o
-    0x080147cc   0x00000068   Code   RO        17277    i.prvInitialiseTaskLists  tasks.o
-    0x08014834   0x00000068   Code   RO        17845    i.prvInsertBlockIntoFreeList  heap_4.o
-    0x0801489c   0x0000001a   Code   RO        17050    i.prvIsQueueEmpty   queue.o
-    0x080148b6   0x0000001e   Code   RO        17051    i.prvIsQueueFull    queue.o
-    0x080148d4   0x00000098   Code   RO        17052    i.prvNotifyQueueSetContainer  queue.o
-    0x0801496c   0x00000034   Code   RO        17278    i.prvResetNextTaskUnblockTime  tasks.o
-    0x080149a0   0x00000048   Code   RO        17756    i.prvTaskExitError  port.o
-    0x080149e8   0x00000092   Code   RO        17053    i.prvUnlockQueue    queue.o
-    0x08014a7a   0x00000138   Code   RO        15638    i.put_fat           ff.o
-    0x08014bb2   0x00000002   PAD
-    0x08014bb4   0x00000080   Code   RO        15639    i.put_lfn           ff.o
-    0x08014c34   0x00000148   Code   RO        17846    i.pvPortMalloc      heap_4.o
-    0x08014d7c   0x00000020   Code   RO        17280    i.pvTaskIncrementMutexHeldCount  tasks.o
-    0x08014d9c   0x0000002c   Code   RO        17757    i.pxPortInitialiseStack  port.o
-    0x08014dc8   0x00000096   Code   RO        15641    i.remove_chain      ff.o
-    0x08014e5e   0x00000002   PAD
-    0x08014e60   0x00000044   Code   RO        18704    i.reset_acceleration_rates  planner.o
-    0x08014ea4   0x0000006a   Code   RO        19006    i.sqrt              m_wv.l(sqrt.o)
-    0x08014f0e   0x00000024   Code   RO        15642    i.st_clust          ff.o
-    0x08014f32   0x00000018   Code   RO        15643    i.st_dword          ff.o
-    0x08014f4a   0x00000002   PAD
-    0x08014f4c   0x00000144   Code   RO        18855    i.st_init           stepper.o
-    0x08015090   0x000000a0   Code   RO        18856    i.st_pin_idle       stepper.o
-    0x08015130   0x00000014   Code   RO        18858    i.st_set_position   stepper.o
-    0x08015144   0x00000868   Code   RO        18860    i.st_timer_interrupt  stepper.o
-    0x080159ac   0x0000000c   Code   RO        15644    i.st_word           ff.o
-    0x080159b8   0x00000020   Code   RO        15645    i.sum_sfn           ff.o
-    0x080159d8   0x00000090   Code   RO        15646    i.sync_fs           ff.o
-    0x08015a68   0x00000052   Code   RO        15647    i.sync_window       ff.o
-    0x08015aba   0x00000002   PAD
-    0x08015abc   0x00000050   Code   RO          616    i.tmdelay_init      tmdelay.o
-    0x08015b0c   0x00000018   Code   RO          617    i.tmdelay_ms        tmdelay.o
-    0x08015b24   0x00000040   Code   RO          618    i.tmdelay_us        tmdelay.o
-    0x08015b64   0x000000a0   Code   RO        18863    i.trapezoid_generator_reset  stepper.o
-    0x08015c04   0x0000002c   Code   RO        16808    i.usb_app_init      usb_app.o
-    0x08015c30   0x0000002c   Code   RO        16775    i.usb_init          usb_test.o
-    0x08015c5c   0x00000018   Code   RO        16809    i.usb_task          usb_app.o
-    0x08015c74   0x00000028   Code   RO        16991    i.uxListRemove      list.o
-    0x08015c9c   0x0000001a   Code   RO        16992    i.vListInitialise   list.o
-    0x08015cb6   0x00000006   Code   RO        16993    i.vListInitialiseItem  list.o
-    0x08015cbc   0x00000034   Code   RO        16994    i.vListInsert       list.o
-    0x08015cf0   0x00000018   Code   RO        16995    i.vListInsertEnd    list.o
-    0x08015d08   0x0000005c   Code   RO        17759    i.vPortEnterCritical  port.o
-    0x08015d64   0x00000040   Code   RO        17760    i.vPortExitCritical  port.o
-    0x08015da4   0x0000009c   Code   RO        17847    i.vPortFree         heap_4.o
-    0x08015e40   0x00000028   Code   RO        17761    i.vPortSetupTimerInterrupt  port.o
-    0x08015e68   0x00000080   Code   RO        17762    i.vPortValidateInterruptPriority  port.o
-    0x08015ee8   0x00000060   Code   RO        17286    i.vTaskDelay        tasks.o
-    0x08015f48   0x00000018   Code   RO        17290    i.vTaskInternalSetTimeOutState  tasks.o
-    0x08015f60   0x00000020   Code   RO            7    i.vTaskLED          main.o
-    0x08015f80   0x0000000c   Code   RO        17291    i.vTaskMissedYield  tasks.o
-    0x08015f8c   0x0000003c   Code   RO        17293    i.vTaskPlaceOnEventList  tasks.o
-    0x08015fc8   0x000000fc   Code   RO        17295    i.vTaskPriorityDisinheritAfterTimeout  tasks.o
-    0x080160c4   0x00000090   Code   RO        17300    i.vTaskStartScheduler  tasks.o
-    0x08016154   0x00000010   Code   RO        17302    i.vTaskSuspendAll   tasks.o
-    0x08016164   0x00000090   Code   RO        17303    i.vTaskSwitchContext  tasks.o
-    0x080161f4   0x00000042   Code   RO        15648    i.validate          ff.o
-    0x08016236   0x00000002   PAD
-    0x08016238   0x00000144   Code   RO        17763    i.xPortStartScheduler  port.o
-    0x0801637c   0x0000005c   Code   RO        17064    i.xQueueGenericCreate  queue.o
-    0x080163d8   0x0000009c   Code   RO        17065    i.xQueueGenericReset  queue.o
-    0x08016474   0x000001ac   Code   RO        17066    i.xQueueGenericSend  queue.o
-    0x08016620   0x00000106   Code   RO        17068    i.xQueueGiveFromISR  queue.o
-    0x08016726   0x00000002   PAD
-    0x08016728   0x0000019c   Code   RO        17078    i.xQueueSemaphoreTake  queue.o
-    0x080168c4   0x00000094   Code   RO        17304    i.xTaskCheckForTimeOut  tasks.o
-    0x08016958   0x00000060   Code   RO        17305    i.xTaskCreate       tasks.o
-    0x080169b8   0x0000014c   Code   RO        17311    i.xTaskIncrementTick  tasks.o
-    0x08016b04   0x000000d0   Code   RO        17314    i.xTaskPriorityDisinherit  tasks.o
-    0x08016bd4   0x000000c8   Code   RO        17315    i.xTaskPriorityInherit  tasks.o
-    0x08016c9c   0x0000009c   Code   RO        17316    i.xTaskRemoveFromEventList  tasks.o
-    0x08016d38   0x00000108   Code   RO        17317    i.xTaskResumeAll    tasks.o
-    0x08016e40   0x00000040   Data   RO          581    .constdata          system_stm32h7xx.o
-    0x08016e80   0x00000030   Data   RO        13185    .constdata          stm32h7xx_hal_uart.o
-    0x08016eb0   0x0000004a   Data   RO        15649    .constdata          ff.o
-    0x08016efa   0x0002abb6   Data   RO        15937    .constdata          cc936.o
-    0x08041ab0   0x00000088   Data   RO        18989    .constdata          m_wv.l(pow.o)
-    0x08041b38   0x00000008   Data   RO        19360    .constdata          m_wv.l(qnan.o)
-    0x08041b40   0x00000081   Data   RO        19417    .constdata          mc_w.l(ctype_o.o)
-    0x08041bc1   0x00000003   PAD
-    0x08041bc4   0x00000004   Data   RO        19418    .constdata          mc_w.l(ctype_o.o)
-    0x08041bc8   0x00000004   Data   RO        16024    .conststring        usbh_msc.o
-    0x08041bcc   0x00000020   Data   RO        19465    Region$$Table       anon$$obj.o
+    0x0800d7c4   0x00000060   Code   RO        15599    i.dir_remove        ff.o
+    0x0800d824   0x0000009a   Code   RO        15600    i.dir_sdi           ff.o
+    0x0800d8be   0x0000002c   Code   RO        15530    i.disk_initialize   diskio.o
+    0x0800d8ea   0x0000005a   Code   RO        15531    i.disk_ioctl        diskio.o
+    0x0800d944   0x00000062   Code   RO        15532    i.disk_read         diskio.o
+    0x0800d9a6   0x00000006   Code   RO        15533    i.disk_status       diskio.o
+    0x0800d9ac   0x00000062   Code   RO        15534    i.disk_write        diskio.o
+    0x0800da0e   0x00000002   PAD
+    0x0800da10   0x00000034   Code   RO        18697    i.estimate_acceleration_distance  planner.o
+    0x0800da44   0x00000026   Code   RO        15601    i.f_close           ff.o
+    0x0800da6a   0x00000018   Code   RO        15602    i.f_closedir        ff.o
+    0x0800da82   0x000002ac   Code   RO        15606    i.f_lseek           ff.o
+    0x0800dd2e   0x00000002   PAD
+    0x0800dd30   0x00000570   Code   RO        15608    i.f_mkfs            ff.o
+    0x0800e2a0   0x0000005c   Code   RO        15609    i.f_mount           ff.o
+    0x0800e2fc   0x00000170   Code   RO        15610    i.f_open            ff.o
+    0x0800e46c   0x0000007c   Code   RO        15611    i.f_opendir         ff.o
+    0x0800e4e8   0x000001ac   Code   RO        15615    i.f_read            ff.o
+    0x0800e694   0x0000005e   Code   RO        15616    i.f_readdir         ff.o
+    0x0800e6f2   0x000000a0   Code   RO        15620    i.f_sync            ff.o
+    0x0800e792   0x000000b6   Code   RO        15622    i.f_unlink          ff.o
+    0x0800e848   0x000001ee   Code   RO        15623    i.f_write           ff.o
+    0x0800ea36   0x00000018   Code   RO        19364    i.fabs              m_wv.l(fabs.o)
+    0x0800ea4e   0x00000002   PAD
+    0x0800ea50   0x0000007c   Code   RO        15935    i.ff_convert        cc936.o
+    0x0800eacc   0x000000a4   Code   RO        15936    i.ff_wtoupper       cc936.o
+    0x0800eb70   0x000002f4   Code   RO        15624    i.find_volume       ff.o
+    0x0800ee64   0x000000a2   Code   RO        15625    i.follow_path       ff.o
+    0x0800ef06   0x00000002   PAD
+    0x0800ef08   0x0000001c   Code   RO        15119    i.fputc             bsp_uart.o
+    0x0800ef24   0x00000050   Code   RO        19318    i.free              mc_w.l(malloc.o)
+    0x0800ef74   0x000000cc   Code   RO        15626    i.gen_numname       ff.o
+    0x0800f040   0x000000e0   Code   RO        15627    i.get_fat           ff.o
+    0x0800f120   0x00000004   Code   RO        15535    i.get_fattime       diskio.o
+    0x0800f124   0x0000014a   Code   RO        15628    i.get_fileinfo      ff.o
+    0x0800f26e   0x0000004a   Code   RO        15629    i.get_ldnumber      ff.o
+    0x0800f2b8   0x00000040   Code   RO        18698    i.intersection_distance  planner.o
+    0x0800f2f8   0x0000008c   Code   RO        17918    i.jmp_command_execution  jmp_command_execution.o
+    0x0800f384   0x00000040   Code   RO        17919    i.jmp_command_execution_init  jmp_command_execution.o
+    0x0800f3c4   0x00000030   Code   RO        17920    i.jmp_command_execution_task  jmp_command_execution.o
+    0x0800f3f4   0x00000002   Code   RO        17921    i.jmp_command_g0_exec  jmp_command_execution.o
+    0x0800f3f6   0x00000002   PAD
+    0x0800f3f8   0x00000174   Code   RO        17922    i.jmp_command_g1_exec  jmp_command_execution.o
+    0x0800f56c   0x00000040   Code   RO        17923    i.jmp_command_g28_exec  jmp_command_execution.o
+    0x0800f5ac   0x00000018   Code   RO        17924    i.jmp_command_g4_exec  jmp_command_execution.o
+    0x0800f5c4   0x00000018   Code   RO        17925    i.jmp_command_g90_exec  jmp_command_execution.o
+    0x0800f5dc   0x0000013c   Code   RO        17926    i.jmp_command_g92_exec  jmp_command_execution.o
+    0x0800f718   0x00000018   Code   RO        17927    i.jmp_command_m82_exec  jmp_command_execution.o
+    0x0800f730   0x0000003c   Code   RO        17928    i.jmp_command_struct_clear  jmp_command_execution.o
+    0x0800f76c   0x00000002   Code   RO        18353    i.jmp_config_param_init  jmp_param_state.o
+    0x0800f76e   0x00000002   PAD
+    0x0800f770   0x00000080   Code   RO        18354    i.jmp_config_state_init  jmp_param_state.o
+    0x0800f7f0   0x0000000c   Code   RO        18355    i.jmp_configstate_init  jmp_param_state.o
+    0x0800f7fc   0x00000018   Code   RO        18488    i.jmp_ex_config_check_digit_buff_clear  jmp_ex_config.o
+    0x0800f814   0x00000870   Code   RO        18489    i.jmp_ex_config_check_ex_file  jmp_ex_config.o
+    0x08010084   0x0000004c   Code   RO        18490    i.jmp_ex_config_check_ex_file_segment  jmp_ex_config.o
+    0x080100d0   0x00000024   Code   RO        18491    i.jmp_ex_config_check_ex_file_segment_fb  jmp_ex_config.o
+    0x080100f4   0x00000078   Code   RO        18492    i.jmp_ex_config_check_file  jmp_ex_config.o
+    0x0801016c   0x00000258   Code   RO        18493    i.jmp_ex_config_default_set  jmp_ex_config.o
+    0x080103c4   0x0000001a   Code   RO        18494    i.jmp_ex_config_ex_file_read  jmp_ex_config.o
+    0x080103de   0x00000002   PAD
+    0x080103e0   0x00000024   Code   RO        18495    i.jmp_ex_config_factory_setting  jmp_ex_config.o
+    0x08010404   0x00000018   Code   RO        18496    i.jmp_ex_config_file_buf_clear  jmp_ex_config.o
+    0x0801041c   0x00000018   Code   RO        18497    i.jmp_ex_config_file_cut_buf_clear  jmp_ex_config.o
+    0x08010434   0x0000001e   Code   RO        18498    i.jmp_ex_config_init  jmp_ex_config.o
+    0x08010452   0x00000002   PAD
+    0x08010454   0x00000924   Code   RO        18499    i.jmp_ex_config_read_and_set  jmp_ex_config.o
+    0x08010d78   0x00000048   Code   RO        18501    i.jmp_ex_config_read_ex_save  jmp_ex_config.o
+    0x08010dc0   0x0000006c   Code   RO        18502    i.jmp_ex_config_read_param  jmp_ex_config.o
+    0x08010e2c   0x000000e4   Code   RO        18019    i.jmp_gcode_analysis  jmp_gcode_analysis.o
+    0x08010f10   0x00000034   Code   RO        18021    i.jmp_gcode_buff_clear  jmp_gcode_analysis.o
+    0x08010f44   0x0000003c   Code   RO        18022    i.jmp_gcode_buff_get  jmp_gcode_analysis.o
+    0x08010f80   0x0000005c   Code   RO        18023    i.jmp_gcode_buff_get_remain  jmp_gcode_analysis.o
+    0x08010fdc   0x00000050   Code   RO        18024    i.jmp_gcode_buff_get_sum  jmp_gcode_analysis.o
+    0x0801102c   0x00000044   Code   RO        18025    i.jmp_gcode_buff_put  jmp_gcode_analysis.o
+    0x08011070   0x00000008   Code   RO        18026    i.jmp_gcode_g0_param  jmp_gcode_analysis.o
+    0x08011078   0x000000f8   Code   RO        18027    i.jmp_gcode_g1_param  jmp_gcode_analysis.o
+    0x08011170   0x00000002   Code   RO        18028    i.jmp_gcode_g28_param  jmp_gcode_analysis.o
+    0x08011172   0x00000002   Code   RO        18029    i.jmp_gcode_g4_param  jmp_gcode_analysis.o
+    0x08011174   0x00000002   Code   RO        18030    i.jmp_gcode_g90_param  jmp_gcode_analysis.o
+    0x08011176   0x00000008   Code   RO        18031    i.jmp_gcode_g92_param  jmp_gcode_analysis.o
+    0x0801117e   0x00000002   PAD
+    0x08011180   0x00000050   Code   RO        18032    i.jmp_gcode_g_param  jmp_gcode_analysis.o
+    0x080111d0   0x000000c8   Code   RO        18033    i.jmp_gcode_get_line  jmp_gcode_analysis.o
+    0x08011298   0x00000020   Code   RO        18034    i.jmp_gcode_line_buff_clear  jmp_gcode_analysis.o
+    0x080112b8   0x00000002   Code   RO        18035    i.jmp_gcode_m82_param  jmp_gcode_analysis.o
+    0x080112ba   0x00000002   PAD
+    0x080112bc   0x0000001c   Code   RO        18036    i.jmp_gcode_m_param  jmp_gcode_analysis.o
+    0x080112d8   0x00000034   Code   RO        18037    i.jmp_gcode_param_buff_clear  jmp_gcode_analysis.o
+    0x0801130c   0x00000008   Code   RO        18038    i.jmp_gcode_s_param  jmp_gcode_analysis.o
+    0x08011314   0x00000008   Code   RO        18039    i.jmp_gcode_t_param  jmp_gcode_analysis.o
+    0x0801131c   0x00000088   Code   RO        18171    i.jmp_gui_find_gcode_file  jmp_gui.o
+    0x080113a4   0x00000048   Code   RO        18172    i.jmp_gui_gcode_file_name_clear  jmp_gui.o
+    0x080113ec   0x00000028   Code   RO        18173    i.jmp_gui_goto_frame  jmp_gui.o
+    0x08011414   0x000000ec   Code   RO        18174    i.jmp_gui_init      jmp_gui.o
+    0x08011500   0x00000080   Code   RO        18175    i.jmp_gui_print_prepare_file_name_update  jmp_gui.o
+    0x08011580   0x0000005c   Code   RO        18176    i.jmp_gui_print_set_update  jmp_gui.o
+    0x080115dc   0x0000003c   Code   RO        18177    i.jmp_gui_printing_main_task  jmp_gui.o
+    0x08011618   0x00000034   Code   RO        18178    i.jmp_gui_printing_progress_updata  jmp_gui.o
+    0x0801164c   0x00000164   Code   RO        18179    i.jmp_gui_printing_update  jmp_gui.o
+    0x080117b0   0x00000064   Code   RO        18180    i.jmp_gui_start_print  jmp_gui.o
+    0x08011814   0x00000010   Code   RO        18181    i.jmp_gui_stop_print  jmp_gui.o
+    0x08011824   0x000008b8   Code   RO        18182    i.jmp_gui_task      jmp_gui.o
+    0x080120dc   0x00000084   Code   RO        18183    i.jmp_gui_uart_command_analysis  jmp_gui.o
+    0x08012160   0x000000d0   Code   RO        18184    i.jmp_gui_uart_command_get  jmp_gui.o
+    0x08012230   0x0000000c   Code   RO        18185    i.jmp_gui_uart_send  jmp_gui.o
+    0x0801223c   0x00000018   Code   RO        18186    i.jmp_gui_uart_send_buffx  jmp_gui.o
+    0x08012254   0x00000164   Code   RO        18187    i.jmp_gui_uart_send_str  jmp_gui.o
+    0x080123b8   0x00000020   Code   RO        18188    i.jmp_gui_uart_timeout  jmp_gui.o
+    0x080123d8   0x0000001c   Code   RO        18189    i.jmp_gui_uart_timeout_disable  jmp_gui.o
+    0x080123f4   0x0000001c   Code   RO        18190    i.jmp_gui_uart_timeout_enable  jmp_gui.o
+    0x08012410   0x00000020   Code   RO        18191    i.jmp_gui_uart_timeout_init  jmp_gui.o
+    0x08012430   0x00000010   Code   RO        18192    i.jmp_gui_uart_timeout_reset  jmp_gui.o
+    0x08012440   0x000000dc   Code   RO        18193    i.jmp_gui_update_gcode_file_name  jmp_gui.o
+    0x0801251c   0x00000044   Code   RO        18194    i.jmp_gui_update_manual_step  jmp_gui.o
+    0x08012560   0x00000024   Code   RO        18195    i.jmp_guiuart_rx_str_clear  jmp_gui.o
+    0x08012584   0x00000024   Code   RO        18196    i.jmp_guiuart_tx_str_clear  jmp_gui.o
+    0x080125a8   0x000000cc   Code   RO        18604    i.jmp_motion_clamp_to_software_endstops  jmp_motion.o
+    0x08012674   0x00000620   Code   RO        18605    i.jmp_motion_find_home  jmp_motion.o
+    0x08012c94   0x00000074   Code   RO        18606    i.jmp_motion_init   jmp_motion.o
+    0x08012d08   0x00000068   Code   RO        18607    i.jmp_motion_manual  jmp_motion.o
+    0x08012d70   0x000000d8   Code   RO        18608    i.jmp_motion_prepare_move  jmp_motion.o
+    0x08012e48   0x00000048   Code   RO        18609    i.jmp_motion_set_postion  jmp_motion.o
+    0x08012e90   0x00000174   Code   RO        18610    i.jmp_motion_state_get  jmp_motion.o
+    0x08013004   0x00000012   Code   RO        18611    i.jmp_motion_task   jmp_motion.o
+    0x08013016   0x00000010   Code   RO        18612    i.jmp_motion_test_task  jmp_motion.o
+    0x08013026   0x00000002   PAD
+    0x08013028   0x00000184   Code   RO        18613    i.jmp_motion_variable_init  jmp_motion.o
+    0x080131ac   0x00000034   Code   RO        18396    i.jmp_storage_buff_clear  jmp_storage_read.o
+    0x080131e0   0x00000240   Code   RO        18397    i.jmp_storage_buff_fill  jmp_storage_read.o
+    0x08013420   0x0000003c   Code   RO        18398    i.jmp_storage_buff_get  jmp_storage_read.o
+    0x0801345c   0x00000050   Code   RO        18400    i.jmp_storage_buff_get_sum  jmp_storage_read.o
+    0x080134ac   0x00000050   Code   RO        18401    i.jmp_storage_get_nextline_sum  jmp_storage_read.o
+    0x080134fc   0x00000020   Code   RO        18402    i.jmp_storage_read_buff_clear  jmp_storage_read.o
+    0x0801351c   0x0000004c   Code   RO        18404    i.jmp_storage_read_init  jmp_storage_read.o
+    0x08013568   0x00000204   Code   RO        18405    i.jmp_storage_read_task  jmp_storage_read.o
+    0x0801376c   0x00000088   Code   RO        18406    i.jmp_storage_readline  jmp_storage_read.o
+    0x080137f4   0x00000026   Code   RO        15630    i.ld_clust          ff.o
+    0x0801381a   0x00000018   Code   RO        15631    i.ld_dword          ff.o
+    0x08013832   0x0000000c   Code   RO        15632    i.ld_word           ff.o
+    0x0801383e   0x00000002   PAD
+    0x08013840   0x0000009c   Code   RO            6    i.main              main.o
+    0x080138dc   0x0000006c   Code   RO        19319    i.malloc            mc_w.l(malloc.o)
+    0x08013948   0x00000034   Code   RO        18699    i.max_allowable_speed  planner.o
+    0x0801397c   0x00000024   Code   RO        15633    i.mem_cmp           ff.o
+    0x080139a0   0x0000001a   Code   RO        15634    i.mem_cpy           ff.o
+    0x080139ba   0x00000012   Code   RO        15635    i.mem_set           ff.o
+    0x080139cc   0x00000034   Code   RO        15636    i.move_window       ff.o
+    0x08013a00   0x0000000c   Code   RO        18701    i.next_block_index  planner.o
+    0x08013a0c   0x00000088   Code   RO        15637    i.pick_lfn          ff.o
+    0x08013a94   0x00000a10   Code   RO        18702    i.plan_buffer_line  planner.o
+    0x080144a4   0x00000024   Code   RO        18703    i.plan_discard_current_block  planner.o
+    0x080144c8   0x00000038   Code   RO        18704    i.plan_get_current_block  planner.o
+    0x08014500   0x00000064   Code   RO        18705    i.plan_init         planner.o
+    0x08014564   0x000000e4   Code   RO        18707    i.plan_set_position  planner.o
+    0x08014648   0x00000058   Code   RO        18708    i.planner_forward_pass  planner.o
+    0x080146a0   0x000000ae   Code   RO        18709    i.planner_forward_pass_kernel  planner.o
+    0x0801474e   0x00000010   Code   RO        18710    i.planner_recalculate  planner.o
+    0x0801475e   0x00000002   PAD
+    0x08014760   0x000000c0   Code   RO        18711    i.planner_recalculate_trapezoids  planner.o
+    0x08014820   0x00000068   Code   RO        18712    i.planner_reverse_pass  planner.o
+    0x08014888   0x000000aa   Code   RO        18713    i.planner_reverse_pass_kernel  planner.o
+    0x08014932   0x00000002   PAD
+    0x08014934   0x00000138   Code   RO        18714    i.planner_variable_init  planner.o
+    0x08014a6c   0x0000000a   Code   RO        18715    i.prev_block_index  planner.o
+    0x08014a76   0x00000002   PAD
+    0x08014a78   0x00000098   Code   RO        17271    i.prvAddCurrentTaskToDelayedList  tasks.o
+    0x08014b10   0x000000b4   Code   RO        17272    i.prvAddNewTaskToReadyList  tasks.o
+    0x08014bc4   0x00000048   Code   RO        17273    i.prvCheckTasksWaitingTermination  tasks.o
+    0x08014c0c   0x0000007c   Code   RO        17046    i.prvCopyDataToQueue  queue.o
+    0x08014c88   0x00000012   Code   RO        17274    i.prvDeleteTCB      tasks.o
+    0x08014c9a   0x00000014   Code   RO        17047    i.prvGetDisinheritPriorityAfterTimeout  queue.o
+    0x08014cae   0x00000002   PAD
+    0x08014cb0   0x0000007c   Code   RO        17844    i.prvHeapInit       heap_4.o
+    0x08014d2c   0x00000028   Code   RO        17275    i.prvIdleTask       tasks.o
+    0x08014d54   0x0000002a   Code   RO        17049    i.prvInitialiseNewQueue  queue.o
+    0x08014d7e   0x000000ae   Code   RO        17276    i.prvInitialiseNewTask  tasks.o
+    0x08014e2c   0x00000068   Code   RO        17277    i.prvInitialiseTaskLists  tasks.o
+    0x08014e94   0x00000068   Code   RO        17845    i.prvInsertBlockIntoFreeList  heap_4.o
+    0x08014efc   0x0000001a   Code   RO        17050    i.prvIsQueueEmpty   queue.o
+    0x08014f16   0x0000001e   Code   RO        17051    i.prvIsQueueFull    queue.o
+    0x08014f34   0x00000098   Code   RO        17052    i.prvNotifyQueueSetContainer  queue.o
+    0x08014fcc   0x00000034   Code   RO        17278    i.prvResetNextTaskUnblockTime  tasks.o
+    0x08015000   0x00000048   Code   RO        17756    i.prvTaskExitError  port.o
+    0x08015048   0x00000092   Code   RO        17053    i.prvUnlockQueue    queue.o
+    0x080150da   0x00000138   Code   RO        15638    i.put_fat           ff.o
+    0x08015212   0x00000002   PAD
+    0x08015214   0x00000080   Code   RO        15639    i.put_lfn           ff.o
+    0x08015294   0x00000148   Code   RO        17846    i.pvPortMalloc      heap_4.o
+    0x080153dc   0x00000020   Code   RO        17280    i.pvTaskIncrementMutexHeldCount  tasks.o
+    0x080153fc   0x0000002c   Code   RO        17757    i.pxPortInitialiseStack  port.o
+    0x08015428   0x00000096   Code   RO        15641    i.remove_chain      ff.o
+    0x080154be   0x00000002   PAD
+    0x080154c0   0x00000044   Code   RO        18716    i.reset_acceleration_rates  planner.o
+    0x08015504   0x0000006a   Code   RO        19018    i.sqrt              m_wv.l(sqrt.o)
+    0x0801556e   0x00000024   Code   RO        15642    i.st_clust          ff.o
+    0x08015592   0x00000018   Code   RO        15643    i.st_dword          ff.o
+    0x080155aa   0x00000002   PAD
+    0x080155ac   0x00000144   Code   RO        18867    i.st_init           stepper.o
+    0x080156f0   0x000000a0   Code   RO        18868    i.st_pin_idle       stepper.o
+    0x08015790   0x00000014   Code   RO        18870    i.st_set_position   stepper.o
+    0x080157a4   0x00000868   Code   RO        18872    i.st_timer_interrupt  stepper.o
+    0x0801600c   0x0000000c   Code   RO        15644    i.st_word           ff.o
+    0x08016018   0x00000020   Code   RO        15645    i.sum_sfn           ff.o
+    0x08016038   0x00000090   Code   RO        15646    i.sync_fs           ff.o
+    0x080160c8   0x00000052   Code   RO        15647    i.sync_window       ff.o
+    0x0801611a   0x00000002   PAD
+    0x0801611c   0x00000050   Code   RO          616    i.tmdelay_init      tmdelay.o
+    0x0801616c   0x00000018   Code   RO          617    i.tmdelay_ms        tmdelay.o
+    0x08016184   0x00000040   Code   RO          618    i.tmdelay_us        tmdelay.o
+    0x080161c4   0x000000a0   Code   RO        18875    i.trapezoid_generator_reset  stepper.o
+    0x08016264   0x0000002c   Code   RO        16808    i.usb_app_init      usb_app.o
+    0x08016290   0x0000002c   Code   RO        16775    i.usb_init          usb_test.o
+    0x080162bc   0x00000018   Code   RO        16809    i.usb_task          usb_app.o
+    0x080162d4   0x00000028   Code   RO        16991    i.uxListRemove      list.o
+    0x080162fc   0x0000001a   Code   RO        16992    i.vListInitialise   list.o
+    0x08016316   0x00000006   Code   RO        16993    i.vListInitialiseItem  list.o
+    0x0801631c   0x00000034   Code   RO        16994    i.vListInsert       list.o
+    0x08016350   0x00000018   Code   RO        16995    i.vListInsertEnd    list.o
+    0x08016368   0x0000005c   Code   RO        17759    i.vPortEnterCritical  port.o
+    0x080163c4   0x00000040   Code   RO        17760    i.vPortExitCritical  port.o
+    0x08016404   0x0000009c   Code   RO        17847    i.vPortFree         heap_4.o
+    0x080164a0   0x00000028   Code   RO        17761    i.vPortSetupTimerInterrupt  port.o
+    0x080164c8   0x00000080   Code   RO        17762    i.vPortValidateInterruptPriority  port.o
+    0x08016548   0x00000060   Code   RO        17286    i.vTaskDelay        tasks.o
+    0x080165a8   0x00000018   Code   RO        17290    i.vTaskInternalSetTimeOutState  tasks.o
+    0x080165c0   0x00000020   Code   RO            7    i.vTaskLED          main.o
+    0x080165e0   0x0000000c   Code   RO        17291    i.vTaskMissedYield  tasks.o
+    0x080165ec   0x0000003c   Code   RO        17293    i.vTaskPlaceOnEventList  tasks.o
+    0x08016628   0x000000fc   Code   RO        17295    i.vTaskPriorityDisinheritAfterTimeout  tasks.o
+    0x08016724   0x00000090   Code   RO        17300    i.vTaskStartScheduler  tasks.o
+    0x080167b4   0x00000010   Code   RO        17302    i.vTaskSuspendAll   tasks.o
+    0x080167c4   0x00000090   Code   RO        17303    i.vTaskSwitchContext  tasks.o
+    0x08016854   0x00000042   Code   RO        15648    i.validate          ff.o
+    0x08016896   0x00000002   PAD
+    0x08016898   0x00000144   Code   RO        17763    i.xPortStartScheduler  port.o
+    0x080169dc   0x0000005c   Code   RO        17064    i.xQueueGenericCreate  queue.o
+    0x08016a38   0x0000009c   Code   RO        17065    i.xQueueGenericReset  queue.o
+    0x08016ad4   0x000001ac   Code   RO        17066    i.xQueueGenericSend  queue.o
+    0x08016c80   0x00000106   Code   RO        17068    i.xQueueGiveFromISR  queue.o
+    0x08016d86   0x00000002   PAD
+    0x08016d88   0x0000019c   Code   RO        17078    i.xQueueSemaphoreTake  queue.o
+    0x08016f24   0x00000094   Code   RO        17304    i.xTaskCheckForTimeOut  tasks.o
+    0x08016fb8   0x00000060   Code   RO        17305    i.xTaskCreate       tasks.o
+    0x08017018   0x0000014c   Code   RO        17311    i.xTaskIncrementTick  tasks.o
+    0x08017164   0x000000d0   Code   RO        17314    i.xTaskPriorityDisinherit  tasks.o
+    0x08017234   0x000000c8   Code   RO        17315    i.xTaskPriorityInherit  tasks.o
+    0x080172fc   0x0000009c   Code   RO        17316    i.xTaskRemoveFromEventList  tasks.o
+    0x08017398   0x00000108   Code   RO        17317    i.xTaskResumeAll    tasks.o
+    0x080174a0   0x00000040   Data   RO          581    .constdata          system_stm32h7xx.o
+    0x080174e0   0x00000030   Data   RO        13185    .constdata          stm32h7xx_hal_uart.o
+    0x08017510   0x0000004a   Data   RO        15649    .constdata          ff.o
+    0x0801755a   0x0002abb6   Data   RO        15937    .constdata          cc936.o
+    0x08042110   0x00000088   Data   RO        19001    .constdata          m_wv.l(pow.o)
+    0x08042198   0x00000008   Data   RO        19372    .constdata          m_wv.l(qnan.o)
+    0x080421a0   0x00000081   Data   RO        19429    .constdata          mc_w.l(ctype_o.o)
+    0x08042221   0x00000003   PAD
+    0x08042224   0x00000004   Data   RO        19430    .constdata          mc_w.l(ctype_o.o)
+    0x08042228   0x00000004   Data   RO        16024    .conststring        usbh_msc.o
+    0x0804222c   0x00000020   Data   RO        19477    Region$$Table       anon$$obj.o
 
 
     Execution Region RW_IRAM1 (Base: 0x20000000, Size: 0x00000000, Max: 0x00020000, ABSOLUTE)
@@ -9616,19 +9640,19 @@ Memory Map of the image
     0x240000a0   0x00000018   Data   RW        17853    .data               heap_4.o
     0x240000b8   0x00000004   Data   RW        17931    .data               jmp_command_execution.o
     0x240000bc   0x00000014   Data   RW        18042    .data               jmp_gcode_analysis.o
-    0x240000d0   0x00000034   Data   RW        18198    .data               jmp_gui.o
-    0x24000104   0x0000001c   Data   RW        18403    .data               jmp_storage_read.o
-    0x24000120   0x00000001   Data   RW        18498    .data               jmp_ex_config.o
+    0x240000d0   0x00000034   Data   RW        18199    .data               jmp_gui.o
+    0x24000104   0x0000001c   Data   RW        18409    .data               jmp_storage_read.o
+    0x24000120   0x00000001   Data   RW        18505    .data               jmp_ex_config.o
     0x24000121   0x00000003   PAD
-    0x24000124   0x00000020   Data   RW        18604    .data               jmp_motion.o
-    0x24000144   0x0000002c   Data   RW        18707    .data               planner.o
-    0x24000170   0x00000042   Data   RW        18866    .data               stepper.o
+    0x24000124   0x00000020   Data   RW        18616    .data               jmp_motion.o
+    0x24000144   0x0000002c   Data   RW        18719    .data               planner.o
+    0x24000170   0x00000042   Data   RW        18878    .data               stepper.o
     0x240001b2   0x00000002   PAD
-    0x240001b4   0x00000004   Data   RW        19038    .data               mc_w.l(strtok.o)
-    0x240001b8   0x00000004   Data   RW        19375    .data               mc_w.l(stdout.o)
-    0x240001bc   0x00000004   Data   RW        19382    .data               mc_w.l(mvars.o)
-    0x240001c0   0x00000004   Data   RW        19383    .data               mc_w.l(mvars.o)
-    0x240001c4   0x00000004   Data   RW        19387    .data               mc_w.l(errno.o)
+    0x240001b4   0x00000004   Data   RW        19050    .data               mc_w.l(strtok.o)
+    0x240001b8   0x00000004   Data   RW        19387    .data               mc_w.l(stdout.o)
+    0x240001bc   0x00000004   Data   RW        19394    .data               mc_w.l(mvars.o)
+    0x240001c0   0x00000004   Data   RW        19395    .data               mc_w.l(mvars.o)
+    0x240001c4   0x00000004   Data   RW        19399    .data               mc_w.l(errno.o)
     0x240001c8   0x00000040   Zero   RW          619    .bss                tmdelay.o
     0x24000208   0x00000100   Zero   RW        15005    .bss                bsp_timer.o
     0x24000308   0x00000200   Zero   RW        15120    .bss                bsp_uart.o
@@ -9644,13 +9668,13 @@ Memory Map of the image
     0x24002bd0   0x00019000   Zero   RW        17851    .bss                heap_4.o
     0x2401bbd0   0x00000090   Zero   RW        17929    .bss                jmp_command_execution.o
     0x2401bc60   0x000009a4   Zero   RW        18040    .bss                jmp_gcode_analysis.o
-    0x2401c604   0x0000420c   Zero   RW        18196    .bss                jmp_gui.o
-    0x24020810   0x00000178   Zero   RW        18350    .bss                jmp_param_state.o
-    0x24020988   0x000010c8   Zero   RW        18401    .bss                jmp_storage_read.o
-    0x24021a50   0x000057ac   Zero   RW        18496    .bss                jmp_ex_config.o
-    0x240271fc   0x0000005c   Zero   RW        18602    .bss                jmp_motion.o
-    0x24027258   0x00000300   Zero   RW        18705    .bss                planner.o
-    0x24027558   0x0000001c   Zero   RW        18864    .bss                stepper.o
+    0x2401c604   0x0000420c   Zero   RW        18197    .bss                jmp_gui.o
+    0x24020810   0x00000178   Zero   RW        18356    .bss                jmp_param_state.o
+    0x24020988   0x000010c8   Zero   RW        18407    .bss                jmp_storage_read.o
+    0x24021a50   0x000057ac   Zero   RW        18503    .bss                jmp_ex_config.o
+    0x240271fc   0x0000005c   Zero   RW        18614    .bss                jmp_motion.o
+    0x24027258   0x00000300   Zero   RW        18717    .bss                planner.o
+    0x24027558   0x0000001c   Zero   RW        18876    .bss                stepper.o
     0x24027574   0x00000004   PAD
     0x24027578   0x00008000   Zero   RW          712    HEAP                startup_stm32h743xx.o
     0x2402f578   0x00008000   Zero   RW          711    STACK               startup_stm32h743xx.o
@@ -9673,17 +9697,17 @@ Image component sizes
        288         26     175030          0          0       2711   cc936.o
        340          0          0          0          0       4624   diskio.o
          0          0          0          0          0       9384   event_groups.o
-      9466        158         74         10          0      47634   ff.o
+      9744        158         74         10          0      49077   ff.o
        712         62          0         24     102400       7003   heap_4.o
       1138        198          0          4        144       8929   jmp_command_execution.o
-      4886       1900          0          1      22444      11649   jmp_ex_config.o
+      5676       2040          0          1      22444      14241   jmp_ex_config.o
       1260        148          0         20       2468      12187   jmp_gcode_analysis.o
-      4244        424          0         52      16908      19844   jmp_gui.o
-      3022        214          0         32         92       8387   jmp_motion.o
-       142         22          0          0        376       3149   jmp_param_state.o
+      4748        456          0         52      16908      21375   jmp_gui.o
+      3074        218          0         32         92       8427   jmp_motion.o
+       142         20          0          0        376       3169   jmp_param_state.o
       1608        208          0         28       4296       8054   jmp_storage_read.o
        148          0          0          0          0       3186   list.o
-       202         22          0          4          0    1297157   main.o
+       206         22          0          4          0    1297161   main.o
       4680        312          0         44        768      17580   planner.o
       1014         88          0         12          0      11405   port.o
       1890         16          0          0          0      12705   queue.o
@@ -9725,9 +9749,9 @@ Image component sizes
        984         36          0          3       4096       8048   w25qxx.o
 
     ----------------------------------------------------------------------
-     83538       7346     175916        436     226224    1802338   Object Totals
+     85168       7520     175916        436     226224    1807968   Object Totals
          0          0         32          0          0          0   (incl. Generated)
-        90          0          0         10          4          0   (incl. Padding)
+        92          0          0         10          4          0   (incl. Padding)
 
     ----------------------------------------------------------------------
 
@@ -9796,8 +9820,8 @@ Image component sizes
        110          0          0          0          0        168   fepilogue.o
 
     ----------------------------------------------------------------------
-      9558        642        280         20          0       6160   Library Totals
-        18          4          3          0          0          0   (incl. Padding)
+      9560        642        280         20          0       6160   Library Totals
+        20          4          3          0          0          0   (incl. Padding)
 
     ----------------------------------------------------------------------
 
@@ -9808,7 +9832,7 @@ Image component sizes
       1438          4          0          0          0       1160   mf_w.l
 
     ----------------------------------------------------------------------
-      9558        642        280         20          0       6160   Library Totals
+      9560        642        280         20          0       6160   Library Totals
 
     ----------------------------------------------------------------------
 
@@ -9817,15 +9841,15 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-     93096       7988     176196        456     226224    1755146   Grand Totals
-     93096       7988     176196         68     226224    1755146   ELF Image Totals (compressed)
-     93096       7988     176196         68          0          0   ROM Totals
+     94728       8162     176196        456     226224    1760076   Grand Totals
+     94728       8162     176196         68     226224    1760076   ELF Image Totals (compressed)
+     94728       8162     176196         68          0          0   ROM Totals
 
 ==============================================================================
 
-    Total RO  Size (Code + RO Data)               269292 ( 262.98kB)
+    Total RO  Size (Code + RO Data)               270924 ( 264.57kB)
     Total RW  Size (RW Data + ZI Data)            226680 ( 221.37kB)
-    Total ROM Size (Code + RO Data + RW Data)     269360 ( 263.05kB)
+    Total ROM Size (Code + RO Data + RW Data)     270992 ( 264.64kB)
 
 ==============================================================================
 

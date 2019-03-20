@@ -45,6 +45,7 @@ typedef struct
 	double print_progress;
 	
 	int speed_range;
+	int speed_range_e;
 	
 	double feedrate;
 	

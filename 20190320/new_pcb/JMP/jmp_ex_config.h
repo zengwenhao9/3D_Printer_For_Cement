@@ -90,6 +90,9 @@ typedef struct
 extern JMPExCofigStruct jmp_ex_config_struct;
 
 void jmp_ex_config_test(void);
+void jmp_ex_config_init(void);
+u8 jmp_ex_config_ex_file_read(void);
+u8 jmp_ex_config_factory_setting(void);
 
 #endif
 

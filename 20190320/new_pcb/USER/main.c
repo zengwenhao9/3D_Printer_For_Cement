@@ -66,6 +66,7 @@ int main(void)
 	app_qspi_flash_fatfs_init();
 	
 	jmp_configstate_init();
+	jmp_ex_config_init();
 	jmp_storage_read_init();
 	jmp_command_execution_init();
 	jmp_gui_init();

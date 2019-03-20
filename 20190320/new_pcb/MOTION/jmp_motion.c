@@ -78,10 +78,14 @@ void jmp_motion_prepare_move(double x,double y,double z,double e)
 {
 	double feedrate;
 	double multiply;
+	double e_multiply;
 	feedrate=jmp_config_state_struct.feedrate;
 	multiply=jmp_config_state_struct.speed_range;
+	e_multiply=jmp_config_state_struct.speed_range_e;
 	jmp_motion_clamp_to_software_endstops(x,y,z);
+	extrudemultiply=extrudemultiply*e_multiply/100.0;
 	plan_buffer_line(x, y, z, e, feedrate*multiply/60/100.0, active_extruder);
+	extrudemultiply=100;
 	jmp_config_state_struct.axis_position[0]=x;
 	jmp_config_state_struct.axis_position[1]=y;
 	jmp_config_state_struct.axis_position[2]=z;

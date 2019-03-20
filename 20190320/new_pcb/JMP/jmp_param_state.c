@@ -29,6 +29,7 @@ void jmp_config_state_init(void)
 	jmp_config_state_struct.print_progress=0;
 	
 	jmp_config_state_struct.speed_range=100;
+	jmp_config_state_struct.speed_range_e=100;
 	
 	for(i=0;i<4;i++)
 	{

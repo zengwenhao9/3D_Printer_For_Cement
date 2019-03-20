@@ -1127,14 +1127,32 @@ void jmp_ex_config_read_ex(void)
 }
 
 
-void jmp_ex_config_test(void)
+u8 jmp_ex_config_ex_file_read(void)
 {
-	u32 res;
+	u32 res=0;
 	res=jmp_ex_config_check_ex_file();
 	if(res!=0)
 	{
 		jmp_ex_config_read_ex_save(res);
-		jmp_ex_config_read_and_set();
+		return 1;
+	}
+	else
+	{
+		return 0;
+	}
+}
+
+u8 jmp_ex_config_factory_setting(void)
+{
+	FRESULT res;
+	res=f_unlink("0:/config.txt");
+	if(res==FR_OK)
+	{
+		return 1; 
+	}
+	else
+	{
+		return 0; 
 	}
 }
 

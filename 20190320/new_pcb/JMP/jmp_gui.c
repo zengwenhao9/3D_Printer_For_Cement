@@ -423,6 +423,14 @@ void jmp_gui_print_set_update(void)
 	jmp_guiuart_tx_str.data[0]=(u8)(range>>8);
 	jmp_guiuart_tx_str.data[1]=(u8)range;
 	jmp_gui_uart_send_str();
+	range=(u16)(jmp_config_state_struct.speed_range_e);
+	jmp_guiuart_tx_str_clear();
+	jmp_guiuart_tx_str.command=0x82;
+	jmp_guiuart_tx_str.start_address=GUI_PRINT_SET_SPEED_RANGE_E;
+	jmp_guiuart_tx_str.data_length=2;
+	jmp_guiuart_tx_str.data[0]=(u8)(range>>8);
+	jmp_guiuart_tx_str.data[1]=(u8)range;
+	jmp_gui_uart_send_str();
 }
 
 //界面管理任务
@@ -617,26 +625,18 @@ void jmp_gui_task(void *pvParameters)
 				{
 					if(jmp_guiuart_rx_str.start_address==GUI_SYSTEM_ENTER_MACHINE_STATE)
 					{
-						jmp_gui_state=GUI_MACHINE_STATE;
+						jmp_gui_state=GUI_MACHINE_CONFIG;
 						jmp_gui_goto_frame(5);
-						jmp_ex_config_test();
 					}
 					else if(jmp_guiuart_rx_str.start_address==GUI_SYSTEM_ENTER_MACHINE_INFO)
 					{
 						jmp_gui_state=GUI_MACHINE_INFO;
 						jmp_gui_goto_frame(6);
 					}
-					else if(jmp_guiuart_rx_str.start_address==GUI_SYSTEM_ENTER_LANGUAGE)
-					{
-						
-					}
 					else if(jmp_guiuart_rx_str.start_address==GUI_SYSTEM_ENTER_FACTORY_SETTINGS)
 					{
-						
-					}
-					else if(jmp_guiuart_rx_str.start_address==GUI_SYSTEM_ENTER_SCREEN_CALIBRATION)
-					{
-						
+						jmp_gui_state=GUI_FACTORY_SETTINGS;
+						jmp_gui_goto_frame(17);
 					}
 					else if(jmp_guiuart_rx_str.start_address==GUI_SYSTEM_ENTER_MAIN)
 					{
@@ -649,11 +649,38 @@ void jmp_gui_task(void *pvParameters)
 				}
 				break;
 			}
-			case GUI_MACHINE_STATE:
+			
+			case GUI_MACHINE_CONFIG:
 			{
 				if(jmp_guiuart_rx_str.command==0x83)
 				{
-					if(jmp_guiuart_rx_str.start_address==GUI_MACHINE_STATE_ENTER_TOOL)
+					if(jmp_guiuart_rx_str.start_address==GUI_MACHINE_CONFIG_ENTER_TOOL)
+					{
+						jmp_gui_state=GUI_SYSTEM;
+						jmp_gui_goto_frame(2);
+					}
+					if(jmp_guiuart_rx_str.start_address==GUI_MACHINE_CONFIG_YES)
+					{
+						u8 res=jmp_ex_config_ex_file_read();
+						if(res!=0)
+						{
+							jmp_gui_state=GUI_MACHINE_CONFIG_OK;
+							jmp_gui_goto_frame(13);
+						}
+						else
+						{
+							jmp_gui_state=GUI_MACHINE_CONFIG_NOK;
+							jmp_gui_goto_frame(14);
+						}
+					}
+				}
+				break;
+			}
+			case GUI_MACHINE_CONFIG_OK:
+			{
+				if(jmp_guiuart_rx_str.command==0x83)
+				{
+					if(jmp_guiuart_rx_str.start_address==GUI_DO_OK)
 					{
 						jmp_gui_state=GUI_SYSTEM;
 						jmp_gui_goto_frame(2);
@@ -661,6 +688,19 @@ void jmp_gui_task(void *pvParameters)
 				}
 				break;
 			}
+			case GUI_MACHINE_CONFIG_NOK:
+			{
+				if(jmp_guiuart_rx_str.command==0x83)
+				{
+					if(jmp_guiuart_rx_str.start_address==GUI_DO_NOK)
+					{
+						jmp_gui_state=GUI_SYSTEM;
+						jmp_gui_goto_frame(2);
+					}
+				}
+				break;
+			} 
+			
 			case GUI_MACHINE_INFO:
 			{
 				if(jmp_guiuart_rx_str.command==0x83)
@@ -673,18 +713,57 @@ void jmp_gui_task(void *pvParameters)
 				}
 				break;
 			}
-			case GUI_LANGUAGE:
-			{
-				break;
-			}
 			case GUI_FACTORY_SETTINGS:
 			{
+				if(jmp_guiuart_rx_str.command==0x83)
+				{
+					if(jmp_guiuart_rx_str.start_address==GUI_FACTORY_SETTINGS_ENTER_TOOL)
+					{
+						jmp_gui_state=GUI_SYSTEM;
+						jmp_gui_goto_frame(2);
+					}
+					if(jmp_guiuart_rx_str.start_address==GUI_FACTORY_SETTINGS_YES)
+					{
+						u8 res;
+						res=jmp_ex_config_factory_setting();
+						if(res!=0)
+						{
+							jmp_gui_state=GUI_FACTORY_SETTINGS_OK;
+							jmp_gui_goto_frame(13);
+						}
+						else
+						{
+							jmp_gui_state=GUI_FACTORY_SETTINGS_NOK;
+							jmp_gui_goto_frame(14);
+						}
+					}
+				}
 				break;
 			}
-			case GUI_SCREEN_CALIBRATION:
+			case GUI_FACTORY_SETTINGS_OK:
 			{
+				if(jmp_guiuart_rx_str.command==0x83)
+				{
+					if(jmp_guiuart_rx_str.start_address==GUI_DO_OK)
+					{
+						jmp_gui_state=GUI_SYSTEM;
+						jmp_gui_goto_frame(2);
+					}
+				}
 				break;
 			}
+			case GUI_FACTORY_SETTINGS_NOK:
+			{
+				if(jmp_guiuart_rx_str.command==0x83)
+				{
+					if(jmp_guiuart_rx_str.start_address==GUI_DO_NOK)
+					{
+						jmp_gui_state=GUI_SYSTEM;
+						jmp_gui_goto_frame(2);
+					}
+				}
+				break;
+			} 
 ////////////////////////////////////////////////////////////
 			case GUI_PRINT:
 			{
@@ -791,9 +870,24 @@ void jmp_gui_task(void *pvParameters)
 						jmp_gui_start_print();
 						jmp_gui_state=GUI_PRINT_MAIN;
 					}
+					else if(jmp_guiuart_rx_str.start_address==GUI_PRINT_PREPARE_EX_PRINT)
+					{
+						jmp_gui_state=GUI_PRINT_EX_PRINT_MAIN;
+						jmp_gui_goto_frame(16);
+					}
 				}
 				break;
 			}
+			
+			case GUI_PRINT_EX_PRINT_MAIN:
+			{
+				if(jmp_guiuart_rx_str.command==0x83)
+				{
+					
+				}
+				break;
+			}
+			
 			case GUI_PRINT_MAIN:
 			{
 				if(jmp_config_state_struct.printing_run==0)
@@ -854,19 +948,26 @@ void jmp_gui_task(void *pvParameters)
 						jmp_gui_state=GUI_PRINT_MAIN;
 						jmp_gui_goto_frame(9);
 					}
-					else if(jmp_guiuart_rx_str.start_address==GUI_PRINT_SET_RANGE_UP)
+					else if(jmp_guiuart_rx_str.start_address==GUI_PRINT_SET_OK)
 					{
-						if(jmp_config_state_struct.speed_range<200)
+						jmp_gui_state=GUI_PRINT_MAIN;
+						jmp_gui_goto_frame(9);
+					}
+					else if(jmp_guiuart_rx_str.start_address==GUI_PRINT_SET_RANGE_ALL)
+					{
+						double a=(((u16)jmp_guiuart_rx_str.data[0])<<8)+(u16)jmp_guiuart_rx_str.data[1];
+						if(a<200)
 						{
-							jmp_config_state_struct.speed_range++;
+							jmp_config_state_struct.speed_range=a;
 							jmp_gui_print_set_update();
 						}
 					}
-					else if(jmp_guiuart_rx_str.start_address==GUI_PRINT_SET_RANGE_DOWN)
+					else if(jmp_guiuart_rx_str.start_address==GUI_PRINT_SET_RANGE_E)
 					{
-						if(jmp_config_state_struct.speed_range>0)
+						double a=(((u16)jmp_guiuart_rx_str.data[0])<<8)+(u16)jmp_guiuart_rx_str.data[1];
+						if(a<200)
 						{
-							jmp_config_state_struct.speed_range--;
+							jmp_config_state_struct.speed_range_e=a;
 							jmp_gui_print_set_update();
 						}
 					}
@@ -878,6 +979,19 @@ void jmp_gui_task(void *pvParameters)
 				break;
 		}
 	}
+}
+
+void jmp_gui_printing_progress_updata(u16 progress)
+{
+	u16 p;
+	p=progress/10;
+	jmp_guiuart_tx_str_clear();
+	jmp_guiuart_tx_str.command=0x82;
+	jmp_guiuart_tx_str.start_address=GUI_PRINT_MAIN_PROGRESS_LINE;
+	jmp_guiuart_tx_str.data_length=2;
+	jmp_guiuart_tx_str.data[0]=0;
+	jmp_guiuart_tx_str.data[1]=(u8)p;
+	jmp_gui_uart_send_str();
 }
 
 //界面打印过程中的更新
@@ -920,6 +1034,8 @@ void jmp_gui_printing_update(void)
 	jmp_guiuart_tx_str.data[0]=(u8)(progress>>8);
 	jmp_guiuart_tx_str.data[1]=(u8)progress;
 	jmp_gui_uart_send_str();
+	
+	jmp_gui_printing_progress_updata(progress);
 	
 	jmp_guiuart_tx_str_clear();
 	jmp_guiuart_tx_str.start_address=GUI_PRINT_MAIN_FILE_NAME;

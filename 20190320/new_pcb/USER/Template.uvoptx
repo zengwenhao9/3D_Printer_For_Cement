@@ -161,18 +161,18 @@
         <Bp>
           <Number>0</Number>
           <Type>0</Type>
-          <LineNumber>1134</LineNumber>
+          <LineNumber>86</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>134285528</Address>
+          <Address>134294908</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
           <SizeOfObject>0</SizeOfObject>
           <BreakByAccess>0</BreakByAccess>
           <BreakIfRCount>1</BreakIfRCount>
-          <Filename>F:\浣涘北娲ユ槑\jm3d\绋嬪簭\鏂版澘绋嬪簭\jmp\JMP\jmp_ex_config.c</Filename>
+          <Filename>F:\浣涘北娲ユ槑\jm3d\绋嬪簭\鏂版澘绋嬪簭\jmp\MOTION\jmp_motion.c</Filename>
           <ExecCommand></ExecCommand>
-          <Expression>\\Template\../JMP/jmp_ex_config.c\1134</Expression>
+          <Expression>\\Template\../MOTION/jmp_motion.c\86</Expression>
         </Bp>
       </Breakpoint>
       <WatchWindow1>
@@ -237,7 +237,7 @@
 
   <Group>
     <GroupName>USER</GroupName>
-    <tvExp>0</tvExp>
+    <tvExp>1</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>
@@ -1749,7 +1749,7 @@
 
   <Group>
     <GroupName>JMP</GroupName>
-    <tvExp>0</tvExp>
+    <tvExp>1</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>
@@ -1841,7 +1841,7 @@
 
   <Group>
     <GroupName>MOTION</GroupName>
-    <tvExp>0</tvExp>
+    <tvExp>1</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
     <RteFlg>0</RteFlg>
