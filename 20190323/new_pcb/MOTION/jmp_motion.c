@@ -337,32 +337,47 @@ void jmp_motion_e_print_task(void *pvParameters)
 {
 	while(1)
 	{
-		if(jmp_config_state_struct.e_ex_print_run==0)
+		if(jmp_config_state_struct.e_ex_print_run==1)
 		{
-			while(blocks_queued())
+			double old_speed;
+			old_speed=jmp_config_state_struct.e_ex_print_speed;
+			while(1)
 			{
+				if(jmp_config_state_struct.e_ex_print_run==0)
+				{
+					quickStop();
+					break;
+				}
+				if(old_speed!=jmp_config_state_struct.e_ex_print_speed)
+				{
+					quickStop();
+					old_speed=jmp_config_state_struct.e_ex_print_speed;
+				}
+				while(1)
+				{
+					int moves_queued=(block_buffer_head-block_buffer_tail + BLOCK_BUFFER_SIZE) & (BLOCK_BUFFER_SIZE - 1);
+					if(moves_queued<(BLOCK_BUFFER_SIZE/2))
+					{
+						jmp_motion_set_postion(jmp_config_state_struct.axis_position[0],
+																jmp_config_state_struct.axis_position[1],
+																jmp_config_state_struct.axis_position[2],
+																0);
+						jmp_motion_manual(jmp_config_state_struct.axis_position[0],
+														jmp_config_state_struct.axis_position[1],
+														jmp_config_state_struct.axis_position[2],
+														jmp_config_state_struct.axis_position[3]+10000,
+														jmp_config_state_struct.e_ex_print_speed);
+					}
+					else
+					{
+						break;
+					}
+					
+				}
 				vTaskDelay(10);
 			}
-			vTaskDelay(500);
 		}
-		else
-		{			
-			int next_buffer_head = next_block_index(block_buffer_head);
-			while(block_buffer_tail != next_buffer_head)
-			{
-				jmp_motion_set_postion(jmp_config_state_struct.axis_position[0],
-															jmp_config_state_struct.axis_position[1],
-															jmp_config_state_struct.axis_position[2],
-															0);
-				jmp_motion_manual(jmp_config_state_struct.axis_position[0],
-												jmp_config_state_struct.axis_position[1],
-												jmp_config_state_struct.axis_position[2],
-												jmp_config_state_struct.axis_position[3]+10,
-												jmp_config_state_struct.e_ex_print_speed);
-				
-			}
-			vTaskDelay(10);			
-		}
+		vTaskDelay(100);
 	}
 }
 
@@ -421,7 +436,7 @@ void jmp_motion_init(void)
 							"jmp_motion_e_print_task",
 								1024,
 								NULL,
-								2,
+								3,
 								&xHandleTask_JmpMotion_e_print );
 }
 

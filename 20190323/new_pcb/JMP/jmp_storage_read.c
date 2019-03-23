@@ -75,6 +75,7 @@ void jmp_storage_read_task(void *pvParameters)
 		
 		jmp_config_state_struct.print_progress=0;
 		jmp_config_state_struct.speed_range=100;
+		jmp_config_state_struct.speed_range_e=100;
 		
 		while(1)
 		{

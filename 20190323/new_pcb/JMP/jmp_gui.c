@@ -43,6 +43,8 @@ u32 jmp_gui_gcode_file_name_chosen;
 
 u8 jmp_gui_message;
 
+u32 jmp_gui_print_end_time;
+
 
 //接收指令结构体清空
 void jmp_guiuart_rx_str_clear(void)
@@ -468,7 +470,7 @@ void jmp_gui_ex_print_state_update(char* str)
 	jmp_gui_uart_send_str();
 }
 
-u32 jmp_gui_print_end_time;
+
 void jmp_gui_print_end_update(void)
 {
 	u32 run_h;

@@ -9,12 +9,7 @@
 #include "croutine.h"
 #include "string.h"
 #include <stdlib.h>
-
-
-
-
-
-
+#include "jmp_print_time.h"
 
 
 
@@ -193,6 +188,7 @@ void jmp_gcode_get_line(void)
 				{
 					jmp_config_state_struct.reading_end=0;
 					jmp_config_state_struct.printing_run=0;
+					jmp_gui_print_end_time=jmp_print_run_time;
 					xSemaphoreGive(JmpGUISem);
 					jmp_gui_send_message(GUI_PRINT_END_MESSAGE);
 				}

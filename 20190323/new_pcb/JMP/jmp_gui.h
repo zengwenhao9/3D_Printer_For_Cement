@@ -168,6 +168,7 @@ void jmp_gui_init(void);
 
 extern SemaphoreHandle_t  JmpGUISem;
 extern u8 jmp_gui_message;
+extern u32 jmp_gui_print_end_time;
 
 #endif
 
