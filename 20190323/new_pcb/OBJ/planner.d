@@ -115,3 +115,4 @@
 ..\obj\planner.o: ..\FreeRTOS\include\queue.h
 ..\obj\planner.o: ..\FreeRTOS\include\croutine.h
 ..\obj\planner.o: ..\FreeRTOS\include\list.h
+..\obj\planner.o: ..\JMP\jmp_param_state.h

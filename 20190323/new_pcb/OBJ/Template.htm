@@ -3,7 +3,7 @@
 <title>Static Call Graph - [..\OBJ\Template.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image ..\OBJ\Template.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060300: Last Updated: Sat Mar 23 14:19:32 2019
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060300: Last Updated: Mon Mar 25 13:55:09 2019
 <BR><P>
 <H3>Maximum Stack Usage =       1508 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -1039,9 +1039,11 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[109]"></a>HAL_GetTick</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, stm32h7xx_hal.o(i.HAL_GetTick))
-<BR><BR>[Called By]<UL><LI><a href="#[f6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_RCCEx_PeriphCLKConfig
-<LI><a href="#[11a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_RCC_OscConfig
+<BR><BR>[Called By]<UL><LI><a href="#[11a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_RCC_OscConfig
 <LI><a href="#[117]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_RCC_ClockConfig
+<LI><a href="#[146]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART_WaitOnFlagUntilTimeout
+<LI><a href="#[13f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART_CheckIdleState
+<LI><a href="#[145]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_Transmit
 <LI><a href="#[116]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCCEx_PLL3_Config
 <LI><a href="#[115]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCCEx_PLL2_Config
 <LI><a href="#[110]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_QSPI_Transmit
@@ -1049,9 +1051,7 @@ Global Symbols
 <LI><a href="#[10c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_QSPI_Init
 <LI><a href="#[108]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_QSPI_Command
 <LI><a href="#[10a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;QSPI_WaitFlagStateUntilTimeout
-<LI><a href="#[146]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART_WaitOnFlagUntilTimeout
-<LI><a href="#[13f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART_CheckIdleState
-<LI><a href="#[145]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_Transmit
+<LI><a href="#[f6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_RCCEx_PeriphCLKConfig
 </UL>
 
 <P><STRONG><a name="[d6]"></a>HAL_HCD_Connect_Callback</STRONG> (Thumb, 20 bytes, Stack size 8 bytes, usbh_conf.o(i.HAL_HCD_Connect_Callback))
@@ -1159,9 +1159,9 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 272<LI>Call Chain = HAL_HCD_MspInit &rArr; HAL_NVIC_SetPriority &rArr; __NVIC_SetPriority
 </UL>
 <BR>[Calls]<UL><LI><a href="#[f8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_NVIC_SetPriority
-<LI><a href="#[f6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_RCCEx_PeriphCLKConfig
 <LI><a href="#[f9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_NVIC_EnableIRQ
 <LI><a href="#[f7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GPIO_Init
+<LI><a href="#[f6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_RCCEx_PeriphCLKConfig
 </UL>
 <BR>[Called By]<UL><LI><a href="#[ef]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_HCD_Init
 </UL>
@@ -1257,9 +1257,9 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 80<LI>Call Chain = HAL_QSPI_Init &rArr; HAL_QSPI_MspInit &rArr; HAL_GPIO_Init
 </UL>
 <BR>[Calls]<UL><LI><a href="#[109]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GetTick
+<LI><a href="#[10d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_QSPI_MspInit
 <LI><a href="#[10e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_QSPI_SetTimeout
 <LI><a href="#[10a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;QSPI_WaitFlagStateUntilTimeout
-<LI><a href="#[10d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_QSPI_MspInit
 </UL>
 <BR>[Called By]<UL><LI><a href="#[1ab]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bsp_qspi_init
 </UL>
@@ -1386,9 +1386,9 @@ Global Symbols
 <P><STRONG><a name="[11b]"></a>HAL_SDRAM_Init</STRONG> (Thumb, 76 bytes, Stack size 16 bytes, stm32h7xx_hal_sdram.o(i.HAL_SDRAM_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 72<LI>Call Chain = HAL_SDRAM_Init &rArr; HAL_SDRAM_MspInit &rArr; HAL_GPIO_Init
 </UL>
-<BR>[Calls]<UL><LI><a href="#[11e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FMC_SDRAM_Timing_Init
+<BR>[Calls]<UL><LI><a href="#[11c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_SDRAM_MspInit
+<LI><a href="#[11e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FMC_SDRAM_Timing_Init
 <LI><a href="#[11d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;FMC_SDRAM_Init
-<LI><a href="#[11c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_SDRAM_MspInit
 </UL>
 <BR>[Called By]<UL><LI><a href="#[1d7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bsp_sdram_init
 </UL>
@@ -1455,10 +1455,10 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[1dd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st_timer_interrupt
 <LI><a href="#[1e1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bsp_timer6_init
 <LI><a href="#[1db]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bsp_timer3_init
-<LI><a href="#[28f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;jmp_gui_uart_timeout_enable
+<LI><a href="#[28e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;quickStop
+<LI><a href="#[290]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;jmp_gui_uart_timeout_enable
 <LI><a href="#[2d9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;trapezoid_generator_reset
 <LI><a href="#[29a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st_init
-<LI><a href="#[295]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;quickStop
 </UL>
 
 <P><STRONG><a name="[1d9]"></a>HAL_TIM_Base_Stop_IT</STRONG> (Thumb, 56 bytes, Stack size 0 bytes, stm32h7xx_hal_tim.o(i.HAL_TIM_Base_Stop_IT))
@@ -1466,8 +1466,8 @@ Global Symbols
 <LI><a href="#[1df]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;jmp_gui_uart_timeout
 <LI><a href="#[1de]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bsp_timer4_init
 <LI><a href="#[1d8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bsp_timer2_init
-<LI><a href="#[291]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;jmp_gui_uart_timeout_disable
-<LI><a href="#[295]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;quickStop
+<LI><a href="#[28e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;quickStop
+<LI><a href="#[292]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;jmp_gui_uart_timeout_disable
 </UL>
 
 <P><STRONG><a name="[127]"></a>HAL_TIM_IC_CaptureCallback</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, stm32h7xx_hal_tim.o(i.HAL_TIM_IC_CaptureCallback))
@@ -1666,8 +1666,8 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 84<LI>Call Chain = SDRAM_Initialization_Sequence &rArr; SDRAM_Send_Cmd &rArr; HAL_SDRAM_SendCommand &rArr; FMC_SDRAM_SendCommand
 </UL>
 <BR>[Calls]<UL><LI><a href="#[14e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;tmdelay_us
-<LI><a href="#[11f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_SDRAM_ProgramRefreshRate
 <LI><a href="#[14d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SDRAM_Send_Cmd
+<LI><a href="#[11f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_SDRAM_ProgramRefreshRate
 </UL>
 <BR>[Called By]<UL><LI><a href="#[1d7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bsp_sdram_init
 </UL>
@@ -2417,8 +2417,8 @@ Global Symbols
 <P><STRONG><a name="[e4]"></a>USB_HC_StartXfer</STRONG> (Thumb, 386 bytes, Stack size 40 bytes, stm32h7xx_ll_usb.o(i.USB_HC_StartXfer))
 <BR><BR>[Stack]<UL><LI>Max Depth = 60<LI>Call Chain = USB_HC_StartXfer &rArr; USB_WritePacket
 </UL>
-<BR>[Calls]<UL><LI><a href="#[1a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USB_WritePacket
-<LI><a href="#[1a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USB_DoPing
+<BR>[Calls]<UL><LI><a href="#[1a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USB_DoPing
+<LI><a href="#[1a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;USB_WritePacket
 </UL>
 <BR>[Called By]<UL><LI><a href="#[e3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_HCD_HC_SubmitRequest
 </UL>
@@ -2797,9 +2797,9 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[28c]"></a>blocks_queued</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, planner.o(i.blocks_queued))
-<BR><BR>[Called By]<UL><LI><a href="#[28b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;jmp_motion_find_home
+<BR><BR>[Called By]<UL><LI><a href="#[28e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;quickStop
+<LI><a href="#[28b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;jmp_motion_find_home
 <LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;jmp_gui_task
-<LI><a href="#[295]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;quickStop
 </UL>
 
 <P><STRONG><a name="[1ce]"></a>bsp_a_enable_control</STRONG> (Thumb, 32 bytes, Stack size 8 bytes, bsp_gpio.o(i.bsp_a_enable_control))
@@ -2883,8 +2883,8 @@ Global Symbols
 <P><STRONG><a name="[1d7]"></a>bsp_sdram_init</STRONG> (Thumb, 94 bytes, Stack size 32 bytes, bsp_sdram.o(i.bsp_sdram_init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 116<LI>Call Chain = bsp_sdram_init &rArr; SDRAM_Initialization_Sequence &rArr; SDRAM_Send_Cmd &rArr; HAL_SDRAM_SendCommand &rArr; FMC_SDRAM_SendCommand
 </UL>
-<BR>[Calls]<UL><LI><a href="#[11b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_SDRAM_Init
-<LI><a href="#[14c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SDRAM_Initialization_Sequence
+<BR>[Calls]<UL><LI><a href="#[14c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SDRAM_Initialization_Sequence
+<LI><a href="#[11b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_SDRAM_Init
 </UL>
 <BR>[Called By]<UL><LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
@@ -3004,7 +3004,7 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[145]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_Transmit
 </UL>
-<BR>[Called By]<UL><LI><a href="#[293]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;jmp_gui_uart_send
+<BR>[Called By]<UL><LI><a href="#[294]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;jmp_gui_uart_send
 </UL>
 
 <P><STRONG><a name="[1e7]"></a>bsp_uart3_init</STRONG> (Thumb, 44 bytes, Stack size 8 bytes, bsp_uart.o(i.bsp_uart3_init))
@@ -3758,7 +3758,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[243]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;jmp_gcode_analysis
 </UL>
 
-<P><STRONG><a name="[25b]"></a>jmp_gcode_get_line</STRONG> (Thumb, 206 bytes, Stack size 16 bytes, jmp_gcode_analysis.o(i.jmp_gcode_get_line))
+<P><STRONG><a name="[25b]"></a>jmp_gcode_get_line</STRONG> (Thumb, 208 bytes, Stack size 16 bytes, jmp_gcode_analysis.o(i.jmp_gcode_get_line))
 <BR><BR>[Stack]<UL><LI>Max Depth = 160<LI>Call Chain = jmp_gcode_get_line &rArr; xQueueGenericSend &rArr; prvUnlockQueue &rArr; prvNotifyQueueSetContainer &rArr; prvCopyDataToQueue &rArr; xTaskPriorityDisinherit
 </UL>
 <BR>[Calls]<UL><LI><a href="#[244]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vTaskDelay
@@ -3955,11 +3955,12 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;jmp_gui_task
 </UL>
 
-<P><STRONG><a name="[a3]"></a>jmp_gui_task</STRONG> (Thumb, 2524 bytes, Stack size 8 bytes, jmp_gui.o(i.jmp_gui_task))
+<P><STRONG><a name="[a3]"></a>jmp_gui_task</STRONG> (Thumb, 2528 bytes, Stack size 8 bytes, jmp_gui.o(i.jmp_gui_task))
 <BR><BR>[Stack]<UL><LI>Max Depth = 1444<LI>Call Chain = jmp_gui_task &rArr; jmp_ex_config_ex_file_read &rArr; jmp_ex_config_check_ex_file &rArr; f_open &rArr; dir_register &rArr; dir_find &rArr; dir_next &rArr; create_chain &rArr; put_fat &rArr; move_window &rArr; sync_window &rArr; disk_write &rArr; USBH_write &rArr; USBH_MSC_Write &rArr; USBH_MSC_RdWrProcess &rArr; USBH_MSC_SCSI_Write &rArr; USBH_MSC_BOT_Process &rArr; USBH_MSC_BOT_Abort &rArr; USBH_ClrFeature &rArr; USBH_CtlReq &rArr; USBH_HandleControl &rArr; USBH_CtlSendData &rArr; USBH_LL_SubmitURB &rArr; HAL_HCD_HC_SubmitRequest &rArr; USB_HC_StartXfer &rArr; USB_WritePacket
 </UL>
 <BR>[Calls]<UL><LI><a href="#[244]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vTaskDelay
 <LI><a href="#[27e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xQueueSemaphoreTake
+<LI><a href="#[28e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;quickStop
 <LI><a href="#[28a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;jmp_motion_manual
 <LI><a href="#[28b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;jmp_motion_find_home
 <LI><a href="#[256]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;jmp_ex_config_factory_setting
@@ -3992,7 +3993,7 @@ Global Symbols
 <P><STRONG><a name="[287]"></a>jmp_gui_uart_command_analysis</STRONG> (Thumb, 122 bytes, Stack size 4 bytes, jmp_gui.o(i.jmp_gui_uart_command_analysis))
 <BR><BR>[Stack]<UL><LI>Max Depth = 4<LI>Call Chain = jmp_gui_uart_command_analysis
 </UL>
-<BR>[Calls]<UL><LI><a href="#[28e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;jmp_guiuart_rx_str_clear
+<BR>[Calls]<UL><LI><a href="#[28f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;jmp_guiuart_rx_str_clear
 </UL>
 <BR>[Called By]<UL><LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;jmp_gui_task
 </UL>
@@ -4000,27 +4001,27 @@ Global Symbols
 <P><STRONG><a name="[1e5]"></a>jmp_gui_uart_command_get</STRONG> (Thumb, 186 bytes, Stack size 16 bytes, jmp_gui.o(i.jmp_gui_uart_command_get))
 <BR><BR>[Stack]<UL><LI>Max Depth = 120<LI>Call Chain = jmp_gui_uart_command_get &rArr; xQueueGiveFromISR &rArr; prvNotifyQueueSetContainer &rArr; prvCopyDataToQueue &rArr; xTaskPriorityDisinherit
 </UL>
-<BR>[Calls]<UL><LI><a href="#[292]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xQueueGiveFromISR
-<LI><a href="#[290]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;jmp_gui_uart_timeout_reset
-<LI><a href="#[28f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;jmp_gui_uart_timeout_enable
-<LI><a href="#[291]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;jmp_gui_uart_timeout_disable
+<BR>[Calls]<UL><LI><a href="#[293]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xQueueGiveFromISR
+<LI><a href="#[291]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;jmp_gui_uart_timeout_reset
+<LI><a href="#[290]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;jmp_gui_uart_timeout_enable
+<LI><a href="#[292]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;jmp_gui_uart_timeout_disable
 <LI><a href="#[26d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;jmp_gui_send_message
 </UL>
 <BR>[Called By]<UL><LI><a href="#[142]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bsp_uart2_rx_interrupt
 </UL>
 
-<P><STRONG><a name="[293]"></a>jmp_gui_uart_send</STRONG> (Thumb, 12 bytes, Stack size 8 bytes, jmp_gui.o(i.jmp_gui_uart_send))
+<P><STRONG><a name="[294]"></a>jmp_gui_uart_send</STRONG> (Thumb, 12 bytes, Stack size 8 bytes, jmp_gui.o(i.jmp_gui_uart_send))
 <BR><BR>[Stack]<UL><LI>Max Depth = 72<LI>Call Chain = jmp_gui_uart_send &rArr; bsp_uart2_sendbyte &rArr; HAL_UART_Transmit &rArr; UART_WaitOnFlagUntilTimeout
 </UL>
 <BR>[Calls]<UL><LI><a href="#[1e6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bsp_uart2_sendbyte
 </UL>
-<BR>[Called By]<UL><LI><a href="#[294]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;jmp_gui_uart_send_buffx
+<BR>[Called By]<UL><LI><a href="#[295]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;jmp_gui_uart_send_buffx
 </UL>
 
-<P><STRONG><a name="[294]"></a>jmp_gui_uart_send_buffx</STRONG> (Thumb, 24 bytes, Stack size 16 bytes, jmp_gui.o(i.jmp_gui_uart_send_buffx))
+<P><STRONG><a name="[295]"></a>jmp_gui_uart_send_buffx</STRONG> (Thumb, 24 bytes, Stack size 16 bytes, jmp_gui.o(i.jmp_gui_uart_send_buffx))
 <BR><BR>[Stack]<UL><LI>Max Depth = 88<LI>Call Chain = jmp_gui_uart_send_buffx &rArr; jmp_gui_uart_send &rArr; bsp_uart2_sendbyte &rArr; HAL_UART_Transmit &rArr; UART_WaitOnFlagUntilTimeout
 </UL>
-<BR>[Calls]<UL><LI><a href="#[293]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;jmp_gui_uart_send
+<BR>[Calls]<UL><LI><a href="#[294]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;jmp_gui_uart_send
 </UL>
 <BR>[Called By]<UL><LI><a href="#[273]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;jmp_gui_uart_send_str
 </UL>
@@ -4028,7 +4029,7 @@ Global Symbols
 <P><STRONG><a name="[273]"></a>jmp_gui_uart_send_str</STRONG> (Thumb, 344 bytes, Stack size 8 bytes, jmp_gui.o(i.jmp_gui_uart_send_str))
 <BR><BR>[Stack]<UL><LI>Max Depth = 96<LI>Call Chain = jmp_gui_uart_send_str &rArr; jmp_gui_uart_send_buffx &rArr; jmp_gui_uart_send &rArr; bsp_uart2_sendbyte &rArr; HAL_UART_Transmit &rArr; UART_WaitOnFlagUntilTimeout
 </UL>
-<BR>[Calls]<UL><LI><a href="#[294]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;jmp_gui_uart_send_buffx
+<BR>[Calls]<UL><LI><a href="#[295]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;jmp_gui_uart_send_buffx
 </UL>
 <BR>[Called By]<UL><LI><a href="#[289]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;jmp_gui_update_manual_step
 <LI><a href="#[288]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;jmp_gui_update_gcode_file_name
@@ -4052,7 +4053,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[130]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;bsp_timer4_int
 </UL>
 
-<P><STRONG><a name="[291]"></a>jmp_gui_uart_timeout_disable</STRONG> (Thumb, 20 bytes, Stack size 8 bytes, jmp_gui.o(i.jmp_gui_uart_timeout_disable))
+<P><STRONG><a name="[292]"></a>jmp_gui_uart_timeout_disable</STRONG> (Thumb, 20 bytes, Stack size 8 bytes, jmp_gui.o(i.jmp_gui_uart_timeout_disable))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = jmp_gui_uart_timeout_disable
 </UL>
 <BR>[Calls]<UL><LI><a href="#[1d9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_TIM_Base_Stop_IT
@@ -4060,7 +4061,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[1e5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;jmp_gui_uart_command_get
 </UL>
 
-<P><STRONG><a name="[28f]"></a>jmp_gui_uart_timeout_enable</STRONG> (Thumb, 20 bytes, Stack size 8 bytes, jmp_gui.o(i.jmp_gui_uart_timeout_enable))
+<P><STRONG><a name="[290]"></a>jmp_gui_uart_timeout_enable</STRONG> (Thumb, 20 bytes, Stack size 8 bytes, jmp_gui.o(i.jmp_gui_uart_timeout_enable))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = jmp_gui_uart_timeout_enable
 </UL>
 <BR>[Calls]<UL><LI><a href="#[1dc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_TIM_Base_Start_IT
@@ -4076,7 +4077,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[278]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;jmp_gui_init
 </UL>
 
-<P><STRONG><a name="[290]"></a>jmp_gui_uart_timeout_reset</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, jmp_gui.o(i.jmp_gui_uart_timeout_reset))
+<P><STRONG><a name="[291]"></a>jmp_gui_uart_timeout_reset</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, jmp_gui.o(i.jmp_gui_uart_timeout_reset))
 <BR><BR>[Called By]<UL><LI><a href="#[1e5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;jmp_gui_uart_command_get
 </UL>
 
@@ -4100,7 +4101,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;jmp_gui_task
 </UL>
 
-<P><STRONG><a name="[28e]"></a>jmp_guiuart_rx_str_clear</STRONG> (Thumb, 32 bytes, Stack size 0 bytes, jmp_gui.o(i.jmp_guiuart_rx_str_clear))
+<P><STRONG><a name="[28f]"></a>jmp_guiuart_rx_str_clear</STRONG> (Thumb, 32 bytes, Stack size 0 bytes, jmp_gui.o(i.jmp_guiuart_rx_str_clear))
 <BR><BR>[Called By]<UL><LI><a href="#[287]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;jmp_gui_uart_command_analysis
 </UL>
 
@@ -4128,9 +4129,9 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 424<LI>Call Chain = jmp_motion_e_print_task &rArr; jmp_motion_manual &rArr; plan_buffer_line &rArr; __hardfp_pow &rArr; sqrt
 </UL>
 <BR>[Calls]<UL><LI><a href="#[244]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vTaskDelay
+<LI><a href="#[28e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;quickStop
 <LI><a href="#[28a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;jmp_motion_manual
 <LI><a href="#[242]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;jmp_motion_set_postion
-<LI><a href="#[295]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;quickStop
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> jmp_motion.o(i.jmp_motion_init)
 </UL>
@@ -4295,7 +4296,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[a9]"></a>jmp_storage_read_task</STRONG> (Thumb, 462 bytes, Stack size 16 bytes, jmp_storage_read.o(i.jmp_storage_read_task))
+<P><STRONG><a name="[a9]"></a>jmp_storage_read_task</STRONG> (Thumb, 464 bytes, Stack size 16 bytes, jmp_storage_read.o(i.jmp_storage_read_task))
 <BR><BR>[Stack]<UL><LI>Max Depth = 1508<LI>Call Chain = jmp_storage_read_task &rArr; jmp_storage_buff_fill &rArr; f_open &rArr; dir_register &rArr; dir_find &rArr; dir_next &rArr; create_chain &rArr; put_fat &rArr; move_window &rArr; sync_window &rArr; disk_write &rArr; USBH_write &rArr; USBH_MSC_Write &rArr; USBH_MSC_RdWrProcess &rArr; USBH_MSC_SCSI_Write &rArr; USBH_MSC_BOT_Process &rArr; USBH_MSC_BOT_Abort &rArr; USBH_ClrFeature &rArr; USBH_CtlReq &rArr; USBH_HandleControl &rArr; USBH_CtlSendData &rArr; USBH_LL_SubmitURB &rArr; HAL_HCD_HC_SubmitRequest &rArr; USB_HC_StartXfer &rArr; USB_WritePacket
 </UL>
 <BR>[Calls]<UL><LI><a href="#[244]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vTaskDelay
@@ -4375,7 +4376,7 @@ Global Symbols
 <LI><a href="#[2b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;planner_forward_pass
 </UL>
 
-<P><STRONG><a name="[246]"></a>plan_buffer_line</STRONG> (Thumb, 2550 bytes, Stack size 152 bytes, planner.o(i.plan_buffer_line))
+<P><STRONG><a name="[246]"></a>plan_buffer_line</STRONG> (Thumb, 2566 bytes, Stack size 152 bytes, planner.o(i.plan_buffer_line))
 <BR><BR>[Stack]<UL><LI>Max Depth = 368<LI>Call Chain = plan_buffer_line &rArr; __hardfp_pow &rArr; sqrt
 </UL>
 <BR>[Calls]<UL><LI><a href="#[244]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vTaskDelay
@@ -4401,7 +4402,7 @@ Global Symbols
 
 <P><STRONG><a name="[2d7]"></a>plan_discard_current_block</STRONG> (Thumb, 28 bytes, Stack size 0 bytes, planner.o(i.plan_discard_current_block))
 <BR><BR>[Called By]<UL><LI><a href="#[1dd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;st_timer_interrupt
-<LI><a href="#[295]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;quickStop
+<LI><a href="#[28e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;quickStop
 </UL>
 
 <P><STRONG><a name="[2d8]"></a>plan_get_current_block</STRONG> (Thumb, 44 bytes, Stack size 0 bytes, planner.o(i.plan_get_current_block))
@@ -4506,7 +4507,7 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[2c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;prvInitialiseNewTask
 </UL>
 
-<P><STRONG><a name="[295]"></a>quickStop</STRONG> (Thumb, 34 bytes, Stack size 8 bytes, stepper.o(i.quickStop))
+<P><STRONG><a name="[28e]"></a>quickStop</STRONG> (Thumb, 34 bytes, Stack size 8 bytes, stepper.o(i.quickStop))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = quickStop
 </UL>
 <BR>[Calls]<UL><LI><a href="#[1d9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_TIM_Base_Stop_IT
@@ -4514,7 +4515,8 @@ Global Symbols
 <LI><a href="#[28c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;blocks_queued
 <LI><a href="#[2d7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;plan_discard_current_block
 </UL>
-<BR>[Called By]<UL><LI><a href="#[a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;jmp_motion_e_print_task
+<BR>[Called By]<UL><LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;jmp_gui_task
+<LI><a href="#[a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;jmp_motion_e_print_task
 </UL>
 
 <P><STRONG><a name="[298]"></a>reset_acceleration_rates</STRONG> (Thumb, 56 bytes, Stack size 0 bytes, planner.o(i.reset_acceleration_rates))
@@ -4734,7 +4736,7 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[2df]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vPortGetIPSR
 </UL>
-<BR>[Called By]<UL><LI><a href="#[292]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xQueueGiveFromISR
+<BR>[Called By]<UL><LI><a href="#[293]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xQueueGiveFromISR
 </UL>
 
 <P><STRONG><a name="[244]"></a>vTaskDelay</STRONG> (Thumb, 86 bytes, Stack size 16 bytes, tasks.o(i.vTaskDelay))
@@ -4860,7 +4862,7 @@ Global Symbols
 <LI><a href="#[25b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;jmp_gcode_get_line
 </UL>
 
-<P><STRONG><a name="[292]"></a>xQueueGiveFromISR</STRONG> (Thumb, 262 bytes, Stack size 32 bytes, queue.o(i.xQueueGiveFromISR))
+<P><STRONG><a name="[293]"></a>xQueueGiveFromISR</STRONG> (Thumb, 262 bytes, Stack size 32 bytes, queue.o(i.xQueueGiveFromISR))
 <BR><BR>[Stack]<UL><LI>Max Depth = 104<LI>Call Chain = xQueueGiveFromISR &rArr; prvNotifyQueueSetContainer &rArr; prvCopyDataToQueue &rArr; xTaskPriorityDisinherit
 </UL>
 <BR>[Calls]<UL><LI><a href="#[2cf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xTaskRemoveFromEventList
@@ -4958,7 +4960,7 @@ Global Symbols
 <LI><a href="#[2bc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;uxListRemove
 </UL>
 <BR>[Called By]<UL><LI><a href="#[27e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xQueueSemaphoreTake
-<LI><a href="#[292]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xQueueGiveFromISR
+<LI><a href="#[293]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xQueueGiveFromISR
 <LI><a href="#[26c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xQueueGenericSend
 <LI><a href="#[2c7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xQueueGenericReset
 <LI><a href="#[2d0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;prvUnlockQueue
@@ -5730,7 +5732,7 @@ Local Symbols
 <BR>[Calls]<UL><LI><a href="#[2cf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xTaskRemoveFromEventList
 <LI><a href="#[2c3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;prvCopyDataToQueue
 </UL>
-<BR>[Called By]<UL><LI><a href="#[292]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xQueueGiveFromISR
+<BR>[Called By]<UL><LI><a href="#[293]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xQueueGiveFromISR
 <LI><a href="#[26c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xQueueGenericSend
 <LI><a href="#[2d0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;prvUnlockQueue
 </UL>

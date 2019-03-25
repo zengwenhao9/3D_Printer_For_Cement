@@ -191,6 +191,7 @@ void jmp_gcode_get_line(void)
 					jmp_gui_print_end_time=jmp_print_run_time;
 					xSemaphoreGive(JmpGUISem);
 					jmp_gui_send_message(GUI_PRINT_END_MESSAGE);
+					break;
 				}
 				//等待缓冲区有数据
 				vTaskDelay(1);

@@ -300,12 +300,12 @@
 #define Z_PLUSE		1
 #define E_PLUSE		1
 
-#define X_MAX_CHECK	1
-#define X_MIN_CHECK	1
-#define Y_MAX_CHECK	1
-#define Y_MIN_CHECK	1
-#define Z_MAX_CHECK	1
-#define Z_MIN_CHECK	1
+#define X_MAX_CHECK	0
+#define X_MIN_CHECK	0
+#define Y_MAX_CHECK	0
+#define Y_MIN_CHECK	0
+#define Z_MAX_CHECK	0
+#define Z_MIN_CHECK	0
 
 #define X_MAX_ENDSTOP	1
 #define X_MIN_ENDSTOP	1

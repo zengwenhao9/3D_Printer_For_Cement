@@ -3504,6 +3504,7 @@ Section Cross References
     jmp_gui.o(i.jmp_gui_task) refers to planner.o(i.blocks_queued) for blocks_queued
     jmp_gui.o(i.jmp_gui_task) refers to jmp_gui.o(i.jmp_gui_print_set_update) for jmp_gui_print_set_update
     jmp_gui.o(i.jmp_gui_task) refers to jmp_gui.o(i.jmp_gui_stop_print) for jmp_gui_stop_print
+    jmp_gui.o(i.jmp_gui_task) refers to stepper.o(i.quickStop) for quickStop
     jmp_gui.o(i.jmp_gui_task) refers to jmp_gui.o(i.jmp_gui_print_end_update) for jmp_gui_print_end_update
     jmp_gui.o(i.jmp_gui_task) refers to jmp_print_time.o(.data) for jmp_print_run_time
     jmp_gui.o(i.jmp_gui_time_update) refers to jmp_gui.o(i.jmp_guiuart_tx_str_clear) for jmp_guiuart_tx_str_clear
@@ -3729,6 +3730,7 @@ Section Cross References
     planner.o(i.plan_buffer_line) refers to bsp_gpio.o(i.bsp_a_enable_control) for bsp_a_enable_control
     planner.o(i.plan_buffer_line) refers to sqrt.o(i.__hardfp_sqrt) for __hardfp_sqrt
     planner.o(i.plan_buffer_line) refers to planner.o(.data) for block_buffer_head
+    planner.o(i.plan_buffer_line) refers to jmp_param_state.o(.bss) for jmp_config_state_struct
     planner.o(i.plan_buffer_line) refers to planner.o(.bss) for axis_steps_per_unit
     planner.o(i.plan_buffer_line) refers to jmp_motion.o(.data) for extrudemultiply
     planner.o(i.plan_buffer_line) refers to jmp_ex_config.o(.bss) for jmp_ex_config_struct
@@ -7845,214 +7847,214 @@ Image Symbol Table
     i.jmp_gui_start_print                    0x08011a58   Section        0  jmp_gui.o(i.jmp_gui_start_print)
     i.jmp_gui_stop_print                     0x08011abc   Section        0  jmp_gui.o(i.jmp_gui_stop_print)
     i.jmp_gui_task                           0x08011acc   Section        0  jmp_gui.o(i.jmp_gui_task)
-    i.jmp_gui_time_update                    0x080124c8   Section        0  jmp_gui.o(i.jmp_gui_time_update)
-    i.jmp_gui_uart_command_analysis          0x08012614   Section        0  jmp_gui.o(i.jmp_gui_uart_command_analysis)
-    i.jmp_gui_uart_command_get               0x08012698   Section        0  jmp_gui.o(i.jmp_gui_uart_command_get)
-    i.jmp_gui_uart_send                      0x08012770   Section        0  jmp_gui.o(i.jmp_gui_uart_send)
-    i.jmp_gui_uart_send_buffx                0x0801277c   Section        0  jmp_gui.o(i.jmp_gui_uart_send_buffx)
-    i.jmp_gui_uart_send_str                  0x08012794   Section        0  jmp_gui.o(i.jmp_gui_uart_send_str)
-    i.jmp_gui_uart_timeout                   0x080128f8   Section        0  jmp_gui.o(i.jmp_gui_uart_timeout)
-    i.jmp_gui_uart_timeout_disable           0x08012918   Section        0  jmp_gui.o(i.jmp_gui_uart_timeout_disable)
-    i.jmp_gui_uart_timeout_enable            0x08012934   Section        0  jmp_gui.o(i.jmp_gui_uart_timeout_enable)
-    i.jmp_gui_uart_timeout_init              0x08012950   Section        0  jmp_gui.o(i.jmp_gui_uart_timeout_init)
-    i.jmp_gui_uart_timeout_reset             0x08012970   Section        0  jmp_gui.o(i.jmp_gui_uart_timeout_reset)
-    i.jmp_gui_update_gcode_file_name         0x08012980   Section        0  jmp_gui.o(i.jmp_gui_update_gcode_file_name)
-    i.jmp_gui_update_manual_step             0x08012a5c   Section        0  jmp_gui.o(i.jmp_gui_update_manual_step)
-    i.jmp_guiuart_rx_str_clear               0x08012aa0   Section        0  jmp_gui.o(i.jmp_guiuart_rx_str_clear)
-    i.jmp_guiuart_tx_str_clear               0x08012ac4   Section        0  jmp_gui.o(i.jmp_guiuart_tx_str_clear)
-    i.jmp_motion_clamp_to_software_endstops  0x08012ae8   Section        0  jmp_motion.o(i.jmp_motion_clamp_to_software_endstops)
-    i.jmp_motion_e_print_task                0x08012bb4   Section        0  jmp_motion.o(i.jmp_motion_e_print_task)
-    i.jmp_motion_find_home                   0x08012ca4   Section        0  jmp_motion.o(i.jmp_motion_find_home)
-    i.jmp_motion_init                        0x080132c4   Section        0  jmp_motion.o(i.jmp_motion_init)
-    i.jmp_motion_manual                      0x08013370   Section        0  jmp_motion.o(i.jmp_motion_manual)
-    i.jmp_motion_prepare_move                0x080133d8   Section        0  jmp_motion.o(i.jmp_motion_prepare_move)
-    i.jmp_motion_set_postion                 0x080134b0   Section        0  jmp_motion.o(i.jmp_motion_set_postion)
-    i.jmp_motion_state_get                   0x080134f8   Section        0  jmp_motion.o(i.jmp_motion_state_get)
-    i.jmp_motion_task                        0x0801366c   Section        0  jmp_motion.o(i.jmp_motion_task)
-    i.jmp_motion_test_task                   0x0801367e   Section        0  jmp_motion.o(i.jmp_motion_test_task)
-    i.jmp_motion_variable_init               0x08013690   Section        0  jmp_motion.o(i.jmp_motion_variable_init)
-    i.jmp_print_time_init                    0x08013814   Section        0  jmp_print_time.o(i.jmp_print_time_init)
-    i.jmp_print_time_int                     0x08013860   Section        0  jmp_print_time.o(i.jmp_print_time_int)
-    i.jmp_print_time_task                    0x080138b8   Section        0  jmp_print_time.o(i.jmp_print_time_task)
-    i.jmp_print_time_timer_init              0x080138fc   Section        0  jmp_print_time.o(i.jmp_print_time_timer_init)
-    i.jmp_print_timer_start                  0x0801393c   Section        0  jmp_print_time.o(i.jmp_print_timer_start)
-    i.jmp_print_timer_stop                   0x08013954   Section        0  jmp_print_time.o(i.jmp_print_timer_stop)
-    i.jmp_storage_buff_clear                 0x08013990   Section        0  jmp_storage_read.o(i.jmp_storage_buff_clear)
-    i.jmp_storage_buff_fill                  0x080139c4   Section        0  jmp_storage_read.o(i.jmp_storage_buff_fill)
-    i.jmp_storage_buff_get                   0x08013c04   Section        0  jmp_storage_read.o(i.jmp_storage_buff_get)
-    i.jmp_storage_buff_get_sum               0x08013c40   Section        0  jmp_storage_read.o(i.jmp_storage_buff_get_sum)
-    i.jmp_storage_get_nextline_sum           0x08013c90   Section        0  jmp_storage_read.o(i.jmp_storage_get_nextline_sum)
-    i.jmp_storage_read_buff_clear            0x08013ce0   Section        0  jmp_storage_read.o(i.jmp_storage_read_buff_clear)
-    i.jmp_storage_read_init                  0x08013d00   Section        0  jmp_storage_read.o(i.jmp_storage_read_init)
-    i.jmp_storage_read_task                  0x08013d4c   Section        0  jmp_storage_read.o(i.jmp_storage_read_task)
-    i.jmp_storage_readline                   0x08013f50   Section        0  jmp_storage_read.o(i.jmp_storage_readline)
-    i.ld_clust                               0x08013fd8   Section        0  ff.o(i.ld_clust)
-    ld_clust                                 0x08013fd9   Thumb Code    38  ff.o(i.ld_clust)
-    i.ld_dword                               0x08013ffe   Section        0  ff.o(i.ld_dword)
-    ld_dword                                 0x08013fff   Thumb Code    24  ff.o(i.ld_dword)
-    i.ld_word                                0x08014016   Section        0  ff.o(i.ld_word)
-    ld_word                                  0x08014017   Thumb Code    12  ff.o(i.ld_word)
-    i.main                                   0x08014024   Section        0  main.o(i.main)
-    i.malloc                                 0x080140c4   Section        0  malloc.o(i.malloc)
-    i.max_allowable_speed                    0x08014130   Section        0  planner.o(i.max_allowable_speed)
-    i.mem_cmp                                0x08014164   Section        0  ff.o(i.mem_cmp)
-    mem_cmp                                  0x08014165   Thumb Code    36  ff.o(i.mem_cmp)
-    i.mem_cpy                                0x08014188   Section        0  ff.o(i.mem_cpy)
-    mem_cpy                                  0x08014189   Thumb Code    26  ff.o(i.mem_cpy)
-    i.mem_set                                0x080141a2   Section        0  ff.o(i.mem_set)
-    mem_set                                  0x080141a3   Thumb Code    18  ff.o(i.mem_set)
-    i.move_window                            0x080141b4   Section        0  ff.o(i.move_window)
-    move_window                              0x080141b5   Thumb Code    52  ff.o(i.move_window)
-    i.next_block_index                       0x080141e8   Section        0  planner.o(i.next_block_index)
-    i.pick_lfn                               0x080141f4   Section        0  ff.o(i.pick_lfn)
-    pick_lfn                                 0x080141f5   Thumb Code   130  ff.o(i.pick_lfn)
-    i.plan_buffer_line                       0x0801427c   Section        0  planner.o(i.plan_buffer_line)
-    i.plan_discard_current_block             0x08014c90   Section        0  planner.o(i.plan_discard_current_block)
-    i.plan_get_current_block                 0x08014cb4   Section        0  planner.o(i.plan_get_current_block)
-    i.plan_init                              0x08014cec   Section        0  planner.o(i.plan_init)
-    i.plan_set_position                      0x08014d50   Section        0  planner.o(i.plan_set_position)
-    i.planner_forward_pass                   0x08014e34   Section        0  planner.o(i.planner_forward_pass)
-    i.planner_forward_pass_kernel            0x08014e8c   Section        0  planner.o(i.planner_forward_pass_kernel)
-    i.planner_recalculate                    0x08014f3a   Section        0  planner.o(i.planner_recalculate)
-    i.planner_recalculate_trapezoids         0x08014f4c   Section        0  planner.o(i.planner_recalculate_trapezoids)
-    i.planner_reverse_pass                   0x0801500c   Section        0  planner.o(i.planner_reverse_pass)
-    i.planner_reverse_pass_kernel            0x08015078   Section        0  planner.o(i.planner_reverse_pass_kernel)
-    i.planner_variable_init                  0x08015124   Section        0  planner.o(i.planner_variable_init)
-    i.prev_block_index                       0x0801525c   Section        0  planner.o(i.prev_block_index)
-    i.prvAddCurrentTaskToDelayedList         0x08015268   Section        0  tasks.o(i.prvAddCurrentTaskToDelayedList)
-    prvAddCurrentTaskToDelayedList           0x08015269   Thumb Code   124  tasks.o(i.prvAddCurrentTaskToDelayedList)
-    i.prvAddNewTaskToReadyList               0x08015300   Section        0  tasks.o(i.prvAddNewTaskToReadyList)
-    prvAddNewTaskToReadyList                 0x08015301   Thumb Code   150  tasks.o(i.prvAddNewTaskToReadyList)
-    i.prvCheckTasksWaitingTermination        0x080153b4   Section        0  tasks.o(i.prvCheckTasksWaitingTermination)
-    prvCheckTasksWaitingTermination          0x080153b5   Thumb Code    60  tasks.o(i.prvCheckTasksWaitingTermination)
-    i.prvCopyDataToQueue                     0x080153fc   Section        0  queue.o(i.prvCopyDataToQueue)
-    prvCopyDataToQueue                       0x080153fd   Thumb Code   124  queue.o(i.prvCopyDataToQueue)
-    i.prvDeleteTCB                           0x08015478   Section        0  tasks.o(i.prvDeleteTCB)
-    prvDeleteTCB                             0x08015479   Thumb Code    18  tasks.o(i.prvDeleteTCB)
-    i.prvGetDisinheritPriorityAfterTimeout   0x0801548a   Section        0  queue.o(i.prvGetDisinheritPriorityAfterTimeout)
-    prvGetDisinheritPriorityAfterTimeout     0x0801548b   Thumb Code    20  queue.o(i.prvGetDisinheritPriorityAfterTimeout)
-    i.prvHeapInit                            0x080154a0   Section        0  heap_4.o(i.prvHeapInit)
-    prvHeapInit                              0x080154a1   Thumb Code    98  heap_4.o(i.prvHeapInit)
-    i.prvIdleTask                            0x0801551c   Section        0  tasks.o(i.prvIdleTask)
-    prvIdleTask                              0x0801551d   Thumb Code    32  tasks.o(i.prvIdleTask)
-    i.prvInitialiseNewQueue                  0x08015544   Section        0  queue.o(i.prvInitialiseNewQueue)
-    prvInitialiseNewQueue                    0x08015545   Thumb Code    42  queue.o(i.prvInitialiseNewQueue)
-    i.prvInitialiseNewTask                   0x0801556e   Section        0  tasks.o(i.prvInitialiseNewTask)
-    prvInitialiseNewTask                     0x0801556f   Thumb Code   174  tasks.o(i.prvInitialiseNewTask)
-    i.prvInitialiseTaskLists                 0x0801561c   Section        0  tasks.o(i.prvInitialiseTaskLists)
-    prvInitialiseTaskLists                   0x0801561d   Thumb Code    70  tasks.o(i.prvInitialiseTaskLists)
-    i.prvInsertBlockIntoFreeList             0x08015684   Section        0  heap_4.o(i.prvInsertBlockIntoFreeList)
-    prvInsertBlockIntoFreeList               0x08015685   Thumb Code    96  heap_4.o(i.prvInsertBlockIntoFreeList)
-    i.prvIsQueueEmpty                        0x080156ec   Section        0  queue.o(i.prvIsQueueEmpty)
-    prvIsQueueEmpty                          0x080156ed   Thumb Code    26  queue.o(i.prvIsQueueEmpty)
-    i.prvIsQueueFull                         0x08015706   Section        0  queue.o(i.prvIsQueueFull)
-    prvIsQueueFull                           0x08015707   Thumb Code    30  queue.o(i.prvIsQueueFull)
-    i.prvNotifyQueueSetContainer             0x08015724   Section        0  queue.o(i.prvNotifyQueueSetContainer)
-    prvNotifyQueueSetContainer               0x08015725   Thumb Code   152  queue.o(i.prvNotifyQueueSetContainer)
-    i.prvResetNextTaskUnblockTime            0x080157bc   Section        0  tasks.o(i.prvResetNextTaskUnblockTime)
-    prvResetNextTaskUnblockTime              0x080157bd   Thumb Code    42  tasks.o(i.prvResetNextTaskUnblockTime)
-    i.prvTaskExitError                       0x080157f0   Section        0  port.o(i.prvTaskExitError)
-    prvTaskExitError                         0x080157f1   Thumb Code    68  port.o(i.prvTaskExitError)
-    i.prvUnlockQueue                         0x08015838   Section        0  queue.o(i.prvUnlockQueue)
-    prvUnlockQueue                           0x08015839   Thumb Code   146  queue.o(i.prvUnlockQueue)
-    i.put_fat                                0x080158ca   Section        0  ff.o(i.put_fat)
-    put_fat                                  0x080158cb   Thumb Code   312  ff.o(i.put_fat)
-    i.put_lfn                                0x08015a04   Section        0  ff.o(i.put_lfn)
-    put_lfn                                  0x08015a05   Thumb Code   124  ff.o(i.put_lfn)
-    i.pvPortMalloc                           0x08015a84   Section        0  heap_4.o(i.pvPortMalloc)
-    i.pvTaskIncrementMutexHeldCount          0x08015bcc   Section        0  tasks.o(i.pvTaskIncrementMutexHeldCount)
-    i.pxPortInitialiseStack                  0x08015bec   Section        0  port.o(i.pxPortInitialiseStack)
-    i.quickStop                              0x08015c18   Section        0  stepper.o(i.quickStop)
-    i.remove_chain                           0x08015c44   Section        0  ff.o(i.remove_chain)
-    remove_chain                             0x08015c45   Thumb Code   150  ff.o(i.remove_chain)
-    i.reset_acceleration_rates               0x08015cdc   Section        0  planner.o(i.reset_acceleration_rates)
-    i.sqrt                                   0x08015d20   Section        0  sqrt.o(i.sqrt)
-    i.st_clust                               0x08015d8a   Section        0  ff.o(i.st_clust)
-    st_clust                                 0x08015d8b   Thumb Code    36  ff.o(i.st_clust)
-    i.st_dword                               0x08015dae   Section        0  ff.o(i.st_dword)
-    st_dword                                 0x08015daf   Thumb Code    24  ff.o(i.st_dword)
-    i.st_init                                0x08015dc8   Section        0  stepper.o(i.st_init)
-    i.st_pin_idle                            0x08015f0c   Section        0  stepper.o(i.st_pin_idle)
-    i.st_set_position                        0x08015fac   Section        0  stepper.o(i.st_set_position)
-    i.st_timer_interrupt                     0x08015fc0   Section        0  stepper.o(i.st_timer_interrupt)
-    i.st_word                                0x08016828   Section        0  ff.o(i.st_word)
-    st_word                                  0x08016829   Thumb Code    12  ff.o(i.st_word)
-    i.sum_sfn                                0x08016834   Section        0  ff.o(i.sum_sfn)
-    sum_sfn                                  0x08016835   Thumb Code    32  ff.o(i.sum_sfn)
-    i.sync_fs                                0x08016854   Section        0  ff.o(i.sync_fs)
-    sync_fs                                  0x08016855   Thumb Code   134  ff.o(i.sync_fs)
-    i.sync_window                            0x080168e4   Section        0  ff.o(i.sync_window)
-    sync_window                              0x080168e5   Thumb Code    82  ff.o(i.sync_window)
-    i.tmdelay_init                           0x08016938   Section        0  tmdelay.o(i.tmdelay_init)
-    i.tmdelay_ms                             0x08016988   Section        0  tmdelay.o(i.tmdelay_ms)
-    i.tmdelay_us                             0x080169a0   Section        0  tmdelay.o(i.tmdelay_us)
-    i.trapezoid_generator_reset              0x080169e0   Section        0  stepper.o(i.trapezoid_generator_reset)
-    i.usb_app_init                           0x08016a80   Section        0  usb_app.o(i.usb_app_init)
-    i.usb_init                               0x08016aac   Section        0  usb_test.o(i.usb_init)
-    i.usb_task                               0x08016ad8   Section        0  usb_app.o(i.usb_task)
-    usb_task                                 0x08016ad9   Thumb Code    20  usb_app.o(i.usb_task)
-    i.uxListRemove                           0x08016af0   Section        0  list.o(i.uxListRemove)
-    i.vListInitialise                        0x08016b18   Section        0  list.o(i.vListInitialise)
-    i.vListInitialiseItem                    0x08016b32   Section        0  list.o(i.vListInitialiseItem)
-    i.vListInsert                            0x08016b38   Section        0  list.o(i.vListInsert)
-    i.vListInsertEnd                         0x08016b6c   Section        0  list.o(i.vListInsertEnd)
-    i.vPortEnterCritical                     0x08016b84   Section        0  port.o(i.vPortEnterCritical)
-    i.vPortExitCritical                      0x08016be0   Section        0  port.o(i.vPortExitCritical)
-    i.vPortFree                              0x08016c20   Section        0  heap_4.o(i.vPortFree)
-    i.vPortSetupTimerInterrupt               0x08016cbc   Section        0  port.o(i.vPortSetupTimerInterrupt)
-    i.vPortValidateInterruptPriority         0x08016ce4   Section        0  port.o(i.vPortValidateInterruptPriority)
-    i.vTaskDelay                             0x08016d64   Section        0  tasks.o(i.vTaskDelay)
-    i.vTaskInternalSetTimeOutState           0x08016dc4   Section        0  tasks.o(i.vTaskInternalSetTimeOutState)
-    i.vTaskLED                               0x08016ddc   Section        0  main.o(i.vTaskLED)
-    vTaskLED                                 0x08016ddd   Thumb Code    32  main.o(i.vTaskLED)
-    i.vTaskMissedYield                       0x08016dfc   Section        0  tasks.o(i.vTaskMissedYield)
-    i.vTaskPlaceOnEventList                  0x08016e08   Section        0  tasks.o(i.vTaskPlaceOnEventList)
-    i.vTaskPriorityDisinheritAfterTimeout    0x08016e44   Section        0  tasks.o(i.vTaskPriorityDisinheritAfterTimeout)
-    i.vTaskStartScheduler                    0x08016f40   Section        0  tasks.o(i.vTaskStartScheduler)
-    i.vTaskSuspendAll                        0x08016fd0   Section        0  tasks.o(i.vTaskSuspendAll)
-    i.vTaskSwitchContext                     0x08016fe0   Section        0  tasks.o(i.vTaskSwitchContext)
-    i.validate                               0x08017070   Section        0  ff.o(i.validate)
-    validate                                 0x08017071   Thumb Code    66  ff.o(i.validate)
-    i.xPortStartScheduler                    0x080170b4   Section        0  port.o(i.xPortStartScheduler)
-    i.xQueueGenericCreate                    0x080171f8   Section        0  queue.o(i.xQueueGenericCreate)
-    i.xQueueGenericReset                     0x08017254   Section        0  queue.o(i.xQueueGenericReset)
-    i.xQueueGenericSend                      0x080172f0   Section        0  queue.o(i.xQueueGenericSend)
-    i.xQueueGiveFromISR                      0x0801749c   Section        0  queue.o(i.xQueueGiveFromISR)
-    i.xQueueSemaphoreTake                    0x080175a4   Section        0  queue.o(i.xQueueSemaphoreTake)
-    i.xTaskCheckForTimeOut                   0x08017740   Section        0  tasks.o(i.xTaskCheckForTimeOut)
-    i.xTaskCreate                            0x080177d4   Section        0  tasks.o(i.xTaskCreate)
-    i.xTaskIncrementTick                     0x08017834   Section        0  tasks.o(i.xTaskIncrementTick)
-    i.xTaskPriorityDisinherit                0x08017980   Section        0  tasks.o(i.xTaskPriorityDisinherit)
-    i.xTaskPriorityInherit                   0x08017a50   Section        0  tasks.o(i.xTaskPriorityInherit)
-    i.xTaskRemoveFromEventList               0x08017b18   Section        0  tasks.o(i.xTaskRemoveFromEventList)
-    i.xTaskResumeAll                         0x08017bb4   Section        0  tasks.o(i.xTaskResumeAll)
-    .constdata                               0x08017cbc   Section       64  system_stm32h7xx.o(.constdata)
-    UARTPrescTable                           0x08017cbc   Data          24  system_stm32h7xx.o(.constdata)
-    USARTPrescTable                          0x08017cd4   Data          24  system_stm32h7xx.o(.constdata)
-    .constdata                               0x08017cfc   Section       48  stm32h7xx_hal_uart.o(.constdata)
-    UARTPrescTable                           0x08017cfc   Data          24  stm32h7xx_hal_uart.o(.constdata)
-    USARTPrescTable                          0x08017d14   Data          24  stm32h7xx_hal_uart.o(.constdata)
-    .constdata                               0x08017d2c   Section       74  ff.o(.constdata)
-    LfnOfs                                   0x08017d2c   Data          13  ff.o(.constdata)
-    badchr                                   0x08017d39   Data          16  ff.o(.constdata)
-    vst                                      0x08017d4a   Data          22  ff.o(.constdata)
-    cst                                      0x08017d60   Data          22  ff.o(.constdata)
-    .constdata                               0x08017d76   Section    175030  cc936.o(.constdata)
-    uni2oem                                  0x08017d76   Data       87172  cc936.o(.constdata)
-    oem2uni                                  0x0802d1fa   Data       87172  cc936.o(.constdata)
-    cvt1                                     0x0804267e   Data         498  cc936.o(.constdata)
-    cvt2                                     0x08042870   Data         188  cc936.o(.constdata)
-    .constdata                               0x08042930   Section      136  pow.o(.constdata)
-    bp                                       0x08042930   Data          16  pow.o(.constdata)
-    dp_h                                     0x08042940   Data          16  pow.o(.constdata)
-    dp_l                                     0x08042950   Data          16  pow.o(.constdata)
-    L                                        0x08042960   Data          48  pow.o(.constdata)
-    P                                        0x08042990   Data          40  pow.o(.constdata)
-    .constdata                               0x080429b8   Section        8  qnan.o(.constdata)
-    .constdata                               0x080429c0   Section      129  ctype_o.o(.constdata)
-    .constdata                               0x08042a44   Section        4  ctype_o.o(.constdata)
-    table                                    0x08042a44   Data           4  ctype_o.o(.constdata)
-    .conststring                             0x08042a48   Section        4  usbh_msc.o(.conststring)
+    i.jmp_gui_time_update                    0x080124cc   Section        0  jmp_gui.o(i.jmp_gui_time_update)
+    i.jmp_gui_uart_command_analysis          0x08012618   Section        0  jmp_gui.o(i.jmp_gui_uart_command_analysis)
+    i.jmp_gui_uart_command_get               0x0801269c   Section        0  jmp_gui.o(i.jmp_gui_uart_command_get)
+    i.jmp_gui_uart_send                      0x08012774   Section        0  jmp_gui.o(i.jmp_gui_uart_send)
+    i.jmp_gui_uart_send_buffx                0x08012780   Section        0  jmp_gui.o(i.jmp_gui_uart_send_buffx)
+    i.jmp_gui_uart_send_str                  0x08012798   Section        0  jmp_gui.o(i.jmp_gui_uart_send_str)
+    i.jmp_gui_uart_timeout                   0x080128fc   Section        0  jmp_gui.o(i.jmp_gui_uart_timeout)
+    i.jmp_gui_uart_timeout_disable           0x0801291c   Section        0  jmp_gui.o(i.jmp_gui_uart_timeout_disable)
+    i.jmp_gui_uart_timeout_enable            0x08012938   Section        0  jmp_gui.o(i.jmp_gui_uart_timeout_enable)
+    i.jmp_gui_uart_timeout_init              0x08012954   Section        0  jmp_gui.o(i.jmp_gui_uart_timeout_init)
+    i.jmp_gui_uart_timeout_reset             0x08012974   Section        0  jmp_gui.o(i.jmp_gui_uart_timeout_reset)
+    i.jmp_gui_update_gcode_file_name         0x08012984   Section        0  jmp_gui.o(i.jmp_gui_update_gcode_file_name)
+    i.jmp_gui_update_manual_step             0x08012a60   Section        0  jmp_gui.o(i.jmp_gui_update_manual_step)
+    i.jmp_guiuart_rx_str_clear               0x08012aa4   Section        0  jmp_gui.o(i.jmp_guiuart_rx_str_clear)
+    i.jmp_guiuart_tx_str_clear               0x08012ac8   Section        0  jmp_gui.o(i.jmp_guiuart_tx_str_clear)
+    i.jmp_motion_clamp_to_software_endstops  0x08012aec   Section        0  jmp_motion.o(i.jmp_motion_clamp_to_software_endstops)
+    i.jmp_motion_e_print_task                0x08012bb8   Section        0  jmp_motion.o(i.jmp_motion_e_print_task)
+    i.jmp_motion_find_home                   0x08012ca8   Section        0  jmp_motion.o(i.jmp_motion_find_home)
+    i.jmp_motion_init                        0x080132c8   Section        0  jmp_motion.o(i.jmp_motion_init)
+    i.jmp_motion_manual                      0x08013374   Section        0  jmp_motion.o(i.jmp_motion_manual)
+    i.jmp_motion_prepare_move                0x080133dc   Section        0  jmp_motion.o(i.jmp_motion_prepare_move)
+    i.jmp_motion_set_postion                 0x080134b4   Section        0  jmp_motion.o(i.jmp_motion_set_postion)
+    i.jmp_motion_state_get                   0x080134fc   Section        0  jmp_motion.o(i.jmp_motion_state_get)
+    i.jmp_motion_task                        0x08013670   Section        0  jmp_motion.o(i.jmp_motion_task)
+    i.jmp_motion_test_task                   0x08013682   Section        0  jmp_motion.o(i.jmp_motion_test_task)
+    i.jmp_motion_variable_init               0x08013694   Section        0  jmp_motion.o(i.jmp_motion_variable_init)
+    i.jmp_print_time_init                    0x08013818   Section        0  jmp_print_time.o(i.jmp_print_time_init)
+    i.jmp_print_time_int                     0x08013864   Section        0  jmp_print_time.o(i.jmp_print_time_int)
+    i.jmp_print_time_task                    0x080138bc   Section        0  jmp_print_time.o(i.jmp_print_time_task)
+    i.jmp_print_time_timer_init              0x08013900   Section        0  jmp_print_time.o(i.jmp_print_time_timer_init)
+    i.jmp_print_timer_start                  0x08013940   Section        0  jmp_print_time.o(i.jmp_print_timer_start)
+    i.jmp_print_timer_stop                   0x08013958   Section        0  jmp_print_time.o(i.jmp_print_timer_stop)
+    i.jmp_storage_buff_clear                 0x08013994   Section        0  jmp_storage_read.o(i.jmp_storage_buff_clear)
+    i.jmp_storage_buff_fill                  0x080139c8   Section        0  jmp_storage_read.o(i.jmp_storage_buff_fill)
+    i.jmp_storage_buff_get                   0x08013c08   Section        0  jmp_storage_read.o(i.jmp_storage_buff_get)
+    i.jmp_storage_buff_get_sum               0x08013c44   Section        0  jmp_storage_read.o(i.jmp_storage_buff_get_sum)
+    i.jmp_storage_get_nextline_sum           0x08013c94   Section        0  jmp_storage_read.o(i.jmp_storage_get_nextline_sum)
+    i.jmp_storage_read_buff_clear            0x08013ce4   Section        0  jmp_storage_read.o(i.jmp_storage_read_buff_clear)
+    i.jmp_storage_read_init                  0x08013d04   Section        0  jmp_storage_read.o(i.jmp_storage_read_init)
+    i.jmp_storage_read_task                  0x08013d50   Section        0  jmp_storage_read.o(i.jmp_storage_read_task)
+    i.jmp_storage_readline                   0x08013f54   Section        0  jmp_storage_read.o(i.jmp_storage_readline)
+    i.ld_clust                               0x08013fdc   Section        0  ff.o(i.ld_clust)
+    ld_clust                                 0x08013fdd   Thumb Code    38  ff.o(i.ld_clust)
+    i.ld_dword                               0x08014002   Section        0  ff.o(i.ld_dword)
+    ld_dword                                 0x08014003   Thumb Code    24  ff.o(i.ld_dword)
+    i.ld_word                                0x0801401a   Section        0  ff.o(i.ld_word)
+    ld_word                                  0x0801401b   Thumb Code    12  ff.o(i.ld_word)
+    i.main                                   0x08014028   Section        0  main.o(i.main)
+    i.malloc                                 0x080140c8   Section        0  malloc.o(i.malloc)
+    i.max_allowable_speed                    0x08014134   Section        0  planner.o(i.max_allowable_speed)
+    i.mem_cmp                                0x08014168   Section        0  ff.o(i.mem_cmp)
+    mem_cmp                                  0x08014169   Thumb Code    36  ff.o(i.mem_cmp)
+    i.mem_cpy                                0x0801418c   Section        0  ff.o(i.mem_cpy)
+    mem_cpy                                  0x0801418d   Thumb Code    26  ff.o(i.mem_cpy)
+    i.mem_set                                0x080141a6   Section        0  ff.o(i.mem_set)
+    mem_set                                  0x080141a7   Thumb Code    18  ff.o(i.mem_set)
+    i.move_window                            0x080141b8   Section        0  ff.o(i.move_window)
+    move_window                              0x080141b9   Thumb Code    52  ff.o(i.move_window)
+    i.next_block_index                       0x080141ec   Section        0  planner.o(i.next_block_index)
+    i.pick_lfn                               0x080141f8   Section        0  ff.o(i.pick_lfn)
+    pick_lfn                                 0x080141f9   Thumb Code   130  ff.o(i.pick_lfn)
+    i.plan_buffer_line                       0x08014280   Section        0  planner.o(i.plan_buffer_line)
+    i.plan_discard_current_block             0x08014ca4   Section        0  planner.o(i.plan_discard_current_block)
+    i.plan_get_current_block                 0x08014cc8   Section        0  planner.o(i.plan_get_current_block)
+    i.plan_init                              0x08014d00   Section        0  planner.o(i.plan_init)
+    i.plan_set_position                      0x08014d64   Section        0  planner.o(i.plan_set_position)
+    i.planner_forward_pass                   0x08014e48   Section        0  planner.o(i.planner_forward_pass)
+    i.planner_forward_pass_kernel            0x08014ea0   Section        0  planner.o(i.planner_forward_pass_kernel)
+    i.planner_recalculate                    0x08014f4e   Section        0  planner.o(i.planner_recalculate)
+    i.planner_recalculate_trapezoids         0x08014f60   Section        0  planner.o(i.planner_recalculate_trapezoids)
+    i.planner_reverse_pass                   0x08015020   Section        0  planner.o(i.planner_reverse_pass)
+    i.planner_reverse_pass_kernel            0x0801508c   Section        0  planner.o(i.planner_reverse_pass_kernel)
+    i.planner_variable_init                  0x08015138   Section        0  planner.o(i.planner_variable_init)
+    i.prev_block_index                       0x08015270   Section        0  planner.o(i.prev_block_index)
+    i.prvAddCurrentTaskToDelayedList         0x0801527c   Section        0  tasks.o(i.prvAddCurrentTaskToDelayedList)
+    prvAddCurrentTaskToDelayedList           0x0801527d   Thumb Code   124  tasks.o(i.prvAddCurrentTaskToDelayedList)
+    i.prvAddNewTaskToReadyList               0x08015314   Section        0  tasks.o(i.prvAddNewTaskToReadyList)
+    prvAddNewTaskToReadyList                 0x08015315   Thumb Code   150  tasks.o(i.prvAddNewTaskToReadyList)
+    i.prvCheckTasksWaitingTermination        0x080153c8   Section        0  tasks.o(i.prvCheckTasksWaitingTermination)
+    prvCheckTasksWaitingTermination          0x080153c9   Thumb Code    60  tasks.o(i.prvCheckTasksWaitingTermination)
+    i.prvCopyDataToQueue                     0x08015410   Section        0  queue.o(i.prvCopyDataToQueue)
+    prvCopyDataToQueue                       0x08015411   Thumb Code   124  queue.o(i.prvCopyDataToQueue)
+    i.prvDeleteTCB                           0x0801548c   Section        0  tasks.o(i.prvDeleteTCB)
+    prvDeleteTCB                             0x0801548d   Thumb Code    18  tasks.o(i.prvDeleteTCB)
+    i.prvGetDisinheritPriorityAfterTimeout   0x0801549e   Section        0  queue.o(i.prvGetDisinheritPriorityAfterTimeout)
+    prvGetDisinheritPriorityAfterTimeout     0x0801549f   Thumb Code    20  queue.o(i.prvGetDisinheritPriorityAfterTimeout)
+    i.prvHeapInit                            0x080154b4   Section        0  heap_4.o(i.prvHeapInit)
+    prvHeapInit                              0x080154b5   Thumb Code    98  heap_4.o(i.prvHeapInit)
+    i.prvIdleTask                            0x08015530   Section        0  tasks.o(i.prvIdleTask)
+    prvIdleTask                              0x08015531   Thumb Code    32  tasks.o(i.prvIdleTask)
+    i.prvInitialiseNewQueue                  0x08015558   Section        0  queue.o(i.prvInitialiseNewQueue)
+    prvInitialiseNewQueue                    0x08015559   Thumb Code    42  queue.o(i.prvInitialiseNewQueue)
+    i.prvInitialiseNewTask                   0x08015582   Section        0  tasks.o(i.prvInitialiseNewTask)
+    prvInitialiseNewTask                     0x08015583   Thumb Code   174  tasks.o(i.prvInitialiseNewTask)
+    i.prvInitialiseTaskLists                 0x08015630   Section        0  tasks.o(i.prvInitialiseTaskLists)
+    prvInitialiseTaskLists                   0x08015631   Thumb Code    70  tasks.o(i.prvInitialiseTaskLists)
+    i.prvInsertBlockIntoFreeList             0x08015698   Section        0  heap_4.o(i.prvInsertBlockIntoFreeList)
+    prvInsertBlockIntoFreeList               0x08015699   Thumb Code    96  heap_4.o(i.prvInsertBlockIntoFreeList)
+    i.prvIsQueueEmpty                        0x08015700   Section        0  queue.o(i.prvIsQueueEmpty)
+    prvIsQueueEmpty                          0x08015701   Thumb Code    26  queue.o(i.prvIsQueueEmpty)
+    i.prvIsQueueFull                         0x0801571a   Section        0  queue.o(i.prvIsQueueFull)
+    prvIsQueueFull                           0x0801571b   Thumb Code    30  queue.o(i.prvIsQueueFull)
+    i.prvNotifyQueueSetContainer             0x08015738   Section        0  queue.o(i.prvNotifyQueueSetContainer)
+    prvNotifyQueueSetContainer               0x08015739   Thumb Code   152  queue.o(i.prvNotifyQueueSetContainer)
+    i.prvResetNextTaskUnblockTime            0x080157d0   Section        0  tasks.o(i.prvResetNextTaskUnblockTime)
+    prvResetNextTaskUnblockTime              0x080157d1   Thumb Code    42  tasks.o(i.prvResetNextTaskUnblockTime)
+    i.prvTaskExitError                       0x08015804   Section        0  port.o(i.prvTaskExitError)
+    prvTaskExitError                         0x08015805   Thumb Code    68  port.o(i.prvTaskExitError)
+    i.prvUnlockQueue                         0x0801584c   Section        0  queue.o(i.prvUnlockQueue)
+    prvUnlockQueue                           0x0801584d   Thumb Code   146  queue.o(i.prvUnlockQueue)
+    i.put_fat                                0x080158de   Section        0  ff.o(i.put_fat)
+    put_fat                                  0x080158df   Thumb Code   312  ff.o(i.put_fat)
+    i.put_lfn                                0x08015a18   Section        0  ff.o(i.put_lfn)
+    put_lfn                                  0x08015a19   Thumb Code   124  ff.o(i.put_lfn)
+    i.pvPortMalloc                           0x08015a98   Section        0  heap_4.o(i.pvPortMalloc)
+    i.pvTaskIncrementMutexHeldCount          0x08015be0   Section        0  tasks.o(i.pvTaskIncrementMutexHeldCount)
+    i.pxPortInitialiseStack                  0x08015c00   Section        0  port.o(i.pxPortInitialiseStack)
+    i.quickStop                              0x08015c2c   Section        0  stepper.o(i.quickStop)
+    i.remove_chain                           0x08015c58   Section        0  ff.o(i.remove_chain)
+    remove_chain                             0x08015c59   Thumb Code   150  ff.o(i.remove_chain)
+    i.reset_acceleration_rates               0x08015cf0   Section        0  planner.o(i.reset_acceleration_rates)
+    i.sqrt                                   0x08015d34   Section        0  sqrt.o(i.sqrt)
+    i.st_clust                               0x08015d9e   Section        0  ff.o(i.st_clust)
+    st_clust                                 0x08015d9f   Thumb Code    36  ff.o(i.st_clust)
+    i.st_dword                               0x08015dc2   Section        0  ff.o(i.st_dword)
+    st_dword                                 0x08015dc3   Thumb Code    24  ff.o(i.st_dword)
+    i.st_init                                0x08015ddc   Section        0  stepper.o(i.st_init)
+    i.st_pin_idle                            0x08015f20   Section        0  stepper.o(i.st_pin_idle)
+    i.st_set_position                        0x08015fc0   Section        0  stepper.o(i.st_set_position)
+    i.st_timer_interrupt                     0x08015fd4   Section        0  stepper.o(i.st_timer_interrupt)
+    i.st_word                                0x0801683c   Section        0  ff.o(i.st_word)
+    st_word                                  0x0801683d   Thumb Code    12  ff.o(i.st_word)
+    i.sum_sfn                                0x08016848   Section        0  ff.o(i.sum_sfn)
+    sum_sfn                                  0x08016849   Thumb Code    32  ff.o(i.sum_sfn)
+    i.sync_fs                                0x08016868   Section        0  ff.o(i.sync_fs)
+    sync_fs                                  0x08016869   Thumb Code   134  ff.o(i.sync_fs)
+    i.sync_window                            0x080168f8   Section        0  ff.o(i.sync_window)
+    sync_window                              0x080168f9   Thumb Code    82  ff.o(i.sync_window)
+    i.tmdelay_init                           0x0801694c   Section        0  tmdelay.o(i.tmdelay_init)
+    i.tmdelay_ms                             0x0801699c   Section        0  tmdelay.o(i.tmdelay_ms)
+    i.tmdelay_us                             0x080169b4   Section        0  tmdelay.o(i.tmdelay_us)
+    i.trapezoid_generator_reset              0x080169f4   Section        0  stepper.o(i.trapezoid_generator_reset)
+    i.usb_app_init                           0x08016a94   Section        0  usb_app.o(i.usb_app_init)
+    i.usb_init                               0x08016ac0   Section        0  usb_test.o(i.usb_init)
+    i.usb_task                               0x08016aec   Section        0  usb_app.o(i.usb_task)
+    usb_task                                 0x08016aed   Thumb Code    20  usb_app.o(i.usb_task)
+    i.uxListRemove                           0x08016b04   Section        0  list.o(i.uxListRemove)
+    i.vListInitialise                        0x08016b2c   Section        0  list.o(i.vListInitialise)
+    i.vListInitialiseItem                    0x08016b46   Section        0  list.o(i.vListInitialiseItem)
+    i.vListInsert                            0x08016b4c   Section        0  list.o(i.vListInsert)
+    i.vListInsertEnd                         0x08016b80   Section        0  list.o(i.vListInsertEnd)
+    i.vPortEnterCritical                     0x08016b98   Section        0  port.o(i.vPortEnterCritical)
+    i.vPortExitCritical                      0x08016bf4   Section        0  port.o(i.vPortExitCritical)
+    i.vPortFree                              0x08016c34   Section        0  heap_4.o(i.vPortFree)
+    i.vPortSetupTimerInterrupt               0x08016cd0   Section        0  port.o(i.vPortSetupTimerInterrupt)
+    i.vPortValidateInterruptPriority         0x08016cf8   Section        0  port.o(i.vPortValidateInterruptPriority)
+    i.vTaskDelay                             0x08016d78   Section        0  tasks.o(i.vTaskDelay)
+    i.vTaskInternalSetTimeOutState           0x08016dd8   Section        0  tasks.o(i.vTaskInternalSetTimeOutState)
+    i.vTaskLED                               0x08016df0   Section        0  main.o(i.vTaskLED)
+    vTaskLED                                 0x08016df1   Thumb Code    32  main.o(i.vTaskLED)
+    i.vTaskMissedYield                       0x08016e10   Section        0  tasks.o(i.vTaskMissedYield)
+    i.vTaskPlaceOnEventList                  0x08016e1c   Section        0  tasks.o(i.vTaskPlaceOnEventList)
+    i.vTaskPriorityDisinheritAfterTimeout    0x08016e58   Section        0  tasks.o(i.vTaskPriorityDisinheritAfterTimeout)
+    i.vTaskStartScheduler                    0x08016f54   Section        0  tasks.o(i.vTaskStartScheduler)
+    i.vTaskSuspendAll                        0x08016fe4   Section        0  tasks.o(i.vTaskSuspendAll)
+    i.vTaskSwitchContext                     0x08016ff4   Section        0  tasks.o(i.vTaskSwitchContext)
+    i.validate                               0x08017084   Section        0  ff.o(i.validate)
+    validate                                 0x08017085   Thumb Code    66  ff.o(i.validate)
+    i.xPortStartScheduler                    0x080170c8   Section        0  port.o(i.xPortStartScheduler)
+    i.xQueueGenericCreate                    0x0801720c   Section        0  queue.o(i.xQueueGenericCreate)
+    i.xQueueGenericReset                     0x08017268   Section        0  queue.o(i.xQueueGenericReset)
+    i.xQueueGenericSend                      0x08017304   Section        0  queue.o(i.xQueueGenericSend)
+    i.xQueueGiveFromISR                      0x080174b0   Section        0  queue.o(i.xQueueGiveFromISR)
+    i.xQueueSemaphoreTake                    0x080175b8   Section        0  queue.o(i.xQueueSemaphoreTake)
+    i.xTaskCheckForTimeOut                   0x08017754   Section        0  tasks.o(i.xTaskCheckForTimeOut)
+    i.xTaskCreate                            0x080177e8   Section        0  tasks.o(i.xTaskCreate)
+    i.xTaskIncrementTick                     0x08017848   Section        0  tasks.o(i.xTaskIncrementTick)
+    i.xTaskPriorityDisinherit                0x08017994   Section        0  tasks.o(i.xTaskPriorityDisinherit)
+    i.xTaskPriorityInherit                   0x08017a64   Section        0  tasks.o(i.xTaskPriorityInherit)
+    i.xTaskRemoveFromEventList               0x08017b2c   Section        0  tasks.o(i.xTaskRemoveFromEventList)
+    i.xTaskResumeAll                         0x08017bc8   Section        0  tasks.o(i.xTaskResumeAll)
+    .constdata                               0x08017cd0   Section       64  system_stm32h7xx.o(.constdata)
+    UARTPrescTable                           0x08017cd0   Data          24  system_stm32h7xx.o(.constdata)
+    USARTPrescTable                          0x08017ce8   Data          24  system_stm32h7xx.o(.constdata)
+    .constdata                               0x08017d10   Section       48  stm32h7xx_hal_uart.o(.constdata)
+    UARTPrescTable                           0x08017d10   Data          24  stm32h7xx_hal_uart.o(.constdata)
+    USARTPrescTable                          0x08017d28   Data          24  stm32h7xx_hal_uart.o(.constdata)
+    .constdata                               0x08017d40   Section       74  ff.o(.constdata)
+    LfnOfs                                   0x08017d40   Data          13  ff.o(.constdata)
+    badchr                                   0x08017d4d   Data          16  ff.o(.constdata)
+    vst                                      0x08017d5e   Data          22  ff.o(.constdata)
+    cst                                      0x08017d74   Data          22  ff.o(.constdata)
+    .constdata                               0x08017d8a   Section    175030  cc936.o(.constdata)
+    uni2oem                                  0x08017d8a   Data       87172  cc936.o(.constdata)
+    oem2uni                                  0x0802d20e   Data       87172  cc936.o(.constdata)
+    cvt1                                     0x08042692   Data         498  cc936.o(.constdata)
+    cvt2                                     0x08042884   Data         188  cc936.o(.constdata)
+    .constdata                               0x08042940   Section      136  pow.o(.constdata)
+    bp                                       0x08042940   Data          16  pow.o(.constdata)
+    dp_h                                     0x08042950   Data          16  pow.o(.constdata)
+    dp_l                                     0x08042960   Data          16  pow.o(.constdata)
+    L                                        0x08042970   Data          48  pow.o(.constdata)
+    P                                        0x080429a0   Data          40  pow.o(.constdata)
+    .constdata                               0x080429c8   Section        8  qnan.o(.constdata)
+    .constdata                               0x080429d0   Section      129  ctype_o.o(.constdata)
+    .constdata                               0x08042a54   Section        4  ctype_o.o(.constdata)
+    table                                    0x08042a54   Data           4  ctype_o.o(.constdata)
+    .conststring                             0x08042a58   Section        4  usbh_msc.o(.conststring)
     .data                                    0x24000000   Section        4  main.o(.data)
     xHandleTaskLED                           0x24000000   Data           4  main.o(.data)
     .data                                    0x24000004   Section        8  system_stm32h7xx.o(.data)
@@ -8786,7 +8788,7 @@ Image Symbol Table
     jmp_gcode_g90_param                      0x08011235   Thumb Code     2  jmp_gcode_analysis.o(i.jmp_gcode_g90_param)
     jmp_gcode_g92_param                      0x08011237   Thumb Code     8  jmp_gcode_analysis.o(i.jmp_gcode_g92_param)
     jmp_gcode_g_param                        0x08011241   Thumb Code    76  jmp_gcode_analysis.o(i.jmp_gcode_g_param)
-    jmp_gcode_get_line                       0x08011291   Thumb Code   206  jmp_gcode_analysis.o(i.jmp_gcode_get_line)
+    jmp_gcode_get_line                       0x08011291   Thumb Code   208  jmp_gcode_analysis.o(i.jmp_gcode_get_line)
     jmp_gcode_line_buff_clear                0x08011379   Thumb Code    24  jmp_gcode_analysis.o(i.jmp_gcode_line_buff_clear)
     jmp_gcode_m82_param                      0x08011399   Thumb Code     2  jmp_gcode_analysis.o(i.jmp_gcode_m82_param)
     jmp_gcode_m_param                        0x0801139d   Thumb Code    22  jmp_gcode_analysis.o(i.jmp_gcode_m_param)
@@ -8809,117 +8811,117 @@ Image Symbol Table
     jmp_gui_send_message                     0x08011a4d   Thumb Code     6  jmp_gui.o(i.jmp_gui_send_message)
     jmp_gui_start_print                      0x08011a59   Thumb Code    70  jmp_gui.o(i.jmp_gui_start_print)
     jmp_gui_stop_print                       0x08011abd   Thumb Code    10  jmp_gui.o(i.jmp_gui_stop_print)
-    jmp_gui_task                             0x08011acd   Thumb Code  2524  jmp_gui.o(i.jmp_gui_task)
-    jmp_gui_time_update                      0x080124c9   Thumb Code   320  jmp_gui.o(i.jmp_gui_time_update)
-    jmp_gui_uart_command_analysis            0x08012615   Thumb Code   122  jmp_gui.o(i.jmp_gui_uart_command_analysis)
-    jmp_gui_uart_command_get                 0x08012699   Thumb Code   186  jmp_gui.o(i.jmp_gui_uart_command_get)
-    jmp_gui_uart_send                        0x08012771   Thumb Code    12  jmp_gui.o(i.jmp_gui_uart_send)
-    jmp_gui_uart_send_buffx                  0x0801277d   Thumb Code    24  jmp_gui.o(i.jmp_gui_uart_send_buffx)
-    jmp_gui_uart_send_str                    0x08012795   Thumb Code   344  jmp_gui.o(i.jmp_gui_uart_send_str)
-    jmp_gui_uart_timeout                     0x080128f9   Thumb Code    20  jmp_gui.o(i.jmp_gui_uart_timeout)
-    jmp_gui_uart_timeout_disable             0x08012919   Thumb Code    20  jmp_gui.o(i.jmp_gui_uart_timeout_disable)
-    jmp_gui_uart_timeout_enable              0x08012935   Thumb Code    20  jmp_gui.o(i.jmp_gui_uart_timeout_enable)
-    jmp_gui_uart_timeout_init                0x08012951   Thumb Code    26  jmp_gui.o(i.jmp_gui_uart_timeout_init)
-    jmp_gui_uart_timeout_reset               0x08012971   Thumb Code    12  jmp_gui.o(i.jmp_gui_uart_timeout_reset)
-    jmp_gui_update_gcode_file_name           0x08012981   Thumb Code   204  jmp_gui.o(i.jmp_gui_update_gcode_file_name)
-    jmp_gui_update_manual_step               0x08012a5d   Thumb Code    58  jmp_gui.o(i.jmp_gui_update_manual_step)
-    jmp_guiuart_rx_str_clear                 0x08012aa1   Thumb Code    32  jmp_gui.o(i.jmp_guiuart_rx_str_clear)
-    jmp_guiuart_tx_str_clear                 0x08012ac5   Thumb Code    32  jmp_gui.o(i.jmp_guiuart_tx_str_clear)
-    jmp_motion_clamp_to_software_endstops    0x08012ae9   Thumb Code   194  jmp_motion.o(i.jmp_motion_clamp_to_software_endstops)
-    jmp_motion_e_print_task                  0x08012bb5   Thumb Code   212  jmp_motion.o(i.jmp_motion_e_print_task)
-    jmp_motion_find_home                     0x08012ca5   Thumb Code  1548  jmp_motion.o(i.jmp_motion_find_home)
-    jmp_motion_init                          0x080132c5   Thumb Code    82  jmp_motion.o(i.jmp_motion_init)
-    jmp_motion_manual                        0x08013371   Thumb Code    94  jmp_motion.o(i.jmp_motion_manual)
-    jmp_motion_prepare_move                  0x080133d9   Thumb Code   188  jmp_motion.o(i.jmp_motion_prepare_move)
-    jmp_motion_set_postion                   0x080134b1   Thumb Code    66  jmp_motion.o(i.jmp_motion_set_postion)
-    jmp_motion_state_get                     0x080134f9   Thumb Code   350  jmp_motion.o(i.jmp_motion_state_get)
-    jmp_motion_task                          0x0801366d   Thumb Code    18  jmp_motion.o(i.jmp_motion_task)
-    jmp_motion_test_task                     0x0801367f   Thumb Code    16  jmp_motion.o(i.jmp_motion_test_task)
-    jmp_motion_variable_init                 0x08013691   Thumb Code   354  jmp_motion.o(i.jmp_motion_variable_init)
-    jmp_print_time_init                      0x08013815   Thumb Code    40  jmp_print_time.o(i.jmp_print_time_init)
-    jmp_print_time_int                       0x08013861   Thumb Code    68  jmp_print_time.o(i.jmp_print_time_int)
-    jmp_print_time_task                      0x080138b9   Thumb Code    54  jmp_print_time.o(i.jmp_print_time_task)
-    jmp_print_time_timer_init                0x080138fd   Thumb Code    60  jmp_print_time.o(i.jmp_print_time_timer_init)
-    jmp_print_timer_start                    0x0801393d   Thumb Code    18  jmp_print_time.o(i.jmp_print_timer_start)
-    jmp_print_timer_stop                     0x08013955   Thumb Code    56  jmp_print_time.o(i.jmp_print_timer_stop)
-    jmp_storage_buff_clear                   0x08013991   Thumb Code    34  jmp_storage_read.o(i.jmp_storage_buff_clear)
-    jmp_storage_buff_fill                    0x080139c5   Thumb Code   540  jmp_storage_read.o(i.jmp_storage_buff_fill)
-    jmp_storage_buff_get                     0x08013c05   Thumb Code    48  jmp_storage_read.o(i.jmp_storage_buff_get)
-    jmp_storage_buff_get_sum                 0x08013c41   Thumb Code    68  jmp_storage_read.o(i.jmp_storage_buff_get_sum)
-    jmp_storage_get_nextline_sum             0x08013c91   Thumb Code    64  jmp_storage_read.o(i.jmp_storage_get_nextline_sum)
-    jmp_storage_read_buff_clear              0x08013ce1   Thumb Code    24  jmp_storage_read.o(i.jmp_storage_read_buff_clear)
-    jmp_storage_read_init                    0x08013d01   Thumb Code    40  jmp_storage_read.o(i.jmp_storage_read_init)
-    jmp_storage_read_task                    0x08013d4d   Thumb Code   462  jmp_storage_read.o(i.jmp_storage_read_task)
-    jmp_storage_readline                     0x08013f51   Thumb Code   120  jmp_storage_read.o(i.jmp_storage_readline)
-    main                                     0x08014025   Thumb Code   138  main.o(i.main)
-    malloc                                   0x080140c5   Thumb Code    92  malloc.o(i.malloc)
-    max_allowable_speed                      0x08014131   Thumb Code    52  planner.o(i.max_allowable_speed)
-    next_block_index                         0x080141e9   Thumb Code    12  planner.o(i.next_block_index)
-    plan_buffer_line                         0x0801427d   Thumb Code  2550  planner.o(i.plan_buffer_line)
-    plan_discard_current_block               0x08014c91   Thumb Code    28  planner.o(i.plan_discard_current_block)
-    plan_get_current_block                   0x08014cb5   Thumb Code    44  planner.o(i.plan_get_current_block)
-    plan_init                                0x08014ced   Thumb Code    74  planner.o(i.plan_init)
-    plan_set_position                        0x08014d51   Thumb Code   206  planner.o(i.plan_set_position)
-    planner_forward_pass                     0x08014e35   Thumb Code    76  planner.o(i.planner_forward_pass)
-    planner_forward_pass_kernel              0x08014e8d   Thumb Code   174  planner.o(i.planner_forward_pass_kernel)
-    planner_recalculate                      0x08014f3b   Thumb Code    16  planner.o(i.planner_recalculate)
-    planner_recalculate_trapezoids           0x08014f4d   Thumb Code   174  planner.o(i.planner_recalculate_trapezoids)
-    planner_reverse_pass                     0x0801500d   Thumb Code    94  planner.o(i.planner_reverse_pass)
-    planner_reverse_pass_kernel              0x08015079   Thumb Code   170  planner.o(i.planner_reverse_pass_kernel)
-    planner_variable_init                    0x08015125   Thumb Code   274  planner.o(i.planner_variable_init)
-    prev_block_index                         0x0801525d   Thumb Code    10  planner.o(i.prev_block_index)
-    pvPortMalloc                             0x08015a85   Thumb Code   308  heap_4.o(i.pvPortMalloc)
-    pvTaskIncrementMutexHeldCount            0x08015bcd   Thumb Code    26  tasks.o(i.pvTaskIncrementMutexHeldCount)
-    pxPortInitialiseStack                    0x08015bed   Thumb Code    38  port.o(i.pxPortInitialiseStack)
-    quickStop                                0x08015c19   Thumb Code    34  stepper.o(i.quickStop)
-    reset_acceleration_rates                 0x08015cdd   Thumb Code    56  planner.o(i.reset_acceleration_rates)
-    sqrt                                     0x08015d21   Thumb Code   106  sqrt.o(i.sqrt)
-    st_init                                  0x08015dc9   Thumb Code   314  stepper.o(i.st_init)
-    st_pin_idle                              0x08015f0d   Thumb Code   152  stepper.o(i.st_pin_idle)
-    st_set_position                          0x08015fad   Thumb Code    14  stepper.o(i.st_set_position)
-    st_timer_interrupt                       0x08015fc1   Thumb Code  2152  stepper.o(i.st_timer_interrupt)
-    tmdelay_init                             0x08016939   Thumb Code    68  tmdelay.o(i.tmdelay_init)
-    tmdelay_ms                               0x08016989   Thumb Code    24  tmdelay.o(i.tmdelay_ms)
-    tmdelay_us                               0x080169a1   Thumb Code    58  tmdelay.o(i.tmdelay_us)
-    trapezoid_generator_reset                0x080169e1   Thumb Code   132  stepper.o(i.trapezoid_generator_reset)
-    usb_app_init                             0x08016a81   Thumb Code    24  usb_app.o(i.usb_app_init)
-    usb_init                                 0x08016aad   Thumb Code    32  usb_test.o(i.usb_init)
-    uxListRemove                             0x08016af1   Thumb Code    40  list.o(i.uxListRemove)
-    vListInitialise                          0x08016b19   Thumb Code    26  list.o(i.vListInitialise)
-    vListInitialiseItem                      0x08016b33   Thumb Code     6  list.o(i.vListInitialiseItem)
-    vListInsert                              0x08016b39   Thumb Code    52  list.o(i.vListInsert)
-    vListInsertEnd                           0x08016b6d   Thumb Code    24  list.o(i.vListInsertEnd)
-    vPortEnterCritical                       0x08016b85   Thumb Code    84  port.o(i.vPortEnterCritical)
-    vPortExitCritical                        0x08016be1   Thumb Code    60  port.o(i.vPortExitCritical)
-    vPortFree                                0x08016c21   Thumb Code   148  heap_4.o(i.vPortFree)
-    vPortSetupTimerInterrupt                 0x08016cbd   Thumb Code    36  port.o(i.vPortSetupTimerInterrupt)
-    vPortValidateInterruptPriority           0x08016ce5   Thumb Code   114  port.o(i.vPortValidateInterruptPriority)
-    vTaskDelay                               0x08016d65   Thumb Code    86  tasks.o(i.vTaskDelay)
-    vTaskInternalSetTimeOutState             0x08016dc5   Thumb Code    14  tasks.o(i.vTaskInternalSetTimeOutState)
-    vTaskMissedYield                         0x08016dfd   Thumb Code     8  tasks.o(i.vTaskMissedYield)
-    vTaskPlaceOnEventList                    0x08016e09   Thumb Code    56  tasks.o(i.vTaskPlaceOnEventList)
-    vTaskPriorityDisinheritAfterTimeout      0x08016e45   Thumb Code   238  tasks.o(i.vTaskPriorityDisinheritAfterTimeout)
-    vTaskStartScheduler                      0x08016f41   Thumb Code   116  tasks.o(i.vTaskStartScheduler)
-    vTaskSuspendAll                          0x08016fd1   Thumb Code    12  tasks.o(i.vTaskSuspendAll)
-    vTaskSwitchContext                       0x08016fe1   Thumb Code   122  tasks.o(i.vTaskSwitchContext)
-    xPortStartScheduler                      0x080170b5   Thumb Code   298  port.o(i.xPortStartScheduler)
-    xQueueGenericCreate                      0x080171f9   Thumb Code    92  queue.o(i.xQueueGenericCreate)
-    xQueueGenericReset                       0x08017255   Thumb Code   150  queue.o(i.xQueueGenericReset)
-    xQueueGenericSend                        0x080172f1   Thumb Code   424  queue.o(i.xQueueGenericSend)
-    xQueueGiveFromISR                        0x0801749d   Thumb Code   262  queue.o(i.xQueueGiveFromISR)
-    xQueueSemaphoreTake                      0x080175a5   Thumb Code   406  queue.o(i.xQueueSemaphoreTake)
-    xTaskCheckForTimeOut                     0x08017741   Thumb Code   140  tasks.o(i.xTaskCheckForTimeOut)
-    xTaskCreate                              0x080177d5   Thumb Code    96  tasks.o(i.xTaskCreate)
-    xTaskIncrementTick                       0x08017835   Thumb Code   286  tasks.o(i.xTaskIncrementTick)
-    xTaskPriorityDisinherit                  0x08017981   Thumb Code   196  tasks.o(i.xTaskPriorityDisinherit)
-    xTaskPriorityInherit                     0x08017a51   Thumb Code   186  tasks.o(i.xTaskPriorityInherit)
-    xTaskRemoveFromEventList                 0x08017b19   Thumb Code   132  tasks.o(i.xTaskRemoveFromEventList)
-    xTaskResumeAll                           0x08017bb5   Thumb Code   228  tasks.o(i.xTaskResumeAll)
-    D1CorePrescTable                         0x08017cec   Data          16  system_stm32h7xx.o(.constdata)
-    __mathlib_zero                           0x080429b8   Data           8  qnan.o(.constdata)
-    __ctype_table                            0x080429c0   Data         129  ctype_o.o(.constdata)
-    Region$$Table$$Base                      0x08042a4c   Number         0  anon$$obj.o(Region$$Table)
-    Region$$Table$$Limit                     0x08042a6c   Number         0  anon$$obj.o(Region$$Table)
+    jmp_gui_task                             0x08011acd   Thumb Code  2528  jmp_gui.o(i.jmp_gui_task)
+    jmp_gui_time_update                      0x080124cd   Thumb Code   320  jmp_gui.o(i.jmp_gui_time_update)
+    jmp_gui_uart_command_analysis            0x08012619   Thumb Code   122  jmp_gui.o(i.jmp_gui_uart_command_analysis)
+    jmp_gui_uart_command_get                 0x0801269d   Thumb Code   186  jmp_gui.o(i.jmp_gui_uart_command_get)
+    jmp_gui_uart_send                        0x08012775   Thumb Code    12  jmp_gui.o(i.jmp_gui_uart_send)
+    jmp_gui_uart_send_buffx                  0x08012781   Thumb Code    24  jmp_gui.o(i.jmp_gui_uart_send_buffx)
+    jmp_gui_uart_send_str                    0x08012799   Thumb Code   344  jmp_gui.o(i.jmp_gui_uart_send_str)
+    jmp_gui_uart_timeout                     0x080128fd   Thumb Code    20  jmp_gui.o(i.jmp_gui_uart_timeout)
+    jmp_gui_uart_timeout_disable             0x0801291d   Thumb Code    20  jmp_gui.o(i.jmp_gui_uart_timeout_disable)
+    jmp_gui_uart_timeout_enable              0x08012939   Thumb Code    20  jmp_gui.o(i.jmp_gui_uart_timeout_enable)
+    jmp_gui_uart_timeout_init                0x08012955   Thumb Code    26  jmp_gui.o(i.jmp_gui_uart_timeout_init)
+    jmp_gui_uart_timeout_reset               0x08012975   Thumb Code    12  jmp_gui.o(i.jmp_gui_uart_timeout_reset)
+    jmp_gui_update_gcode_file_name           0x08012985   Thumb Code   204  jmp_gui.o(i.jmp_gui_update_gcode_file_name)
+    jmp_gui_update_manual_step               0x08012a61   Thumb Code    58  jmp_gui.o(i.jmp_gui_update_manual_step)
+    jmp_guiuart_rx_str_clear                 0x08012aa5   Thumb Code    32  jmp_gui.o(i.jmp_guiuart_rx_str_clear)
+    jmp_guiuart_tx_str_clear                 0x08012ac9   Thumb Code    32  jmp_gui.o(i.jmp_guiuart_tx_str_clear)
+    jmp_motion_clamp_to_software_endstops    0x08012aed   Thumb Code   194  jmp_motion.o(i.jmp_motion_clamp_to_software_endstops)
+    jmp_motion_e_print_task                  0x08012bb9   Thumb Code   212  jmp_motion.o(i.jmp_motion_e_print_task)
+    jmp_motion_find_home                     0x08012ca9   Thumb Code  1548  jmp_motion.o(i.jmp_motion_find_home)
+    jmp_motion_init                          0x080132c9   Thumb Code    82  jmp_motion.o(i.jmp_motion_init)
+    jmp_motion_manual                        0x08013375   Thumb Code    94  jmp_motion.o(i.jmp_motion_manual)
+    jmp_motion_prepare_move                  0x080133dd   Thumb Code   188  jmp_motion.o(i.jmp_motion_prepare_move)
+    jmp_motion_set_postion                   0x080134b5   Thumb Code    66  jmp_motion.o(i.jmp_motion_set_postion)
+    jmp_motion_state_get                     0x080134fd   Thumb Code   350  jmp_motion.o(i.jmp_motion_state_get)
+    jmp_motion_task                          0x08013671   Thumb Code    18  jmp_motion.o(i.jmp_motion_task)
+    jmp_motion_test_task                     0x08013683   Thumb Code    16  jmp_motion.o(i.jmp_motion_test_task)
+    jmp_motion_variable_init                 0x08013695   Thumb Code   354  jmp_motion.o(i.jmp_motion_variable_init)
+    jmp_print_time_init                      0x08013819   Thumb Code    40  jmp_print_time.o(i.jmp_print_time_init)
+    jmp_print_time_int                       0x08013865   Thumb Code    68  jmp_print_time.o(i.jmp_print_time_int)
+    jmp_print_time_task                      0x080138bd   Thumb Code    54  jmp_print_time.o(i.jmp_print_time_task)
+    jmp_print_time_timer_init                0x08013901   Thumb Code    60  jmp_print_time.o(i.jmp_print_time_timer_init)
+    jmp_print_timer_start                    0x08013941   Thumb Code    18  jmp_print_time.o(i.jmp_print_timer_start)
+    jmp_print_timer_stop                     0x08013959   Thumb Code    56  jmp_print_time.o(i.jmp_print_timer_stop)
+    jmp_storage_buff_clear                   0x08013995   Thumb Code    34  jmp_storage_read.o(i.jmp_storage_buff_clear)
+    jmp_storage_buff_fill                    0x080139c9   Thumb Code   540  jmp_storage_read.o(i.jmp_storage_buff_fill)
+    jmp_storage_buff_get                     0x08013c09   Thumb Code    48  jmp_storage_read.o(i.jmp_storage_buff_get)
+    jmp_storage_buff_get_sum                 0x08013c45   Thumb Code    68  jmp_storage_read.o(i.jmp_storage_buff_get_sum)
+    jmp_storage_get_nextline_sum             0x08013c95   Thumb Code    64  jmp_storage_read.o(i.jmp_storage_get_nextline_sum)
+    jmp_storage_read_buff_clear              0x08013ce5   Thumb Code    24  jmp_storage_read.o(i.jmp_storage_read_buff_clear)
+    jmp_storage_read_init                    0x08013d05   Thumb Code    40  jmp_storage_read.o(i.jmp_storage_read_init)
+    jmp_storage_read_task                    0x08013d51   Thumb Code   464  jmp_storage_read.o(i.jmp_storage_read_task)
+    jmp_storage_readline                     0x08013f55   Thumb Code   120  jmp_storage_read.o(i.jmp_storage_readline)
+    main                                     0x08014029   Thumb Code   138  main.o(i.main)
+    malloc                                   0x080140c9   Thumb Code    92  malloc.o(i.malloc)
+    max_allowable_speed                      0x08014135   Thumb Code    52  planner.o(i.max_allowable_speed)
+    next_block_index                         0x080141ed   Thumb Code    12  planner.o(i.next_block_index)
+    plan_buffer_line                         0x08014281   Thumb Code  2566  planner.o(i.plan_buffer_line)
+    plan_discard_current_block               0x08014ca5   Thumb Code    28  planner.o(i.plan_discard_current_block)
+    plan_get_current_block                   0x08014cc9   Thumb Code    44  planner.o(i.plan_get_current_block)
+    plan_init                                0x08014d01   Thumb Code    74  planner.o(i.plan_init)
+    plan_set_position                        0x08014d65   Thumb Code   206  planner.o(i.plan_set_position)
+    planner_forward_pass                     0x08014e49   Thumb Code    76  planner.o(i.planner_forward_pass)
+    planner_forward_pass_kernel              0x08014ea1   Thumb Code   174  planner.o(i.planner_forward_pass_kernel)
+    planner_recalculate                      0x08014f4f   Thumb Code    16  planner.o(i.planner_recalculate)
+    planner_recalculate_trapezoids           0x08014f61   Thumb Code   174  planner.o(i.planner_recalculate_trapezoids)
+    planner_reverse_pass                     0x08015021   Thumb Code    94  planner.o(i.planner_reverse_pass)
+    planner_reverse_pass_kernel              0x0801508d   Thumb Code   170  planner.o(i.planner_reverse_pass_kernel)
+    planner_variable_init                    0x08015139   Thumb Code   274  planner.o(i.planner_variable_init)
+    prev_block_index                         0x08015271   Thumb Code    10  planner.o(i.prev_block_index)
+    pvPortMalloc                             0x08015a99   Thumb Code   308  heap_4.o(i.pvPortMalloc)
+    pvTaskIncrementMutexHeldCount            0x08015be1   Thumb Code    26  tasks.o(i.pvTaskIncrementMutexHeldCount)
+    pxPortInitialiseStack                    0x08015c01   Thumb Code    38  port.o(i.pxPortInitialiseStack)
+    quickStop                                0x08015c2d   Thumb Code    34  stepper.o(i.quickStop)
+    reset_acceleration_rates                 0x08015cf1   Thumb Code    56  planner.o(i.reset_acceleration_rates)
+    sqrt                                     0x08015d35   Thumb Code   106  sqrt.o(i.sqrt)
+    st_init                                  0x08015ddd   Thumb Code   314  stepper.o(i.st_init)
+    st_pin_idle                              0x08015f21   Thumb Code   152  stepper.o(i.st_pin_idle)
+    st_set_position                          0x08015fc1   Thumb Code    14  stepper.o(i.st_set_position)
+    st_timer_interrupt                       0x08015fd5   Thumb Code  2152  stepper.o(i.st_timer_interrupt)
+    tmdelay_init                             0x0801694d   Thumb Code    68  tmdelay.o(i.tmdelay_init)
+    tmdelay_ms                               0x0801699d   Thumb Code    24  tmdelay.o(i.tmdelay_ms)
+    tmdelay_us                               0x080169b5   Thumb Code    58  tmdelay.o(i.tmdelay_us)
+    trapezoid_generator_reset                0x080169f5   Thumb Code   132  stepper.o(i.trapezoid_generator_reset)
+    usb_app_init                             0x08016a95   Thumb Code    24  usb_app.o(i.usb_app_init)
+    usb_init                                 0x08016ac1   Thumb Code    32  usb_test.o(i.usb_init)
+    uxListRemove                             0x08016b05   Thumb Code    40  list.o(i.uxListRemove)
+    vListInitialise                          0x08016b2d   Thumb Code    26  list.o(i.vListInitialise)
+    vListInitialiseItem                      0x08016b47   Thumb Code     6  list.o(i.vListInitialiseItem)
+    vListInsert                              0x08016b4d   Thumb Code    52  list.o(i.vListInsert)
+    vListInsertEnd                           0x08016b81   Thumb Code    24  list.o(i.vListInsertEnd)
+    vPortEnterCritical                       0x08016b99   Thumb Code    84  port.o(i.vPortEnterCritical)
+    vPortExitCritical                        0x08016bf5   Thumb Code    60  port.o(i.vPortExitCritical)
+    vPortFree                                0x08016c35   Thumb Code   148  heap_4.o(i.vPortFree)
+    vPortSetupTimerInterrupt                 0x08016cd1   Thumb Code    36  port.o(i.vPortSetupTimerInterrupt)
+    vPortValidateInterruptPriority           0x08016cf9   Thumb Code   114  port.o(i.vPortValidateInterruptPriority)
+    vTaskDelay                               0x08016d79   Thumb Code    86  tasks.o(i.vTaskDelay)
+    vTaskInternalSetTimeOutState             0x08016dd9   Thumb Code    14  tasks.o(i.vTaskInternalSetTimeOutState)
+    vTaskMissedYield                         0x08016e11   Thumb Code     8  tasks.o(i.vTaskMissedYield)
+    vTaskPlaceOnEventList                    0x08016e1d   Thumb Code    56  tasks.o(i.vTaskPlaceOnEventList)
+    vTaskPriorityDisinheritAfterTimeout      0x08016e59   Thumb Code   238  tasks.o(i.vTaskPriorityDisinheritAfterTimeout)
+    vTaskStartScheduler                      0x08016f55   Thumb Code   116  tasks.o(i.vTaskStartScheduler)
+    vTaskSuspendAll                          0x08016fe5   Thumb Code    12  tasks.o(i.vTaskSuspendAll)
+    vTaskSwitchContext                       0x08016ff5   Thumb Code   122  tasks.o(i.vTaskSwitchContext)
+    xPortStartScheduler                      0x080170c9   Thumb Code   298  port.o(i.xPortStartScheduler)
+    xQueueGenericCreate                      0x0801720d   Thumb Code    92  queue.o(i.xQueueGenericCreate)
+    xQueueGenericReset                       0x08017269   Thumb Code   150  queue.o(i.xQueueGenericReset)
+    xQueueGenericSend                        0x08017305   Thumb Code   424  queue.o(i.xQueueGenericSend)
+    xQueueGiveFromISR                        0x080174b1   Thumb Code   262  queue.o(i.xQueueGiveFromISR)
+    xQueueSemaphoreTake                      0x080175b9   Thumb Code   406  queue.o(i.xQueueSemaphoreTake)
+    xTaskCheckForTimeOut                     0x08017755   Thumb Code   140  tasks.o(i.xTaskCheckForTimeOut)
+    xTaskCreate                              0x080177e9   Thumb Code    96  tasks.o(i.xTaskCreate)
+    xTaskIncrementTick                       0x08017849   Thumb Code   286  tasks.o(i.xTaskIncrementTick)
+    xTaskPriorityDisinherit                  0x08017995   Thumb Code   196  tasks.o(i.xTaskPriorityDisinherit)
+    xTaskPriorityInherit                     0x08017a65   Thumb Code   186  tasks.o(i.xTaskPriorityInherit)
+    xTaskRemoveFromEventList                 0x08017b2d   Thumb Code   132  tasks.o(i.xTaskRemoveFromEventList)
+    xTaskResumeAll                           0x08017bc9   Thumb Code   228  tasks.o(i.xTaskResumeAll)
+    D1CorePrescTable                         0x08017d00   Data          16  system_stm32h7xx.o(.constdata)
+    __mathlib_zero                           0x080429c8   Data           8  qnan.o(.constdata)
+    __ctype_table                            0x080429d0   Data         129  ctype_o.o(.constdata)
+    Region$$Table$$Base                      0x08042a5c   Number         0  anon$$obj.o(Region$$Table)
+    Region$$Table$$Limit                     0x08042a7c   Number         0  anon$$obj.o(Region$$Table)
     SystemCoreClock                          0x24000004   Data           4  system_stm32h7xx.o(.data)
     SystemD2Clock                            0x24000008   Data           4  system_stm32h7xx.o(.data)
     uart1_rxbuf                              0x2400001a   Data           1  bsp_uart.o(.data)
@@ -9053,9 +9055,9 @@ Memory Map of the image
 
   Image Entry point : 0x08000299
 
-  Load Region LR_IROM1 (Base: 0x08000000, Size: 0x00042c4c, Max: 0x00200000, ABSOLUTE, COMPRESSED[0x00042ab0])
+  Load Region LR_IROM1 (Base: 0x08000000, Size: 0x00042c5c, Max: 0x00200000, ABSOLUTE, COMPRESSED[0x00042ac0])
 
-    Execution Region ER_IROM1 (Base: 0x08000000, Size: 0x00042a6c, Max: 0x00200000, ABSOLUTE)
+    Execution Region ER_IROM1 (Base: 0x08000000, Size: 0x00042a7c, Max: 0x00200000, ABSOLUTE)
 
     Base Addr    Size         Type   Attr      Idx    E Section Name        Object
 
@@ -9574,174 +9576,173 @@ Memory Map of the image
     0x08011a4c   0x0000000c   Code   RO        18206    i.jmp_gui_send_message  jmp_gui.o
     0x08011a58   0x00000064   Code   RO        18207    i.jmp_gui_start_print  jmp_gui.o
     0x08011abc   0x00000010   Code   RO        18208    i.jmp_gui_stop_print  jmp_gui.o
-    0x08011acc   0x000009fc   Code   RO        18209    i.jmp_gui_task      jmp_gui.o
-    0x080124c8   0x0000014c   Code   RO        18210    i.jmp_gui_time_update  jmp_gui.o
-    0x08012614   0x00000084   Code   RO        18211    i.jmp_gui_uart_command_analysis  jmp_gui.o
-    0x08012698   0x000000d8   Code   RO        18212    i.jmp_gui_uart_command_get  jmp_gui.o
-    0x08012770   0x0000000c   Code   RO        18213    i.jmp_gui_uart_send  jmp_gui.o
-    0x0801277c   0x00000018   Code   RO        18214    i.jmp_gui_uart_send_buffx  jmp_gui.o
-    0x08012794   0x00000164   Code   RO        18215    i.jmp_gui_uart_send_str  jmp_gui.o
-    0x080128f8   0x00000020   Code   RO        18216    i.jmp_gui_uart_timeout  jmp_gui.o
-    0x08012918   0x0000001c   Code   RO        18217    i.jmp_gui_uart_timeout_disable  jmp_gui.o
-    0x08012934   0x0000001c   Code   RO        18218    i.jmp_gui_uart_timeout_enable  jmp_gui.o
-    0x08012950   0x00000020   Code   RO        18219    i.jmp_gui_uart_timeout_init  jmp_gui.o
-    0x08012970   0x00000010   Code   RO        18220    i.jmp_gui_uart_timeout_reset  jmp_gui.o
-    0x08012980   0x000000dc   Code   RO        18221    i.jmp_gui_update_gcode_file_name  jmp_gui.o
-    0x08012a5c   0x00000044   Code   RO        18222    i.jmp_gui_update_manual_step  jmp_gui.o
-    0x08012aa0   0x00000024   Code   RO        18223    i.jmp_guiuart_rx_str_clear  jmp_gui.o
-    0x08012ac4   0x00000024   Code   RO        18224    i.jmp_guiuart_tx_str_clear  jmp_gui.o
-    0x08012ae8   0x000000cc   Code   RO        18728    i.jmp_motion_clamp_to_software_endstops  jmp_motion.o
-    0x08012bb4   0x000000f0   Code   RO        18729    i.jmp_motion_e_print_task  jmp_motion.o
-    0x08012ca4   0x00000620   Code   RO        18730    i.jmp_motion_find_home  jmp_motion.o
-    0x080132c4   0x000000ac   Code   RO        18731    i.jmp_motion_init   jmp_motion.o
-    0x08013370   0x00000068   Code   RO        18732    i.jmp_motion_manual  jmp_motion.o
-    0x080133d8   0x000000d8   Code   RO        18733    i.jmp_motion_prepare_move  jmp_motion.o
-    0x080134b0   0x00000048   Code   RO        18734    i.jmp_motion_set_postion  jmp_motion.o
-    0x080134f8   0x00000174   Code   RO        18735    i.jmp_motion_state_get  jmp_motion.o
-    0x0801366c   0x00000012   Code   RO        18736    i.jmp_motion_task   jmp_motion.o
-    0x0801367e   0x00000010   Code   RO        18737    i.jmp_motion_test_task  jmp_motion.o
-    0x0801368e   0x00000002   PAD
-    0x08013690   0x00000184   Code   RO        18738    i.jmp_motion_variable_init  jmp_motion.o
-    0x08013814   0x0000004c   Code   RO        18666    i.jmp_print_time_init  jmp_print_time.o
-    0x08013860   0x00000058   Code   RO        18667    i.jmp_print_time_int  jmp_print_time.o
-    0x080138b8   0x00000044   Code   RO        18668    i.jmp_print_time_task  jmp_print_time.o
-    0x080138fc   0x00000040   Code   RO        18669    i.jmp_print_time_timer_init  jmp_print_time.o
-    0x0801393c   0x00000018   Code   RO        18670    i.jmp_print_timer_start  jmp_print_time.o
-    0x08013954   0x0000003c   Code   RO        18671    i.jmp_print_timer_stop  jmp_print_time.o
-    0x08013990   0x00000034   Code   RO        18458    i.jmp_storage_buff_clear  jmp_storage_read.o
-    0x080139c4   0x00000240   Code   RO        18459    i.jmp_storage_buff_fill  jmp_storage_read.o
-    0x08013c04   0x0000003c   Code   RO        18460    i.jmp_storage_buff_get  jmp_storage_read.o
-    0x08013c40   0x00000050   Code   RO        18462    i.jmp_storage_buff_get_sum  jmp_storage_read.o
-    0x08013c90   0x00000050   Code   RO        18463    i.jmp_storage_get_nextline_sum  jmp_storage_read.o
-    0x08013ce0   0x00000020   Code   RO        18464    i.jmp_storage_read_buff_clear  jmp_storage_read.o
-    0x08013d00   0x0000004c   Code   RO        18466    i.jmp_storage_read_init  jmp_storage_read.o
-    0x08013d4c   0x00000204   Code   RO        18467    i.jmp_storage_read_task  jmp_storage_read.o
-    0x08013f50   0x00000088   Code   RO        18468    i.jmp_storage_readline  jmp_storage_read.o
-    0x08013fd8   0x00000026   Code   RO        15652    i.ld_clust          ff.o
-    0x08013ffe   0x00000018   Code   RO        15653    i.ld_dword          ff.o
-    0x08014016   0x0000000c   Code   RO        15654    i.ld_word           ff.o
-    0x08014022   0x00000002   PAD
-    0x08014024   0x000000a0   Code   RO            6    i.main              main.o
-    0x080140c4   0x0000006c   Code   RO        19448    i.malloc            mc_w.l(malloc.o)
-    0x08014130   0x00000034   Code   RO        18826    i.max_allowable_speed  planner.o
-    0x08014164   0x00000024   Code   RO        15655    i.mem_cmp           ff.o
-    0x08014188   0x0000001a   Code   RO        15656    i.mem_cpy           ff.o
-    0x080141a2   0x00000012   Code   RO        15657    i.mem_set           ff.o
-    0x080141b4   0x00000034   Code   RO        15658    i.move_window       ff.o
-    0x080141e8   0x0000000c   Code   RO        18828    i.next_block_index  planner.o
-    0x080141f4   0x00000088   Code   RO        15659    i.pick_lfn          ff.o
-    0x0801427c   0x00000a14   Code   RO        18829    i.plan_buffer_line  planner.o
-    0x08014c90   0x00000024   Code   RO        18830    i.plan_discard_current_block  planner.o
-    0x08014cb4   0x00000038   Code   RO        18831    i.plan_get_current_block  planner.o
-    0x08014cec   0x00000064   Code   RO        18832    i.plan_init         planner.o
-    0x08014d50   0x000000e4   Code   RO        18834    i.plan_set_position  planner.o
-    0x08014e34   0x00000058   Code   RO        18835    i.planner_forward_pass  planner.o
-    0x08014e8c   0x000000ae   Code   RO        18836    i.planner_forward_pass_kernel  planner.o
-    0x08014f3a   0x00000010   Code   RO        18837    i.planner_recalculate  planner.o
-    0x08014f4a   0x00000002   PAD
-    0x08014f4c   0x000000c0   Code   RO        18838    i.planner_recalculate_trapezoids  planner.o
-    0x0801500c   0x0000006c   Code   RO        18839    i.planner_reverse_pass  planner.o
-    0x08015078   0x000000aa   Code   RO        18840    i.planner_reverse_pass_kernel  planner.o
-    0x08015122   0x00000002   PAD
-    0x08015124   0x00000138   Code   RO        18841    i.planner_variable_init  planner.o
-    0x0801525c   0x0000000a   Code   RO        18842    i.prev_block_index  planner.o
-    0x08015266   0x00000002   PAD
-    0x08015268   0x00000098   Code   RO        17293    i.prvAddCurrentTaskToDelayedList  tasks.o
-    0x08015300   0x000000b4   Code   RO        17294    i.prvAddNewTaskToReadyList  tasks.o
-    0x080153b4   0x00000048   Code   RO        17295    i.prvCheckTasksWaitingTermination  tasks.o
-    0x080153fc   0x0000007c   Code   RO        17068    i.prvCopyDataToQueue  queue.o
-    0x08015478   0x00000012   Code   RO        17296    i.prvDeleteTCB      tasks.o
-    0x0801548a   0x00000014   Code   RO        17069    i.prvGetDisinheritPriorityAfterTimeout  queue.o
-    0x0801549e   0x00000002   PAD
-    0x080154a0   0x0000007c   Code   RO        17866    i.prvHeapInit       heap_4.o
-    0x0801551c   0x00000028   Code   RO        17297    i.prvIdleTask       tasks.o
-    0x08015544   0x0000002a   Code   RO        17071    i.prvInitialiseNewQueue  queue.o
-    0x0801556e   0x000000ae   Code   RO        17298    i.prvInitialiseNewTask  tasks.o
-    0x0801561c   0x00000068   Code   RO        17299    i.prvInitialiseTaskLists  tasks.o
-    0x08015684   0x00000068   Code   RO        17867    i.prvInsertBlockIntoFreeList  heap_4.o
-    0x080156ec   0x0000001a   Code   RO        17072    i.prvIsQueueEmpty   queue.o
-    0x08015706   0x0000001e   Code   RO        17073    i.prvIsQueueFull    queue.o
-    0x08015724   0x00000098   Code   RO        17074    i.prvNotifyQueueSetContainer  queue.o
-    0x080157bc   0x00000034   Code   RO        17300    i.prvResetNextTaskUnblockTime  tasks.o
-    0x080157f0   0x00000048   Code   RO        17778    i.prvTaskExitError  port.o
-    0x08015838   0x00000092   Code   RO        17075    i.prvUnlockQueue    queue.o
-    0x080158ca   0x00000138   Code   RO        15660    i.put_fat           ff.o
-    0x08015a02   0x00000002   PAD
-    0x08015a04   0x00000080   Code   RO        15661    i.put_lfn           ff.o
-    0x08015a84   0x00000148   Code   RO        17868    i.pvPortMalloc      heap_4.o
-    0x08015bcc   0x00000020   Code   RO        17302    i.pvTaskIncrementMutexHeldCount  tasks.o
-    0x08015bec   0x0000002c   Code   RO        17779    i.pxPortInitialiseStack  port.o
-    0x08015c18   0x0000002c   Code   RO        18994    i.quickStop         stepper.o
-    0x08015c44   0x00000096   Code   RO        15663    i.remove_chain      ff.o
-    0x08015cda   0x00000002   PAD
-    0x08015cdc   0x00000044   Code   RO        18843    i.reset_acceleration_rates  planner.o
-    0x08015d20   0x0000006a   Code   RO        19147    i.sqrt              m_wv.l(sqrt.o)
-    0x08015d8a   0x00000024   Code   RO        15664    i.st_clust          ff.o
-    0x08015dae   0x00000018   Code   RO        15665    i.st_dword          ff.o
-    0x08015dc6   0x00000002   PAD
-    0x08015dc8   0x00000144   Code   RO        18996    i.st_init           stepper.o
-    0x08015f0c   0x000000a0   Code   RO        18997    i.st_pin_idle       stepper.o
-    0x08015fac   0x00000014   Code   RO        18999    i.st_set_position   stepper.o
-    0x08015fc0   0x00000868   Code   RO        19001    i.st_timer_interrupt  stepper.o
-    0x08016828   0x0000000c   Code   RO        15666    i.st_word           ff.o
-    0x08016834   0x00000020   Code   RO        15667    i.sum_sfn           ff.o
-    0x08016854   0x00000090   Code   RO        15668    i.sync_fs           ff.o
-    0x080168e4   0x00000052   Code   RO        15669    i.sync_window       ff.o
-    0x08016936   0x00000002   PAD
-    0x08016938   0x00000050   Code   RO          620    i.tmdelay_init      tmdelay.o
-    0x08016988   0x00000018   Code   RO          621    i.tmdelay_ms        tmdelay.o
-    0x080169a0   0x00000040   Code   RO          622    i.tmdelay_us        tmdelay.o
-    0x080169e0   0x000000a0   Code   RO        19004    i.trapezoid_generator_reset  stepper.o
-    0x08016a80   0x0000002c   Code   RO        16830    i.usb_app_init      usb_app.o
-    0x08016aac   0x0000002c   Code   RO        16797    i.usb_init          usb_test.o
-    0x08016ad8   0x00000018   Code   RO        16831    i.usb_task          usb_app.o
-    0x08016af0   0x00000028   Code   RO        17013    i.uxListRemove      list.o
-    0x08016b18   0x0000001a   Code   RO        17014    i.vListInitialise   list.o
-    0x08016b32   0x00000006   Code   RO        17015    i.vListInitialiseItem  list.o
-    0x08016b38   0x00000034   Code   RO        17016    i.vListInsert       list.o
-    0x08016b6c   0x00000018   Code   RO        17017    i.vListInsertEnd    list.o
-    0x08016b84   0x0000005c   Code   RO        17781    i.vPortEnterCritical  port.o
-    0x08016be0   0x00000040   Code   RO        17782    i.vPortExitCritical  port.o
-    0x08016c20   0x0000009c   Code   RO        17869    i.vPortFree         heap_4.o
-    0x08016cbc   0x00000028   Code   RO        17783    i.vPortSetupTimerInterrupt  port.o
-    0x08016ce4   0x00000080   Code   RO        17784    i.vPortValidateInterruptPriority  port.o
-    0x08016d64   0x00000060   Code   RO        17308    i.vTaskDelay        tasks.o
-    0x08016dc4   0x00000018   Code   RO        17312    i.vTaskInternalSetTimeOutState  tasks.o
-    0x08016ddc   0x00000020   Code   RO            7    i.vTaskLED          main.o
-    0x08016dfc   0x0000000c   Code   RO        17313    i.vTaskMissedYield  tasks.o
-    0x08016e08   0x0000003c   Code   RO        17315    i.vTaskPlaceOnEventList  tasks.o
-    0x08016e44   0x000000fc   Code   RO        17317    i.vTaskPriorityDisinheritAfterTimeout  tasks.o
-    0x08016f40   0x00000090   Code   RO        17322    i.vTaskStartScheduler  tasks.o
-    0x08016fd0   0x00000010   Code   RO        17324    i.vTaskSuspendAll   tasks.o
-    0x08016fe0   0x00000090   Code   RO        17325    i.vTaskSwitchContext  tasks.o
-    0x08017070   0x00000042   Code   RO        15670    i.validate          ff.o
-    0x080170b2   0x00000002   PAD
-    0x080170b4   0x00000144   Code   RO        17785    i.xPortStartScheduler  port.o
-    0x080171f8   0x0000005c   Code   RO        17086    i.xQueueGenericCreate  queue.o
-    0x08017254   0x0000009c   Code   RO        17087    i.xQueueGenericReset  queue.o
-    0x080172f0   0x000001ac   Code   RO        17088    i.xQueueGenericSend  queue.o
-    0x0801749c   0x00000106   Code   RO        17090    i.xQueueGiveFromISR  queue.o
-    0x080175a2   0x00000002   PAD
-    0x080175a4   0x0000019c   Code   RO        17100    i.xQueueSemaphoreTake  queue.o
-    0x08017740   0x00000094   Code   RO        17326    i.xTaskCheckForTimeOut  tasks.o
-    0x080177d4   0x00000060   Code   RO        17327    i.xTaskCreate       tasks.o
-    0x08017834   0x0000014c   Code   RO        17333    i.xTaskIncrementTick  tasks.o
-    0x08017980   0x000000d0   Code   RO        17336    i.xTaskPriorityDisinherit  tasks.o
-    0x08017a50   0x000000c8   Code   RO        17337    i.xTaskPriorityInherit  tasks.o
-    0x08017b18   0x0000009c   Code   RO        17338    i.xTaskRemoveFromEventList  tasks.o
-    0x08017bb4   0x00000108   Code   RO        17339    i.xTaskResumeAll    tasks.o
-    0x08017cbc   0x00000040   Data   RO          585    .constdata          system_stm32h7xx.o
-    0x08017cfc   0x00000030   Data   RO        13189    .constdata          stm32h7xx_hal_uart.o
-    0x08017d2c   0x0000004a   Data   RO        15671    .constdata          ff.o
-    0x08017d76   0x0002abb6   Data   RO        15959    .constdata          cc936.o
-    0x0804292c   0x00000004   PAD
-    0x08042930   0x00000088   Data   RO        19130    .constdata          m_wv.l(pow.o)
-    0x080429b8   0x00000008   Data   RO        19501    .constdata          m_wv.l(qnan.o)
-    0x080429c0   0x00000081   Data   RO        19558    .constdata          mc_w.l(ctype_o.o)
-    0x08042a41   0x00000003   PAD
-    0x08042a44   0x00000004   Data   RO        19559    .constdata          mc_w.l(ctype_o.o)
-    0x08042a48   0x00000004   Data   RO        16046    .conststring        usbh_msc.o
-    0x08042a4c   0x00000020   Data   RO        19606    Region$$Table       anon$$obj.o
+    0x08011acc   0x00000a00   Code   RO        18209    i.jmp_gui_task      jmp_gui.o
+    0x080124cc   0x0000014c   Code   RO        18210    i.jmp_gui_time_update  jmp_gui.o
+    0x08012618   0x00000084   Code   RO        18211    i.jmp_gui_uart_command_analysis  jmp_gui.o
+    0x0801269c   0x000000d8   Code   RO        18212    i.jmp_gui_uart_command_get  jmp_gui.o
+    0x08012774   0x0000000c   Code   RO        18213    i.jmp_gui_uart_send  jmp_gui.o
+    0x08012780   0x00000018   Code   RO        18214    i.jmp_gui_uart_send_buffx  jmp_gui.o
+    0x08012798   0x00000164   Code   RO        18215    i.jmp_gui_uart_send_str  jmp_gui.o
+    0x080128fc   0x00000020   Code   RO        18216    i.jmp_gui_uart_timeout  jmp_gui.o
+    0x0801291c   0x0000001c   Code   RO        18217    i.jmp_gui_uart_timeout_disable  jmp_gui.o
+    0x08012938   0x0000001c   Code   RO        18218    i.jmp_gui_uart_timeout_enable  jmp_gui.o
+    0x08012954   0x00000020   Code   RO        18219    i.jmp_gui_uart_timeout_init  jmp_gui.o
+    0x08012974   0x00000010   Code   RO        18220    i.jmp_gui_uart_timeout_reset  jmp_gui.o
+    0x08012984   0x000000dc   Code   RO        18221    i.jmp_gui_update_gcode_file_name  jmp_gui.o
+    0x08012a60   0x00000044   Code   RO        18222    i.jmp_gui_update_manual_step  jmp_gui.o
+    0x08012aa4   0x00000024   Code   RO        18223    i.jmp_guiuart_rx_str_clear  jmp_gui.o
+    0x08012ac8   0x00000024   Code   RO        18224    i.jmp_guiuart_tx_str_clear  jmp_gui.o
+    0x08012aec   0x000000cc   Code   RO        18728    i.jmp_motion_clamp_to_software_endstops  jmp_motion.o
+    0x08012bb8   0x000000f0   Code   RO        18729    i.jmp_motion_e_print_task  jmp_motion.o
+    0x08012ca8   0x00000620   Code   RO        18730    i.jmp_motion_find_home  jmp_motion.o
+    0x080132c8   0x000000ac   Code   RO        18731    i.jmp_motion_init   jmp_motion.o
+    0x08013374   0x00000068   Code   RO        18732    i.jmp_motion_manual  jmp_motion.o
+    0x080133dc   0x000000d8   Code   RO        18733    i.jmp_motion_prepare_move  jmp_motion.o
+    0x080134b4   0x00000048   Code   RO        18734    i.jmp_motion_set_postion  jmp_motion.o
+    0x080134fc   0x00000174   Code   RO        18735    i.jmp_motion_state_get  jmp_motion.o
+    0x08013670   0x00000012   Code   RO        18736    i.jmp_motion_task   jmp_motion.o
+    0x08013682   0x00000010   Code   RO        18737    i.jmp_motion_test_task  jmp_motion.o
+    0x08013692   0x00000002   PAD
+    0x08013694   0x00000184   Code   RO        18738    i.jmp_motion_variable_init  jmp_motion.o
+    0x08013818   0x0000004c   Code   RO        18666    i.jmp_print_time_init  jmp_print_time.o
+    0x08013864   0x00000058   Code   RO        18667    i.jmp_print_time_int  jmp_print_time.o
+    0x080138bc   0x00000044   Code   RO        18668    i.jmp_print_time_task  jmp_print_time.o
+    0x08013900   0x00000040   Code   RO        18669    i.jmp_print_time_timer_init  jmp_print_time.o
+    0x08013940   0x00000018   Code   RO        18670    i.jmp_print_timer_start  jmp_print_time.o
+    0x08013958   0x0000003c   Code   RO        18671    i.jmp_print_timer_stop  jmp_print_time.o
+    0x08013994   0x00000034   Code   RO        18458    i.jmp_storage_buff_clear  jmp_storage_read.o
+    0x080139c8   0x00000240   Code   RO        18459    i.jmp_storage_buff_fill  jmp_storage_read.o
+    0x08013c08   0x0000003c   Code   RO        18460    i.jmp_storage_buff_get  jmp_storage_read.o
+    0x08013c44   0x00000050   Code   RO        18462    i.jmp_storage_buff_get_sum  jmp_storage_read.o
+    0x08013c94   0x00000050   Code   RO        18463    i.jmp_storage_get_nextline_sum  jmp_storage_read.o
+    0x08013ce4   0x00000020   Code   RO        18464    i.jmp_storage_read_buff_clear  jmp_storage_read.o
+    0x08013d04   0x0000004c   Code   RO        18466    i.jmp_storage_read_init  jmp_storage_read.o
+    0x08013d50   0x00000204   Code   RO        18467    i.jmp_storage_read_task  jmp_storage_read.o
+    0x08013f54   0x00000088   Code   RO        18468    i.jmp_storage_readline  jmp_storage_read.o
+    0x08013fdc   0x00000026   Code   RO        15652    i.ld_clust          ff.o
+    0x08014002   0x00000018   Code   RO        15653    i.ld_dword          ff.o
+    0x0801401a   0x0000000c   Code   RO        15654    i.ld_word           ff.o
+    0x08014026   0x00000002   PAD
+    0x08014028   0x000000a0   Code   RO            6    i.main              main.o
+    0x080140c8   0x0000006c   Code   RO        19448    i.malloc            mc_w.l(malloc.o)
+    0x08014134   0x00000034   Code   RO        18826    i.max_allowable_speed  planner.o
+    0x08014168   0x00000024   Code   RO        15655    i.mem_cmp           ff.o
+    0x0801418c   0x0000001a   Code   RO        15656    i.mem_cpy           ff.o
+    0x080141a6   0x00000012   Code   RO        15657    i.mem_set           ff.o
+    0x080141b8   0x00000034   Code   RO        15658    i.move_window       ff.o
+    0x080141ec   0x0000000c   Code   RO        18828    i.next_block_index  planner.o
+    0x080141f8   0x00000088   Code   RO        15659    i.pick_lfn          ff.o
+    0x08014280   0x00000a24   Code   RO        18829    i.plan_buffer_line  planner.o
+    0x08014ca4   0x00000024   Code   RO        18830    i.plan_discard_current_block  planner.o
+    0x08014cc8   0x00000038   Code   RO        18831    i.plan_get_current_block  planner.o
+    0x08014d00   0x00000064   Code   RO        18832    i.plan_init         planner.o
+    0x08014d64   0x000000e4   Code   RO        18834    i.plan_set_position  planner.o
+    0x08014e48   0x00000058   Code   RO        18835    i.planner_forward_pass  planner.o
+    0x08014ea0   0x000000ae   Code   RO        18836    i.planner_forward_pass_kernel  planner.o
+    0x08014f4e   0x00000010   Code   RO        18837    i.planner_recalculate  planner.o
+    0x08014f5e   0x00000002   PAD
+    0x08014f60   0x000000c0   Code   RO        18838    i.planner_recalculate_trapezoids  planner.o
+    0x08015020   0x0000006c   Code   RO        18839    i.planner_reverse_pass  planner.o
+    0x0801508c   0x000000aa   Code   RO        18840    i.planner_reverse_pass_kernel  planner.o
+    0x08015136   0x00000002   PAD
+    0x08015138   0x00000138   Code   RO        18841    i.planner_variable_init  planner.o
+    0x08015270   0x0000000a   Code   RO        18842    i.prev_block_index  planner.o
+    0x0801527a   0x00000002   PAD
+    0x0801527c   0x00000098   Code   RO        17293    i.prvAddCurrentTaskToDelayedList  tasks.o
+    0x08015314   0x000000b4   Code   RO        17294    i.prvAddNewTaskToReadyList  tasks.o
+    0x080153c8   0x00000048   Code   RO        17295    i.prvCheckTasksWaitingTermination  tasks.o
+    0x08015410   0x0000007c   Code   RO        17068    i.prvCopyDataToQueue  queue.o
+    0x0801548c   0x00000012   Code   RO        17296    i.prvDeleteTCB      tasks.o
+    0x0801549e   0x00000014   Code   RO        17069    i.prvGetDisinheritPriorityAfterTimeout  queue.o
+    0x080154b2   0x00000002   PAD
+    0x080154b4   0x0000007c   Code   RO        17866    i.prvHeapInit       heap_4.o
+    0x08015530   0x00000028   Code   RO        17297    i.prvIdleTask       tasks.o
+    0x08015558   0x0000002a   Code   RO        17071    i.prvInitialiseNewQueue  queue.o
+    0x08015582   0x000000ae   Code   RO        17298    i.prvInitialiseNewTask  tasks.o
+    0x08015630   0x00000068   Code   RO        17299    i.prvInitialiseTaskLists  tasks.o
+    0x08015698   0x00000068   Code   RO        17867    i.prvInsertBlockIntoFreeList  heap_4.o
+    0x08015700   0x0000001a   Code   RO        17072    i.prvIsQueueEmpty   queue.o
+    0x0801571a   0x0000001e   Code   RO        17073    i.prvIsQueueFull    queue.o
+    0x08015738   0x00000098   Code   RO        17074    i.prvNotifyQueueSetContainer  queue.o
+    0x080157d0   0x00000034   Code   RO        17300    i.prvResetNextTaskUnblockTime  tasks.o
+    0x08015804   0x00000048   Code   RO        17778    i.prvTaskExitError  port.o
+    0x0801584c   0x00000092   Code   RO        17075    i.prvUnlockQueue    queue.o
+    0x080158de   0x00000138   Code   RO        15660    i.put_fat           ff.o
+    0x08015a16   0x00000002   PAD
+    0x08015a18   0x00000080   Code   RO        15661    i.put_lfn           ff.o
+    0x08015a98   0x00000148   Code   RO        17868    i.pvPortMalloc      heap_4.o
+    0x08015be0   0x00000020   Code   RO        17302    i.pvTaskIncrementMutexHeldCount  tasks.o
+    0x08015c00   0x0000002c   Code   RO        17779    i.pxPortInitialiseStack  port.o
+    0x08015c2c   0x0000002c   Code   RO        18994    i.quickStop         stepper.o
+    0x08015c58   0x00000096   Code   RO        15663    i.remove_chain      ff.o
+    0x08015cee   0x00000002   PAD
+    0x08015cf0   0x00000044   Code   RO        18843    i.reset_acceleration_rates  planner.o
+    0x08015d34   0x0000006a   Code   RO        19147    i.sqrt              m_wv.l(sqrt.o)
+    0x08015d9e   0x00000024   Code   RO        15664    i.st_clust          ff.o
+    0x08015dc2   0x00000018   Code   RO        15665    i.st_dword          ff.o
+    0x08015dda   0x00000002   PAD
+    0x08015ddc   0x00000144   Code   RO        18996    i.st_init           stepper.o
+    0x08015f20   0x000000a0   Code   RO        18997    i.st_pin_idle       stepper.o
+    0x08015fc0   0x00000014   Code   RO        18999    i.st_set_position   stepper.o
+    0x08015fd4   0x00000868   Code   RO        19001    i.st_timer_interrupt  stepper.o
+    0x0801683c   0x0000000c   Code   RO        15666    i.st_word           ff.o
+    0x08016848   0x00000020   Code   RO        15667    i.sum_sfn           ff.o
+    0x08016868   0x00000090   Code   RO        15668    i.sync_fs           ff.o
+    0x080168f8   0x00000052   Code   RO        15669    i.sync_window       ff.o
+    0x0801694a   0x00000002   PAD
+    0x0801694c   0x00000050   Code   RO          620    i.tmdelay_init      tmdelay.o
+    0x0801699c   0x00000018   Code   RO          621    i.tmdelay_ms        tmdelay.o
+    0x080169b4   0x00000040   Code   RO          622    i.tmdelay_us        tmdelay.o
+    0x080169f4   0x000000a0   Code   RO        19004    i.trapezoid_generator_reset  stepper.o
+    0x08016a94   0x0000002c   Code   RO        16830    i.usb_app_init      usb_app.o
+    0x08016ac0   0x0000002c   Code   RO        16797    i.usb_init          usb_test.o
+    0x08016aec   0x00000018   Code   RO        16831    i.usb_task          usb_app.o
+    0x08016b04   0x00000028   Code   RO        17013    i.uxListRemove      list.o
+    0x08016b2c   0x0000001a   Code   RO        17014    i.vListInitialise   list.o
+    0x08016b46   0x00000006   Code   RO        17015    i.vListInitialiseItem  list.o
+    0x08016b4c   0x00000034   Code   RO        17016    i.vListInsert       list.o
+    0x08016b80   0x00000018   Code   RO        17017    i.vListInsertEnd    list.o
+    0x08016b98   0x0000005c   Code   RO        17781    i.vPortEnterCritical  port.o
+    0x08016bf4   0x00000040   Code   RO        17782    i.vPortExitCritical  port.o
+    0x08016c34   0x0000009c   Code   RO        17869    i.vPortFree         heap_4.o
+    0x08016cd0   0x00000028   Code   RO        17783    i.vPortSetupTimerInterrupt  port.o
+    0x08016cf8   0x00000080   Code   RO        17784    i.vPortValidateInterruptPriority  port.o
+    0x08016d78   0x00000060   Code   RO        17308    i.vTaskDelay        tasks.o
+    0x08016dd8   0x00000018   Code   RO        17312    i.vTaskInternalSetTimeOutState  tasks.o
+    0x08016df0   0x00000020   Code   RO            7    i.vTaskLED          main.o
+    0x08016e10   0x0000000c   Code   RO        17313    i.vTaskMissedYield  tasks.o
+    0x08016e1c   0x0000003c   Code   RO        17315    i.vTaskPlaceOnEventList  tasks.o
+    0x08016e58   0x000000fc   Code   RO        17317    i.vTaskPriorityDisinheritAfterTimeout  tasks.o
+    0x08016f54   0x00000090   Code   RO        17322    i.vTaskStartScheduler  tasks.o
+    0x08016fe4   0x00000010   Code   RO        17324    i.vTaskSuspendAll   tasks.o
+    0x08016ff4   0x00000090   Code   RO        17325    i.vTaskSwitchContext  tasks.o
+    0x08017084   0x00000042   Code   RO        15670    i.validate          ff.o
+    0x080170c6   0x00000002   PAD
+    0x080170c8   0x00000144   Code   RO        17785    i.xPortStartScheduler  port.o
+    0x0801720c   0x0000005c   Code   RO        17086    i.xQueueGenericCreate  queue.o
+    0x08017268   0x0000009c   Code   RO        17087    i.xQueueGenericReset  queue.o
+    0x08017304   0x000001ac   Code   RO        17088    i.xQueueGenericSend  queue.o
+    0x080174b0   0x00000106   Code   RO        17090    i.xQueueGiveFromISR  queue.o
+    0x080175b6   0x00000002   PAD
+    0x080175b8   0x0000019c   Code   RO        17100    i.xQueueSemaphoreTake  queue.o
+    0x08017754   0x00000094   Code   RO        17326    i.xTaskCheckForTimeOut  tasks.o
+    0x080177e8   0x00000060   Code   RO        17327    i.xTaskCreate       tasks.o
+    0x08017848   0x0000014c   Code   RO        17333    i.xTaskIncrementTick  tasks.o
+    0x08017994   0x000000d0   Code   RO        17336    i.xTaskPriorityDisinherit  tasks.o
+    0x08017a64   0x000000c8   Code   RO        17337    i.xTaskPriorityInherit  tasks.o
+    0x08017b2c   0x0000009c   Code   RO        17338    i.xTaskRemoveFromEventList  tasks.o
+    0x08017bc8   0x00000108   Code   RO        17339    i.xTaskResumeAll    tasks.o
+    0x08017cd0   0x00000040   Data   RO          585    .constdata          system_stm32h7xx.o
+    0x08017d10   0x00000030   Data   RO        13189    .constdata          stm32h7xx_hal_uart.o
+    0x08017d40   0x0000004a   Data   RO        15671    .constdata          ff.o
+    0x08017d8a   0x0002abb6   Data   RO        15959    .constdata          cc936.o
+    0x08042940   0x00000088   Data   RO        19130    .constdata          m_wv.l(pow.o)
+    0x080429c8   0x00000008   Data   RO        19501    .constdata          m_wv.l(qnan.o)
+    0x080429d0   0x00000081   Data   RO        19558    .constdata          mc_w.l(ctype_o.o)
+    0x08042a51   0x00000003   PAD
+    0x08042a54   0x00000004   Data   RO        19559    .constdata          mc_w.l(ctype_o.o)
+    0x08042a58   0x00000004   Data   RO        16046    .conststring        usbh_msc.o
+    0x08042a5c   0x00000020   Data   RO        19606    Region$$Table       anon$$obj.o
 
 
     Execution Region RW_IRAM1 (Base: 0x20000000, Size: 0x00000000, Max: 0x00020000, ABSOLUTE)
@@ -9832,15 +9833,15 @@ Image component sizes
        712         62          0         24     102400       7003   heap_4.o
       1138        198          0          4        144       8929   jmp_command_execution.o
       5684       2048          0          1      22444      14241   jmp_ex_config.o
-      1292        158          0         20       2468      12223   jmp_gcode_analysis.o
-      5868        556          0         60      16908      26118   jmp_gui.o
+      1292        156          0         20       2468      12227   jmp_gcode_analysis.o
+      5872        556          0         60      16908      26122   jmp_gui.o
       3370        280          0         36         92       9395   jmp_motion.o
        166         26          0          0        384       3225   jmp_param_state.o
        380         84          0         12          0       3447   jmp_print_time.o
-      1608        208          0         28       4296       8054   jmp_storage_read.o
+      1608        206          0         28       4296       8054   jmp_storage_read.o
        148          0          0          0          0       3186   list.o
        210         22          0          4          0    1297165   main.o
-      4688        316          0         44        432      17658   planner.o
+      4704        320          0         44        432      17694   planner.o
       1014         88          0         12          0      11405   port.o
       1890         16          0          0          0      12705   queue.o
         36          8        664          0      65536        820   startup_stm32h743xx.o
@@ -9881,9 +9882,9 @@ Image component sizes
        984         36          0          3       4096       8048   w25qxx.o
 
     ----------------------------------------------------------------------
-     87244       7834     175920        460     225960    1819506   Object Totals
+     87264       7834     175916        460     225960    1819550   Object Totals
          0          0         32          0          0          0   (incl. Generated)
-        92          0          4          9          4          0   (incl. Padding)
+        92          0          0          9          4          0   (incl. Padding)
 
     ----------------------------------------------------------------------
 
@@ -9973,15 +9974,15 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-     96804       8476     176200        480     225960    1770014   Grand Totals
-     96804       8476     176200         68     225960    1770014   ELF Image Totals (compressed)
-     96804       8476     176200         68          0          0   ROM Totals
+     96824       8476     176196        480     225960    1770058   Grand Totals
+     96824       8476     176196         68     225960    1770058   ELF Image Totals (compressed)
+     96824       8476     176196         68          0          0   ROM Totals
 
 ==============================================================================
 
-    Total RO  Size (Code + RO Data)               273004 ( 266.61kB)
+    Total RO  Size (Code + RO Data)               273020 ( 266.62kB)
     Total RW  Size (RW Data + ZI Data)            226440 ( 221.13kB)
-    Total ROM Size (Code + RO Data + RW Data)     273072 ( 266.67kB)
+    Total ROM Size (Code + RO Data + RW Data)     273088 ( 266.69kB)
 
 ==============================================================================
 

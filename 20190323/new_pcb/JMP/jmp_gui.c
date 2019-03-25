@@ -1099,7 +1099,7 @@ void jmp_gui_task(void *pvParameters)
 					if(jmp_config_state_struct.printing_run==0)
 					{
 						jmp_gui_stop_print();
-						//quickStop();
+						quickStop();
 						while(blocks_queued())
 						{
 							vTaskDelay(10);
