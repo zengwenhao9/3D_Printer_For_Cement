@@ -110,6 +110,8 @@
 ..\obj\jmp_gui.o: ..\FreeRTOS\include\semphr.h
 ..\obj\jmp_gui.o: ..\BSP\bsp_uart.h
 ..\obj\jmp_gui.o: ..\BSP\bsp_timer.h
+..\obj\jmp_gui.o: ..\FreeRTOS\include\event_groups.h
+..\obj\jmp_gui.o: ..\FreeRTOS\include\timers.h
 ..\obj\jmp_gui.o: ..\JMP\jmp_param_state.h
 ..\obj\jmp_gui.o: ..\JMP\jmp_storage_read.h
 ..\obj\jmp_gui.o: ..\JMP\jmp_gcode_analysis.h
@@ -141,3 +143,4 @@
 ..\obj\jmp_gui.o: ..\USB\USB_APP\usbh_diskio.h
 ..\obj\jmp_gui.o: ..\JMP\jmp_print_time.h
 ..\obj\jmp_gui.o: ..\MOTION\block_manage.h
+..\obj\jmp_gui.o: ..\JMP\jmp_script.h

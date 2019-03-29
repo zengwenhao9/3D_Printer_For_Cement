@@ -54,6 +54,8 @@ typedef struct
 	
 	u8 homing_stop;
 	
+	u8 script_stop;
+	
 	u32 executed_command_sum;
 	u32 motion_command_sum;
 	u32 n_motion_command_sum;

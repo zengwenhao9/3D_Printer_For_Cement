@@ -127,13 +127,13 @@ I (..\FreeRTOS\include\task.h)(0x5A3842D8)
 I (..\FreeRTOS\include\list.h)(0x5A3842D8)
 I (..\FreeRTOS\include\queue.h)(0x5A3842D8)
 I (..\FreeRTOS\include\croutine.h)(0x5A3842D8)
-I (..\JMP\jmp_config.h)(0x5C8873CC)
+I (..\JMP\jmp_config.h)(0x5C9C81F6)
 I (..\JMP\jmp_storage_read.h)(0x5C806C8F)
 I (..\JMP\jmp_gcode_analysis.h)(0x5C2034A3)
 I (..\FreeRTOS\include\semphr.h)(0x5A3842D8)
-I (..\JMP\jmp_command_execution.h)(0x5C1B336C)
-I (..\JMP\jmp_param_state.h)(0x5C9C2611)
-I (..\JMP\jmp_gui.h)(0x5C9C3DFF)
+I (..\JMP\jmp_command_execution.h)(0x5C9D8FE1)
+I (..\JMP\jmp_param_state.h)(0x5C9D890C)
+I (..\JMP\jmp_gui.h)(0x5C9DB4FD)
 I (..\MOTION\jmp_motion.h)(0x5C9C35DC)
 I (D:\Keil_v5\ARM\ARMCC\include\math.h)(0x574E3E26)
 I (D:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x574E3E26)
@@ -10639,10 +10639,10 @@ I (..\FreeRTOS\portable\RVDS\ARM_CM7\r0p1\portmacro.h)(0x5A3842DA)
 I (..\FreeRTOS\include\mpu_wrappers.h)(0x5A3842D8)
 I (..\FreeRTOS\include\task.h)(0x5A3842D8)
 I (..\FreeRTOS\include\list.h)(0x5A3842D8)
-F (..\JMP\jmp_config.h)(0x5C8873CC)()
+F (..\JMP\jmp_config.h)(0x5C9C81F6)()
 F (..\JMP\jmp_command_execution.c)(0x5C999986)(--c99 -c --cpu Cortex-M7.fp.dp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\CORE -I ..\USER -I ..\SYSTEM -I ..\HALLIB\Inc -I ..\BSP -I ..\FATFS\src -I ..\APP -I ..\USB\STM32_USB_Host_Library\Class\MSC\Inc -I ..\USB\STM32_USB_Host_Library\Core\Inc -I ..\USB\USB_APP -I ..\FreeRTOS\include -I ..\FreeRTOS\portable\RVDS\ARM_CM7\r0p1 -I ..\JMP -I ..\MOTION-IF:\佛山津明\jm3d\程序\新板程序\jmp\USER\RTE-ID:\Keil_v5\ARM\PACK\Keil\STM32H7xx_DFP\2.2.0\Drivers\CMSIS\Device\ST\STM32H7xx\Include-ID:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="521" -DSTM32H743xx -DUSE_HAL_DRIVER -DSTM32H743xx -DUSE_USB_FS-o ..\obj\jmp_command_execution.o --omf_browse ..\obj\jmp_command_execution.crf --depend ..\obj\jmp_command_execution.d)
-I (..\JMP\jmp_command_execution.h)(0x5C1B336C)
-I (..\JMP\jmp_config.h)(0x5C8873CC)
+I (..\JMP\jmp_command_execution.h)(0x5C9D8FE1)
+I (..\JMP\jmp_config.h)(0x5C9C81F6)
 I (D:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x574E3E26)
 I (..\JMP\jmp_gcode_analysis.h)(0x5C2034A3)
 I (..\SYSTEM\tmsys.h)(0x5C7892E6)
@@ -10757,10 +10757,10 @@ I (D:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x574E3E26)
 I (..\BSP\bsp_gpio.h)(0x5C7C889C)
 I (..\JMP\jmp_ex_config.h)(0x5C91B23E)
 I (..\FreeRTOS\include\semphr.h)(0x5A3842D8)
-I (..\JMP\jmp_param_state.h)(0x5C9C2611)
+I (..\JMP\jmp_param_state.h)(0x5C9D890C)
 F (..\JMP\jmp_gcode_analysis.c)(0x5C983BB6)(--c99 -c --cpu Cortex-M7.fp.dp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\CORE -I ..\USER -I ..\SYSTEM -I ..\HALLIB\Inc -I ..\BSP -I ..\FATFS\src -I ..\APP -I ..\USB\STM32_USB_Host_Library\Class\MSC\Inc -I ..\USB\STM32_USB_Host_Library\Core\Inc -I ..\USB\USB_APP -I ..\FreeRTOS\include -I ..\FreeRTOS\portable\RVDS\ARM_CM7\r0p1 -I ..\JMP -I ..\MOTION-IF:\佛山津明\jm3d\程序\新板程序\jmp\USER\RTE-ID:\Keil_v5\ARM\PACK\Keil\STM32H7xx_DFP\2.2.0\Drivers\CMSIS\Device\ST\STM32H7xx\Include-ID:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="521" -DSTM32H743xx -DUSE_HAL_DRIVER -DSTM32H743xx -DUSE_USB_FS-o ..\obj\jmp_gcode_analysis.o --omf_browse ..\obj\jmp_gcode_analysis.crf --depend ..\obj\jmp_gcode_analysis.d)
 I (..\JMP\jmp_gcode_analysis.h)(0x5C2034A3)
-I (..\JMP\jmp_config.h)(0x5C8873CC)
+I (..\JMP\jmp_config.h)(0x5C9C81F6)
 I (..\SYSTEM\tmsys.h)(0x5C7892E6)
 I (..\USER\stm32h7xx.h)(0x5B3BDE38)
 I (..\USER\stm32h743xx.h)(0x5B3BDE38)
@@ -10852,9 +10852,9 @@ I (..\HALLIB\Inc\stm32h7xx_hal_pcd.h)(0x5B3BDED6)
 I (..\HALLIB\Inc\stm32h7xx_ll_usb.h)(0x5B3BDEFC)
 I (..\HALLIB\Inc\stm32h7xx_hal_pcd_ex.h)(0x5B3BDED6)
 I (..\HALLIB\Inc\stm32h7xx_hal_hcd.h)(0x5B3BDEB8)
-I (..\JMP\jmp_command_execution.h)(0x5C1B336C)
-I (..\JMP\jmp_param_state.h)(0x5C9C2611)
-I (..\JMP\jmp_gui.h)(0x5C9C3DFF)
+I (..\JMP\jmp_command_execution.h)(0x5C9D8FE1)
+I (..\JMP\jmp_param_state.h)(0x5C9D890C)
+I (..\JMP\jmp_gui.h)(0x5C9DB4FD)
 I (..\FreeRTOS\include\FreeRTOS.h)(0x5A3842D8)
 I (D:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x574E3E26)
 I (..\USER\FreeRTOSConfig.h)(0x5C8084BE)
@@ -10871,9 +10871,9 @@ I (..\FreeRTOS\include\semphr.h)(0x5A3842D8)
 I (D:\Keil_v5\ARM\ARMCC\include\string.h)(0x574E3E26)
 I (D:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x574E3E26)
 I (..\JMP\jmp_print_time.h)(0x5C944741)
-F (..\JMP\jmp_gui.c)(0x5C9C3DFF)(--c99 -c --cpu Cortex-M7.fp.dp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\CORE -I ..\USER -I ..\SYSTEM -I ..\HALLIB\Inc -I ..\BSP -I ..\FATFS\src -I ..\APP -I ..\USB\STM32_USB_Host_Library\Class\MSC\Inc -I ..\USB\STM32_USB_Host_Library\Core\Inc -I ..\USB\USB_APP -I ..\FreeRTOS\include -I ..\FreeRTOS\portable\RVDS\ARM_CM7\r0p1 -I ..\JMP -I ..\MOTION-IF:\佛山津明\jm3d\程序\新板程序\jmp\USER\RTE-ID:\Keil_v5\ARM\PACK\Keil\STM32H7xx_DFP\2.2.0\Drivers\CMSIS\Device\ST\STM32H7xx\Include-ID:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="521" -DSTM32H743xx -DUSE_HAL_DRIVER -DSTM32H743xx -DUSE_USB_FS-o ..\obj\jmp_gui.o --omf_browse ..\obj\jmp_gui.crf --depend ..\obj\jmp_gui.d)
-I (..\JMP\jmp_gui.h)(0x5C9C3DFF)
-I (..\JMP\jmp_config.h)(0x5C8873CC)
+F (..\JMP\jmp_gui.c)(0x5C9DBB62)(--c99 -c --cpu Cortex-M7.fp.dp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\CORE -I ..\USER -I ..\SYSTEM -I ..\HALLIB\Inc -I ..\BSP -I ..\FATFS\src -I ..\APP -I ..\USB\STM32_USB_Host_Library\Class\MSC\Inc -I ..\USB\STM32_USB_Host_Library\Core\Inc -I ..\USB\USB_APP -I ..\FreeRTOS\include -I ..\FreeRTOS\portable\RVDS\ARM_CM7\r0p1 -I ..\JMP -I ..\MOTION-IF:\佛山津明\jm3d\程序\新板程序\jmp\USER\RTE-ID:\Keil_v5\ARM\PACK\Keil\STM32H7xx_DFP\2.2.0\Drivers\CMSIS\Device\ST\STM32H7xx\Include-ID:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="521" -DSTM32H743xx -DUSE_HAL_DRIVER -DSTM32H743xx -DUSE_USB_FS-o ..\obj\jmp_gui.o --omf_browse ..\obj\jmp_gui.crf --depend ..\obj\jmp_gui.d)
+I (..\JMP\jmp_gui.h)(0x5C9DB4FD)
+I (..\JMP\jmp_config.h)(0x5C9C81F6)
 I (..\SYSTEM\tmsys.h)(0x5C7892E6)
 I (..\USER\stm32h7xx.h)(0x5B3BDE38)
 I (..\USER\stm32h743xx.h)(0x5B3BDE38)
@@ -10980,7 +10980,9 @@ I (..\FreeRTOS\include\croutine.h)(0x5A3842D8)
 I (..\FreeRTOS\include\semphr.h)(0x5A3842D8)
 I (..\BSP\bsp_uart.h)(0x5C78CA05)
 I (..\BSP\bsp_timer.h)(0x5C94377C)
-I (..\JMP\jmp_param_state.h)(0x5C9C2611)
+I (..\FreeRTOS\include\event_groups.h)(0x5A3842D8)
+I (..\FreeRTOS\include\timers.h)(0x5A3842D8)
+I (..\JMP\jmp_param_state.h)(0x5C9D890C)
 I (..\JMP\jmp_storage_read.h)(0x5C806C8F)
 I (..\JMP\jmp_gcode_analysis.h)(0x5C2034A3)
 I (D:\Keil_v5\ARM\ARMCC\include\string.h)(0x574E3E26)
@@ -11009,8 +11011,9 @@ I (..\FATFS\src\diskio.h)(0x5AC89334)
 I (..\USB\USB_APP\usbh_diskio.h)(0x5C7E1C0F)
 I (..\JMP\jmp_print_time.h)(0x5C944741)
 I (..\MOTION\block_manage.h)(0x5C9B15F3)
-F (..\JMP\jmp_param_state.c)(0x5C9C2611)(--c99 -c --cpu Cortex-M7.fp.dp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\CORE -I ..\USER -I ..\SYSTEM -I ..\HALLIB\Inc -I ..\BSP -I ..\FATFS\src -I ..\APP -I ..\USB\STM32_USB_Host_Library\Class\MSC\Inc -I ..\USB\STM32_USB_Host_Library\Core\Inc -I ..\USB\USB_APP -I ..\FreeRTOS\include -I ..\FreeRTOS\portable\RVDS\ARM_CM7\r0p1 -I ..\JMP -I ..\MOTION-IF:\佛山津明\jm3d\程序\新板程序\jmp\USER\RTE-ID:\Keil_v5\ARM\PACK\Keil\STM32H7xx_DFP\2.2.0\Drivers\CMSIS\Device\ST\STM32H7xx\Include-ID:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="521" -DSTM32H743xx -DUSE_HAL_DRIVER -DSTM32H743xx -DUSE_USB_FS-o ..\obj\jmp_param_state.o --omf_browse ..\obj\jmp_param_state.crf --depend ..\obj\jmp_param_state.d)
-I (..\JMP\jmp_param_state.h)(0x5C9C2611)
+I (..\JMP\jmp_script.h)(0x5C9D949B)
+F (..\JMP\jmp_param_state.c)(0x5C9D890C)(--c99 -c --cpu Cortex-M7.fp.dp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\CORE -I ..\USER -I ..\SYSTEM -I ..\HALLIB\Inc -I ..\BSP -I ..\FATFS\src -I ..\APP -I ..\USB\STM32_USB_Host_Library\Class\MSC\Inc -I ..\USB\STM32_USB_Host_Library\Core\Inc -I ..\USB\USB_APP -I ..\FreeRTOS\include -I ..\FreeRTOS\portable\RVDS\ARM_CM7\r0p1 -I ..\JMP -I ..\MOTION-IF:\佛山津明\jm3d\程序\新板程序\jmp\USER\RTE-ID:\Keil_v5\ARM\PACK\Keil\STM32H7xx_DFP\2.2.0\Drivers\CMSIS\Device\ST\STM32H7xx\Include-ID:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="521" -DSTM32H743xx -DUSE_HAL_DRIVER -DSTM32H743xx -DUSE_USB_FS-o ..\obj\jmp_param_state.o --omf_browse ..\obj\jmp_param_state.crf --depend ..\obj\jmp_param_state.d)
+I (..\JMP\jmp_param_state.h)(0x5C9D890C)
 I (..\SYSTEM\tmsys.h)(0x5C7892E6)
 I (..\USER\stm32h7xx.h)(0x5B3BDE38)
 I (..\USER\stm32h743xx.h)(0x5B3BDE38)
@@ -11102,11 +11105,11 @@ I (..\HALLIB\Inc\stm32h7xx_hal_pcd.h)(0x5B3BDED6)
 I (..\HALLIB\Inc\stm32h7xx_ll_usb.h)(0x5B3BDEFC)
 I (..\HALLIB\Inc\stm32h7xx_hal_pcd_ex.h)(0x5B3BDED6)
 I (..\HALLIB\Inc\stm32h7xx_hal_hcd.h)(0x5B3BDEB8)
-I (..\JMP\jmp_config.h)(0x5C8873CC)
+I (..\JMP\jmp_config.h)(0x5C9C81F6)
 I (..\JMP\jmp_ex_config.h)(0x5C91B23E)
 F (..\JMP\jmp_storage_read.c)(0x5C99A130)(--c99 -c --cpu Cortex-M7.fp.dp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\CORE -I ..\USER -I ..\SYSTEM -I ..\HALLIB\Inc -I ..\BSP -I ..\FATFS\src -I ..\APP -I ..\USB\STM32_USB_Host_Library\Class\MSC\Inc -I ..\USB\STM32_USB_Host_Library\Core\Inc -I ..\USB\USB_APP -I ..\FreeRTOS\include -I ..\FreeRTOS\portable\RVDS\ARM_CM7\r0p1 -I ..\JMP -I ..\MOTION-IF:\佛山津明\jm3d\程序\新板程序\jmp\USER\RTE-ID:\Keil_v5\ARM\PACK\Keil\STM32H7xx_DFP\2.2.0\Drivers\CMSIS\Device\ST\STM32H7xx\Include-ID:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="521" -DSTM32H743xx -DUSE_HAL_DRIVER -DSTM32H743xx -DUSE_USB_FS-o ..\obj\jmp_storage_read.o --omf_browse ..\obj\jmp_storage_read.crf --depend ..\obj\jmp_storage_read.d)
 I (..\JMP\jmp_storage_read.h)(0x5C806C8F)
-I (..\JMP\jmp_config.h)(0x5C8873CC)
+I (..\JMP\jmp_config.h)(0x5C9C81F6)
 I (..\SYSTEM\tmsys.h)(0x5C7892E6)
 I (..\USER\stm32h7xx.h)(0x5B3BDE38)
 I (..\USER\stm32h743xx.h)(0x5B3BDE38)
@@ -11212,8 +11215,8 @@ I (..\FreeRTOS\include\list.h)(0x5A3842D8)
 I (..\FreeRTOS\include\queue.h)(0x5A3842D8)
 I (..\FreeRTOS\include\croutine.h)(0x5A3842D8)
 I (..\FreeRTOS\include\semphr.h)(0x5A3842D8)
-I (..\JMP\jmp_param_state.h)(0x5C9C2611)
-I (..\JMP\jmp_gui.h)(0x5C9C3DFF)
+I (..\JMP\jmp_param_state.h)(0x5C9D890C)
+I (..\JMP\jmp_gui.h)(0x5C9DB4FD)
 I (..\FATFS\src\ff.h)(0x577640E7)
 I (..\FATFS\src\integer.h)(0x577640E7)
 I (..\FATFS\src\ffconf.h)(0x5C451D43)
@@ -11231,9 +11234,9 @@ I (..\USB\STM32_USB_Host_Library\Class\MSC\Inc\usbh_msc_bot.h)(0x5A4CE946)
 I (..\USB\STM32_USB_Host_Library\Class\MSC\Inc\usbh_msc_scsi.h)(0x5A4CE946)
 I (..\FATFS\src\diskio.h)(0x5AC89334)
 I (..\USB\USB_APP\usbh_diskio.h)(0x5C7E1C0F)
-F (..\JMP\jmp_ex_config.c)(0x5C935089)(--c99 -c --cpu Cortex-M7.fp.dp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\CORE -I ..\USER -I ..\SYSTEM -I ..\HALLIB\Inc -I ..\BSP -I ..\FATFS\src -I ..\APP -I ..\USB\STM32_USB_Host_Library\Class\MSC\Inc -I ..\USB\STM32_USB_Host_Library\Core\Inc -I ..\USB\USB_APP -I ..\FreeRTOS\include -I ..\FreeRTOS\portable\RVDS\ARM_CM7\r0p1 -I ..\JMP -I ..\MOTION-IF:\佛山津明\jm3d\程序\新板程序\jmp\USER\RTE-ID:\Keil_v5\ARM\PACK\Keil\STM32H7xx_DFP\2.2.0\Drivers\CMSIS\Device\ST\STM32H7xx\Include-ID:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="521" -DSTM32H743xx -DUSE_HAL_DRIVER -DSTM32H743xx -DUSE_USB_FS-o ..\obj\jmp_ex_config.o --omf_browse ..\obj\jmp_ex_config.crf --depend ..\obj\jmp_ex_config.d)
+F (..\JMP\jmp_ex_config.c)(0x5C9D93F0)(--c99 -c --cpu Cortex-M7.fp.dp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\CORE -I ..\USER -I ..\SYSTEM -I ..\HALLIB\Inc -I ..\BSP -I ..\FATFS\src -I ..\APP -I ..\USB\STM32_USB_Host_Library\Class\MSC\Inc -I ..\USB\STM32_USB_Host_Library\Core\Inc -I ..\USB\USB_APP -I ..\FreeRTOS\include -I ..\FreeRTOS\portable\RVDS\ARM_CM7\r0p1 -I ..\JMP -I ..\MOTION-IF:\佛山津明\jm3d\程序\新板程序\jmp\USER\RTE-ID:\Keil_v5\ARM\PACK\Keil\STM32H7xx_DFP\2.2.0\Drivers\CMSIS\Device\ST\STM32H7xx\Include-ID:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="521" -DSTM32H743xx -DUSE_HAL_DRIVER -DSTM32H743xx -DUSE_USB_FS-o ..\obj\jmp_ex_config.o --omf_browse ..\obj\jmp_ex_config.crf --depend ..\obj\jmp_ex_config.d)
 I (..\JMP\jmp_ex_config.h)(0x5C91B23E)
-I (..\JMP\jmp_config.h)(0x5C8873CC)
+I (..\JMP\jmp_config.h)(0x5C9C81F6)
 I (..\SYSTEM\tmsys.h)(0x5C7892E6)
 I (..\USER\stm32h7xx.h)(0x5B3BDE38)
 I (..\USER\stm32h743xx.h)(0x5B3BDE38)
@@ -11334,6 +11337,22 @@ I (D:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x574E3E26)
 I (D:\Keil_v5\ARM\ARMCC\include\string.h)(0x574E3E26)
 I (D:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x574E3E26)
 I (..\BSP\bsp_gpio.h)(0x5C7C889C)
+I (..\JMP\jmp_script.h)(0x5C9D949B)
+I (..\FreeRTOS\include\FreeRTOS.h)(0x5A3842D8)
+I (D:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x574E3E26)
+I (..\USER\FreeRTOSConfig.h)(0x5C8084BE)
+I (..\FreeRTOS\include\projdefs.h)(0x5A3842D8)
+I (..\FreeRTOS\include\portable.h)(0x5A3842D8)
+I (..\FreeRTOS\include\deprecated_definitions.h)(0x5A3842D8)
+I (..\FreeRTOS\portable\RVDS\ARM_CM7\r0p1\portmacro.h)(0x5A3842DA)
+I (..\FreeRTOS\include\mpu_wrappers.h)(0x5A3842D8)
+I (..\FreeRTOS\include\task.h)(0x5A3842D8)
+I (..\FreeRTOS\include\list.h)(0x5A3842D8)
+I (..\FreeRTOS\include\queue.h)(0x5A3842D8)
+I (..\FreeRTOS\include\semphr.h)(0x5A3842D8)
+I (..\FreeRTOS\include\event_groups.h)(0x5A3842D8)
+I (..\FreeRTOS\include\timers.h)(0x5A3842D8)
+I (..\FreeRTOS\include\croutine.h)(0x5A3842D8)
 F (..\JMP\jmp_print_time.c)(0x5C94AD21)(--c99 -c --cpu Cortex-M7.fp.dp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\CORE -I ..\USER -I ..\SYSTEM -I ..\HALLIB\Inc -I ..\BSP -I ..\FATFS\src -I ..\APP -I ..\USB\STM32_USB_Host_Library\Class\MSC\Inc -I ..\USB\STM32_USB_Host_Library\Core\Inc -I ..\USB\USB_APP -I ..\FreeRTOS\include -I ..\FreeRTOS\portable\RVDS\ARM_CM7\r0p1 -I ..\JMP -I ..\MOTION-IF:\佛山津明\jm3d\程序\新板程序\jmp\USER\RTE-ID:\Keil_v5\ARM\PACK\Keil\STM32H7xx_DFP\2.2.0\Drivers\CMSIS\Device\ST\STM32H7xx\Include-ID:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="521" -DSTM32H743xx -DUSE_HAL_DRIVER -DSTM32H743xx -DUSE_USB_FS-o ..\obj\jmp_print_time.o --omf_browse ..\obj\jmp_print_time.crf --depend ..\obj\jmp_print_time.d)
 I (..\JMP\jmp_print_time.h)(0x5C944741)
 I (..\SYSTEM\tmsys.h)(0x5C7892E6)
@@ -11427,8 +11446,8 @@ I (..\HALLIB\Inc\stm32h7xx_hal_pcd.h)(0x5B3BDED6)
 I (..\HALLIB\Inc\stm32h7xx_ll_usb.h)(0x5B3BDEFC)
 I (..\HALLIB\Inc\stm32h7xx_hal_pcd_ex.h)(0x5B3BDED6)
 I (..\HALLIB\Inc\stm32h7xx_hal_hcd.h)(0x5B3BDEB8)
-I (..\JMP\jmp_param_state.h)(0x5C9C2611)
-I (..\JMP\jmp_config.h)(0x5C8873CC)
+I (..\JMP\jmp_param_state.h)(0x5C9D890C)
+I (..\JMP\jmp_config.h)(0x5C9C81F6)
 I (..\BSP\bsp_timer.h)(0x5C94377C)
 I (..\FreeRTOS\include\FreeRTOS.h)(0x5A3842D8)
 I (D:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x574E3E26)
@@ -11443,9 +11462,134 @@ I (..\FreeRTOS\include\list.h)(0x5A3842D8)
 I (..\FreeRTOS\include\queue.h)(0x5A3842D8)
 I (..\FreeRTOS\include\croutine.h)(0x5A3842D8)
 I (..\FreeRTOS\include\semphr.h)(0x5A3842D8)
+F (..\JMP\jmp_script.c)(0x5C9DCE36)(--c99 -c --cpu Cortex-M7.fp.dp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\CORE -I ..\USER -I ..\SYSTEM -I ..\HALLIB\Inc -I ..\BSP -I ..\FATFS\src -I ..\APP -I ..\USB\STM32_USB_Host_Library\Class\MSC\Inc -I ..\USB\STM32_USB_Host_Library\Core\Inc -I ..\USB\USB_APP -I ..\FreeRTOS\include -I ..\FreeRTOS\portable\RVDS\ARM_CM7\r0p1 -I ..\JMP -I ..\MOTION-IF:\佛山津明\jm3d\程序\新板程序\jmp\USER\RTE-ID:\Keil_v5\ARM\PACK\Keil\STM32H7xx_DFP\2.2.0\Drivers\CMSIS\Device\ST\STM32H7xx\Include-ID:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="521" -DSTM32H743xx -DUSE_HAL_DRIVER -DSTM32H743xx -DUSE_USB_FS-o ..\obj\jmp_script.o --omf_browse ..\obj\jmp_script.crf --depend ..\obj\jmp_script.d)
+I (..\JMP\jmp_script.h)(0x5C9D949B)
+I (..\SYSTEM\tmsys.h)(0x5C7892E6)
+I (..\USER\stm32h7xx.h)(0x5B3BDE38)
+I (..\USER\stm32h743xx.h)(0x5B3BDE38)
+I (..\CORE\core_cm7.h)(0x5B3BDDEA)
+I (D:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x574E3E26)
+I (..\CORE\cmsis_compiler.h)(0x5B3BDDE9)
+I (..\CORE\cmsis_armcc.h)(0x5B3BDDE9)
+I (..\USER\system_stm32h7xx.h)(0x5B3BDE38)
+I (..\HALLIB\Inc\stm32h7xx_hal.h)(0x5B3BDEB0)
+I (..\USER\stm32h7xx_hal_conf.h)(0x5B3BDD12)
+I (..\HALLIB\Inc\stm32h7xx_hal_rcc.h)(0x5B3BDEDC)
+I (..\HALLIB\Inc\stm32h7xx_hal_def.h)(0x5B3BDEB0)
+I (..\HALLIB\Inc\Legacy/stm32_hal_legacy.h)(0x5B3BDE3D)
+I (D:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x574E3E26)
+I (..\HALLIB\Inc\stm32h7xx_hal_rcc_ex.h)(0x5B3BDEDC)
+I (..\HALLIB\Inc\stm32h7xx_hal_gpio.h)(0x5B3BDEB3)
+I (..\HALLIB\Inc\stm32h7xx_hal_gpio_ex.h)(0x5B3BDEB3)
+I (..\HALLIB\Inc\stm32h7xx_hal_dma.h)(0x5B3BDE9E)
+I (..\HALLIB\Inc\stm32h7xx_hal_dma_ex.h)(0x5B3BDE9E)
+I (..\HALLIB\Inc\stm32h7xx_hal_hash.h)(0x5B3BDEB6)
+I (..\HALLIB\Inc\stm32h7xx_hal_dcmi.h)(0x5B3BDE97)
+I (..\HALLIB\Inc\stm32h7xx_hal_dma2d.h)(0x5B3BDEA0)
+I (..\HALLIB\Inc\stm32h7xx_hal_dfsdm.h)(0x5B3BDE9B)
+I (..\HALLIB\Inc\stm32h7xx_hal_eth.h)(0x5B3BDEA5)
+I (..\HALLIB\Inc\stm32h7xx_hal_eth_ex.h)(0x5B3BDEA5)
+I (..\HALLIB\Inc\stm32h7xx_hal_cortex.h)(0x5B3BDE8D)
+I (..\HALLIB\Inc\stm32h7xx_hal_adc.h)(0x5B3BDE85)
+I (..\HALLIB\Inc\stm32h7xx_hal_adc_ex.h)(0x5B3BDE85)
+I (..\HALLIB\Inc\stm32h7xx_hal_fdcan.h)(0x5B3BDEA8)
+I (..\HALLIB\Inc\stm32h7xx_hal_cec.h)(0x5B3BDE88)
+I (..\HALLIB\Inc\stm32h7xx_hal_comp.h)(0x5B3BDE8A)
+I (..\HALLIB\Inc\stm32h7xx_hal_crc.h)(0x5B3BDE90)
+I (..\HALLIB\Inc\stm32h7xx_hal_crc_ex.h)(0x5B3BDE90)
+I (..\HALLIB\Inc\stm32h7xx_hal_cryp.h)(0x5B3BDE93)
+I (..\HALLIB\Inc\stm32h7xx_hal_dac.h)(0x5B3BDE95)
+I (..\HALLIB\Inc\stm32h7xx_hal_dac_ex.h)(0x5B3BDE95)
+I (..\HALLIB\Inc\stm32h7xx_hal_flash.h)(0x5B3BDEAB)
+I (..\HALLIB\Inc\stm32h7xx_hal_flash_ex.h)(0x5B3BDEAB)
+I (..\HALLIB\Inc\stm32h7xx_hal_hrtim.h)(0x5B3BDEBB)
+I (..\HALLIB\Inc\stm32h7xx_hal_hsem.h)(0x5B3BDEBD)
+I (..\HALLIB\Inc\stm32h7xx_hal_sram.h)(0x5B3BDEAD)
+I (..\HALLIB\Inc\stm32h7xx_ll_fmc.h)(0x5B3BDEAD)
+I (..\HALLIB\Inc\stm32h7xx_hal_mdma.h)(0x5B3BDED1)
+I (..\HALLIB\Inc\stm32h7xx_hal_nor.h)(0x5B3BDEAD)
+I (..\HALLIB\Inc\stm32h7xx_hal_nand.h)(0x5B3BDEAD)
+I (..\HALLIB\Inc\stm32h7xx_hal_i2c.h)(0x5B3BDEC0)
+I (..\HALLIB\Inc\stm32h7xx_hal_i2c_ex.h)(0x5B3BDEC0)
+I (..\HALLIB\Inc\stm32h7xx_hal_i2s.h)(0x5B3BDEF0)
+I (..\HALLIB\Inc\stm32h7xx_hal_i2s_ex.h)(0x5B3BDEF0)
+I (..\HALLIB\Inc\stm32h7xx_hal_iwdg.h)(0x5B3BDEC5)
+I (..\HALLIB\Inc\stm32h7xx_hal_jpeg.h)(0x5B3BDEC7)
+I (..\HALLIB\Inc\stm32h7xx_hal_mdios.h)(0x5B3BDECF)
+I (..\HALLIB\Inc\stm32h7xx_hal_mmc.h)(0x5B3BDEE6)
+I (..\HALLIB\Inc\stm32h7xx_ll_sdmmc.h)(0x5B3BDEE6)
+I (..\HALLIB\Inc\stm32h7xx_hal_mmc_ex.h)(0x5B3BDEE6)
+I (..\HALLIB\Inc\stm32h7xx_hal_lptim.h)(0x5B3BDECA)
+I (..\HALLIB\Inc\stm32h7xx_hal_ltdc.h)(0x5B3BDECC)
+I (..\HALLIB\Inc\stm32h7xx_hal_opamp.h)(0x5B3BDED3)
+I (..\HALLIB\Inc\stm32h7xx_hal_opamp_ex.h)(0x5B3BDED3)
+I (..\HALLIB\Inc\stm32h7xx_hal_pwr.h)(0x5B3BDED8)
+I (..\HALLIB\Inc\stm32h7xx_hal_pwr_ex.h)(0x5B3BDED8)
+I (..\HALLIB\Inc\stm32h7xx_hal_qspi.h)(0x5B3BDEDA)
+I (..\HALLIB\Inc\stm32h7xx_hal_rng.h)(0x5B3BDEDF)
+I (..\HALLIB\Inc\stm32h7xx_hal_rtc.h)(0x5B3BDEE1)
+I (..\HALLIB\Inc\stm32h7xx_hal_rtc_ex.h)(0x5B3BDEE1)
+I (..\HALLIB\Inc\stm32h7xx_hal_sai.h)(0x5B3BDEE3)
+I (..\HALLIB\Inc\stm32h7xx_hal_sai_ex.h)(0x5B3BDEE3)
+I (..\HALLIB\Inc\stm32h7xx_hal_sd.h)(0x5B3BDEE6)
+I (..\HALLIB\Inc\stm32h7xx_ll_delayblock.h)(0x5B3BDE99)
+I (..\HALLIB\Inc\stm32h7xx_hal_sd_ex.h)(0x5B3BDEE6)
+I (..\HALLIB\Inc\stm32h7xx_hal_sdram.h)(0x5B3BDEAD)
+I (..\HALLIB\Inc\stm32h7xx_hal_spi.h)(0x5B3BDEF0)
+I (..\HALLIB\Inc\stm32h7xx_hal_spi_ex.h)(0x5B3BDEF0)
+I (..\HALLIB\Inc\stm32h7xx_hal_spdifrx.h)(0x5B3BDEEE)
+I (..\HALLIB\Inc\stm32h7xx_hal_swpmi.h)(0x5B3BDEF2)
+I (..\HALLIB\Inc\stm32h7xx_hal_tim.h)(0x5B3BDEF5)
+I (..\HALLIB\Inc\stm32h7xx_hal_tim_ex.h)(0x5B3BDEF5)
+I (..\HALLIB\Inc\stm32h7xx_hal_uart.h)(0x5B3BDEF7)
+I (..\HALLIB\Inc\stm32h7xx_hal_uart_ex.h)(0x5B3BDEF8)
+I (..\HALLIB\Inc\stm32h7xx_hal_usart.h)(0x5B3BDEFA)
+I (..\HALLIB\Inc\stm32h7xx_hal_usart_ex.h)(0x5B3BDEFA)
+I (..\HALLIB\Inc\stm32h7xx_hal_irda.h)(0x5B3BDEC2)
+I (..\HALLIB\Inc\stm32h7xx_hal_irda_ex.h)(0x5B3BDEC2)
+I (..\HALLIB\Inc\stm32h7xx_hal_smartcard.h)(0x5B3BDEE9)
+I (..\HALLIB\Inc\stm32h7xx_hal_smartcard_ex.h)(0x5B3BDEE9)
+I (..\HALLIB\Inc\stm32h7xx_hal_smbus.h)(0x5B3BDEEB)
+I (..\HALLIB\Inc\stm32h7xx_hal_wwdg.h)(0x5B3BDEFF)
+I (..\HALLIB\Inc\stm32h7xx_hal_pcd.h)(0x5B3BDED6)
+I (..\HALLIB\Inc\stm32h7xx_ll_usb.h)(0x5B3BDEFC)
+I (..\HALLIB\Inc\stm32h7xx_hal_pcd_ex.h)(0x5B3BDED6)
+I (..\HALLIB\Inc\stm32h7xx_hal_hcd.h)(0x5B3BDEB8)
+I (..\FreeRTOS\include\FreeRTOS.h)(0x5A3842D8)
+I (D:\Keil_v5\ARM\ARMCC\include\stddef.h)(0x574E3E26)
+I (..\USER\FreeRTOSConfig.h)(0x5C8084BE)
+I (..\FreeRTOS\include\projdefs.h)(0x5A3842D8)
+I (..\FreeRTOS\include\portable.h)(0x5A3842D8)
+I (..\FreeRTOS\include\deprecated_definitions.h)(0x5A3842D8)
+I (..\FreeRTOS\portable\RVDS\ARM_CM7\r0p1\portmacro.h)(0x5A3842DA)
+I (..\FreeRTOS\include\mpu_wrappers.h)(0x5A3842D8)
+I (..\FreeRTOS\include\task.h)(0x5A3842D8)
+I (..\FreeRTOS\include\list.h)(0x5A3842D8)
+I (..\FreeRTOS\include\queue.h)(0x5A3842D8)
+I (..\FreeRTOS\include\semphr.h)(0x5A3842D8)
+I (..\FreeRTOS\include\event_groups.h)(0x5A3842D8)
+I (..\FreeRTOS\include\timers.h)(0x5A3842D8)
+I (..\FreeRTOS\include\croutine.h)(0x5A3842D8)
+I (..\FATFS\src\ff.h)(0x577640E7)
+I (..\FATFS\src\integer.h)(0x577640E7)
+I (..\FATFS\src\ffconf.h)(0x5C451D43)
+I (D:\Keil_v5\ARM\ARMCC\include\string.h)(0x574E3E26)
+I (D:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x574E3E26)
+I (..\JMP\jmp_command_execution.h)(0x5C9D8FE1)
+I (..\JMP\jmp_config.h)(0x5C9C81F6)
+I (..\JMP\jmp_param_state.h)(0x5C9D890C)
+I (..\JMP\jmp_gcode_analysis.h)(0x5C2034A3)
+I (..\MOTION\stepper.h)(0x5C948718)
+I (..\MOTION\jmp_motion.h)(0x5C9C35DC)
+I (D:\Keil_v5\ARM\ARMCC\include\math.h)(0x574E3E26)
+I (D:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x574E3E26)
+I (..\BSP\bsp_gpio.h)(0x5C7C889C)
+I (..\JMP\jmp_ex_config.h)(0x5C91B23E)
+I (..\MOTION\planner.h)(0x5C99E693)
+I (..\JMP\jmp_gui.h)(0x5C9DB4FD)
 F (..\MOTION\jmp_motion.c)(0x5C9C3765)(--c99 -c --cpu Cortex-M7.fp.dp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\CORE -I ..\USER -I ..\SYSTEM -I ..\HALLIB\Inc -I ..\BSP -I ..\FATFS\src -I ..\APP -I ..\USB\STM32_USB_Host_Library\Class\MSC\Inc -I ..\USB\STM32_USB_Host_Library\Core\Inc -I ..\USB\USB_APP -I ..\FreeRTOS\include -I ..\FreeRTOS\portable\RVDS\ARM_CM7\r0p1 -I ..\JMP -I ..\MOTION-IF:\佛山津明\jm3d\程序\新板程序\jmp\USER\RTE-ID:\Keil_v5\ARM\PACK\Keil\STM32H7xx_DFP\2.2.0\Drivers\CMSIS\Device\ST\STM32H7xx\Include-ID:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="521" -DSTM32H743xx -DUSE_HAL_DRIVER -DSTM32H743xx -DUSE_USB_FS-o ..\obj\jmp_motion.o --omf_browse ..\obj\jmp_motion.crf --depend ..\obj\jmp_motion.d)
 I (..\MOTION\jmp_motion.h)(0x5C9C35DC)
-I (..\JMP\jmp_config.h)(0x5C8873CC)
+I (..\JMP\jmp_config.h)(0x5C9C81F6)
 I (D:\Keil_v5\ARM\ARMCC\include\math.h)(0x574E3E26)
 I (D:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x574E3E26)
 I (D:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x574E3E26)
@@ -11558,13 +11702,13 @@ I (..\FreeRTOS\include\queue.h)(0x5A3842D8)
 I (..\FreeRTOS\include\croutine.h)(0x5A3842D8)
 I (..\FreeRTOS\include\semphr.h)(0x5A3842D8)
 I (..\MOTION\stepper.h)(0x5C948718)
-I (..\JMP\jmp_param_state.h)(0x5C9C2611)
-I (..\JMP\jmp_gui.h)(0x5C9C3DFF)
+I (..\JMP\jmp_param_state.h)(0x5C9D890C)
+I (..\JMP\jmp_gui.h)(0x5C9DB4FD)
 I (..\MOTION\block_manage.h)(0x5C9B15F3)
 F (..\MOTION\planner.c)(0x5C9B14C5)(--c99 -c --cpu Cortex-M7.fp.dp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\CORE -I ..\USER -I ..\SYSTEM -I ..\HALLIB\Inc -I ..\BSP -I ..\FATFS\src -I ..\APP -I ..\USB\STM32_USB_Host_Library\Class\MSC\Inc -I ..\USB\STM32_USB_Host_Library\Core\Inc -I ..\USB\USB_APP -I ..\FreeRTOS\include -I ..\FreeRTOS\portable\RVDS\ARM_CM7\r0p1 -I ..\JMP -I ..\MOTION-IF:\佛山津明\jm3d\程序\新板程序\jmp\USER\RTE-ID:\Keil_v5\ARM\PACK\Keil\STM32H7xx_DFP\2.2.0\Drivers\CMSIS\Device\ST\STM32H7xx\Include-ID:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="521" -DSTM32H743xx -DUSE_HAL_DRIVER -DSTM32H743xx -DUSE_USB_FS-o ..\obj\planner.o --omf_browse ..\obj\planner.crf --depend ..\obj\planner.d)
 I (..\MOTION\planner.h)(0x5C99E693)
 I (..\MOTION\jmp_motion.h)(0x5C9C35DC)
-I (..\JMP\jmp_config.h)(0x5C8873CC)
+I (..\JMP\jmp_config.h)(0x5C9C81F6)
 I (D:\Keil_v5\ARM\ARMCC\include\math.h)(0x574E3E26)
 I (D:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x574E3E26)
 I (D:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x574E3E26)
@@ -11676,12 +11820,12 @@ I (..\FreeRTOS\include\queue.h)(0x5A3842D8)
 I (..\FreeRTOS\include\croutine.h)(0x5A3842D8)
 I (..\FreeRTOS\include\semphr.h)(0x5A3842D8)
 I (..\MOTION\stepper.h)(0x5C948718)
-I (..\JMP\jmp_param_state.h)(0x5C9C2611)
+I (..\JMP\jmp_param_state.h)(0x5C9D890C)
 I (..\MOTION\block_manage.h)(0x5C9B15F3)
 F (..\MOTION\stepper.c)(0x5C9B3823)(--c99 -c --cpu Cortex-M7.fp.dp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\CORE -I ..\USER -I ..\SYSTEM -I ..\HALLIB\Inc -I ..\BSP -I ..\FATFS\src -I ..\APP -I ..\USB\STM32_USB_Host_Library\Class\MSC\Inc -I ..\USB\STM32_USB_Host_Library\Core\Inc -I ..\USB\USB_APP -I ..\FreeRTOS\include -I ..\FreeRTOS\portable\RVDS\ARM_CM7\r0p1 -I ..\JMP -I ..\MOTION-IF:\佛山津明\jm3d\程序\新板程序\jmp\USER\RTE-ID:\Keil_v5\ARM\PACK\Keil\STM32H7xx_DFP\2.2.0\Drivers\CMSIS\Device\ST\STM32H7xx\Include-ID:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="521" -DSTM32H743xx -DUSE_HAL_DRIVER -DSTM32H743xx -DUSE_USB_FS-o ..\obj\stepper.o --omf_browse ..\obj\stepper.crf --depend ..\obj\stepper.d)
 I (..\MOTION\stepper.h)(0x5C948718)
 I (..\MOTION\jmp_motion.h)(0x5C9C35DC)
-I (..\JMP\jmp_config.h)(0x5C8873CC)
+I (..\JMP\jmp_config.h)(0x5C9C81F6)
 I (D:\Keil_v5\ARM\ARMCC\include\math.h)(0x574E3E26)
 I (D:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x574E3E26)
 I (D:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x574E3E26)
@@ -11794,7 +11938,7 @@ I (..\FreeRTOS\include\queue.h)(0x5A3842D8)
 I (..\FreeRTOS\include\croutine.h)(0x5A3842D8)
 I (..\FreeRTOS\include\semphr.h)(0x5A3842D8)
 I (..\BSP\bsp_timer.h)(0x5C94377C)
-I (..\JMP\jmp_param_state.h)(0x5C9C2611)
+I (..\JMP\jmp_param_state.h)(0x5C9D890C)
 I (..\MOTION\block_manage.h)(0x5C9B15F3)
 F (..\MOTION\block_manage.c)(0x5C9B46AA)(--c99 -c --cpu Cortex-M7.fp.dp -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I ..\CORE -I ..\USER -I ..\SYSTEM -I ..\HALLIB\Inc -I ..\BSP -I ..\FATFS\src -I ..\APP -I ..\USB\STM32_USB_Host_Library\Class\MSC\Inc -I ..\USB\STM32_USB_Host_Library\Core\Inc -I ..\USB\USB_APP -I ..\FreeRTOS\include -I ..\FreeRTOS\portable\RVDS\ARM_CM7\r0p1 -I ..\JMP -I ..\MOTION-IF:\佛山津明\jm3d\程序\新板程序\jmp\USER\RTE-ID:\Keil_v5\ARM\PACK\Keil\STM32H7xx_DFP\2.2.0\Drivers\CMSIS\Device\ST\STM32H7xx\Include-ID:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="521" -DSTM32H743xx -DUSE_HAL_DRIVER -DSTM32H743xx -DUSE_USB_FS-o ..\obj\block_manage.o --omf_browse ..\obj\block_manage.crf --depend ..\obj\block_manage.d)
 I (..\MOTION\block_manage.h)(0x5C9B15F3)
@@ -11891,7 +12035,7 @@ I (..\HALLIB\Inc\stm32h7xx_hal_pcd_ex.h)(0x5B3BDED6)
 I (..\HALLIB\Inc\stm32h7xx_hal_hcd.h)(0x5B3BDEB8)
 I (..\MOTION\stepper.h)(0x5C948718)
 I (..\MOTION\jmp_motion.h)(0x5C9C35DC)
-I (..\JMP\jmp_config.h)(0x5C8873CC)
+I (..\JMP\jmp_config.h)(0x5C9C81F6)
 I (D:\Keil_v5\ARM\ARMCC\include\math.h)(0x574E3E26)
 I (D:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x574E3E26)
 I (D:\Keil_v5\ARM\ARMCC\include\string.h)(0x574E3E26)

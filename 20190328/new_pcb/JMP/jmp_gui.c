@@ -6,6 +6,7 @@
 #include "queue.h"
 #include "croutine.h"
 #include "semphr.h"
+#include "event_groups.h"
 #include "jmp_param_state.h"
 #include "jmp_storage_read.h"
 #include "string.h"
@@ -16,6 +17,7 @@
 #include "jmp_ex_config.h"
 #include "jmp_print_time.h"
 #include "block_manage.h"
+#include "jmp_script.h"
 
 u8 jmp_gui_uart_rx_buff[GUI_UART_RX_BUFF_SUM];
 u32 jmp_gui_uart_rx_buff_sum;
@@ -1051,7 +1053,7 @@ void jmp_gui_task(void *pvParameters)
 								{
 									vTaskDelay(10);
 								}
-								jmp_gui_goto_frame(9);
+								xEventGroupSetBits(JmpScrpitEventGroup,0x0001);
 							}
 						}
 						else if(jmp_guiuart_rx_str.start_address==GUI_PRINT_MAIN_STOP)
@@ -1146,10 +1148,7 @@ void jmp_gui_task(void *pvParameters)
 						{
 							vTaskDelay(10);
 						}
-						
-						jmp_gui_state=GUI_PRINT_END;
-						jmp_gui_goto_frame(19);
-						jmp_gui_print_end_update();
+						xEventGroupSetBits(JmpScrpitEventGroup,0x0002);
 					}
 					break;
 				}
@@ -1195,6 +1194,35 @@ void jmp_gui_task(void *pvParameters)
 					break;
 			}
 		}
+		else if(jmp_gui_message==GUI_PAUSE_SCRIPT_END_MESSAGE)
+		{
+			switch(jmp_gui_state)
+			{
+				case GUI_PRINT_MAIN:
+				{
+					jmp_gui_goto_frame(9);
+					break;
+				}
+				default:
+					break;
+			}
+		}
+		else if(jmp_gui_message==GUI_STOP_SCRIPT_END_MESSAGE)
+		{
+			switch(jmp_gui_state)
+			{
+				case GUI_PRINT_MAIN:
+				{
+					jmp_gui_state=GUI_PRINT_END;
+					jmp_gui_goto_frame(19);
+					jmp_gui_print_end_update();
+					break;
+				}
+				default:
+					break;
+			}
+		}
+		
 	}
 }
 

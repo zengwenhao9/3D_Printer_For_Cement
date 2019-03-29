@@ -1,7 +1,7 @@
 #include "jmp_ex_config.h"
 #include "ff.h"
 #include "jmp_motion.h"
-
+#include "jmp_script.h"
 
 JMPExCofigStruct jmp_ex_config_struct;
 
@@ -544,6 +544,7 @@ void jmp_ex_config_init(void)
 	{
 		jmp_ex_config_default_set();
 	}
+	jmp_script_init();
 }
 
 u8 jmp_ex_config_check_ex_file_segment_fb(u32 front,u32 back)
@@ -1130,6 +1131,7 @@ void jmp_ex_config_read_ex(void)
 u8 jmp_ex_config_ex_file_read(void)
 {
 	u32 res=0;
+	jmp_script_save();
 	res=jmp_ex_config_check_ex_file();
 	if(res!=0)
 	{
@@ -1140,11 +1142,13 @@ u8 jmp_ex_config_ex_file_read(void)
 	{
 		return 0;
 	}
+	
 }
 
 u8 jmp_ex_config_factory_setting(void)
 {
 	FRESULT res;
+	jmp_script_delete();
 	res=f_unlink("0:/config.txt");
 	if(res==FR_OK)
 	{

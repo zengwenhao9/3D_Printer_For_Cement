@@ -36,6 +36,7 @@ void jmp_config_state_init(void)
 	jmp_config_state_struct.e_ex_print_run=0;
 	
 	jmp_config_state_struct.homing_stop=0;
+	jmp_config_state_struct.script_stop=0;
 	
 	jmp_config_state_struct.executed_command_sum=0;
 	jmp_config_state_struct.motion_command_sum=0;

@@ -17,6 +17,13 @@ typedef struct
 void jmp_command_struct_clear(void);
 void jmp_command_execution_init(void);
 
+void jmp_command_g0_exec(void);
+void jmp_command_g1_exec(void);
+void jmp_command_g4_exec(void);
+void jmp_command_g28_exec(void);
+void jmp_command_g90_exec(void);
+void jmp_command_g92_exec(void);
+void jmp_command_m82_exec(void);
 
 extern CommandStruct jmp_command_struct;
 

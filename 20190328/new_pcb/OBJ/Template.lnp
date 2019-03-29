@@ -122,6 +122,7 @@
 "..\obj\jmp_storage_read.o"
 "..\obj\jmp_ex_config.o"
 "..\obj\jmp_print_time.o"
+"..\obj\jmp_script.o"
 "..\obj\jmp_motion.o"
 "..\obj\planner.o"
 "..\obj\stepper.o"
