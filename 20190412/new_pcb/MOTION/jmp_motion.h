@@ -1,0 +1,404 @@
+#ifndef _JMP_MOTION_H
+#define _JMP_MOTION_H
+
+#include "jmp_config.h"
+#include <math.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <stdbool.h>
+#include "bsp_gpio.h"
+#include "bsp_iwdg.h"
+#include "jmp_ex_config.h"
+
+
+#define CRITICAL_SECTION_START 
+#define CRITICAL_SECTION_END
+
+//#define enable_x()				bsp_x_enable_control(1)
+//#define disable_x()				bsp_x_enable_control(0)
+
+//#define enable_y()				bsp_y_enable_control(1)
+//#define disable_y()				bsp_y_enable_control(0)
+
+//#define enable_z()				bsp_z_enable_control(1)
+//#define disable_z()				bsp_z_enable_control(0)
+
+//#define enable_e0()				bsp_e_enable_control(1)
+//#define disable_e0()			bsp_e_enable_control(0)
+
+//#define enable_e1()				bsp_a_enable_control(1)
+//#define disable_e1()			bsp_a_enable_control(0)
+
+
+//#define x_idle()					bsp_x_pluse_control(1)
+//#define x_pluse()					bsp_x_pluse_control(0)
+
+//#define y_idle()					bsp_y_pluse_control(1)
+//#define y_pluse()					bsp_y_pluse_control(0)
+
+//#define z_idle()					bsp_z_pluse_control(1)
+//#define z_pluse()					bsp_z_pluse_control(0)
+
+//#define e0_idle()					bsp_e_pluse_control(1)
+//#define e0_pluse()				bsp_e_pluse_control(0)
+
+//#define e1_idle()					bsp_a_pluse_control(1)
+//#define e1_pluse()				bsp_a_pluse_control(0)
+
+//#define x_forward()				bsp_x_dir_control(1)
+//#define x_reverse()				bsp_x_dir_control(0)
+
+//#define y_forward()				bsp_y_dir_control(0)
+//#define y_reverse()				bsp_y_dir_control(1)
+
+//#define z_forward()				bsp_z_dir_control(0)
+//#define z_reverse()				bsp_z_dir_control(1)
+
+//#define e_forward()				bsp_e_dir_control(1)
+//#define e_reverse()				bsp_e_dir_control(0)
+
+
+
+#define enable_x()				if(jmp_ex_config_struct.x_enable==1){bsp_x_enable_control(1);}else{bsp_x_enable_control(0);}
+#define disable_x()				if(jmp_ex_config_struct.x_enable==1){bsp_x_enable_control(0);}else{bsp_x_enable_control(1);}
+
+#define enable_y()				if(jmp_ex_config_struct.y_enable==1){bsp_y_enable_control(1);}else{bsp_y_enable_control(0);}
+#define disable_y()				if(jmp_ex_config_struct.y_enable==1){bsp_y_enable_control(0);}else{bsp_y_enable_control(1);}
+
+#define enable_z()				if(jmp_ex_config_struct.z_enable==1){bsp_z_enable_control(1);}else{bsp_z_enable_control(0);}
+#define disable_z()				if(jmp_ex_config_struct.z_enable==1){bsp_z_enable_control(0);}else{bsp_z_enable_control(1);}
+
+#define enable_e0()				if(jmp_ex_config_struct.e_enable==1){bsp_e_enable_control(1);}else{bsp_e_enable_control(0);}
+#define disable_e0()			if(jmp_ex_config_struct.e_enable==1){bsp_e_enable_control(0);}else{bsp_e_enable_control(1);}
+
+#define enable_e1()				bsp_a_enable_control(1)
+#define disable_e1()			bsp_a_enable_control(0)
+
+#define x_pluse()					if(jmp_ex_config_struct.x_pluse==1){bsp_x_pluse_control(1);}else{bsp_x_pluse_control(0);}
+#define x_idle()					if(jmp_ex_config_struct.x_pluse==1){bsp_x_pluse_control(0);}else{bsp_x_pluse_control(1);}
+
+#define y_pluse()					if(jmp_ex_config_struct.y_pluse==1){bsp_y_pluse_control(1);}else{bsp_y_pluse_control(0);}
+#define y_idle()					if(jmp_ex_config_struct.y_pluse==1){bsp_y_pluse_control(0);}else{bsp_y_pluse_control(1);}
+
+#define z_pluse()					if(jmp_ex_config_struct.z_pluse==1){bsp_z_pluse_control(1);}else{bsp_z_pluse_control(0);}
+#define z_idle()					if(jmp_ex_config_struct.z_pluse==1){bsp_z_pluse_control(0);}else{bsp_z_pluse_control(1);}
+
+#define e0_pluse()				if(jmp_ex_config_struct.e_pluse==1){bsp_e_pluse_control(1);}else{bsp_e_pluse_control(0);}
+#define e0_idle()					if(jmp_ex_config_struct.e_pluse==1){bsp_e_pluse_control(0);}else{bsp_e_pluse_control(1);}
+
+#define e1_pluse()				bsp_a_pluse_control(1)
+#define e1_idle()					bsp_a_pluse_control(0)
+
+#define x_forward()				if(jmp_ex_config_struct.x_forward==1){bsp_x_dir_control(1);}else{bsp_x_dir_control(0);}
+#define x_reverse()				if(jmp_ex_config_struct.x_forward==1){bsp_x_dir_control(0);}else{bsp_x_dir_control(1);}
+
+#define y_forward()				if(jmp_ex_config_struct.y_forward==1){bsp_y_dir_control(1);}else{bsp_y_dir_control(0);}
+#define y_reverse()				if(jmp_ex_config_struct.y_forward==1){bsp_y_dir_control(0);}else{bsp_y_dir_control(1);}
+
+#define z_forward()				if(jmp_ex_config_struct.z_forward==1){bsp_z_dir_control(1);}else{bsp_z_dir_control(0);}
+#define z_reverse()				if(jmp_ex_config_struct.z_forward==1){bsp_z_dir_control(0);}else{bsp_z_dir_control(1);}
+
+#define e_forward()				if(jmp_ex_config_struct.e_forward==1){bsp_e_dir_control(1);}else{bsp_e_dir_control(0);}
+#define e_reverse()				if(jmp_ex_config_struct.e_forward==1){bsp_e_dir_control(0);}else{bsp_e_dir_control(1);}
+
+
+#define x_limit_p()				bsp_x_limit_p_read()
+#define x_limit_m()				bsp_x_limit_m_read()
+
+#define y_limit_p()				bsp_y_limit_p_read()
+#define y_limit_m()				bsp_y_limit_m_read()
+
+#define z_limit_p()				bsp_z_limit_p_read()
+#define z_limit_m()				bsp_z_limit_m_read()
+
+
+#define jmp_reset()				bsp_iwdg_init(IWDG_PRESCALER_64,200)
+
+
+//#define X_MIN_ENDSTOP			0
+//#define X_MAX_ENDSTOP			1
+//#define Y_MIN_ENDSTOP			0
+//#define Y_MAX_ENDSTOP			1
+//#define Z_MIN_ENDSTOP			0
+//#define Z_MAX_ENDSTOP			1
+
+//planner
+
+#define BLOCK_BUFFER_SIZE 4// maximize block buffer
+
+// Minimum planner junction speed. Sets the default minimum speed the planner plans for at the end
+// of the buffer and all stops. This should not be much greater than zero and should only be changed
+// if unwanted behavior is observed on a user's machine when running at very slow speeds.
+#define MINIMUM_PLANNER_SPEED 0.05f// (mm/sec)
+
+#define dropsegments 5 //everything with less than this number of steps will be ignored as move and joined with the next movement
+
+//// If defined the movements slow down when the look ahead buffer is only half full
+#define SLOWDOWN
+
+
+
+#define DEFAULT_MINIMUMFEEDRATE       0.0     // minimum feedrate
+#define DEFAULT_MINTRAVELFEEDRATE     0.0
+
+//// minimum time in microseconds that a movement needs to take if the buffer is emptied.
+#define DEFAULT_MINSEGMENTTIME        20000
+
+
+//===========================================================================
+//=============================Mechanical Settings===========================
+//===========================================================================
+//机械设置开始
+
+// Uncomment the following line to enable CoreXY kinematics
+#define COREXY
+
+// corse Endstop Settings
+#define ENDSTOPPULLUPS // Comment this out (using // at the start of the line) to disable the endstop pullup resistors
+
+#ifndef ENDSTOPPULLUPS
+  // fine Enstop settings: Individual Pullups. will be ignord if ENDSTOPPULLUPS is defined
+  #define ENDSTOPPULLUP_XMAX
+  #define ENDSTOPPULLUP_YMAX
+  #define ENDSTOPPULLUP_ZMAX
+  #define ENDSTOPPULLUP_XMIN
+  #define ENDSTOPPULLUP_YMIN
+  //#define ENDSTOPPULLUP_ZMIN
+#endif
+
+#ifdef ENDSTOPPULLUPS
+  #define ENDSTOPPULLUP_XMAX
+  #define ENDSTOPPULLUP_YMAX
+  #define ENDSTOPPULLUP_ZMAX
+  #define ENDSTOPPULLUP_XMIN
+  #define ENDSTOPPULLUP_YMIN
+  #define ENDSTOPPULLUP_ZMIN
+#endif
+
+// The pullups are needed if you directly connect a mechanical endswitch between the signal and ground pins.
+#define X_ENDSTOPS_INVERTING   1 // set to true to invert the logic of the endstops.                  
+#define Y_ENDSTOPS_INVERTING   1 // set to true to invert the logic of the endstops.
+#define Z_ENDSTOPS_INVERTING   1 // set to true to invert the logic of the endstops.
+//#define DISABLE_MAX_ENDSTOPS
+
+// For Inverting Stepper Enable Pins (Active Low) use 0, Non Inverting (Active High) use 1                              
+#define X_ENABLE_ON 0
+#define Y_ENABLE_ON 0
+#define Z_ENABLE_ON 0
+#define E_ENABLE_ON 0 // For all extruders
+
+
+// Disables axis when it's not being used. 
+#define DISABLE_X 0
+#define DISABLE_Y 0
+#define DISABLE_Z 0
+#define DISABLE_E 0 // For all extruders
+
+
+#define INVERT_X_DIR false    // for Mendel set to false, for Orca set to true                                
+#define INVERT_Y_DIR false  // for Mendel set to true, for Orca set to false
+#define INVERT_Z_DIR true    // for Mendel set to false, for O      rca set to true
+#define INVERT_E0_DIR false  // for direct drive extruder v9 set to true, for geared extruder set to false
+#define INVERT_E1_DIR false    // for direct drive extruder v9 set to true, for geared extruder set to false
+//#define INVERT_E2_DIR 0   // for direct drive extruder v9 set to true, for geared extruder set to false
+
+                                                                                   
+// Sets direction of endstops when homing; 1=MAX, -1=MIN
+//#define X_HOME_DIR -1
+//#define Y_HOME_DIR -1
+//#define Z_HOME_DIR -1
+
+#define min_software_endstops true //If true, axis won't move to coordinates less than HOME_POS.
+#define max_software_endstops true  //If true, axis won't move to coordinates greater than the defined lengths below.
+
+
+// Travel limits after homing
+//#define X_MAX_POS 800 //200                                                                                          
+//#define X_MIN_POS 0
+//#define Y_MAX_POS 800 //200
+//#define Y_MIN_POS 0
+//#define Z_MAX_POS 1350 //200
+//#define Z_MIN_POS 0
+
+//#define X_MAX_LENGTH (X_MAX_POS - X_MIN_POS)
+//#define Y_MAX_LENGTH (Y_MAX_POS - Y_MIN_POS)
+//#define Z_MAX_LENGTH (Z_MAX_POS - Z_MIN_POS)
+
+
+//#define MANUAL_X_HOME_POS 0
+//#define MANUAL_Y_HOME_POS 0
+//#define MANUAL_Z_HOME_POS 0
+
+     
+#define NUM_AXIS 4 // The axis order in all axis related arrays is X, Y, Z, E
+
+//#define HOMING_FEEDRATE {5, 5, 0.2, 0} 
+
+// default settings
+
+//#define DEFAULT_AXIS_STEPS_PER_UNIT   {53.3333,53.3333,3840,7.69231}//{160,160,800,94.4962144}  // default steps per unit for ultimaker 
+
+//#define DEFAULT_MAX_FEEDRATE          {200,200,5,250}//{200, 200, 4, 45}    // (mm/sec)                                            
+//                       
+//#define DEFAULT_MAX_ACCELERATION      {2000,2000,10,2000}     // X, Y, Z, E maximum start speed for accelerated moves. E default values are good for skeinforge 40+, for older versions raise them a lot.
+
+
+//                                                                                                      
+//#define DEFAULT_ACCELERATION          1000    // X, Y, Z and E max acceleration in mm/s^2 for printing moves
+
+//#define DEFAULT_RETRACT_ACCELERATION  1000   // X, Y, Z and E max acceleration in mm/s^2 for r retracts                        
+
+//#define DEFAULT_XYJERK                 20.0       // (mm/sec)
+//#define DEFAULT_ZJERK                 0.5     // (mm/sec)
+//#define DEFAULT_EJERK                 25.0    // (mm/sec)
+
+
+
+
+
+
+//#define X_HOME_POS MANUAL_X_HOME_POS
+//#define Y_HOME_POS MANUAL_Y_HOME_POS
+//#define Z_HOME_POS MANUAL_Z_HOME_POS
+
+//#define X_HOME_RETRACT_MM 10 
+//#define Y_HOME_RETRACT_MM 10 
+//#define Z_HOME_RETRACT_MM 10 
+//#define QUICK_HOME  //if this is defined, if both x and y are to be homed, a diagonal move will be performed initially.
+
+#define AXIS_RELATIVE_MODES {false, false, false, false}
+
+#define MAX_STEP_FREQUENCY  100000 // Max step frequency for Ultimaker (5000 pps / half step)
+#define MIN_TIMER					10
+
+//#define Manual_X_FEEDRATE				50
+//#define Manual_Y_FEEDRATE				50
+//#define Manual_Z_FEEDRATE				5
+//#define Manual_E_FEEDRATE				50
+
+
+//#define X_MIN_CHECK
+//#define X_MAX_CHECK
+//#define Y_MIN_CHECK
+//#define Y_MAX_CHECK
+//#define Z_MIN_CHECK
+//#define Z_MAX_CHECK
+
+#define BREAKPOINT_RETURN_FEEDRATE	10
+
+#define	X_ENABLE	1	
+#define	Y_ENABLE	1	
+#define	Z_ENABLE	1	
+#define	E_ENABLE	1	
+
+#define X_FORWARD	1
+#define Y_FORWARD	1
+#define Z_FORWARD	1
+#define E_FORWARD	1
+
+#define X_PLUSE		1
+#define Y_PLUSE		1
+#define Z_PLUSE		1
+#define E_PLUSE		1
+
+#define X_MAX_CHECK	0
+#define X_MIN_CHECK	0
+#define Y_MAX_CHECK	0
+#define Y_MIN_CHECK	0
+#define Z_MAX_CHECK	0
+#define Z_MIN_CHECK	0
+
+#define X_MAX_ENDSTOP	1
+#define X_MIN_ENDSTOP	1
+#define Y_MAX_ENDSTOP	1
+#define Y_MIN_ENDSTOP	1
+#define Z_MAX_ENDSTOP	1
+#define Z_MIN_ENDSTOP	1
+
+#define X_MAX_POS	800
+#define X_MIN_POS	0
+#define Y_MAX_POS	800
+#define Y_MIN_POS	0
+#define Z_MAX_POS	1350
+#define Z_MIN_POS	0
+
+#define X_HOME_DIR	1
+#define Y_HOME_DIR	1
+#define Z_HOME_DIR	1
+
+#define X_HOME_FEEDRATE	20
+#define Y_HOME_FEEDRATE	20
+#define Z_HOME_FEEDRATE	0.2
+
+#define X_HOME_RETRACT_MM	10
+#define Y_HOME_RETRACT_MM	10
+#define Z_HOME_RETRACT_MM	10
+
+#define X_HOME_POS	0
+#define Y_HOME_POS	0
+#define Z_HOME_POS	0
+
+#define X_STEP_PER_MM	53.3333
+#define Y_STEP_PER_MM	53.3333
+#define Z_STEP_PER_MM	3840
+#define E_STEP_PER_MM	7.69231
+
+#define X_MAX_FEEDRATE	200
+#define Y_MAX_FEEDRATE	200
+#define Z_MAX_FEEDRATE	5
+#define E_MAX_FEEDRATE	250
+
+#define X_MAX_ACC	2000
+#define Y_MAX_ACC	2000
+#define Z_MAX_ACC	10
+#define E_MAX_ACC	2000
+
+#define DEFAULT_ACC	1000
+#define DEFAULT_RETRACT_ACC	1000
+
+#define DEFAULT_XY_JERK	20
+#define DEFAULT_Z_JERK	0.5
+#define DEFAULT_E_JERK	25
+
+#define MANUAL_X_FEEDRATE	50
+#define MANUAL_Y_FEEDRATE	50
+#define MANUAL_Z_FEEDRATE	5
+#define MANUAL_E_FEEDRATE	50
+
+extern float homing_feedrate[];
+extern bool axis_relative_modes[];
+extern int feedmultiply;
+extern int extrudemultiply; // Sets extrude multiply factor (in percent)
+extern float current_position[NUM_AXIS] ;
+extern float add_homeing[3];
+extern float min_pos[3];
+extern float max_pos[3];
+extern int fanSpeed;
+#ifdef BARICUDA
+extern int ValvePressure;
+extern int EtoPPressure;
+#endif
+
+#ifdef FWRETRACT
+extern bool autoretract_enabled;
+extern bool retracted;
+extern float retract_length, retract_feedrate, retract_zlift;
+extern float retract_recover_length, retract_recover_feedrate;
+#endif
+
+
+// Handling multiple extruders pins
+extern uint8_t active_extruder;
+
+void jmp_motion_init(void);
+
+void jmp_motion_prepare_move(double x,double y,double z,double e);
+void jmp_motion_manual(double x,double y,double z,double e,double f);
+void jmp_motion_set_postion(double x,double y,double z,double e);
+void jmp_motion_find_home(void);
+
+#endif
+
+
+
